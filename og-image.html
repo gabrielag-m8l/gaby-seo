@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,700;0,9..144,900;1,9..144,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 1200px; height: 630px; overflow: hidden; }
+  body {
+    font-family: 'Inter', sans-serif;
+    background: #FFFFFF;
+    color: #0F0F0F;
+    position: relative;
+  }
+  /* Decorative blobs (DS colors) */
+  .blob {
+    position: absolute; border-radius: 50%;
+    filter: blur(60px); opacity: 0.55;
+    pointer-events: none;
+  }
+  .blob-1 { width: 380px; height: 380px; background: #D4C0ED; top: -120px; left: -100px; }
+  .blob-2 { width: 320px; height: 320px; background: #F4A07A; bottom: -100px; left: 380px; opacity: 0.45; }
+  .blob-3 { width: 260px; height: 260px; background: #DDFF33; top: 60px; right: 280px; opacity: 0.4; }
+
+  .container {
+    position: relative; z-index: 2;
+    display: grid; grid-template-columns: 1fr 360px;
+    gap: 64px;
+    width: 100%; height: 100%;
+    padding: 80px 88px;
+    align-items: center;
+  }
+
+  .left {
+    display: flex; flex-direction: column;
+    justify-content: center; gap: 28px;
+  }
+
+  .badge {
+    display: inline-flex; align-items: center; gap: 10px;
+    font-size: 13px; font-weight: 700; letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: #0F0F0F;
+    background: #DDFF33;
+    padding: 10px 18px;
+    border-radius: 100px;
+    width: fit-content;
+  }
+  .badge::before {
+    content: ''; width: 8px; height: 8px; border-radius: 50%;
+    background: #0F0F0F;
+  }
+
+  h1 {
+    font-family: 'Fraunces', serif;
+    font-size: 78px;
+    font-weight: 900;
+    line-height: 0.98;
+    letter-spacing: -0.035em;
+    color: #0F0F0F;
+  }
+  h1 em {
+    font-style: italic;
+    font-weight: 400;
+    color: #C278D4;
+  }
+
+  .sub {
+    font-size: 22px;
+    line-height: 1.4;
+    color: rgba(15,15,15,0.7);
+    max-width: 580px;
+    font-weight: 400;
+  }
+
+  .author {
+    display: flex; align-items: center; gap: 14px;
+    margin-top: 8px;
+  }
+  .author-mini {
+    width: 44px; height: 44px;
+    border-radius: 50%;
+    background-image: url('gaby-circle.png');
+    background-size: cover; background-position: center;
+    border: 2px solid #C278D4;
+  }
+  .author-text { font-size: 16px; font-weight: 600; color: #0F0F0F; }
+  .author-text span { color: rgba(15,15,15,0.5); font-weight: 400; }
+
+  /* Right portrait */
+  .right {
+    display: flex; align-items: center; justify-content: center;
+    position: relative;
+  }
+  .portrait-wrap {
+    width: 360px; height: 360px;
+    border-radius: 50%;
+    background: conic-gradient(from 180deg, #C278D4, #F4A07A, #DDFF33, #D4C0ED, #C278D4);
+    padding: 8px;
+    position: relative;
+    box-shadow: 0 30px 60px rgba(194,120,212,0.25);
+  }
+  .portrait-wrap::before {
+    content: ''; position: absolute;
+    inset: -2px; border-radius: 50%;
+    background: conic-gradient(from 0deg, #C278D4, #F4A07A, #DDFF33, #D4C0ED, #C278D4);
+    z-index: -1; filter: blur(20px); opacity: 0.6;
+  }
+  .portrait {
+    width: 100%; height: 100%;
+    border-radius: 50%;
+    background-image: url('gaby-circle.png');
+    background-size: cover; background-position: center;
+    background-color: #fff;
+  }
+
+  /* Footer brand */
+  .brand {
+    position: absolute; bottom: 44px; left: 88px;
+    font-family: 'Fraunces', serif;
+    font-size: 28px; font-weight: 900;
+    letter-spacing: -0.025em;
+    z-index: 3;
+  }
+  .brand span { color: #C278D4; }
+  .url {
+    position: absolute; bottom: 50px; right: 88px;
+    font-size: 14px; font-weight: 600;
+    color: rgba(15,15,15,0.55);
+    letter-spacing: 0.04em;
+    z-index: 3;
+  }
+</style>
+</head>
+<body>
+  <div class="blob blob-1"></div>
+  <div class="blob blob-2"></div>
+  <div class="blob blob-3"></div>
+
+  <div class="container">
+    <div class="left">
+      <span class="badge">SEO · AEO · GEO</span>
+      <h1>Tu marca,<br/><em>encontrable</em><br/>donde importa.</h1>
+      <p class="sub">Consultoría SEO para marcas que quieren aparecer en Google, los LLMs y más allá.</p>
+    </div>
+    <div class="right">
+      <div class="portrait-wrap">
+        <div class="portrait"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="brand">Gaby<span>SEO</span></div>
+  <div class="url">gabyseo.com</div>
+</body>
+</html>
