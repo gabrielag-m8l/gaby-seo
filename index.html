@@ -647,6 +647,23 @@
     }
     @media (max-width: 960px) { .caso-grid { grid-template-columns: 1fr; } }
 
+    /* ── CASE STUDY CHARTS ── */
+    .caso-chart { margin: 0.25rem 0; display: flex; flex-direction: column; gap: 0.45rem; }
+    .caso-chart-row { display: flex; align-items: center; gap: 0.6rem; }
+    .caso-chart-label {
+      font-size: 0.65rem; color: rgba(255,255,255,0.45); font-weight: 600;
+      text-transform: uppercase; letter-spacing: 0.5px;
+      width: 52px; flex-shrink: 0; text-align: right;
+    }
+    .caso-chart-bar {
+      height: 30px; border-radius: 8px;
+      display: flex; align-items: center; padding: 0 0.75rem;
+      font-size: 0.75rem; font-weight: 700; color: #fff;
+      white-space: nowrap; min-width: fit-content;
+    }
+    .caso-chart-bar.before { background: rgba(255,255,255,0.1); }
+    .caso-chart-bar.after  { background: var(--wisteria); }
+
     /* Gradient blob in hero */
     .hero::before {
       content: '';
@@ -799,7 +816,7 @@
           "name": "Auditoría + Acompañamiento 3 meses",
           "description": "Auditoría inicial + ejecución: on-page, contenido nuevo/optimizado, interlinking. Para marcas de salud y wellness que necesitan resultados rápidos. Duración: 3 meses dedicados.",
           "provider": { "@type": "Person", "name": "Gabriela Gómez Almeida", "url": "https://gabyseo.com" },
-          "offers": { "@type": "Offer", "price": "7500", "priceCurrency": "USD" },
+          "offers": { "@type": "Offer", "price": "5000", "priceCurrency": "USD" },
           "areaServed": "LATAM",
           "serviceType": "SEO Strategy & Execution"
         }
@@ -912,8 +929,8 @@
 <!-- HERO -->
 <section class="hero">
   <p class="hero-eyebrow">SEO Strategist · Salud &amp; Wellness · LATAM</p>
-  <h1>Estrategia SEO para marcas de salud <span class="hl">que quieren escalar.</span></h1>
-  <p class="hero-sub">Especialista en posicionamiento orgánico para marcas de salud, wellness y beauty. Auditoría, estrategia y ejecución desde cero. Resultados medibles en 90 días.</p>
+  <h1>Estrategia SEO para marcas <span class="hl">que quieren escalar.</span></h1>
+  <p class="hero-sub">Especialista en posicionamiento orgánico para marcas de salud, wellness y beauty. Auditoría, estrategia y ejecución desde cero.</p>
   <div class="hero-btns">
     <a href="#contacto" class="btn-rust">Agenda tu auditoría</a>
     <a href="#caso" class="btn-ghost">Ver casos de éxito →</a>
@@ -958,8 +975,8 @@
         <span class="section-label">Sobre mí</span>
         <h2 class="section-title">Soy Gaby Gómez Almeida.<br><em>SEO Specialist.</em></h2>
         <p>Venezolana en Buenos Aires con 5+ años escalando tráfico orgánico para marcas de salud, beauty y wellness en LATAM.</p>
-        <p>En Meaningful, trabajé en estrategia SEO end-to-end para +10 marcas, lideré equipos de 50+ freelancers, y generé 1M+ impresiones orgánicas. También hice SEO estratégico para proyectos en España (hair health, dental, supplements).</p>
-        <p>Ahora trabajo como consultora independiente: auditoría + estrategia + ejecución. Mis clientes son startups y marcas pequeñas que necesitan crecer sin presupuesto de agencia grande.</p>
+        <p>En Meaningful, trabajé en estrategia SEO end-to-end para +10 marcas, lideré equipos de 50+ freelancers, y generé 1M+ impresiones orgánicas. También hice SEO estratégico para proyectos en España (hair care).</p>
+        <p>Ofrezco mis servicios como consultora independiente: auditoría + estrategia + ejecución para startups y marcas pequeñas que necesitan crecer sin presupuesto de agencia grande.</p>
         <p>También enseño SEO en Coderhouse.</p>
         <div class="sobre-links">
           <a href="#contacto" class="btn-rust">Trabajemos juntxs</a>
@@ -976,20 +993,6 @@
           <div class="stat-box"><strong>50+</strong><span>artículos optimizados/mes</span></div>
           <div class="stat-box pink-bg"><strong>3+</strong><span>case studies verificables</span></div>
         </div>
-        <p class="clientes-label" style="margin-top:0.5rem;">Marcas donde hice experiencia</p>
-        <div class="clientes-list">
-          <span class="cliente-tag">Platzi</span>
-          <span class="cliente-tag">IPSY</span>
-          <span class="cliente-tag">Conekta</span>
-          <span class="cliente-tag">Guidde</span>
-          <span class="cliente-tag">Dentalia</span>
-          <span class="cliente-tag">Nutriwhite</span>
-          <span class="cliente-tag">Sanarai</span>
-          <span class="cliente-tag">Sofía</span>
-          <span class="cliente-tag">Síclo</span>
-          <span class="cliente-tag">Luuna</span>
-          <span class="cliente-tag">Capilea</span>
-        </div>
       </div>
     </div>
   </div>
@@ -1000,7 +1003,6 @@
   <div class="section-inner">
     <span class="section-label">Casos de éxito</span>
     <h2 class="section-title fade-up">Resultados reales. <em>Números verificables.</em></h2>
-    <p class="section-sub fade-up delay-1">Tres proyectos, tres nichos de salud. Sin nombres falsos, sin métricas infladas.</p>
     <div class="caso-grid">
 
       <div class="caso-card fade-up delay-1">
@@ -1009,12 +1011,18 @@
           <span class="caso-duration">6 meses · Auditoría + estrategia de contenido</span>
         </div>
         <h3>Posicionamiento en salud mental</h3>
-        <p class="caso-desc-text">De búsquedas genéricas a keywords de intención. Una marca de contenido de psicología sin estrategia SEO clara buscaba aparecer en "psicólogo", "terapia", "ansiedad".</p>
-        <div class="caso-stat-highlight">
-          <strong>+165%</strong>
-          <span>posicionamiento en 6 meses</span>
+        <p class="caso-desc-text">Una marca de contenido de psicología buscaba aparecer en "psicólogo", "terapia", "ansiedad".</p>
+        <div class="caso-chart">
+          <div class="caso-chart-row">
+            <span class="caso-chart-label">Antes</span>
+            <div class="caso-chart-bar before" style="width:38%">Base</div>
+          </div>
+          <div class="caso-chart-row">
+            <span class="caso-chart-label">6 meses</span>
+            <div class="caso-chart-bar after" style="width:100%">+165%</div>
+          </div>
         </div>
-        <p class="caso-what">Arquitectura temática, clustering de keywords por intención, contenido optimizado para tópicos específicos, estrategia de link building. Keywords como "terapia", "psicología", "salud mental" en Top 10.</p>
+        <p class="caso-what">Arquitectura temática, clustering de keywords por intención, contenido optimizado, link building. Keywords como "terapia", "psicología", "salud mental" en Top 10.</p>
       </div>
 
       <div class="caso-card fade-up delay-2">
@@ -1023,13 +1031,18 @@
           <span class="caso-duration">4 meses + retainer · Multi-país</span>
         </div>
         <h3>De 0 a 1.29M impresiones en año 1</h3>
-        <p class="caso-desc-text">Lanzamiento SEO desde cero en nicho de hair health/transplants en Chile y España. Mercado saturado, sin contenido SEO previo.</p>
-        <div class="caso-metrics-mini">
-          <div><strong>1.29M</strong><span>impresiones año 1</span></div>
-          <div><strong>306K</strong><span>clicks año 1</span></div>
-          <div><strong>+72%</strong><span>impresiones año 2</span></div>
+        <p class="caso-desc-text">Lanzamiento SEO desde cero en nicho de hair health/transplants en España. Sin contenido SEO previo.</p>
+        <div class="caso-chart">
+          <div class="caso-chart-row">
+            <span class="caso-chart-label">Año 1</span>
+            <div class="caso-chart-bar before" style="width:58%">1.29M imp · 306K clicks</div>
+          </div>
+          <div class="caso-chart-row">
+            <span class="caso-chart-label">Año 2</span>
+            <div class="caso-chart-bar after" style="width:100%">2.22M imp · +72%</div>
+          </div>
         </div>
-        <p class="caso-what">Arquitectura de URL, keyword strategy, contenido desde cero optimizado para search intent, implementación técnica SEO. Hoy marca referente en Chile y España.</p>
+        <p class="caso-what">Arquitectura de URL, keyword strategy, contenido desde cero optimizado para search intent, implementación técnica SEO. Hoy marca referente en España.</p>
       </div>
 
       <div class="caso-card fade-up delay-3">
@@ -1038,13 +1051,18 @@
           <span class="caso-duration">3 meses · Auditoría + optimización on-page</span>
         </div>
         <h3>De 15K a 61K impresiones</h3>
-        <p class="caso-desc-text">Blog existente sin estrategia. Sin arquitectura SEO, sin clustering temático, sin intención de búsqueda definida.</p>
-        <div class="caso-metrics-mini">
-          <div><strong>+297%</strong><span>impresiones</span></div>
-          <div><strong>+319%</strong><span>clicks</span></div>
-          <div><strong>6.1</strong><span>posición prom.</span></div>
+        <p class="caso-desc-text">Creación de blogs de contenido pensando en las money keywords de la marca. Para aparecer en top 3 de sus principales keywords.</p>
+        <div class="caso-chart">
+          <div class="caso-chart-row">
+            <span class="caso-chart-label">Antes</span>
+            <div class="caso-chart-bar before" style="width:25%">15K imp</div>
+          </div>
+          <div class="caso-chart-row">
+            <span class="caso-chart-label">3 meses</span>
+            <div class="caso-chart-bar after" style="width:100%">61K imp · +297%</div>
+          </div>
         </div>
-        <p class="caso-what">Auditoría completa, arquitectura de contenido, optimización on-page de artículos existentes, interlinking estratégico, keywords por edad/tipo de piel.</p>
+        <p class="caso-what">Arquitectura de contenido, optimización on-page, interlinking estratégico. +319% clicks. Posición promedio: 8.1 → 6.1.</p>
       </div>
 
     </div>
@@ -1085,7 +1103,7 @@
   <div class="section-inner">
     <span class="section-label">Lo que dicen de mí</span>
     <h2 class="section-title fade-up">Quienes trabajaron conmigo.</h2>
-    <p class="section-sub fade-up delay-1">Reseñas reales de LinkedIn de colegas y supervisoras.</p>
+    <p class="section-sub fade-up delay-1">Reseñas reales de LinkedIn.</p>
     <div class="testimonios-grid">
       <div class="testimonio-card fade-up delay-1">
         <p class="testimonio-texto">Gaby es una profesional con un dominio profundo del SEO, que entiende el ecosistema de contenidos de principio a fin. Está siempre atenta a las actualizaciones, a explorar nuevas herramientas y a encontrar formas de optimizar procesos. Lo que más destaco de ella es su curiosidad, su empatía y su espíritu colaborativo.</p>
@@ -1189,7 +1207,7 @@
         </div>
       </div>
     </div>
-    <div class="fade-up" style="margin-top:3rem;background:var(--lilac);border-radius:20px;padding:2rem 2.5rem;max-width:680px;">
+    <div class="fade-up" style="margin-top:3rem;background:#fff;border:1.5px solid rgba(15,15,15,0.08);border-left:4px solid var(--wisteria);border-radius:16px;padding:1.75rem 2rem;max-width:680px;">
       <h3 style="font-size:1rem;font-weight:700;color:var(--onyx);margin-bottom:0.75rem;">¿Por qué EEAT importa para salud?</h3>
       <p style="font-size:0.92rem;color:rgba(15,15,15,0.72);line-height:1.8;">Google prioriza EEAT en nichos de salud (nicho YMYL). Por eso nuestro framework está diseñado específicamente para que marcas de salud y wellness construyan autoridad real.</p>
     </div>
@@ -1213,7 +1231,7 @@
         <span class="precio-badge">Más popular</span>
         <h3>Auditoría + Acompañamiento 3 meses</h3>
         <p>Auditoría inicial + ejecución: on-page, contenido nuevo/optimizado, interlinking. Para marcas que necesitan resultados rápidos. Duración: 3 meses dedicados.</p>
-        <div class="precio-amount">$7,500 <span>USD</span></div>
+        <div class="precio-amount">$5,000 <span>USD</span></div>
       </div>
       <div class="precio-card fade-up delay-3">
         <span class="precio-badge">Crecimiento sostenido</span>
@@ -1280,7 +1298,7 @@
             <select name="presupuesto" id="presupuesto">
               <option value="">Selecciona un rango</option>
               <option>Auditoría SEO ($2,500–$3,500)</option>
-              <option>Auditoría + Acompañamiento ($7,500)</option>
+              <option>Auditoría + Acompañamiento ($5,000)</option>
               <option>Retainer mensual ($1,500–$2,000/mes)</option>
               <option>Todavía explorando</option>
             </select>
@@ -1385,8 +1403,8 @@
 
 <!-- CTA FINAL — rust section -->
 <section class="cta-final">
-  <h2>¿Listo para escalar tu tráfico orgánico?</h2>
-  <p>No te hagas la auditoría solo. Toma 3 semanas, y sin estrategia clara es tiempo perdido.</p>
+  <h2>Tu próximo cliente ya está buscando.</h2>
+  <p>La pregunta es si te encuentra a vos o a tu competencia. Una auditoría SEO es el primer paso para saberlo.</p>
   <div style="display:flex;gap:1rem;flex-wrap:wrap;justify-content:center;align-items:center;">
     <a href="#contacto" class="btn-white">Agendar auditoría →</a>
     <a href="https://www.linkedin.com/in/gabrielagomezalmeida/" target="_blank" class="btn-white" style="background:rgba(15,15,15,0.12);color:var(--onyx);">LinkedIn</a>
