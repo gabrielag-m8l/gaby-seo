@@ -697,6 +697,139 @@
       50%  { transform: rotate(180deg) scale(1.1); }
       to   { transform: rotate(360deg) scale(1); }
     }
+
+    /* ── CHAOS MODE ── */
+    #chaos-btn {
+      position: fixed; top: 1.1rem; right: 1.5rem; z-index: 8000;
+      background: #E8291C; color: #fff; border: none; border-radius: 100px;
+      padding: 0.5rem 1rem 0.5rem 0.85rem; font-size: 0.78rem; font-weight: 700;
+      font-family: 'Inter', sans-serif; cursor: pointer; letter-spacing: 0.02em;
+      display: inline-flex; align-items: center; gap: 5px;
+      box-shadow: 0 2px 16px rgba(232,41,28,0.4);
+      transition: transform .2s, box-shadow .2s;
+    }
+    #chaos-btn:hover { transform: scale(1.07) rotate(-2deg); box-shadow: 0 4px 24px rgba(232,41,28,0.55); }
+
+    #chaos-overlay {
+      position: fixed; inset: 0; background: #F5F3EE; z-index: 9000;
+      opacity: 0; pointer-events: none; transition: opacity .4s ease;
+      overflow: hidden;
+    }
+    #chaos-overlay.active { opacity: 1; pointer-events: all; }
+
+    #chaos-close {
+      position: fixed; top: 1.1rem; right: 1.5rem; z-index: 9100;
+      background: var(--onyx); color: #fff; border: none; border-radius: 100px;
+      padding: 0.5rem 1.1rem; font-size: 0.78rem; font-weight: 700;
+      font-family: 'Inter', sans-serif; cursor: pointer; transition: opacity .2s;
+    }
+    #chaos-close:hover { opacity: 0.75; }
+
+    .chaos-center {
+      position: absolute; top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center; z-index: 9010; pointer-events: none; user-select: none;
+    }
+    .chaos-center h1 {
+      font-family: 'Fraunces', serif; font-size: clamp(3.5rem, 9vw, 8rem);
+      font-weight: 900; color: var(--onyx); line-height: 1; letter-spacing: -0.04em;
+    }
+    .chaos-center p {
+      font-size: 1rem; color: rgba(15,15,15,0.42); margin-top: 0.5rem;
+      font-style: italic; letter-spacing: 0.02em;
+    }
+
+    .chaos-el {
+      position: absolute; left: var(--x); top: var(--y);
+      transform: rotate(var(--r)); cursor: pointer;
+      transition: transform .3s cubic-bezier(.34,1.56,.64,1), z-index 0s;
+      z-index: 9020;
+    }
+    .chaos-el:hover { transform: rotate(0deg) scale(1.06); z-index: 9060; }
+    .chaos-el:focus-visible { outline: 3px solid var(--wisteria); border-radius: 16px; }
+
+    .chaos-card {
+      background: #fff; border: 1.5px solid rgba(15,15,15,0.1); border-radius: 18px;
+      padding: 1.2rem 1.45rem; min-width: 155px; max-width: 215px;
+      box-shadow: 0 6px 24px rgba(15,15,15,0.08);
+    }
+    .chaos-card.c-lilac { background: var(--lilac); }
+    .chaos-card.c-peach { background: var(--peach); }
+    .chaos-card.c-lime  { background: var(--lime);  }
+    .chaos-card.c-jordy { background: var(--jordy); }
+
+    .chaos-sticker {
+      background: var(--lime); border: 2px solid var(--onyx); border-radius: 10px;
+      padding: 0.7rem 1rem; font-size: 0.8rem; font-weight: 700;
+      font-family: 'Inter', sans-serif; display: inline-block; line-height: 1.4;
+      box-shadow: 3px 3px 0 var(--onyx);
+    }
+    .chaos-card .chaos-tag {
+      font-size: 0.62rem; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 1.5px; color: rgba(15,15,15,0.48); display: block; margin-bottom: 0.35rem;
+    }
+    .chaos-card h3 {
+      font-family: 'Fraunces', serif; font-size: 1.05rem; font-weight: 700;
+      color: var(--onyx); line-height: 1.2; margin-bottom: 0.4rem;
+    }
+    .chaos-card p { font-size: 0.78rem; color: rgba(15,15,15,0.62); line-height: 1.55; }
+    .chaos-hint {
+      font-size: 0.66rem; color: rgba(15,15,15,0.38); margin-top: 0.65rem;
+      display: flex; align-items: center; gap: 3px;
+    }
+
+    /* Expanded panel */
+    #chaos-panel {
+      position: fixed; right: 0; top: 0; bottom: 0;
+      width: min(460px, 90vw); background: #fff; z-index: 9200;
+      transform: translateX(105%); transition: transform .35s cubic-bezier(.4,0,.2,1);
+      overflow-y: auto; padding: 2.5rem 2.25rem 3rem;
+      box-shadow: -10px 0 48px rgba(15,15,15,0.1);
+    }
+    #chaos-panel.open { transform: translateX(0); }
+    #chaos-panel-close {
+      position: sticky; top: 0; float: right; margin-bottom: 0.5rem;
+      background: rgba(15,15,15,0.06); border: none; border-radius: 100px;
+      width: 32px; height: 32px; font-size: 1rem; cursor: pointer;
+      color: var(--onyx); display: flex; align-items: center; justify-content: center;
+      transition: background .15s;
+    }
+    #chaos-panel-close:hover { background: rgba(15,15,15,0.12); }
+    #chaos-panel-content { clear: both; }
+    #chaos-panel-content .p-color-bar {
+      border-radius: 14px; padding: 1.1rem 1.4rem; margin-bottom: 1.5rem;
+    }
+    #chaos-panel-content h2 {
+      font-family: 'Fraunces', serif; font-size: 1.9rem; font-weight: 900;
+      color: var(--onyx); line-height: 1.15; margin: 0;
+    }
+    #chaos-panel-content .p-label {
+      font-size: 0.68rem; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 1.5px; color: rgba(15,15,15,0.48); display: block;
+      margin-bottom: 0.2rem; margin-top: 1.4rem;
+    }
+    #chaos-panel-content .p-num {
+      font-family: 'Fraunces', serif; font-size: 2.8rem; font-weight: 900;
+      color: var(--onyx); letter-spacing: -0.04em; line-height: 1; display: block;
+    }
+    #chaos-panel-content p {
+      font-size: 0.92rem; color: rgba(15,15,15,0.68); line-height: 1.82;
+      margin-bottom: 0.85rem;
+    }
+    #chaos-panel-content strong { color: var(--onyx); }
+    .p-cta {
+      display: inline-flex; align-items: center; gap: 7px;
+      background: var(--onyx); color: #fff; padding: 0.8rem 1.5rem;
+      border-radius: 100px; font-size: 0.87rem; font-weight: 600;
+      text-decoration: none; margin-top: 1.25rem; transition: opacity .2s;
+    }
+    .p-cta:hover { opacity: 0.8; }
+
+    @media (max-width: 600px) {
+      .chaos-el { display: none; }
+      .chaos-el.mob { display: block; }
+      .chaos-center h1 { font-size: 3rem; }
+    }
   </style>
 
   <!-- BreadcrumbList Schema -->
@@ -1473,6 +1606,101 @@
   </div>
 </footer>
 
+<!-- ── CHAOS BUTTON ── -->
+<button id="chaos-btn" title="Ver versión caos">💣 Destrúyelo</button>
+
+<!-- ── CHAOS OVERLAY ── -->
+<div id="chaos-overlay" role="dialog" aria-modal="true" aria-label="Modo caos" aria-hidden="true">
+  <button id="chaos-close">✕ Restaurar</button>
+
+  <!-- Anchor central -->
+  <div class="chaos-center">
+    <h1>Gaby Gómez.</h1>
+    <p>SEO Specialist · LATAM</p>
+  </div>
+
+  <!-- 1. Bio -->
+  <div class="chaos-el mob" style="--x:3%;  --y:10%; --r:-4deg"
+       data-panel="bio" role="button" tabindex="0" aria-label="Sobre mí">
+    <div class="chaos-card c-lilac">
+      <span class="chaos-tag">Sobre mí</span>
+      <h3>Venezolana en Buenos Aires</h3>
+      <p>5+ años escalando tráfico orgánico para salud, beauty y wellness.</p>
+      <span class="chaos-hint">↗ ver más</span>
+    </div>
+  </div>
+
+  <!-- 2. Sticker stats -->
+  <div class="chaos-el" style="--x:30%; --y:5%;  --r:2deg">
+    <div class="chaos-sticker">1M+ impresiones orgánicas</div>
+  </div>
+
+  <!-- 3. Auditoría SEO -->
+  <div class="chaos-el mob" style="--x:65%; --y:7%;  --r:-3deg"
+       data-panel="auditoria" role="button" tabindex="0" aria-label="Auditoría SEO">
+    <div class="chaos-card">
+      <span class="chaos-tag">Servicio principal</span>
+      <h3>Auditoría SEO</h3>
+      <p>Análisis completo + hoja de ruta de 90 días.</p>
+      <span class="chaos-hint">↗ ver más</span>
+    </div>
+  </div>
+
+  <!-- 4. Caso Sanarai -->
+  <div class="chaos-el mob" style="--x:2%;  --y:54%; --r:5deg"
+       data-panel="caso1" role="button" tabindex="0" aria-label="Caso Sanarai">
+    <div class="chaos-card c-peach">
+      <span class="chaos-tag">Salud Mental</span>
+      <h3>+165% tráfico orgánico</h3>
+      <p>6 meses · Auditoría + contenido</p>
+      <span class="chaos-hint">↗ ver más</span>
+    </div>
+  </div>
+
+  <!-- 5. Sticker enseño -->
+  <div class="chaos-el" style="--x:62%; --y:48%; --r:-2deg">
+    <div class="chaos-sticker" style="background:var(--peach); max-width:190px; font-size:0.78rem; line-height:1.5;">
+      También enseño<br/>SEO en Coderhouse 📚
+    </div>
+  </div>
+
+  <!-- 6. Caso Capilea -->
+  <div class="chaos-el mob" style="--x:64%; --y:60%; --r:-5deg"
+       data-panel="caso2" role="button" tabindex="0" aria-label="Caso Capilea">
+    <div class="chaos-card c-jordy">
+      <span class="chaos-tag">Hair Health · España</span>
+      <h3>De 0 a 1.29M impresiones</h3>
+      <p>Año 1 · Lanzamiento SEO desde cero</p>
+      <span class="chaos-hint">↗ ver más</span>
+    </div>
+  </div>
+
+  <!-- 7. Caso Pipastics -->
+  <div class="chaos-el mob" style="--x:33%; --y:72%; --r:3deg"
+       data-panel="caso3" role="button" tabindex="0" aria-label="Caso Pipastics">
+    <div class="chaos-card c-lime">
+      <span class="chaos-tag">Skincare Infantil</span>
+      <h3>15K → 61K impresiones</h3>
+      <p>3 meses · Auditoría + on-page</p>
+      <span class="chaos-hint">↗ ver más</span>
+    </div>
+  </div>
+
+  <!-- 8. Contacto CTA -->
+  <div class="chaos-el mob" style="--x:3%;  --y:78%; --r:-3deg"
+       data-panel="contacto" role="button" tabindex="0" aria-label="Contacto">
+    <div class="chaos-sticker" style="background:var(--wisteria); color:#fff; box-shadow:3px 3px 0 var(--onyx); max-width:200px; font-size:0.82rem; line-height:1.5; border-color:var(--onyx);">
+      ¿Tu marca necesita crecer?<br/>→ Conversemos
+    </div>
+  </div>
+
+  <!-- Panel lateral -->
+  <aside id="chaos-panel" aria-label="Detalle">
+    <button id="chaos-panel-close" aria-label="Cerrar">✕</button>
+    <div id="chaos-panel-content"></div>
+  </aside>
+</div>
+
 <script>
   // ── HAMBURGER MENU ──
   const burger = document.getElementById('burger');
@@ -1509,6 +1737,141 @@
     document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
     if (!isOpen) item.classList.add('open');
   }
+
+  // ── CHAOS MODE ──
+  const chaosContent = {
+    bio: {
+      color: 'var(--lilac)',
+      title: 'Hola, soy Gaby.',
+      body: `
+        <p>Venezolana en Buenos Aires con 5+ años escalando tráfico orgánico para marcas de salud, beauty y wellness en LATAM.</p>
+        <p>En Meaningful, trabajé en estrategia SEO end-to-end para +10 marcas, lideré equipos de 50+ freelancers y generé <strong>1M+ impresiones orgánicas</strong>.</p>
+        <p>También hice SEO estratégico para proyectos en España (hair care) y enseño SEO en Coderhouse.</p>
+        <p>Ofrezco mis servicios como consultora independiente: auditoría + estrategia + ejecución para startups y marcas pequeñas que necesitan crecer sin presupuesto de agencia grande.</p>
+        <a href="/#contacto" class="p-cta">Trabajemos juntxs →</a>
+      `
+    },
+    auditoria: {
+      color: '#f0f0f0',
+      title: 'Auditoría SEO',
+      body: `
+        <span class="p-label">Inversión desde</span>
+        <span class="p-num">$2,500 USD</span>
+        <p style="margin-top:1rem">Un análisis completo de tu sitio web: técnico, de contenido y de autoridad. Te entrego una hoja de ruta clara con prioridades de ejecución para los próximos 90 días.</p>
+        <p><strong>Incluye:</strong> auditoría técnica, análisis de keywords, revisión de contenido, análisis de competencia, Core Web Vitals y recomendaciones de link building.</p>
+        <p><strong>Entregables:</strong> informe PDF ejecutivo + dashboard de seguimiento + sesión de 60 min para revisar resultados.</p>
+        <a href="/auditoria-seo" class="p-cta">Ver todos los detalles →</a>
+      `
+    },
+    caso1: {
+      color: 'var(--peach)',
+      title: '+165% tráfico orgánico',
+      body: `
+        <span class="p-label">Salud Mental · 6 meses</span>
+        <p>Una marca de contenido de psicología buscaba aparecer en búsquedas como "psicólogo", "terapia" y "ansiedad".</p>
+        <p><strong>Trabajo realizado:</strong> arquitectura temática, clustering de keywords por intención, contenido optimizado, link building.</p>
+        <p><strong>Resultado:</strong> keywords como "terapia", "psicología" y "salud mental" llegaron al Top 10 de Google.</p>
+        <span class="p-label">Crecimiento de tráfico</span>
+        <span class="p-num">+165%</span>
+        <p>en 6 meses de trabajo.</p>
+      `
+    },
+    caso2: {
+      color: 'var(--jordy)',
+      title: 'De 0 a 1.29M impresiones',
+      body: `
+        <span class="p-label">Hair Health · España</span>
+        <p>Lanzamiento SEO desde cero en el nicho de hair health y transplants en España. Sin contenido SEO previo ni autoridad de dominio.</p>
+        <p><strong>Trabajo realizado:</strong> arquitectura de URL, keyword strategy, contenido desde cero optimizado para search intent, implementación técnica SEO.</p>
+        <span class="p-label">Año 1</span>
+        <span class="p-num">1.29M</span>
+        <p>impresiones · 306K clicks</p>
+        <span class="p-label">Año 2</span>
+        <span class="p-num">2.22M</span>
+        <p>impresiones · +72% de crecimiento. Hoy es marca referente en España.</p>
+      `
+    },
+    caso3: {
+      color: 'var(--lime)',
+      title: '15K → 61K impresiones',
+      body: `
+        <span class="p-label">Skincare Infantil · 3 meses</span>
+        <p>Creación de blogs de contenido pensando en las money keywords de la marca para aparecer en el Top 3 de sus principales búsquedas.</p>
+        <p><strong>Trabajo realizado:</strong> auditoría + optimización on-page + estrategia de contenido orientada a conversión.</p>
+        <span class="p-label">Impresiones orgánicas</span>
+        <span class="p-num">×4</span>
+        <p>De 15K a 61K en 3 meses.</p>
+      `
+    },
+    contacto: {
+      color: 'var(--wisteria)',
+      title: '¿Hablamos?',
+      body: `
+        <p>Si tu marca de salud, beauty o wellness necesita crecer en Google, estoy disponible para tomar nuevos proyectos.</p>
+        <p>Agenda una llamada de 30 min sin costo para ver si hay fit.</p>
+        <a href="/#contacto" class="p-cta">Agenda tu auditoría →</a>
+      `
+    }
+  };
+
+  const chaosBtn          = document.getElementById('chaos-btn');
+  const chaosOverlay      = document.getElementById('chaos-overlay');
+  const chaosClose        = document.getElementById('chaos-close');
+  const chaosPanel        = document.getElementById('chaos-panel');
+  const chaosPanelClose   = document.getElementById('chaos-panel-close');
+  const chaosPanelContent = document.getElementById('chaos-panel-content');
+
+  function openChaos() {
+    chaosOverlay.classList.add('active');
+    chaosOverlay.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    chaosBtn.style.display = 'none';
+  }
+  function closeChaos() {
+    closePanel();
+    chaosOverlay.classList.remove('active');
+    chaosOverlay.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+    chaosBtn.style.display = '';
+  }
+  function openPanel(id) {
+    const d = chaosContent[id];
+    if (!d) return;
+    chaosPanelContent.innerHTML = `
+      <div class="p-color-bar" style="background:${d.color}">
+        <h2>${d.title}</h2>
+      </div>
+      ${d.body}
+    `;
+    chaosPanel.classList.add('open');
+  }
+  function closePanel() {
+    chaosPanel.classList.remove('open');
+  }
+
+  chaosBtn.addEventListener('click', openChaos);
+  chaosClose.addEventListener('click', closeChaos);
+  chaosPanelClose.addEventListener('click', closePanel);
+
+  document.querySelectorAll('.chaos-el[data-panel]').forEach(el => {
+    el.addEventListener('click', () => openPanel(el.dataset.panel));
+    el.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openPanel(el.dataset.panel); }
+    });
+  });
+
+  // Cerrar panel al hacer clic en el fondo
+  chaosOverlay.addEventListener('click', e => {
+    if (e.target === chaosOverlay) closePanel();
+  });
+
+  // Esc para cerrar
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') {
+      if (chaosPanel.classList.contains('open')) closePanel();
+      else if (chaosOverlay.classList.contains('active')) closeChaos();
+    }
+  });
 </script>
 </body>
 </html>
