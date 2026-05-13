@@ -853,52 +853,26 @@
     #chaos-panel-content { clear: both; }
     #chaos-panel-content h2 {
       font-family: 'Caveat', cursive; font-size: 2.6rem; font-weight: 700;
-      color: var(--cc-ink); line-height: 1.1; margin-bottom: 0.6rem; margin-top: 0.25rem;
+      color: var(--cc-ink); line-height: 1.1; margin-bottom: 1.75rem; margin-top: 0.25rem;
     }
-    #chaos-panel-content .p-color-bar {
-      height: 2px; border-radius: 2px; margin-bottom: 1.75rem;
-    }
+    #chaos-panel-content .p-color-bar { display: none; }
 
     /* ── Cursor personalizado (body-level) ── */
-    @keyframes cursor-spin {
-      to { transform: translate(-50%,-50%) rotate(360deg); }
-    }
-    #chaos-cursor, #chaos-trail {
-      position: fixed; border-radius: 50%;
+    /* ── Cursor dot + canvas drawing ── */
+    #chaos-dot {
+      position: fixed; width: 7px; height: 7px;
+      background: #BF5A3A; border-radius: 50%;
       pointer-events: none; z-index: 99999;
       transform: translate(-50%, -50%);
       opacity: 0; transition: opacity .3s ease;
     }
-    body.chaos-active #chaos-cursor,
-    body.chaos-active #chaos-trail { opacity: 1; }
-
-    #chaos-cursor {
-      width: 40px; height: 40px;
-      border: 1.5px solid #BF5A3A;
-      background: transparent;
-      transition: opacity .3s, transform .22s cubic-bezier(.34,1.56,.64,1);
+    body.chaos-active #chaos-dot { opacity: 1; }
+    #chaos-canvas {
+      position: fixed; inset: 0;
+      pointer-events: none; z-index: 99990;
+      opacity: 0; transition: opacity .4s ease;
     }
-    #chaos-cursor::after {
-      content: '';
-      position: absolute; inset: 5px;
-      border-radius: 50%;
-      border: 1px dashed rgba(191,90,58,0.35);
-      animation: cursor-spin 4s linear infinite;
-    }
-    #chaos-cursor.hovered {
-      transform: translate(-50%,-50%) scale(2);
-      border-color: #7A9272;
-    }
-    #chaos-cursor.hovered::after { border-color: rgba(122,146,114,0.4); }
-    #chaos-cursor.clicked {
-      transform: translate(-50%,-50%) scale(0.6);
-      transition: transform .08s ease;
-    }
-    #chaos-trail {
-      width: 6px; height: 6px;
-      background: #BF5A3A;
-      transition: opacity .3s ease;
-    }
+    body.chaos-active #chaos-canvas { opacity: 1; }
     body.chaos-active { cursor: none !important; }
     body.chaos-active * { cursor: none !important; }
     #chaos-panel-content .p-label {
@@ -1969,47 +1943,72 @@
     }
   });
 
-  // ── Cursor personalizado ──
-  const chaosCursor = document.getElementById('chaos-cursor');
-  const chaosTrail  = document.getElementById('chaos-trail');
-  let mx = window.innerWidth / 2, my = window.innerHeight / 2;
-  let tx = mx, ty = my;
-  let rafId = null;
+  // ── Cursor dot + canvas drawing ──
+  const chaosDot    = document.getElementById('chaos-dot');
+  const chaosCanvas = document.getElementById('chaos-canvas');
+  const ctx         = chaosCanvas.getContext('2d');
+  const FADE_MS     = 3500;
+  const pts         = [];    // {x, y, t, linked}
+  let lastMoveT     = 0;
+  let drawRaf       = null;
+
+  function resizeCanvas() {
+    chaosCanvas.width  = window.innerWidth;
+    chaosCanvas.height = window.innerHeight;
+  }
+  resizeCanvas();
+  window.addEventListener('resize', resizeCanvas);
 
   window.addEventListener('mousemove', e => {
     if (!document.body.classList.contains('chaos-active')) return;
-    mx = e.clientX; my = e.clientY;
-    chaosCursor.style.left = mx + 'px';
-    chaosCursor.style.top  = my + 'px';
-    if (!rafId) rafId = requestAnimationFrame(trailLoop);
+    const now = Date.now();
+    chaosDot.style.left = e.clientX + 'px';
+    chaosDot.style.top  = e.clientY + 'px';
+    pts.push({ x: e.clientX, y: e.clientY, t: now, linked: (now - lastMoveT) < 60 });
+    lastMoveT = now;
+    if (!drawRaf) drawRaf = requestAnimationFrame(drawLoop);
   });
 
-  function trailLoop() {
-    rafId = null;
-    if (!document.body.classList.contains('chaos-active')) return;
-    tx += (mx - tx) * 0.1;
-    ty += (my - ty) * 0.1;
-    chaosTrail.style.left = Math.round(tx) + 'px';
-    chaosTrail.style.top  = Math.round(ty) + 'px';
-    rafId = requestAnimationFrame(trailLoop);
+  function drawLoop() {
+    drawRaf = null;
+    const now = Date.now();
+    ctx.clearRect(0, 0, chaosCanvas.width, chaosCanvas.height);
+
+    // Purge expired
+    while (pts.length && now - pts[0].t > FADE_MS) pts.shift();
+
+    if (!pts.length) return;
+
+    for (let i = 0; i < pts.length; i++) {
+      const p = pts[i];
+      const alpha = Math.pow(1 - (now - p.t) / FADE_MS, 1.8);
+
+      // Line to previous
+      if (p.linked && i > 0) {
+        const q = pts[i - 1];
+        const qa = Math.pow(1 - (now - q.t) / FADE_MS, 1.8);
+        ctx.beginPath();
+        ctx.moveTo(q.x, q.y);
+        ctx.lineTo(p.x, p.y);
+        ctx.strokeStyle = `rgba(191,90,58,${Math.min(alpha, qa) * 0.65})`;
+        ctx.lineWidth   = 1.8;
+        ctx.lineCap     = 'round';
+        ctx.stroke();
+      }
+
+      // Dot
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, 2, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(191,90,58,${alpha * 0.9})`;
+      ctx.fill();
+    }
+
+    if (pts.length) drawRaf = requestAnimationFrame(drawLoop);
   }
-
-  // Efecto click
-  window.addEventListener('mousedown', () => {
-    if (document.body.classList.contains('chaos-active'))
-      chaosCursor.classList.add('clicked');
-  });
-  window.addEventListener('mouseup', () => chaosCursor.classList.remove('clicked'));
-
-  // Hover sobre items
-  document.querySelectorAll('.chaos-el[data-panel]').forEach(el => {
-    el.addEventListener('mouseenter', () => chaosCursor.classList.add('hovered'));
-    el.addEventListener('mouseleave', () => chaosCursor.classList.remove('hovered'));
-  });
 </script>
 
-<!-- Cursores chaos — fuera del overlay para evitar herencia de opacity -->
-<div id="chaos-cursor" aria-hidden="true"></div>
-<div id="chaos-trail"  aria-hidden="true"></div>
+<!-- Cursor chaos — fuera del overlay -->
+<div id="chaos-dot" aria-hidden="true"></div>
+<canvas id="chaos-canvas" aria-hidden="true"></canvas>
 </body>
 </html>
