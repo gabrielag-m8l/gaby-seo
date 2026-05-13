@@ -857,24 +857,51 @@
     }
     #chaos-panel-content .p-color-bar { display: none; }
 
-    /* ── Cursor personalizado (body-level) ── */
-    /* ── Cursor dot + canvas drawing ── */
+    /* ── Cursor dot ── */
     #chaos-dot {
-      position: fixed; width: 7px; height: 7px;
-      background: #BF5A3A; border-radius: 50%;
-      pointer-events: none; z-index: 99999;
+      position: fixed;
+      width: 8px; height: 8px;
+      background: #BF5A3A;
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 99999;
+      left: -20px; top: -20px;          /* off-screen hasta primer mousemove */
       transform: translate(-50%, -50%);
-      opacity: 0; transition: opacity .3s ease;
+      visibility: hidden;               /* oculto hasta que chaos esté activo */
+      will-change: left, top;
     }
-    body.chaos-active #chaos-dot { opacity: 1; }
+    body.chaos-active #chaos-dot { visibility: visible; }
+
     #chaos-canvas {
       position: fixed; inset: 0;
       pointer-events: none; z-index: 99990;
-      opacity: 0; transition: opacity .4s ease;
+      visibility: hidden;
     }
-    body.chaos-active #chaos-canvas { opacity: 1; }
-    body.chaos-active { cursor: none !important; }
-    body.chaos-active * { cursor: none !important; }
+    body.chaos-active #chaos-canvas { visibility: visible; }
+
+    body.chaos-active          { cursor: none !important; }
+    body.chaos-active *        { cursor: none !important; }
+
+    /* ── Animación de entrada: página cae ── */
+    @keyframes site-fall {
+      0%   { transform: perspective(900px) rotateX(0deg) scale(1) translateY(0);   opacity: 1; }
+      40%  { transform: perspective(900px) rotateX(4deg) scale(0.97) translateY(8px);  opacity: 0.8; }
+      100% { transform: perspective(900px) rotateX(10deg) scale(0.88) translateY(60px); opacity: 0; }
+    }
+    @keyframes chaos-rise {
+      from { opacity: 0; transform: translateY(40px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    body.chaos-entering > nav,
+    body.chaos-entering > section,
+    body.chaos-entering > footer {
+      animation: site-fall 0.45s cubic-bezier(.4,0,1,1) forwards;
+      transform-origin: center bottom;
+      pointer-events: none;
+    }
+    #chaos-overlay.chaos-rising {
+      animation: chaos-rise 0.5s cubic-bezier(.22,1,.36,1) both;
+    }
     #chaos-panel-content .p-label {
       font-family: 'Nunito', sans-serif; font-size: 0.72rem; font-weight: 600;
       text-transform: uppercase; letter-spacing: 0.12em; color: var(--cc-muted);
@@ -1891,15 +1918,25 @@
   const chaosPanelContent = document.getElementById('chaos-panel-content');
 
   function openChaos() {
-    chaosOverlay.classList.add('active');
-    chaosOverlay.setAttribute('aria-hidden', 'false');
-    document.body.style.overflow = 'hidden';
-    document.body.classList.add('chaos-active');
     chaosBtn.style.display = 'none';
+    document.body.classList.add('chaos-entering');          // página cae
+    setTimeout(() => {
+      document.body.classList.remove('chaos-entering');
+      chaosOverlay.classList.add('active', 'chaos-rising'); // chaos sube
+      chaosOverlay.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+      document.body.classList.add('chaos-active');
+      // quitar clase de animación cuando termina
+      chaosOverlay.addEventListener('animationend', () => {
+        chaosOverlay.classList.remove('chaos-rising');
+      }, { once: true });
+      startCursor();
+    }, 400);
   }
   function closeChaos() {
     closePanel();
-    chaosOverlay.classList.remove('active');
+    stopCursor();
+    chaosOverlay.classList.remove('active', 'chaos-rising');
     chaosOverlay.setAttribute('aria-hidden', 'true');
     document.body.style.overflow = '';
     document.body.classList.remove('chaos-active');
@@ -1947,63 +1984,68 @@
   const chaosDot    = document.getElementById('chaos-dot');
   const chaosCanvas = document.getElementById('chaos-canvas');
   const ctx         = chaosCanvas.getContext('2d');
-  const FADE_MS     = 3500;
-  const pts         = [];    // {x, y, t, linked}
+  const FADE_MS     = 3200;
+  const pts         = [];
   let lastMoveT     = 0;
   let drawRaf       = null;
+  let isActive      = false;
 
   function resizeCanvas() {
     chaosCanvas.width  = window.innerWidth;
     chaosCanvas.height = window.innerHeight;
   }
   resizeCanvas();
-  window.addEventListener('resize', resizeCanvas);
+  window.addEventListener('resize', () => { if (isActive) resizeCanvas(); });
+
+  // Activar/desactivar cursor desde openChaos / closeChaos
+  function startCursor() {
+    isActive = true;
+    pts.length = 0;
+    resizeCanvas();
+    if (!drawRaf) drawRaf = requestAnimationFrame(drawLoop);
+  }
+  function stopCursor() {
+    isActive = false;
+    pts.length = 0;
+    if (drawRaf) { cancelAnimationFrame(drawRaf); drawRaf = null; }
+    ctx.clearRect(0, 0, chaosCanvas.width, chaosCanvas.height);
+  }
 
   window.addEventListener('mousemove', e => {
-    if (!document.body.classList.contains('chaos-active')) return;
+    if (!isActive) return;
     const now = Date.now();
+    // Mover puntito exactamente al cursor
     chaosDot.style.left = e.clientX + 'px';
     chaosDot.style.top  = e.clientY + 'px';
-    pts.push({ x: e.clientX, y: e.clientY, t: now, linked: (now - lastMoveT) < 60 });
+    pts.push({ x: e.clientX, y: e.clientY, t: now, linked: (now - lastMoveT) < 80 });
     lastMoveT = now;
-    if (!drawRaf) drawRaf = requestAnimationFrame(drawLoop);
   });
 
   function drawLoop() {
-    drawRaf = null;
     const now = Date.now();
     ctx.clearRect(0, 0, chaosCanvas.width, chaosCanvas.height);
-
-    // Purge expired
     while (pts.length && now - pts[0].t > FADE_MS) pts.shift();
-
-    if (!pts.length) return;
 
     for (let i = 0; i < pts.length; i++) {
       const p = pts[i];
-      const alpha = Math.pow(1 - (now - p.t) / FADE_MS, 1.8);
-
-      // Line to previous
+      const alpha = Math.pow(Math.max(0, 1 - (now - p.t) / FADE_MS), 1.6);
       if (p.linked && i > 0) {
         const q = pts[i - 1];
-        const qa = Math.pow(1 - (now - q.t) / FADE_MS, 1.8);
+        const qa = Math.pow(Math.max(0, 1 - (now - q.t) / FADE_MS), 1.6);
         ctx.beginPath();
         ctx.moveTo(q.x, q.y);
         ctx.lineTo(p.x, p.y);
-        ctx.strokeStyle = `rgba(191,90,58,${Math.min(alpha, qa) * 0.65})`;
-        ctx.lineWidth   = 1.8;
-        ctx.lineCap     = 'round';
+        ctx.strokeStyle = `rgba(191,90,58,${Math.min(alpha, qa) * 0.55})`;
+        ctx.lineWidth = 2;
+        ctx.lineCap = 'round';
         ctx.stroke();
       }
-
-      // Dot
       ctx.beginPath();
-      ctx.arc(p.x, p.y, 2, 0, Math.PI * 2);
-      ctx.fillStyle = `rgba(191,90,58,${alpha * 0.9})`;
+      ctx.arc(p.x, p.y, 2.2, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(191,90,58,${alpha * 0.85})`;
       ctx.fill();
     }
-
-    if (pts.length) drawRaf = requestAnimationFrame(drawLoop);
+    drawRaf = requestAnimationFrame(drawLoop);
   }
 </script>
 
