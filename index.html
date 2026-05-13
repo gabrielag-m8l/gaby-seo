@@ -859,26 +859,48 @@
       height: 2px; border-radius: 2px; margin-bottom: 1.75rem;
     }
 
-    /* ── Cursor personalizado ── */
+    /* ── Cursor personalizado (body-level) ── */
+    @keyframes cursor-spin {
+      to { transform: translate(-50%,-50%) rotate(360deg); }
+    }
     #chaos-cursor, #chaos-trail {
       position: fixed; border-radius: 50%;
-      pointer-events: none; z-index: 9999;
+      pointer-events: none; z-index: 99999;
       transform: translate(-50%, -50%);
+      opacity: 0; transition: opacity .3s ease;
     }
+    body.chaos-active #chaos-cursor,
+    body.chaos-active #chaos-trail { opacity: 1; }
+
     #chaos-cursor {
-      width: 28px; height: 28px;
-      border: 2px solid var(--cc-terra);
+      width: 40px; height: 40px;
+      border: 1.5px solid #BF5A3A;
       background: transparent;
-      transition: transform .18s cubic-bezier(.34,1.56,.64,1), opacity .2s;
-      mix-blend-mode: multiply;
+      transition: opacity .3s, transform .22s cubic-bezier(.34,1.56,.64,1);
     }
-    #chaos-cursor.hovered { transform: translate(-50%,-50%) scale(1.7); }
+    #chaos-cursor::after {
+      content: '';
+      position: absolute; inset: 5px;
+      border-radius: 50%;
+      border: 1px dashed rgba(191,90,58,0.35);
+      animation: cursor-spin 4s linear infinite;
+    }
+    #chaos-cursor.hovered {
+      transform: translate(-50%,-50%) scale(2);
+      border-color: #7A9272;
+    }
+    #chaos-cursor.hovered::after { border-color: rgba(122,146,114,0.4); }
+    #chaos-cursor.clicked {
+      transform: translate(-50%,-50%) scale(0.6);
+      transition: transform .08s ease;
+    }
     #chaos-trail {
-      width: 7px; height: 7px;
-      background: var(--cc-terra); opacity: 0.5;
+      width: 6px; height: 6px;
+      background: #BF5A3A;
+      transition: opacity .3s ease;
     }
-    #chaos-overlay.active { cursor: none; }
-    #chaos-overlay.active * { cursor: none; }
+    body.chaos-active { cursor: none !important; }
+    body.chaos-active * { cursor: none !important; }
     #chaos-panel-content .p-label {
       font-family: 'Nunito', sans-serif; font-size: 0.72rem; font-weight: 600;
       text-transform: uppercase; letter-spacing: 0.12em; color: var(--cc-muted);
@@ -1770,9 +1792,6 @@
     <div id="chaos-panel-content"></div>
   </aside>
 
-  <!-- Cursor personalizado -->
-  <div id="chaos-cursor" aria-hidden="true"></div>
-  <div id="chaos-trail"  aria-hidden="true"></div>
 </div>
 
 <script>
@@ -1901,6 +1920,7 @@
     chaosOverlay.classList.add('active');
     chaosOverlay.setAttribute('aria-hidden', 'false');
     document.body.style.overflow = 'hidden';
+    document.body.classList.add('chaos-active');
     chaosBtn.style.display = 'none';
   }
   function closeChaos() {
@@ -1908,6 +1928,7 @@
     chaosOverlay.classList.remove('active');
     chaosOverlay.setAttribute('aria-hidden', 'true');
     document.body.style.overflow = '';
+    document.body.classList.remove('chaos-active');
     chaosBtn.style.display = '';
   }
   function openPanel(id) {
@@ -1951,32 +1972,44 @@
   // ── Cursor personalizado ──
   const chaosCursor = document.getElementById('chaos-cursor');
   const chaosTrail  = document.getElementById('chaos-trail');
-  let mx = window.innerWidth/2, my = window.innerHeight/2;
+  let mx = window.innerWidth / 2, my = window.innerHeight / 2;
   let tx = mx, ty = my;
-  let rafRunning = false;
+  let rafId = null;
 
-  chaosOverlay.addEventListener('mousemove', e => {
+  window.addEventListener('mousemove', e => {
+    if (!document.body.classList.contains('chaos-active')) return;
     mx = e.clientX; my = e.clientY;
     chaosCursor.style.left = mx + 'px';
     chaosCursor.style.top  = my + 'px';
-    if (!rafRunning && chaosOverlay.classList.contains('active')) {
-      rafRunning = true; animateTrail();
-    }
+    if (!rafId) rafId = requestAnimationFrame(trailLoop);
   });
 
-  function animateTrail() {
-    if (!chaosOverlay.classList.contains('active')) { rafRunning = false; return; }
-    tx += (mx - tx) * 0.11;
-    ty += (my - ty) * 0.11;
-    chaosTrail.style.left = tx + 'px';
-    chaosTrail.style.top  = ty + 'px';
-    requestAnimationFrame(animateTrail);
+  function trailLoop() {
+    rafId = null;
+    if (!document.body.classList.contains('chaos-active')) return;
+    tx += (mx - tx) * 0.1;
+    ty += (my - ty) * 0.1;
+    chaosTrail.style.left = Math.round(tx) + 'px';
+    chaosTrail.style.top  = Math.round(ty) + 'px';
+    rafId = requestAnimationFrame(trailLoop);
   }
 
+  // Efecto click
+  window.addEventListener('mousedown', () => {
+    if (document.body.classList.contains('chaos-active'))
+      chaosCursor.classList.add('clicked');
+  });
+  window.addEventListener('mouseup', () => chaosCursor.classList.remove('clicked'));
+
+  // Hover sobre items
   document.querySelectorAll('.chaos-el[data-panel]').forEach(el => {
     el.addEventListener('mouseenter', () => chaosCursor.classList.add('hovered'));
     el.addEventListener('mouseleave', () => chaosCursor.classList.remove('hovered'));
   });
 </script>
+
+<!-- Cursores chaos — fuera del overlay para evitar herencia de opacity -->
+<div id="chaos-cursor" aria-hidden="true"></div>
+<div id="chaos-trail"  aria-hidden="true"></div>
 </body>
 </html>
