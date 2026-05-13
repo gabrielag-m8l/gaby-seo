@@ -21,6 +21,9 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,700;0,9..144,900;1,9..144,300;1,9..144,400;1,9..144,700;1,9..144,900&family=Inter:wght@400;500;600;700&display=swap" media="print" onload="this.media='all'" />
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,700;0,9..144,900;1,9..144,300;1,9..144,400;1,9..144,700;1,9..144,900&family=Inter:wght@400;500;600;700&display=swap" /></noscript>
+  <!-- Caveat — solo para chaos mode -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&display=swap" media="print" onload="this.media='all'" />
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&display=swap" /></noscript>
 
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -703,16 +706,31 @@
       0%, 100% { box-shadow: 4px 4px 0 #000, 0 0 0 0 rgba(232,41,28,0.55); }
       50%       { box-shadow: 4px 4px 0 #000, 0 0 0 10px rgba(232,41,28,0); }
     }
-    @keyframes chaos-pop {
-      from { opacity:0; transform: rotate(var(--r)) scale(0.65) translateY(18px); }
-      to   { opacity:1; transform: rotate(var(--r)) scale(1)    translateY(0); }
+    @keyframes cc-drift {
+      from { opacity:0; transform: rotate(var(--r)) translate(var(--dx,0px), var(--dy,14px)) scale(0.96); }
+      to   { opacity:1; transform: rotate(var(--r)) translate(0,0) scale(1); }
+    }
+    @keyframes cc-center-in {
+      from { opacity:0; transform: translate(-50%,-50%) scale(0.92); }
+      to   { opacity:1; transform: translate(-50%,-50%) scale(1); }
     }
 
-    /* ── Botón "NO TOCAR" ── */
+    /* ── Paleta chaos (diferente al home) ── */
+    #chaos-overlay, #chaos-panel {
+      --cc-bg:        #F3EFE6;
+      --cc-ink:       #1C1916;
+      --cc-terra:     #BF5A3A;
+      --cc-sage:      #7A9272;
+      --cc-blush:     #C9907E;
+      --cc-sand:      #D9C9B0;
+      --cc-muted:     rgba(28,25,22,0.38);
+    }
+
+    /* ── Botón NO TOCAR ── */
     #chaos-btn {
       position: fixed; bottom: 2rem; right: 2rem; z-index: 8000;
-      background: #E8291C; color: #fff;
-      border: 3px solid #000; border-radius: 10px;
+      background: #D93B1F; color: #fff;
+      border: 3px solid #1C1916; border-radius: 10px;
       padding: 0.7rem 1.1rem 0.65rem;
       font-family: 'Inter', sans-serif; cursor: pointer;
       display: flex; flex-direction: column; align-items: center; gap: 2px;
@@ -720,195 +738,156 @@
       transition: transform .1s;
     }
     #chaos-btn .cbw-stripes {
-      width: 100%; height: 5px; margin-bottom: 4px;
-      background: repeating-linear-gradient(
-        -45deg, #000 0px, #000 4px, #E8291C 4px, #E8291C 9px
-      );
-      border-radius: 2px;
+      width: 100%; height: 5px; margin-bottom: 4px; border-radius: 2px;
+      background: repeating-linear-gradient(-45deg, #1C1916 0 4px, #D93B1F 4px 9px);
     }
-    #chaos-btn .cbw-icon  { font-size: 1.3rem; line-height: 1; }
-    #chaos-btn .cbw-main  { font-size: 0.7rem; font-weight: 900; letter-spacing: 0.12em; text-transform: uppercase; }
-    #chaos-btn .cbw-sub   { font-size: 0.52rem; letter-spacing: 0.1em; text-transform: uppercase; opacity: 0.75; }
+    #chaos-btn .cbw-icon { font-size: 1.3rem; line-height: 1; }
+    #chaos-btn .cbw-main { font-size: 0.7rem; font-weight: 900; letter-spacing: 0.12em; text-transform: uppercase; }
+    #chaos-btn .cbw-sub  { font-size: 0.52rem; letter-spacing: 0.1em; text-transform: uppercase; opacity: 0.75; }
     #chaos-btn:hover { transform: translateY(-2px); }
-    #chaos-btn:active { transform: translate(4px,4px); animation: none; box-shadow: 0 0 0 #000; }
+    #chaos-btn:active { transform: translate(4px,4px); animation: none; }
 
     /* ── Overlay ── */
     #chaos-overlay {
-      position: fixed; inset: 0; background: #F4F2ED; z-index: 9000;
-      opacity: 0; pointer-events: none; transition: opacity .4s ease;
-      overflow: hidden; font-family: 'Inter', sans-serif;
+      position: fixed; inset: 0; background: var(--cc-bg); z-index: 9000;
+      opacity: 0; pointer-events: none; transition: opacity .5s ease;
+      overflow: hidden; font-family: 'Caveat', cursive;
     }
     #chaos-overlay.active { opacity: 1; pointer-events: all; }
-    #chaos-overlay.active .chaos-el {
-      animation: chaos-pop .5s cubic-bezier(.34,1.56,.64,1) both;
+    #chaos-overlay.active .chaos-center {
+      animation: cc-center-in .6s cubic-bezier(.22,1,.36,1) both;
     }
-    #chaos-overlay.active .chaos-el:nth-child(3) { animation-delay:.04s; }
-    #chaos-overlay.active .chaos-el:nth-child(4) { animation-delay:.08s; }
-    #chaos-overlay.active .chaos-el:nth-child(5) { animation-delay:.12s; }
-    #chaos-overlay.active .chaos-el:nth-child(6) { animation-delay:.16s; }
-    #chaos-overlay.active .chaos-el:nth-child(7) { animation-delay:.20s; }
-    #chaos-overlay.active .chaos-el:nth-child(8) { animation-delay:.24s; }
-    #chaos-overlay.active .chaos-el:nth-child(9) { animation-delay:.28s; }
-    #chaos-overlay.active .chaos-el:nth-child(10){ animation-delay:.32s; }
+    #chaos-overlay.active .chaos-el { animation: cc-drift .55s cubic-bezier(.22,1,.36,1) both; }
+    #chaos-overlay.active .chaos-el:nth-child(3) { animation-delay:.08s; }
+    #chaos-overlay.active .chaos-el:nth-child(4) { animation-delay:.14s; }
+    #chaos-overlay.active .chaos-el:nth-child(5) { animation-delay:.20s; }
+    #chaos-overlay.active .chaos-el:nth-child(6) { animation-delay:.26s; }
+    #chaos-overlay.active .chaos-el:nth-child(7) { animation-delay:.32s; }
+    #chaos-overlay.active .chaos-el:nth-child(8) { animation-delay:.38s; }
 
+    /* ── Cerrar ── */
     #chaos-close {
-      position: fixed; top: 1.25rem; left: 1.5rem; z-index: 9100;
-      background: #000; color: #fff; border: none; border-radius: 6px;
-      padding: 0.5rem 1rem; font-size: 0.74rem; font-weight: 700;
-      font-family: 'Inter', sans-serif; cursor: pointer; letter-spacing: 0.06em;
-      text-transform: uppercase; transition: opacity .2s;
+      position: fixed; top: 1.4rem; left: 1.75rem; z-index: 9100;
+      background: none; color: var(--cc-muted); border: none;
+      font-family: 'Caveat', cursive; font-size: 1.2rem; font-weight: 600;
+      cursor: pointer; transition: color .2s; padding: 0;
+      display: flex; align-items: center; gap: 6px;
     }
-    #chaos-close:hover { opacity: 0.75; }
+    #chaos-close::before { content: '←'; }
+    #chaos-close:hover { color: var(--cc-ink); }
 
     /* ── Centro ── */
     .chaos-center {
       position: absolute; top: 50%; left: 50%;
       transform: translate(-50%, -50%);
       text-align: center; z-index: 9010; pointer-events: none; user-select: none;
+      white-space: nowrap;
     }
-    .chaos-center .cc-eyebrow {
-      font-size: 0.8rem; letter-spacing: 0.2em; text-transform: uppercase;
-      color: rgba(15,15,15,0.38); margin-bottom: 0.25rem; font-weight: 600;
+    .chaos-center .cc-greeting {
+      font-family: 'Caveat', cursive; font-size: clamp(1.4rem, 2.5vw, 2rem);
+      color: var(--cc-terra); display: block; margin-bottom: 0.1rem; font-weight: 400;
     }
     .chaos-center h1 {
-      font-family: 'Fraunces', serif; font-size: clamp(4rem, 10vw, 9rem);
-      font-weight: 900; color: var(--onyx); line-height: 0.92; letter-spacing: -0.04em;
+      font-family: 'Caveat', cursive; font-size: clamp(4.5rem, 11vw, 10rem);
+      font-weight: 700; color: var(--cc-ink); line-height: 0.88; letter-spacing: -0.01em;
     }
-    .chaos-center h1 em { font-style: italic; color: #E8291C; }
+    .chaos-center .cc-role {
+      display: block; margin-top: 0.8rem; font-family: 'Caveat', cursive;
+      font-size: clamp(1rem, 1.8vw, 1.4rem); color: var(--cc-muted); font-weight: 400;
+      letter-spacing: 0.08em;
+    }
 
-    /* ── Elemento flotante ── */
+    /* ── Elementos flotantes ── */
     .chaos-el {
       position: absolute; left: var(--x); top: var(--y);
       transform: rotate(var(--r)); z-index: 9020;
     }
     .chaos-el[data-panel] { cursor: pointer; }
-    .chaos-el[data-panel]:hover { transform: rotate(0deg) scale(1.06); z-index: 9060;
-      transition: transform .3s cubic-bezier(.34,1.56,.64,1); }
-    .chaos-el[data-panel]:focus-visible { outline: 3px solid var(--wisteria); border-radius: 12px; }
-    .chaos-el.deco { cursor: default; pointer-events: none; }
+    .chaos-el[data-panel]:hover .cc-nav-label { color: var(--cc-terra); }
+    .chaos-el[data-panel]:hover .cc-nav-line   { transform: scaleX(1); }
+    .chaos-el[data-panel]:focus-visible { outline: 2px dashed var(--cc-terra); border-radius: 4px; }
 
-    /* ── Polaroid ── */
-    .cc-polaroid {
-      background: #fff; padding: 0.7rem 0.7rem 2.2rem;
-      box-shadow: 2px 6px 20px rgba(15,15,15,0.13), 0 1px 0 rgba(15,15,15,0.05);
-      width: 160px; text-align: center;
+    /* ── Nav label minimalista ── */
+    .cc-nav { text-align: center; }
+    .cc-nav-dot {
+      display: block; margin: 0 auto 0.4rem;
+      width: 6px; height: 6px; border-radius: 50%;
+      background: var(--cc-terra);
     }
-    .cc-polaroid-img {
-      background: var(--lilac); width: 100%; aspect-ratio: 1;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 3rem; border-radius: 1px; margin-bottom: 0.65rem;
+    .cc-nav-label {
+      display: block; font-family: 'Caveat', cursive;
+      font-size: clamp(1.2rem, 2vw, 1.6rem); font-weight: 600;
+      color: var(--cc-ink); line-height: 1.1;
+      transition: color .2s ease;
+      white-space: nowrap;
     }
-    .cc-polaroid-name { font-family: 'Fraunces', serif; font-size: 1rem; font-weight: 700; color: #000; display: block; }
-    .cc-polaroid-sub  { font-size: 0.68rem; color: rgba(15,15,15,0.45); display: block; margin-top: 3px; }
-
-    /* ── Burbuja ── */
-    .cc-bubble {
-      background: var(--lilac); border: 2px solid #000; border-radius: 20px;
-      padding: 1rem 1.25rem; max-width: 205px;
-      font-size: 0.9rem; font-weight: 600; line-height: 1.5; color: #000;
-      box-shadow: 4px 4px 0 #000; position: relative;
+    .cc-nav-line {
+      display: block; height: 1.5px; background: var(--cc-terra);
+      transform: scaleX(0); transform-origin: left;
+      transition: transform .3s ease; margin-top: 3px;
+      border-radius: 2px;
     }
-    .cc-bubble::after {
-      content:''; position:absolute; bottom:-15px; left:22px;
-      border:8px solid transparent; border-top-color:#000;
-    }
-    .cc-bubble::before {
-      content:''; position:absolute; bottom:-11px; left:24px; z-index:1;
-      border:6px solid transparent; border-top-color:var(--lilac);
-    }
-
-    /* ── Badge circular ── */
-    .cc-badge {
-      width: 118px; height: 118px; border-radius: 50%;
-      background: var(--lime); border: 2px solid #000;
-      display: flex; flex-direction: column;
-      align-items: center; justify-content: center; text-align: center;
-      box-shadow: 3px 3px 0 #000;
-    }
-    .cc-badge strong {
-      font-family: 'Fraunces', serif; font-size: 2rem;
-      font-weight: 900; line-height: 1; color: #000;
-    }
-    .cc-badge span { font-size: 0.52rem; font-weight: 700; text-transform: uppercase;
-      letter-spacing: 0.5px; opacity: 0.6; padding: 0 10px; margin-top: 4px; line-height: 1.35; }
-
-    /* ── Carpeta / caso ── */
-    .cc-folder {
-      background: #fff; border: 2px solid #000;
-      border-radius: 0 14px 14px 14px;
-      padding: 1rem 1.3rem 1rem; min-width: 155px;
-      box-shadow: 4px 4px 0 rgba(15,15,15,0.18);
-      position: relative; margin-top: 28px;
-    }
-    .cc-folder-tab {
-      position: absolute; top: -28px; left: -2px;
-      border: 2px solid #000; border-bottom: none;
-      border-radius: 8px 8px 0 0;
-      padding: 4px 12px;
-      font-size: 0.6rem; font-weight: 900; letter-spacing: 0.12em; text-transform: uppercase;
-    }
-    .cc-folder h3 {
-      font-family: 'Fraunces', serif; font-size: 1.6rem; font-weight: 900;
-      color: #000; line-height: 1; letter-spacing: -0.03em; margin-bottom: 0.3rem;
-    }
-    .cc-folder p { font-size: 0.75rem; color: rgba(15,15,15,0.6); line-height: 1.5; }
-
-    /* ── Sticker ── */
-    .cc-sticker {
-      background: var(--lime); border: 2px solid #000; border-radius: 8px;
-      padding: 0.65rem 1rem; font-size: 0.78rem; font-weight: 800;
-      display: inline-block; line-height: 1.45;
-      box-shadow: 3px 3px 0 #000;
-    }
-
-    /* ── Hint ── */
-    .cc-hint { font-size: 0.62rem; color: rgba(15,15,15,0.32); margin-top: 0.6rem; display: block; }
+    /* colores por item */
+    .cc-nav.sage .cc-nav-dot  { background: var(--cc-sage); }
+    .cc-nav.sage:hover .cc-nav-label,
+    .chaos-el[data-panel]:hover .cc-nav.sage .cc-nav-label { color: var(--cc-sage); }
+    .cc-nav.sage .cc-nav-line { background: var(--cc-sage); }
+    .cc-nav.blush .cc-nav-dot { background: var(--cc-blush); }
+    .cc-nav.blush:hover .cc-nav-label,
+    .chaos-el[data-panel]:hover .cc-nav.blush .cc-nav-label { color: var(--cc-blush); }
+    .cc-nav.blush .cc-nav-line { background: var(--cc-blush); }
 
     /* ── Panel lateral ── */
     #chaos-panel {
       position: fixed; right: 0; top: 0; bottom: 0;
-      width: min(460px, 92vw); background: #fff; z-index: 9200;
-      transform: translateX(105%); transition: transform .35s cubic-bezier(.4,0,.2,1);
-      overflow-y: auto; padding: 2.5rem 2.25rem 3rem;
-      box-shadow: -10px 0 48px rgba(15,15,15,0.1);
+      width: min(480px, 92vw); background: var(--cc-bg); z-index: 9200;
+      transform: translateX(105%); transition: transform .38s cubic-bezier(.4,0,.2,1);
+      overflow-y: auto; padding: 3rem 2.5rem;
+      border-left: 1px solid rgba(28,25,22,0.1);
+      font-family: 'Caveat', cursive;
     }
     #chaos-panel.open { transform: translateX(0); }
     #chaos-panel-close {
-      position: sticky; top: 0; float: right; margin-bottom: 0.5rem;
-      background: rgba(15,15,15,0.07); border: none; border-radius: 100px;
-      width: 32px; height: 32px; font-size: 1rem; cursor: pointer; color: #000;
-      display: flex; align-items: center; justify-content: center; transition: background .15s;
+      position: sticky; top: 0; float: right; margin-bottom: 1rem;
+      background: none; border: none; font-size: 1.4rem; cursor: pointer;
+      color: var(--cc-muted); font-family: 'Caveat', cursive;
+      transition: color .2s;
     }
-    #chaos-panel-close:hover { background: rgba(15,15,15,0.14); }
+    #chaos-panel-close:hover { color: var(--cc-ink); }
     #chaos-panel-content { clear: both; }
-    #chaos-panel-content .p-color-bar { border-radius: 14px; padding: 1.1rem 1.4rem; margin-bottom: 1.5rem; }
     #chaos-panel-content h2 {
-      font-family: 'Fraunces', serif; font-size: 2rem; font-weight: 900;
-      color: #000; line-height: 1.1; margin: 0;
+      font-family: 'Caveat', cursive; font-size: 2.8rem; font-weight: 700;
+      color: var(--cc-ink); line-height: 1; margin-bottom: 0.5rem;
+    }
+    #chaos-panel-content .p-color-bar {
+      height: 3px; border-radius: 2px; margin-bottom: 1.75rem; margin-top: 0.25rem;
     }
     #chaos-panel-content .p-label {
-      font-size: 0.65rem; font-weight: 700; text-transform: uppercase;
-      letter-spacing: 1.5px; color: rgba(15,15,15,0.42); display: block;
-      margin-bottom: 0.15rem; margin-top: 1.4rem;
+      font-family: 'Caveat', cursive; font-size: 1rem; color: var(--cc-muted);
+      display: block; margin-bottom: 0.1rem; margin-top: 1.5rem;
     }
     #chaos-panel-content .p-num {
-      font-family: 'Fraunces', serif; font-size: 3rem; font-weight: 900;
-      color: #000; letter-spacing: -0.04em; line-height: 1; display: block;
+      font-family: 'Caveat', cursive; font-size: 3.5rem; font-weight: 700;
+      color: var(--cc-ink); line-height: 1; display: block;
     }
-    #chaos-panel-content p { font-size: 0.92rem; color: rgba(15,15,15,0.68); line-height: 1.82; margin-bottom: 0.85rem; }
-    #chaos-panel-content strong { color: #000; }
+    #chaos-panel-content p {
+      font-family: 'Caveat', cursive; font-size: 1.15rem;
+      color: rgba(28,25,22,0.75); line-height: 1.7; margin-bottom: 0.75rem;
+    }
+    #chaos-panel-content strong { color: var(--cc-ink); }
     .p-cta {
-      display: inline-flex; align-items: center; gap: 7px;
-      background: #000; color: #fff; padding: 0.8rem 1.5rem;
-      border-radius: 100px; font-size: 0.87rem; font-weight: 600;
-      text-decoration: none; margin-top: 1.25rem; transition: opacity .2s;
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--cc-ink); color: var(--cc-bg);
+      padding: 0.75rem 1.5rem; border-radius: 100px;
+      font-family: 'Caveat', cursive; font-size: 1.15rem; font-weight: 600;
+      text-decoration: none; margin-top: 1.5rem; transition: opacity .2s;
     }
     .p-cta:hover { opacity: 0.8; }
 
     @media (max-width: 680px) {
       .chaos-el { display: none; }
       .chaos-el.mob { display: block; }
-      .chaos-center h1 { font-size: 3.2rem; }
+      .chaos-center h1 { font-size: 3.5rem; }
       #chaos-btn { bottom: 1.25rem; right: 1.25rem; }
     }
   </style>
@@ -1698,99 +1677,73 @@
 
 <!-- ── CHAOS OVERLAY ── -->
 <div id="chaos-overlay" role="dialog" aria-modal="true" aria-label="Versión alternativa" aria-hidden="true">
-  <button id="chaos-close">← Salir</button>
+  <button id="chaos-close" aria-label="Salir">salir</button>
 
-  <!-- Centro: nombre grande -->
+  <!-- Centro -->
   <div class="chaos-center">
-    <p class="cc-eyebrow">hola, soy</p>
-    <h1>Gaby<br/><em>Gómez.</em></h1>
+    <span class="cc-greeting">hola,</span>
+    <h1>Gaby<br/>Gómez.</h1>
+    <span class="cc-role">SEO Specialist · LATAM</span>
   </div>
 
-  <!-- 1. Polaroid: quién soy -->
-  <div class="chaos-el mob" style="--x:3%;--y:7%;--r:-5deg"
+  <!-- quién soy — top-left -->
+  <div class="chaos-el mob" style="--x:6%;--y:9%;--r:-2deg;--dx:-18px;--dy:-14px"
        data-panel="bio" tabindex="0" role="button" aria-label="Quién soy">
-    <div class="cc-polaroid">
-      <div class="cc-polaroid-img">👩🏻‍💻</div>
-      <span class="cc-polaroid-name">Gaby Gómez A.</span>
-      <span class="cc-polaroid-sub">Venezolana · BsAs · SEO</span>
-      <span class="cc-hint">↗ quién soy</span>
+    <div class="cc-nav">
+      <span class="cc-nav-dot"></span>
+      <span class="cc-nav-label">quién soy</span>
+      <span class="cc-nav-line"></span>
     </div>
   </div>
 
-  <!-- 2. Sticker deco: 50+ -->
-  <div class="chaos-el deco" style="--x:33%;--y:5%;--r:3deg">
-    <div class="cc-sticker">50+ artículos<br/>optimizados/mes</div>
-  </div>
-
-  <!-- 3. Burbuja: qué hago -->
-  <div class="chaos-el mob" style="--x:63%;--y:8%;--r:-4deg"
+  <!-- qué hago — top-right -->
+  <div class="chaos-el mob" style="--x:74%;--y:9%;--r:2deg;--dx:18px;--dy:-14px"
        data-panel="quehago" tabindex="0" role="button" aria-label="Qué hago">
-    <div class="cc-bubble">
-      "Hago que Google te encuentre primero."
-      <span class="cc-hint">↗ qué hago</span>
+    <div class="cc-nav sage">
+      <span class="cc-nav-dot"></span>
+      <span class="cc-nav-label">qué hago</span>
+      <span class="cc-nav-line"></span>
     </div>
   </div>
 
-  <!-- 4. Badge deco: 1M+ -->
-  <div class="chaos-el deco" style="--x:1%;--y:44%;--r:2deg">
-    <div class="cc-badge">
-      <strong>1M+</strong>
-      <span>impresiones<br/>orgánicas</span>
+  <!-- mi e-e-a-t — left -->
+  <div class="chaos-el mob" style="--x:4%;--y:50%;--r:-1deg;--dx:-22px;--dy:0"
+       data-panel="eeat" tabindex="0" role="button" aria-label="Mi E-E-A-T">
+    <div class="cc-nav blush">
+      <span class="cc-nav-dot"></span>
+      <span class="cc-nav-label">mi e·e·a·t</span>
+      <span class="cc-nav-line"></span>
     </div>
   </div>
 
-  <!-- 5. Carpeta Caso 01 -->
-  <div class="chaos-el mob" style="--x:4%;--y:68%;--r:5deg"
-       data-panel="caso1" tabindex="0" role="button" aria-label="Caso 01">
-    <div class="cc-folder">
-      <div class="cc-folder-tab" style="background:var(--lime)">CASO 01</div>
-      <h3>+165%</h3>
-      <p>Tráfico orgánico<br/>Salud Mental · 6m</p>
-      <span class="cc-hint">↗ ver caso</span>
+  <!-- preguntas — right -->
+  <div class="chaos-el mob" style="--x:77%;--y:50%;--r:1deg;--dx:22px;--dy:0"
+       data-panel="preguntas" tabindex="0" role="button" aria-label="Preguntas">
+    <div class="cc-nav">
+      <span class="cc-nav-dot"></span>
+      <span class="cc-nav-label">preguntas</span>
+      <span class="cc-nav-line"></span>
     </div>
   </div>
 
-  <!-- 6. Carpeta Caso 02 -->
-  <div class="chaos-el mob" style="--x:38%;--y:75%;--r:-2deg"
-       data-panel="caso2" tabindex="0" role="button" aria-label="Caso 02">
-    <div class="cc-folder">
-      <div class="cc-folder-tab" style="background:var(--jordy)">CASO 02</div>
-      <h3>1.29M</h3>
-      <p>Impresiones año 1<br/>Hair Health · España</p>
-      <span class="cc-hint">↗ ver caso</span>
+  <!-- empecemos — bottom-left -->
+  <div class="chaos-el mob" style="--x:12%;--y:80%;--r:-2deg;--dx:-14px;--dy:16px"
+       data-panel="empecemos" tabindex="0" role="button" aria-label="Empecemos">
+    <div class="cc-nav sage">
+      <span class="cc-nav-dot"></span>
+      <span class="cc-nav-label">empecemos →</span>
+      <span class="cc-nav-line"></span>
     </div>
   </div>
 
-  <!-- 7. Carpeta Caso 03 -->
-  <div class="chaos-el mob" style="--x:67%;--y:66%;--r:-5deg"
-       data-panel="caso3" tabindex="0" role="button" aria-label="Caso 03">
-    <div class="cc-folder">
-      <div class="cc-folder-tab" style="background:var(--peach)">CASO 03</div>
-      <h3>×4</h3>
-      <p>15K → 61K impresiones<br/>Skincare Infantil · 3m</p>
-      <span class="cc-hint">↗ ver caso</span>
+  <!-- casos — bottom-right -->
+  <div class="chaos-el mob" style="--x:68%;--y:80%;--r:2deg;--dx:14px;--dy:16px"
+       data-panel="casos" tabindex="0" role="button" aria-label="Casos">
+    <div class="cc-nav blush">
+      <span class="cc-nav-dot"></span>
+      <span class="cc-nav-label">casos reales</span>
+      <span class="cc-nav-line"></span>
     </div>
-  </div>
-
-  <!-- 8. Sticker contacto -->
-  <div class="chaos-el mob" style="--x:68%;--y:83%;--r:-3deg"
-       data-panel="contacto" tabindex="0" role="button" aria-label="Contacto">
-    <div class="cc-sticker" style="background:var(--wisteria);color:#fff;border-color:#fff;box-shadow:3px 3px 0 #000;max-width:190px;font-size:0.8rem;line-height:1.5;">
-      ¿Tu marca necesita<br/>crecer en Google? →
-      <span class="cc-hint" style="color:rgba(255,255,255,0.5)">↗ hablemos</span>
-    </div>
-  </div>
-
-  <!-- Deco: Coderhouse -->
-  <div class="chaos-el deco" style="--x:73%;--y:38%;--r:4deg">
-    <div class="cc-sticker" style="background:var(--peach);font-size:0.72rem;line-height:1.45;max-width:165px;">
-      También enseño SEO<br/>en Coderhouse 📚
-    </div>
-  </div>
-
-  <!-- Deco: sparkle -->
-  <div class="chaos-el deco" style="--x:57%;--y:87%;--r:10deg">
-    <span style="font-size:2.2rem;line-height:1;opacity:.28;">✦</span>
   </div>
 
   <!-- Panel lateral -->
@@ -1840,76 +1793,77 @@
   // ── CHAOS MODE ──
   const chaosContent = {
     bio: {
-      color: 'var(--lilac)',
-      title: 'Hola, soy Gaby.',
+      color: '#BF5A3A',
+      title: 'hola, soy Gaby.',
       body: `
-        <p>Venezolana en Buenos Aires con 5+ años escalando tráfico orgánico para marcas de salud, beauty y wellness en LATAM.</p>
-        <p>En Meaningful, trabajé en estrategia SEO end-to-end para +10 marcas, lideré equipos de 50+ freelancers y generé <strong>1M+ impresiones orgánicas</strong>.</p>
-        <p>También hice SEO estratégico para proyectos en España (hair care) y enseño SEO en Coderhouse.</p>
-        <p>Ofrezco mis servicios como consultora independiente: auditoría + estrategia + ejecución para startups y marcas pequeñas que necesitan crecer sin presupuesto de agencia grande.</p>
-        <a href="/#contacto" class="p-cta">Trabajemos juntxs →</a>
+        <p>Venezolana en Buenos Aires. 5+ años escalando tráfico orgánico para marcas de salud, beauty y wellness en LATAM.</p>
+        <p>En Meaningful, lideré equipos de 50+ freelancers y generé <strong>1M+ impresiones orgánicas</strong> para +10 marcas.</p>
+        <p>También hice SEO para proyectos en España (hair care) y enseño SEO en Coderhouse.</p>
+        <p>Hoy trabajo como consultora independiente: auditoría + estrategia + ejecución para marcas que quieren crecer sin presupuesto de agencia grande.</p>
+        <a href="/#contacto" class="p-cta">trabajemos juntxs →</a>
       `
     },
     quehago: {
-      color: 'var(--lilac)',
-      title: 'Qué hago.',
+      color: '#7A9272',
+      title: 'qué hago.',
       body: `
-        <p>Hago SEO estratégico para marcas de <strong>salud, beauty y wellness</strong> en LATAM que quieren crecer en Google de forma sostenida.</p>
-        <p>Eso significa: entender tu negocio, tu audiencia y tu competencia → definir la estrategia → ejecutar → medir.</p>
-        <span class="p-label">Servicios</span>
-        <p>🔍 <strong>Auditoría SEO</strong> — análisis técnico + contenido + autoridad. Desde $2,500 USD</p>
-        <p>📈 <strong>Estrategia + Ejecución</strong> — end-to-end. $5,000 USD</p>
-        <p>🔁 <strong>Retainer mensual</strong> — acompañamiento continuo. $1,500–$2,000/mes</p>
-        <a href="/auditoria-seo" class="p-cta">Ver auditoría SEO →</a>
+        <p>SEO estratégico para marcas de <strong>salud, beauty y wellness</strong> que quieren ser encontradas en Google.</p>
+        <p>No solo técnica. Entiendo tu negocio, tu audiencia y tu competencia — y construyo desde ahí.</p>
+        <span class="p-label">mis servicios</span>
+        <p>— Auditoría SEO completa · desde $2,500 USD</p>
+        <p>— Estrategia + Ejecución end-to-end · $5,000 USD</p>
+        <p>— Retainer mensual · $1,500–$2,000/mes</p>
+        <a href="/auditoria-seo" class="p-cta">ver auditoría SEO →</a>
       `
     },
-    caso1: {
-      color: 'var(--peach)',
-      title: '+165% tráfico orgánico',
+    eeat: {
+      color: '#C9907E',
+      title: 'mi e·e·a·t.',
       body: `
-        <span class="p-label">Salud Mental · 6 meses</span>
-        <p>Una marca de contenido de psicología buscaba aparecer en búsquedas como "psicólogo", "terapia" y "ansiedad".</p>
-        <p><strong>Trabajo realizado:</strong> arquitectura temática, clustering de keywords por intención, contenido optimizado, link building.</p>
-        <p><strong>Resultado:</strong> keywords como "terapia", "psicología" y "salud mental" llegaron al Top 10 de Google.</p>
-        <span class="p-label">Crecimiento de tráfico</span>
+        <p><strong>Experiencia.</strong> 5+ años haciendo SEO real: auditorías, estrategia de contenido, link building, SEO técnico. No teoría — resultados medibles.</p>
+        <p><strong>Expertise.</strong> Especialista en salud, beauty y wellness — nichos YMYL donde la confianza importa más que el volumen.</p>
+        <p><strong>Autoridad.</strong> Docente de SEO en Coderhouse. Exlíder de equipo SEO con +10 marcas simultáneas.</p>
+        <p><strong>Confianza.</strong> Trabajo con transparencia total: te explico qué hago, por qué y qué esperar.</p>
+        <a href="/#eeat" class="p-cta">ver más en el sitio →</a>
+      `
+    },
+    preguntas: {
+      color: '#BF5A3A',
+      title: 'preguntas.',
+      body: `
+        <p><strong>¿Cuánto tarda en verse resultados?</strong><br/>El SEO es inversión a mediano plazo. Primeros cambios: 60–90 días. Resultados sólidos: 4–6 meses.</p>
+        <p><strong>¿Trabajas con cualquier industria?</strong><br/>Me especializo en salud, beauty y wellness — donde tengo más expertise y resultados verificables.</p>
+        <p><strong>¿Haces todo tú sola?</strong><br/>Estrategia y auditoría, sí. Para contenido a escala cuento con una red de redactores especializados.</p>
+        <p><strong>¿Puedo ver casos de éxito?</strong><br/>Sí, todos verificables en el sitio.</p>
+        <a href="/#contacto" class="p-cta">tengo más preguntas →</a>
+      `
+    },
+    empecemos: {
+      color: '#7A9272',
+      title: 'empecemos.',
+      body: `
+        <p>Si tu marca de salud, beauty o wellness necesita crecer en Google, este es el lugar.</p>
+        <p>Agenda una llamada de 30 min sin costo. Vemos si hay fit y qué necesita tu sitio.</p>
+        <span class="p-label">inversión desde</span>
+        <span class="p-num">$2,500</span>
+        <p>USD · Auditoría SEO completa con hoja de ruta de 90 días.</p>
+        <a href="/#contacto" class="p-cta">agenda tu auditoría →</a>
+      `
+    },
+    casos: {
+      color: '#C9907E',
+      title: 'casos reales.',
+      body: `
+        <span class="p-label">salud mental · 6 meses</span>
         <span class="p-num">+165%</span>
-        <p>en 6 meses de trabajo.</p>
-      `
-    },
-    caso2: {
-      color: 'var(--jordy)',
-      title: 'De 0 a 1.29M impresiones',
-      body: `
-        <span class="p-label">Hair Health · España</span>
-        <p>Lanzamiento SEO desde cero en el nicho de hair health y transplants en España. Sin contenido SEO previo ni autoridad de dominio.</p>
-        <p><strong>Trabajo realizado:</strong> arquitectura de URL, keyword strategy, contenido desde cero optimizado para search intent, implementación técnica SEO.</p>
-        <span class="p-label">Año 1</span>
+        <p>tráfico orgánico. Keywords como "terapia" y "psicología" en Top 10.</p>
+        <span class="p-label">hair health · españa · año 1</span>
         <span class="p-num">1.29M</span>
-        <p>impresiones · 306K clicks</p>
-        <span class="p-label">Año 2</span>
-        <span class="p-num">2.22M</span>
-        <p>impresiones · +72% de crecimiento. Hoy es marca referente en España.</p>
-      `
-    },
-    caso3: {
-      color: 'var(--lime)',
-      title: '15K → 61K impresiones',
-      body: `
-        <span class="p-label">Skincare Infantil · 3 meses</span>
-        <p>Creación de blogs de contenido pensando en las money keywords de la marca para aparecer en el Top 3 de sus principales búsquedas.</p>
-        <p><strong>Trabajo realizado:</strong> auditoría + optimización on-page + estrategia de contenido orientada a conversión.</p>
-        <span class="p-label">Impresiones orgánicas</span>
+        <p>impresiones orgánicas · 306K clicks. Año 2: 2.22M impresiones.</p>
+        <span class="p-label">skincare infantil · 3 meses</span>
         <span class="p-num">×4</span>
-        <p>De 15K a 61K en 3 meses.</p>
-      `
-    },
-    contacto: {
-      color: 'var(--wisteria)',
-      title: '¿Hablamos?',
-      body: `
-        <p>Si tu marca de salud, beauty o wellness necesita crecer en Google, estoy disponible para tomar nuevos proyectos.</p>
-        <p>Agenda una llamada de 30 min sin costo para ver si hay fit.</p>
-        <a href="/#contacto" class="p-cta">Agenda tu auditoría →</a>
+        <p>De 15K a 61K impresiones. Top 3 en keywords de la marca.</p>
+        <a href="/#caso" class="p-cta">ver detalle completo →</a>
       `
     }
   };
