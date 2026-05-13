@@ -852,12 +852,33 @@
     #chaos-panel-close:hover { color: var(--cc-ink); }
     #chaos-panel-content { clear: both; }
     #chaos-panel-content h2 {
-      font-family: 'Caveat', cursive; font-size: 2.8rem; font-weight: 700;
-      color: var(--cc-ink); line-height: 1; margin-bottom: 0.5rem;
+      font-family: 'Caveat', cursive; font-size: 2.6rem; font-weight: 700;
+      color: var(--cc-ink); line-height: 1.1; margin-bottom: 0.6rem; margin-top: 0.25rem;
     }
     #chaos-panel-content .p-color-bar {
-      height: 3px; border-radius: 2px; margin-bottom: 1.75rem; margin-top: 0.25rem;
+      height: 2px; border-radius: 2px; margin-bottom: 1.75rem;
     }
+
+    /* ── Cursor personalizado ── */
+    #chaos-cursor, #chaos-trail {
+      position: fixed; border-radius: 50%;
+      pointer-events: none; z-index: 9999;
+      transform: translate(-50%, -50%);
+    }
+    #chaos-cursor {
+      width: 28px; height: 28px;
+      border: 2px solid var(--cc-terra);
+      background: transparent;
+      transition: transform .18s cubic-bezier(.34,1.56,.64,1), opacity .2s;
+      mix-blend-mode: multiply;
+    }
+    #chaos-cursor.hovered { transform: translate(-50%,-50%) scale(1.7); }
+    #chaos-trail {
+      width: 7px; height: 7px;
+      background: var(--cc-terra); opacity: 0.5;
+    }
+    #chaos-overlay.active { cursor: none; }
+    #chaos-overlay.active * { cursor: none; }
     #chaos-panel-content .p-label {
       font-family: 'Nunito', sans-serif; font-size: 0.72rem; font-weight: 600;
       text-transform: uppercase; letter-spacing: 0.12em; color: var(--cc-muted);
@@ -1748,6 +1769,10 @@
     <button id="chaos-panel-close" aria-label="Cerrar panel">✕</button>
     <div id="chaos-panel-content"></div>
   </aside>
+
+  <!-- Cursor personalizado -->
+  <div id="chaos-cursor" aria-hidden="true"></div>
+  <div id="chaos-trail"  aria-hidden="true"></div>
 </div>
 
 <script>
@@ -1797,7 +1822,7 @@
         <p>En Meaningful, lideré equipos de 50+ freelancers y generé <strong>1M+ impresiones orgánicas</strong> para +10 marcas.</p>
         <p>También hice SEO para proyectos en España (hair care) y enseño SEO en Coderhouse.</p>
         <p>Hoy trabajo como consultora independiente: auditoría + estrategia + ejecución para marcas que quieren crecer sin presupuesto de agencia grande.</p>
-        <a href="/#contacto" class="p-cta">trabajemos juntxs →</a>
+
       `
     },
     quehago: {
@@ -1810,7 +1835,7 @@
         <p>— Auditoría SEO completa · desde $2,500 USD</p>
         <p>— Estrategia + Ejecución end-to-end · $5,000 USD</p>
         <p>— Retainer mensual · $1,500–$2,000/mes</p>
-        <a href="/auditoria-seo" class="p-cta">ver auditoría SEO →</a>
+
       `
     },
     eeat: {
@@ -1821,7 +1846,7 @@
         <p><strong>Expertise.</strong> Especialista en salud, beauty y wellness — nichos YMYL donde la confianza importa más que el volumen.</p>
         <p><strong>Autoridad.</strong> Docente de SEO en Coderhouse. Exlíder de equipo SEO con +10 marcas simultáneas.</p>
         <p><strong>Confianza.</strong> Trabajo con transparencia total: te explico qué hago, por qué y qué esperar.</p>
-        <a href="/#eeat" class="p-cta">ver más en el sitio →</a>
+
       `
     },
     preguntas: {
@@ -1832,7 +1857,7 @@
         <p><strong>¿Trabajas con cualquier industria?</strong><br/>Me especializo en salud, beauty y wellness — donde tengo más expertise y resultados verificables.</p>
         <p><strong>¿Haces todo tú sola?</strong><br/>Estrategia y auditoría, sí. Para contenido a escala cuento con una red de redactores especializados.</p>
         <p><strong>¿Puedo ver casos de éxito?</strong><br/>Sí, todos verificables en el sitio.</p>
-        <a href="/#contacto" class="p-cta">tengo más preguntas →</a>
+
       `
     },
     empecemos: {
@@ -1844,7 +1869,7 @@
         <span class="p-label">inversión desde</span>
         <span class="p-num">$2,500</span>
         <p>USD · Auditoría SEO completa con hoja de ruta de 90 días.</p>
-        <a href="/#contacto" class="p-cta">agenda tu auditoría →</a>
+
       `
     },
     casos: {
@@ -1860,7 +1885,7 @@
         <span class="p-label">skincare infantil · 3 meses</span>
         <span class="p-num">×4</span>
         <p>De 15K a 61K impresiones. Top 3 en keywords de la marca.</p>
-        <a href="/#caso" class="p-cta">ver detalle completo →</a>
+
       `
     }
   };
@@ -1889,9 +1914,8 @@
     const d = chaosContent[id];
     if (!d) return;
     chaosPanelContent.innerHTML = `
-      <div class="p-color-bar" style="background:${d.color}">
-        <h2>${d.title}</h2>
-      </div>
+      <h2>${d.title}</h2>
+      <div class="p-color-bar" style="background:${d.color}"></div>
       ${d.body}
     `;
     chaosPanel.classList.add('open');
@@ -1922,6 +1946,36 @@
       if (chaosPanel.classList.contains('open')) closePanel();
       else if (chaosOverlay.classList.contains('active')) closeChaos();
     }
+  });
+
+  // ── Cursor personalizado ──
+  const chaosCursor = document.getElementById('chaos-cursor');
+  const chaosTrail  = document.getElementById('chaos-trail');
+  let mx = window.innerWidth/2, my = window.innerHeight/2;
+  let tx = mx, ty = my;
+  let rafRunning = false;
+
+  chaosOverlay.addEventListener('mousemove', e => {
+    mx = e.clientX; my = e.clientY;
+    chaosCursor.style.left = mx + 'px';
+    chaosCursor.style.top  = my + 'px';
+    if (!rafRunning && chaosOverlay.classList.contains('active')) {
+      rafRunning = true; animateTrail();
+    }
+  });
+
+  function animateTrail() {
+    if (!chaosOverlay.classList.contains('active')) { rafRunning = false; return; }
+    tx += (mx - tx) * 0.11;
+    ty += (my - ty) * 0.11;
+    chaosTrail.style.left = tx + 'px';
+    chaosTrail.style.top  = ty + 'px';
+    requestAnimationFrame(animateTrail);
+  }
+
+  document.querySelectorAll('.chaos-el[data-panel]').forEach(el => {
+    el.addEventListener('mouseenter', () => chaosCursor.classList.add('hovered'));
+    el.addEventListener('mouseleave', () => chaosCursor.classList.remove('hovered'));
   });
 </script>
 </body>
