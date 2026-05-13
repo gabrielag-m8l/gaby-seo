@@ -21,9 +21,9 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,700;0,9..144,900;1,9..144,300;1,9..144,400;1,9..144,700;1,9..144,900&family=Inter:wght@400;500;600;700&display=swap" media="print" onload="this.media='all'" />
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,700;0,9..144,900;1,9..144,300;1,9..144,400;1,9..144,700;1,9..144,900&family=Inter:wght@400;500;600;700&display=swap" /></noscript>
-  <!-- Caveat — solo para chaos mode -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&display=swap" media="print" onload="this.media='all'" />
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&display=swap" /></noscript>
+  <!-- Caveat + Nunito — solo para chaos mode -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&family=Nunito:wght@400;500;600&display=swap" media="print" onload="this.media='all'" />
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&family=Nunito:wght@400;500;600&display=swap" /></noscript>
 
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -809,11 +809,7 @@
 
     /* ── Nav label minimalista ── */
     .cc-nav { text-align: center; }
-    .cc-nav-dot {
-      display: block; margin: 0 auto 0.4rem;
-      width: 6px; height: 6px; border-radius: 50%;
-      background: var(--cc-terra);
-    }
+    .cc-nav-dot { display: none; }
     .cc-nav-label {
       display: block; font-family: 'Caveat', cursive;
       font-size: clamp(1.2rem, 2vw, 1.6rem); font-weight: 600;
@@ -863,23 +859,24 @@
       height: 3px; border-radius: 2px; margin-bottom: 1.75rem; margin-top: 0.25rem;
     }
     #chaos-panel-content .p-label {
-      font-family: 'Caveat', cursive; font-size: 1rem; color: var(--cc-muted);
-      display: block; margin-bottom: 0.1rem; margin-top: 1.5rem;
+      font-family: 'Nunito', sans-serif; font-size: 0.72rem; font-weight: 600;
+      text-transform: uppercase; letter-spacing: 0.12em; color: var(--cc-muted);
+      display: block; margin-bottom: 0.15rem; margin-top: 1.75rem;
     }
     #chaos-panel-content .p-num {
-      font-family: 'Caveat', cursive; font-size: 3.5rem; font-weight: 700;
-      color: var(--cc-ink); line-height: 1; display: block;
+      font-family: 'Caveat', cursive; font-size: 3.2rem; font-weight: 700;
+      color: var(--cc-ink); line-height: 1; display: block; margin-bottom: 0.25rem;
     }
     #chaos-panel-content p {
-      font-family: 'Caveat', cursive; font-size: 1.15rem;
-      color: rgba(28,25,22,0.75); line-height: 1.7; margin-bottom: 0.75rem;
+      font-family: 'Nunito', sans-serif; font-size: 0.97rem; font-weight: 400;
+      color: rgba(28,25,22,0.72); line-height: 1.9; margin-bottom: 1rem;
     }
-    #chaos-panel-content strong { color: var(--cc-ink); }
+    #chaos-panel-content strong { color: var(--cc-ink); font-weight: 600; }
     .p-cta {
       display: inline-flex; align-items: center; gap: 8px;
       background: var(--cc-ink); color: var(--cc-bg);
       padding: 0.75rem 1.5rem; border-radius: 100px;
-      font-family: 'Caveat', cursive; font-size: 1.15rem; font-weight: 600;
+      font-family: 'Nunito', sans-serif; font-size: 0.9rem; font-weight: 600;
       text-decoration: none; margin-top: 1.5rem; transition: opacity .2s;
     }
     .p-cta:hover { opacity: 0.8; }
@@ -1681,9 +1678,9 @@
 
   <!-- Centro -->
   <div class="chaos-center">
-    <span class="cc-greeting">hola,</span>
+    <span class="cc-greeting">hola, soy gaby gómez</span>
     <h1>Gaby<br/>Gómez.</h1>
-    <span class="cc-role">SEO Specialist · LATAM</span>
+    <span class="cc-role">( y hago seo )</span>
   </div>
 
   <!-- quién soy — top-left -->
