@@ -699,89 +699,175 @@
     }
 
     /* ── CHAOS MODE ── */
-    #chaos-btn {
-      position: fixed; top: 1.1rem; right: 1.5rem; z-index: 8000;
-      background: #E8291C; color: #fff; border: none; border-radius: 100px;
-      padding: 0.5rem 1rem 0.5rem 0.85rem; font-size: 0.78rem; font-weight: 700;
-      font-family: 'Inter', sans-serif; cursor: pointer; letter-spacing: 0.02em;
-      display: inline-flex; align-items: center; gap: 5px;
-      box-shadow: 0 2px 16px rgba(232,41,28,0.4);
-      transition: transform .2s, box-shadow .2s;
+    @keyframes warn-pulse {
+      0%, 100% { box-shadow: 4px 4px 0 #000, 0 0 0 0 rgba(232,41,28,0.55); }
+      50%       { box-shadow: 4px 4px 0 #000, 0 0 0 10px rgba(232,41,28,0); }
     }
-    #chaos-btn:hover { transform: scale(1.07) rotate(-2deg); box-shadow: 0 4px 24px rgba(232,41,28,0.55); }
+    @keyframes chaos-pop {
+      from { opacity:0; transform: rotate(var(--r)) scale(0.65) translateY(18px); }
+      to   { opacity:1; transform: rotate(var(--r)) scale(1)    translateY(0); }
+    }
 
+    /* ── Botón "NO TOCAR" ── */
+    #chaos-btn {
+      position: fixed; bottom: 2rem; right: 2rem; z-index: 8000;
+      background: #E8291C; color: #fff;
+      border: 3px solid #000; border-radius: 10px;
+      padding: 0.7rem 1.1rem 0.65rem;
+      font-family: 'Inter', sans-serif; cursor: pointer;
+      display: flex; flex-direction: column; align-items: center; gap: 2px;
+      animation: warn-pulse 2.2s ease-in-out infinite;
+      transition: transform .1s;
+    }
+    #chaos-btn .cbw-stripes {
+      width: 100%; height: 5px; margin-bottom: 4px;
+      background: repeating-linear-gradient(
+        -45deg, #000 0px, #000 4px, #E8291C 4px, #E8291C 9px
+      );
+      border-radius: 2px;
+    }
+    #chaos-btn .cbw-icon  { font-size: 1.3rem; line-height: 1; }
+    #chaos-btn .cbw-main  { font-size: 0.7rem; font-weight: 900; letter-spacing: 0.12em; text-transform: uppercase; }
+    #chaos-btn .cbw-sub   { font-size: 0.52rem; letter-spacing: 0.1em; text-transform: uppercase; opacity: 0.75; }
+    #chaos-btn:hover { transform: translateY(-2px); }
+    #chaos-btn:active { transform: translate(4px,4px); animation: none; box-shadow: 0 0 0 #000; }
+
+    /* ── Overlay ── */
     #chaos-overlay {
-      position: fixed; inset: 0; background: #F5F3EE; z-index: 9000;
+      position: fixed; inset: 0; background: #F4F2ED; z-index: 9000;
       opacity: 0; pointer-events: none; transition: opacity .4s ease;
-      overflow: hidden;
+      overflow: hidden; font-family: 'Inter', sans-serif;
     }
     #chaos-overlay.active { opacity: 1; pointer-events: all; }
+    #chaos-overlay.active .chaos-el {
+      animation: chaos-pop .5s cubic-bezier(.34,1.56,.64,1) both;
+    }
+    #chaos-overlay.active .chaos-el:nth-child(3) { animation-delay:.04s; }
+    #chaos-overlay.active .chaos-el:nth-child(4) { animation-delay:.08s; }
+    #chaos-overlay.active .chaos-el:nth-child(5) { animation-delay:.12s; }
+    #chaos-overlay.active .chaos-el:nth-child(6) { animation-delay:.16s; }
+    #chaos-overlay.active .chaos-el:nth-child(7) { animation-delay:.20s; }
+    #chaos-overlay.active .chaos-el:nth-child(8) { animation-delay:.24s; }
+    #chaos-overlay.active .chaos-el:nth-child(9) { animation-delay:.28s; }
+    #chaos-overlay.active .chaos-el:nth-child(10){ animation-delay:.32s; }
 
     #chaos-close {
-      position: fixed; top: 1.1rem; right: 1.5rem; z-index: 9100;
-      background: var(--onyx); color: #fff; border: none; border-radius: 100px;
-      padding: 0.5rem 1.1rem; font-size: 0.78rem; font-weight: 700;
-      font-family: 'Inter', sans-serif; cursor: pointer; transition: opacity .2s;
+      position: fixed; top: 1.25rem; left: 1.5rem; z-index: 9100;
+      background: #000; color: #fff; border: none; border-radius: 6px;
+      padding: 0.5rem 1rem; font-size: 0.74rem; font-weight: 700;
+      font-family: 'Inter', sans-serif; cursor: pointer; letter-spacing: 0.06em;
+      text-transform: uppercase; transition: opacity .2s;
     }
     #chaos-close:hover { opacity: 0.75; }
 
+    /* ── Centro ── */
     .chaos-center {
       position: absolute; top: 50%; left: 50%;
       transform: translate(-50%, -50%);
       text-align: center; z-index: 9010; pointer-events: none; user-select: none;
     }
+    .chaos-center .cc-eyebrow {
+      font-size: 0.8rem; letter-spacing: 0.2em; text-transform: uppercase;
+      color: rgba(15,15,15,0.38); margin-bottom: 0.25rem; font-weight: 600;
+    }
     .chaos-center h1 {
-      font-family: 'Fraunces', serif; font-size: clamp(3.5rem, 9vw, 8rem);
-      font-weight: 900; color: var(--onyx); line-height: 1; letter-spacing: -0.04em;
+      font-family: 'Fraunces', serif; font-size: clamp(4rem, 10vw, 9rem);
+      font-weight: 900; color: var(--onyx); line-height: 0.92; letter-spacing: -0.04em;
     }
-    .chaos-center p {
-      font-size: 1rem; color: rgba(15,15,15,0.42); margin-top: 0.5rem;
-      font-style: italic; letter-spacing: 0.02em;
-    }
+    .chaos-center h1 em { font-style: italic; color: #E8291C; }
 
+    /* ── Elemento flotante ── */
     .chaos-el {
       position: absolute; left: var(--x); top: var(--y);
-      transform: rotate(var(--r)); cursor: pointer;
-      transition: transform .3s cubic-bezier(.34,1.56,.64,1), z-index 0s;
-      z-index: 9020;
+      transform: rotate(var(--r)); z-index: 9020;
     }
-    .chaos-el:hover { transform: rotate(0deg) scale(1.06); z-index: 9060; }
-    .chaos-el:focus-visible { outline: 3px solid var(--wisteria); border-radius: 16px; }
+    .chaos-el[data-panel] { cursor: pointer; }
+    .chaos-el[data-panel]:hover { transform: rotate(0deg) scale(1.06); z-index: 9060;
+      transition: transform .3s cubic-bezier(.34,1.56,.64,1); }
+    .chaos-el[data-panel]:focus-visible { outline: 3px solid var(--wisteria); border-radius: 12px; }
+    .chaos-el.deco { cursor: default; pointer-events: none; }
 
-    .chaos-card {
-      background: #fff; border: 1.5px solid rgba(15,15,15,0.1); border-radius: 18px;
-      padding: 1.2rem 1.45rem; min-width: 155px; max-width: 215px;
-      box-shadow: 0 6px 24px rgba(15,15,15,0.08);
+    /* ── Polaroid ── */
+    .cc-polaroid {
+      background: #fff; padding: 0.7rem 0.7rem 2.2rem;
+      box-shadow: 2px 6px 20px rgba(15,15,15,0.13), 0 1px 0 rgba(15,15,15,0.05);
+      width: 160px; text-align: center;
     }
-    .chaos-card.c-lilac { background: var(--lilac); }
-    .chaos-card.c-peach { background: var(--peach); }
-    .chaos-card.c-lime  { background: var(--lime);  }
-    .chaos-card.c-jordy { background: var(--jordy); }
+    .cc-polaroid-img {
+      background: var(--lilac); width: 100%; aspect-ratio: 1;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 3rem; border-radius: 1px; margin-bottom: 0.65rem;
+    }
+    .cc-polaroid-name { font-family: 'Fraunces', serif; font-size: 1rem; font-weight: 700; color: #000; display: block; }
+    .cc-polaroid-sub  { font-size: 0.68rem; color: rgba(15,15,15,0.45); display: block; margin-top: 3px; }
 
-    .chaos-sticker {
-      background: var(--lime); border: 2px solid var(--onyx); border-radius: 10px;
-      padding: 0.7rem 1rem; font-size: 0.8rem; font-weight: 700;
-      font-family: 'Inter', sans-serif; display: inline-block; line-height: 1.4;
-      box-shadow: 3px 3px 0 var(--onyx);
+    /* ── Burbuja ── */
+    .cc-bubble {
+      background: var(--lilac); border: 2px solid #000; border-radius: 20px;
+      padding: 1rem 1.25rem; max-width: 205px;
+      font-size: 0.9rem; font-weight: 600; line-height: 1.5; color: #000;
+      box-shadow: 4px 4px 0 #000; position: relative;
     }
-    .chaos-card .chaos-tag {
-      font-size: 0.62rem; font-weight: 700; text-transform: uppercase;
-      letter-spacing: 1.5px; color: rgba(15,15,15,0.48); display: block; margin-bottom: 0.35rem;
+    .cc-bubble::after {
+      content:''; position:absolute; bottom:-15px; left:22px;
+      border:8px solid transparent; border-top-color:#000;
     }
-    .chaos-card h3 {
-      font-family: 'Fraunces', serif; font-size: 1.05rem; font-weight: 700;
-      color: var(--onyx); line-height: 1.2; margin-bottom: 0.4rem;
-    }
-    .chaos-card p { font-size: 0.78rem; color: rgba(15,15,15,0.62); line-height: 1.55; }
-    .chaos-hint {
-      font-size: 0.66rem; color: rgba(15,15,15,0.38); margin-top: 0.65rem;
-      display: flex; align-items: center; gap: 3px;
+    .cc-bubble::before {
+      content:''; position:absolute; bottom:-11px; left:24px; z-index:1;
+      border:6px solid transparent; border-top-color:var(--lilac);
     }
 
-    /* Expanded panel */
+    /* ── Badge circular ── */
+    .cc-badge {
+      width: 118px; height: 118px; border-radius: 50%;
+      background: var(--lime); border: 2px solid #000;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center; text-align: center;
+      box-shadow: 3px 3px 0 #000;
+    }
+    .cc-badge strong {
+      font-family: 'Fraunces', serif; font-size: 2rem;
+      font-weight: 900; line-height: 1; color: #000;
+    }
+    .cc-badge span { font-size: 0.52rem; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.5px; opacity: 0.6; padding: 0 10px; margin-top: 4px; line-height: 1.35; }
+
+    /* ── Carpeta / caso ── */
+    .cc-folder {
+      background: #fff; border: 2px solid #000;
+      border-radius: 0 14px 14px 14px;
+      padding: 1rem 1.3rem 1rem; min-width: 155px;
+      box-shadow: 4px 4px 0 rgba(15,15,15,0.18);
+      position: relative; margin-top: 28px;
+    }
+    .cc-folder-tab {
+      position: absolute; top: -28px; left: -2px;
+      border: 2px solid #000; border-bottom: none;
+      border-radius: 8px 8px 0 0;
+      padding: 4px 12px;
+      font-size: 0.6rem; font-weight: 900; letter-spacing: 0.12em; text-transform: uppercase;
+    }
+    .cc-folder h3 {
+      font-family: 'Fraunces', serif; font-size: 1.6rem; font-weight: 900;
+      color: #000; line-height: 1; letter-spacing: -0.03em; margin-bottom: 0.3rem;
+    }
+    .cc-folder p { font-size: 0.75rem; color: rgba(15,15,15,0.6); line-height: 1.5; }
+
+    /* ── Sticker ── */
+    .cc-sticker {
+      background: var(--lime); border: 2px solid #000; border-radius: 8px;
+      padding: 0.65rem 1rem; font-size: 0.78rem; font-weight: 800;
+      display: inline-block; line-height: 1.45;
+      box-shadow: 3px 3px 0 #000;
+    }
+
+    /* ── Hint ── */
+    .cc-hint { font-size: 0.62rem; color: rgba(15,15,15,0.32); margin-top: 0.6rem; display: block; }
+
+    /* ── Panel lateral ── */
     #chaos-panel {
       position: fixed; right: 0; top: 0; bottom: 0;
-      width: min(460px, 90vw); background: #fff; z-index: 9200;
+      width: min(460px, 92vw); background: #fff; z-index: 9200;
       transform: translateX(105%); transition: transform .35s cubic-bezier(.4,0,.2,1);
       overflow-y: auto; padding: 2.5rem 2.25rem 3rem;
       box-shadow: -10px 0 48px rgba(15,15,15,0.1);
@@ -789,46 +875,41 @@
     #chaos-panel.open { transform: translateX(0); }
     #chaos-panel-close {
       position: sticky; top: 0; float: right; margin-bottom: 0.5rem;
-      background: rgba(15,15,15,0.06); border: none; border-radius: 100px;
-      width: 32px; height: 32px; font-size: 1rem; cursor: pointer;
-      color: var(--onyx); display: flex; align-items: center; justify-content: center;
-      transition: background .15s;
+      background: rgba(15,15,15,0.07); border: none; border-radius: 100px;
+      width: 32px; height: 32px; font-size: 1rem; cursor: pointer; color: #000;
+      display: flex; align-items: center; justify-content: center; transition: background .15s;
     }
-    #chaos-panel-close:hover { background: rgba(15,15,15,0.12); }
+    #chaos-panel-close:hover { background: rgba(15,15,15,0.14); }
     #chaos-panel-content { clear: both; }
-    #chaos-panel-content .p-color-bar {
-      border-radius: 14px; padding: 1.1rem 1.4rem; margin-bottom: 1.5rem;
-    }
+    #chaos-panel-content .p-color-bar { border-radius: 14px; padding: 1.1rem 1.4rem; margin-bottom: 1.5rem; }
     #chaos-panel-content h2 {
-      font-family: 'Fraunces', serif; font-size: 1.9rem; font-weight: 900;
-      color: var(--onyx); line-height: 1.15; margin: 0;
+      font-family: 'Fraunces', serif; font-size: 2rem; font-weight: 900;
+      color: #000; line-height: 1.1; margin: 0;
     }
     #chaos-panel-content .p-label {
-      font-size: 0.68rem; font-weight: 700; text-transform: uppercase;
-      letter-spacing: 1.5px; color: rgba(15,15,15,0.48); display: block;
-      margin-bottom: 0.2rem; margin-top: 1.4rem;
+      font-size: 0.65rem; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 1.5px; color: rgba(15,15,15,0.42); display: block;
+      margin-bottom: 0.15rem; margin-top: 1.4rem;
     }
     #chaos-panel-content .p-num {
-      font-family: 'Fraunces', serif; font-size: 2.8rem; font-weight: 900;
-      color: var(--onyx); letter-spacing: -0.04em; line-height: 1; display: block;
+      font-family: 'Fraunces', serif; font-size: 3rem; font-weight: 900;
+      color: #000; letter-spacing: -0.04em; line-height: 1; display: block;
     }
-    #chaos-panel-content p {
-      font-size: 0.92rem; color: rgba(15,15,15,0.68); line-height: 1.82;
-      margin-bottom: 0.85rem;
-    }
-    #chaos-panel-content strong { color: var(--onyx); }
+    #chaos-panel-content p { font-size: 0.92rem; color: rgba(15,15,15,0.68); line-height: 1.82; margin-bottom: 0.85rem; }
+    #chaos-panel-content strong { color: #000; }
     .p-cta {
       display: inline-flex; align-items: center; gap: 7px;
-      background: var(--onyx); color: #fff; padding: 0.8rem 1.5rem;
+      background: #000; color: #fff; padding: 0.8rem 1.5rem;
       border-radius: 100px; font-size: 0.87rem; font-weight: 600;
       text-decoration: none; margin-top: 1.25rem; transition: opacity .2s;
     }
     .p-cta:hover { opacity: 0.8; }
 
-    @media (max-width: 600px) {
+    @media (max-width: 680px) {
       .chaos-el { display: none; }
       .chaos-el.mob { display: block; }
-      .chaos-center h1 { font-size: 3rem; }
+      .chaos-center h1 { font-size: 3.2rem; }
+      #chaos-btn { bottom: 1.25rem; right: 1.25rem; }
     }
   </style>
 
@@ -1607,96 +1688,114 @@
 </footer>
 
 <!-- ── CHAOS BUTTON ── -->
-<button id="chaos-btn" title="Ver versión caos">💣 Destrúyelo</button>
+<!-- ── BOTÓN NO TOCAR ── -->
+<button id="chaos-btn" title="No presionar">
+  <span class="cbw-stripes"></span>
+  <span class="cbw-icon">⚠</span>
+  <span class="cbw-main">No tocar</span>
+  <span class="cbw-sub">Versión alternativa</span>
+</button>
 
 <!-- ── CHAOS OVERLAY ── -->
-<div id="chaos-overlay" role="dialog" aria-modal="true" aria-label="Modo caos" aria-hidden="true">
-  <button id="chaos-close">✕ Restaurar</button>
+<div id="chaos-overlay" role="dialog" aria-modal="true" aria-label="Versión alternativa" aria-hidden="true">
+  <button id="chaos-close">← Salir</button>
 
-  <!-- Anchor central -->
+  <!-- Centro: nombre grande -->
   <div class="chaos-center">
-    <h1>Gaby Gómez.</h1>
-    <p>SEO Specialist · LATAM</p>
+    <p class="cc-eyebrow">hola, soy</p>
+    <h1>Gaby<br/><em>Gómez.</em></h1>
   </div>
 
-  <!-- 1. Bio -->
-  <div class="chaos-el mob" style="--x:3%;  --y:10%; --r:-4deg"
-       data-panel="bio" role="button" tabindex="0" aria-label="Sobre mí">
-    <div class="chaos-card c-lilac">
-      <span class="chaos-tag">Sobre mí</span>
-      <h3>Venezolana en Buenos Aires</h3>
-      <p>5+ años escalando tráfico orgánico para salud, beauty y wellness.</p>
-      <span class="chaos-hint">↗ ver más</span>
+  <!-- 1. Polaroid: quién soy -->
+  <div class="chaos-el mob" style="--x:3%;--y:7%;--r:-5deg"
+       data-panel="bio" tabindex="0" role="button" aria-label="Quién soy">
+    <div class="cc-polaroid">
+      <div class="cc-polaroid-img">👩🏻‍💻</div>
+      <span class="cc-polaroid-name">Gaby Gómez A.</span>
+      <span class="cc-polaroid-sub">Venezolana · BsAs · SEO</span>
+      <span class="cc-hint">↗ quién soy</span>
     </div>
   </div>
 
-  <!-- 2. Sticker stats -->
-  <div class="chaos-el" style="--x:30%; --y:5%;  --r:2deg">
-    <div class="chaos-sticker">1M+ impresiones orgánicas</div>
+  <!-- 2. Sticker deco: 50+ -->
+  <div class="chaos-el deco" style="--x:33%;--y:5%;--r:3deg">
+    <div class="cc-sticker">50+ artículos<br/>optimizados/mes</div>
   </div>
 
-  <!-- 3. Auditoría SEO -->
-  <div class="chaos-el mob" style="--x:65%; --y:7%;  --r:-3deg"
-       data-panel="auditoria" role="button" tabindex="0" aria-label="Auditoría SEO">
-    <div class="chaos-card">
-      <span class="chaos-tag">Servicio principal</span>
-      <h3>Auditoría SEO</h3>
-      <p>Análisis completo + hoja de ruta de 90 días.</p>
-      <span class="chaos-hint">↗ ver más</span>
+  <!-- 3. Burbuja: qué hago -->
+  <div class="chaos-el mob" style="--x:63%;--y:8%;--r:-4deg"
+       data-panel="quehago" tabindex="0" role="button" aria-label="Qué hago">
+    <div class="cc-bubble">
+      "Hago que Google te encuentre primero."
+      <span class="cc-hint">↗ qué hago</span>
     </div>
   </div>
 
-  <!-- 4. Caso Sanarai -->
-  <div class="chaos-el mob" style="--x:2%;  --y:54%; --r:5deg"
-       data-panel="caso1" role="button" tabindex="0" aria-label="Caso Sanarai">
-    <div class="chaos-card c-peach">
-      <span class="chaos-tag">Salud Mental</span>
-      <h3>+165% tráfico orgánico</h3>
-      <p>6 meses · Auditoría + contenido</p>
-      <span class="chaos-hint">↗ ver más</span>
+  <!-- 4. Badge deco: 1M+ -->
+  <div class="chaos-el deco" style="--x:1%;--y:44%;--r:2deg">
+    <div class="cc-badge">
+      <strong>1M+</strong>
+      <span>impresiones<br/>orgánicas</span>
     </div>
   </div>
 
-  <!-- 5. Sticker enseño -->
-  <div class="chaos-el" style="--x:62%; --y:48%; --r:-2deg">
-    <div class="chaos-sticker" style="background:var(--peach); max-width:190px; font-size:0.78rem; line-height:1.5;">
-      También enseño<br/>SEO en Coderhouse 📚
+  <!-- 5. Carpeta Caso 01 -->
+  <div class="chaos-el mob" style="--x:4%;--y:68%;--r:5deg"
+       data-panel="caso1" tabindex="0" role="button" aria-label="Caso 01">
+    <div class="cc-folder">
+      <div class="cc-folder-tab" style="background:var(--lime)">CASO 01</div>
+      <h3>+165%</h3>
+      <p>Tráfico orgánico<br/>Salud Mental · 6m</p>
+      <span class="cc-hint">↗ ver caso</span>
     </div>
   </div>
 
-  <!-- 6. Caso Capilea -->
-  <div class="chaos-el mob" style="--x:64%; --y:60%; --r:-5deg"
-       data-panel="caso2" role="button" tabindex="0" aria-label="Caso Capilea">
-    <div class="chaos-card c-jordy">
-      <span class="chaos-tag">Hair Health · España</span>
-      <h3>De 0 a 1.29M impresiones</h3>
-      <p>Año 1 · Lanzamiento SEO desde cero</p>
-      <span class="chaos-hint">↗ ver más</span>
+  <!-- 6. Carpeta Caso 02 -->
+  <div class="chaos-el mob" style="--x:38%;--y:75%;--r:-2deg"
+       data-panel="caso2" tabindex="0" role="button" aria-label="Caso 02">
+    <div class="cc-folder">
+      <div class="cc-folder-tab" style="background:var(--jordy)">CASO 02</div>
+      <h3>1.29M</h3>
+      <p>Impresiones año 1<br/>Hair Health · España</p>
+      <span class="cc-hint">↗ ver caso</span>
     </div>
   </div>
 
-  <!-- 7. Caso Pipastics -->
-  <div class="chaos-el mob" style="--x:33%; --y:72%; --r:3deg"
-       data-panel="caso3" role="button" tabindex="0" aria-label="Caso Pipastics">
-    <div class="chaos-card c-lime">
-      <span class="chaos-tag">Skincare Infantil</span>
-      <h3>15K → 61K impresiones</h3>
-      <p>3 meses · Auditoría + on-page</p>
-      <span class="chaos-hint">↗ ver más</span>
+  <!-- 7. Carpeta Caso 03 -->
+  <div class="chaos-el mob" style="--x:67%;--y:66%;--r:-5deg"
+       data-panel="caso3" tabindex="0" role="button" aria-label="Caso 03">
+    <div class="cc-folder">
+      <div class="cc-folder-tab" style="background:var(--peach)">CASO 03</div>
+      <h3>×4</h3>
+      <p>15K → 61K impresiones<br/>Skincare Infantil · 3m</p>
+      <span class="cc-hint">↗ ver caso</span>
     </div>
   </div>
 
-  <!-- 8. Contacto CTA -->
-  <div class="chaos-el mob" style="--x:3%;  --y:78%; --r:-3deg"
-       data-panel="contacto" role="button" tabindex="0" aria-label="Contacto">
-    <div class="chaos-sticker" style="background:var(--wisteria); color:#fff; box-shadow:3px 3px 0 var(--onyx); max-width:200px; font-size:0.82rem; line-height:1.5; border-color:var(--onyx);">
-      ¿Tu marca necesita crecer?<br/>→ Conversemos
+  <!-- 8. Sticker contacto -->
+  <div class="chaos-el mob" style="--x:68%;--y:83%;--r:-3deg"
+       data-panel="contacto" tabindex="0" role="button" aria-label="Contacto">
+    <div class="cc-sticker" style="background:var(--wisteria);color:#fff;border-color:#fff;box-shadow:3px 3px 0 #000;max-width:190px;font-size:0.8rem;line-height:1.5;">
+      ¿Tu marca necesita<br/>crecer en Google? →
+      <span class="cc-hint" style="color:rgba(255,255,255,0.5)">↗ hablemos</span>
     </div>
+  </div>
+
+  <!-- Deco: Coderhouse -->
+  <div class="chaos-el deco" style="--x:73%;--y:38%;--r:4deg">
+    <div class="cc-sticker" style="background:var(--peach);font-size:0.72rem;line-height:1.45;max-width:165px;">
+      También enseño SEO<br/>en Coderhouse 📚
+    </div>
+  </div>
+
+  <!-- Deco: sparkle -->
+  <div class="chaos-el deco" style="--x:57%;--y:87%;--r:10deg">
+    <span style="font-size:2.2rem;line-height:1;opacity:.28;">✦</span>
   </div>
 
   <!-- Panel lateral -->
   <aside id="chaos-panel" aria-label="Detalle">
-    <button id="chaos-panel-close" aria-label="Cerrar">✕</button>
+    <button id="chaos-panel-close" aria-label="Cerrar panel">✕</button>
     <div id="chaos-panel-content"></div>
   </aside>
 </div>
@@ -1751,16 +1850,17 @@
         <a href="/#contacto" class="p-cta">Trabajemos juntxs →</a>
       `
     },
-    auditoria: {
-      color: '#f0f0f0',
-      title: 'Auditoría SEO',
+    quehago: {
+      color: 'var(--lilac)',
+      title: 'Qué hago.',
       body: `
-        <span class="p-label">Inversión desde</span>
-        <span class="p-num">$2,500 USD</span>
-        <p style="margin-top:1rem">Un análisis completo de tu sitio web: técnico, de contenido y de autoridad. Te entrego una hoja de ruta clara con prioridades de ejecución para los próximos 90 días.</p>
-        <p><strong>Incluye:</strong> auditoría técnica, análisis de keywords, revisión de contenido, análisis de competencia, Core Web Vitals y recomendaciones de link building.</p>
-        <p><strong>Entregables:</strong> informe PDF ejecutivo + dashboard de seguimiento + sesión de 60 min para revisar resultados.</p>
-        <a href="/auditoria-seo" class="p-cta">Ver todos los detalles →</a>
+        <p>Hago SEO estratégico para marcas de <strong>salud, beauty y wellness</strong> en LATAM que quieren crecer en Google de forma sostenida.</p>
+        <p>Eso significa: entender tu negocio, tu audiencia y tu competencia → definir la estrategia → ejecutar → medir.</p>
+        <span class="p-label">Servicios</span>
+        <p>🔍 <strong>Auditoría SEO</strong> — análisis técnico + contenido + autoridad. Desde $2,500 USD</p>
+        <p>📈 <strong>Estrategia + Ejecución</strong> — end-to-end. $5,000 USD</p>
+        <p>🔁 <strong>Retainer mensual</strong> — acompañamiento continuo. $1,500–$2,000/mes</p>
+        <a href="/auditoria-seo" class="p-cta">Ver auditoría SEO →</a>
       `
     },
     caso1: {
