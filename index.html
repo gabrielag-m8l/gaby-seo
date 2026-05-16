@@ -3,1000 +3,1307 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Auditoría SEO y Consultoría Estratégica | Gaby Gómez</title>
-  <meta name="description" content="Especialista SEO con 5+ años escalando tráfico orgánico para marcas de salud y wellness en LATAM. Auditoría, estrategia y resultados medibles." />
+  <title>Consultoría SEO en Argentina · Buenos Aires | Gaby Gómez</title>
+  <meta name="description" content="Consultoría SEO, AEO y GEO para marcas que quieren ser encontradas en Google, los LLMs y más allá. Estrategia de contenido y visibilidad real." />
   <meta name="google-site-verification" content="8qBQTS8NHLKzjnscyPm2ZDqHA8pzEaHPy9we2whxjf0" />
   <link rel="canonical" href="https://gabyseo.com/" />
-  <!-- Open Graph -->
   <meta property="og:type"        content="website" />
   <meta property="og:url"         content="https://gabyseo.com/" />
-  <meta property="og:title"       content="SEO Strategist para marcas de salud | Gaby Gómez" />
-  <meta property="og:description" content="5+ años de experiencia escalando tráfico orgánico para marcas de salud, beauty y wellness. Estrategia SEO end-to-end." />
+  <meta property="og:title"       content="Consultoría SEO para marcas | Gaby Gómez" />
+  <meta property="og:description" content="Consultoría SEO, AEO y GEO para marcas que quieren ser encontradas en Google, los LLMs y más allá." />
   <meta property="og:image"       content="https://gabyseo.com/og-image.png" />
   <meta name="twitter:card"       content="summary_large_image" />
-  <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-  <!-- Fonts: Fraunces + Inter — async -->
+
+  <!-- Fonts: Instrument Serif (display) + Geist (UI) + JetBrains Mono (labels) -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,700;0,9..144,900;1,9..144,300;1,9..144,400;1,9..144,700;1,9..144,900&family=Inter:wght@400;500;600;700&display=swap" media="print" onload="this.media='all'" />
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,700;0,9..144,900;1,9..144,300;1,9..144,400;1,9..144,700;1,9..144,900&family=Inter:wght@400;500;600;700&display=swap" /></noscript>
-  <!-- Caveat + Nunito — solo para chaos mode -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&family=Nunito:wght@400;500;600&display=swap" media="print" onload="this.media='all'" />
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&family=Nunito:wght@400;500;600&display=swap" /></noscript>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" />
 
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --floral:  #FFFFFF;   /* Floral White — base background */
-      --onyx:    #0F0F0F;   /* Onyx — text */
-      --wisteria:#C278D4;   /* Wisteria — CTA accent */
-      --lime:    #DDFF33;   /* Lemon Lime — marquee, highlights */
-      --jordy:   #7BB8F0;   /* Jordy Blue — sections */
-      --lilac:   #D4C0ED;   /* Lilac — cards, soft sections */
-      --peach:   #F4A07A;   /* Peach Fuzz — testimonios, hover */
-      /* Legacy aliases */
-      --pink:    var(--lilac);
-      --rust:    var(--wisteria);
-      --dark:    var(--onyx);
-      --white:   #FFFFFF;
-      --cream:   var(--lilac);
-      --muted:   rgba(15,15,15,0.55);
-      --pink-mid: var(--lilac);
+      --onyx:     #131015;
+      --ink:      #1a1620;
+      --cream:    #F6F1EA;
+      --paper:    #FAF6F0;
+
+      --peach:    #F4A07A;
+      --wisteria: #C278D4;
+      --lilac:    #D4C0ED;
+      --jordy:    #9CC0EE;
+      --lime:     #DDFF33;
+      --rose:     #F0A8C0;
+
+      --fg:        var(--onyx);
+      --fg-soft:   rgba(19,16,21,0.62);
+      --fg-faint:  rgba(19,16,21,0.42);
+      --line:      rgba(19,16,21,0.10);
+
+      --font-serif: 'Instrument Serif', 'Times New Roman', serif;
+      --font-sans:  'Geist', system-ui, -apple-system, sans-serif;
+      --font-mono:  'JetBrains Mono', 'IBM Plex Mono', monospace;
+
+      --radius-sm: 10px;
+      --radius:    18px;
+      --radius-lg: 28px;
+      --radius-xl: 36px;
     }
 
     html { scroll-behavior: smooth; }
 
     body {
-      font-family: 'Inter', sans-serif;
-      color: var(--dark);
-      background: #FFFFFF;
-      line-height: 1.6;
+      font-family: var(--font-sans);
+      color: var(--fg);
+      background: var(--paper);
+      line-height: 1.55;
       overflow-x: hidden;
+      font-feature-settings: "ss01", "cv01", "cv11";
+      -webkit-font-smoothing: antialiased;
     }
 
-    /* ── NAV ── */
-    nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      background: rgba(255,255,255,0.96);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
-      border-bottom: 1px solid rgba(15,15,15,0.08);
-      padding: 0 6%; height: 62px;
-      display: flex; align-items: center; justify-content: space-between;
-      transition: transform 0.3s ease;
+    body::before {
+      content: '';
+      position: fixed; inset: 0;
+      pointer-events: none;
+      z-index: 9000;
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.55 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+      background-size: 240px 240px;
+      opacity: 0.22;
+      mix-blend-mode: multiply;
     }
-    nav.nav-hidden { transform: translateY(-100%); }
+
+    .sparkle { display: inline-block; vertical-align: middle; }
+
+    .display {
+      font-family: var(--font-serif);
+      font-weight: 400;
+      letter-spacing: -0.015em;
+      line-height: 0.98;
+      text-wrap: balance;
+    }
+    .display em { font-style: italic; }
+
+    .label {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--fg-soft);
+      display: inline-flex; align-items: center; gap: 0.6rem;
+    }
+    .label::before {
+      content: ''; width: 6px; height: 6px; border-radius: 50%;
+      background: var(--wisteria);
+      box-shadow: 0 0 0 3px rgba(194,120,212,0.18);
+    }
+
+    .eyebrow-mono {
+      font-family: var(--font-mono);
+      font-size: 0.7rem; font-weight: 500;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--fg-soft);
+    }
+
+    nav#mainNav {
+      position: fixed; top: 18px; left: 50%; transform: translateX(-50%);
+      z-index: 100;
+      display: flex; align-items: center; gap: 0.4rem;
+      background: rgba(255,255,255,0.55);
+      backdrop-filter: blur(20px) saturate(140%);
+      -webkit-backdrop-filter: blur(20px) saturate(140%);
+      border: 1px solid rgba(255,255,255,0.7);
+      box-shadow: 0 1px 0 rgba(255,255,255,0.6) inset, 0 12px 40px -12px rgba(19,16,21,0.18);
+      border-radius: 100px;
+      padding: 6px 6px 6px 18px;
+      max-width: calc(100% - 24px);
+      transition: transform .3s ease, opacity .3s ease;
+    }
+    nav#mainNav.nav-hidden { transform: translateX(-50%) translateY(-130%); opacity: 0; }
 
     .nav-logo {
-      font-family: 'Fraunces', serif;
-      font-size: 1.1rem; font-weight: 900;
+      font-family: var(--font-serif);
+      font-size: 1.15rem; font-weight: 400;
       color: var(--onyx); text-decoration: none;
-      letter-spacing: -0.02em;
+      letter-spacing: -0.01em;
+      padding-right: 0.5rem;
+      display: inline-flex; align-items: center; gap: 6px;
     }
-    .nav-logo span { color: var(--wisteria); }
+    .nav-logo em { font-style: italic; color: var(--wisteria); }
+    .nav-logo::before {
+      content: '✦';
+      font-size: 0.85em;
+      color: var(--wisteria);
+      transform: translateY(-2px);
+    }
 
-    .nav-links { display: flex; gap: 2rem; align-items: center; }
+    .nav-links { display: flex; gap: 0.15rem; align-items: center; }
     .nav-links a {
-      text-decoration: none; color: rgba(15,15,15,0.7);
-      font-size: 0.85rem; font-weight: 500; transition: color .15s;
-      letter-spacing: 0.01em;
+      text-decoration: none;
+      color: var(--fg-soft);
+      font-size: 0.82rem; font-weight: 500;
+      padding: 0.5rem 0.85rem; border-radius: 100px;
+      transition: color .15s, background .15s;
     }
-    .nav-links a:hover { color: var(--onyx); }
+    .nav-links a:hover { color: var(--fg); background: rgba(19,16,21,0.04); }
     .nav-cta {
-      background: var(--wisteria) !important; color: #FFFFFF !important;
-      padding: 0.55rem 1.35rem; border-radius: 100px;
-      font-weight: 600 !important; font-size: 0.82rem !important;
-      transition: opacity .15s !important;
+      background: var(--onyx) !important; color: #FFFFFF !important;
+      padding: 0.6rem 1.15rem !important; border-radius: 100px;
+      font-weight: 500 !important;
+      transition: background .2s !important;
     }
-    .nav-cta:hover { opacity: 0.85 !important; }
+    .nav-cta:hover { background: var(--wisteria) !important; }
 
-    /* Hamburger */
     .nav-burger {
       display: none; flex-direction: column; justify-content: center;
-      gap: 5px; width: 32px; height: 32px; cursor: pointer;
-      background: none; border: none; padding: 0;
+      gap: 4px; width: 36px; height: 36px; cursor: pointer;
+      background: none; border: none; padding: 0; margin-left: 4px;
     }
     .nav-burger span {
-      display: block; height: 1.5px; background: var(--dark);
+      display: block; height: 1.5px; width: 18px; margin: 0 auto;
+      background: var(--onyx);
       border-radius: 2px; transition: all .25s;
     }
-    .nav-burger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+    .nav-burger.open span:nth-child(1) { transform: translateY(5.5px) rotate(45deg); }
     .nav-burger.open span:nth-child(2) { opacity: 0; }
-    .nav-burger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+    .nav-burger.open span:nth-child(3) { transform: translateY(-5.5px) rotate(-45deg); }
 
     .nav-mobile {
-      display: none; position: fixed; top: 62px; left: 0; right: 0;
-      background: var(--white); border-bottom: 1px solid rgba(26,8,0,0.08);
-      padding: 1.75rem 6%; flex-direction: column; gap: 1.25rem; z-index: 99;
+      display: none; position: fixed; top: 78px; left: 12px; right: 12px;
+      background: rgba(255,255,255,0.85);
+      backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255,255,255,0.7);
+      border-radius: 24px;
+      padding: 1.25rem; flex-direction: column; gap: 0.5rem; z-index: 99;
     }
     .nav-mobile.open { display: flex; }
     .nav-mobile a {
-      text-decoration: none; color: var(--dark);
-      font-size: 1rem; font-weight: 500;
+      text-decoration: none; color: var(--fg);
+      font-size: 0.95rem; font-weight: 500;
+      padding: 0.6rem 0.85rem; border-radius: 12px;
     }
     .nav-mobile .nav-cta {
-      display: inline-block; width: fit-content;
-      padding: 0.65rem 1.5rem !important;
+      display: inline-block; text-align: center;
     }
 
-    /* ── HERO ── */
-    .hero {
-      padding: 140px 6% 100px;
-      background: #FFFFFF;
-      max-width: 1200px; margin: 0 auto;
-      position: relative;
+    .bloom-bg {
+      position: absolute; inset: 0;
       overflow: hidden;
+      pointer-events: none;
+      z-index: 0;
     }
+    .bloom {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: 0.85;
+    }
+    .bloom.lg { width: 720px; height: 720px; filter: blur(120px); }
+    .bloom.md { width: 460px; height: 460px; filter: blur(90px); }
+    .bloom.sm { width: 280px; height: 280px; filter: blur(70px); }
+
+    .hero {
+      position: relative;
+      padding: 130px 6% 110px;
+      min-height: 100vh;
+      display: flex; flex-direction: column; justify-content: center;
+      overflow: hidden;
+      isolation: isolate;
+      background:
+        radial-gradient(120% 80% at 20% 0%, #F8D9C2 0%, transparent 60%),
+        radial-gradient(100% 80% at 90% 30%, #E5C7F0 0%, transparent 55%),
+        radial-gradient(120% 80% at 30% 100%, #C9DCF2 0%, transparent 55%),
+        radial-gradient(80% 60% at 80% 100%, #F4D4E4 0%, transparent 60%),
+        linear-gradient(180deg, #FBEDDD 0%, #F0E1F0 50%, #DEE9F7 100%);
+    }
+    .hero-bloom-1 { top: -10%; left: -8%; background: #F4A07A; opacity: 0.45; }
+    .hero-bloom-2 { top: 10%; right: -12%; background: #C278D4; opacity: 0.35; }
+    .hero-bloom-3 { bottom: -15%; left: 30%; background: #9CC0EE; opacity: 0.45; }
+
+    .hero-inner { position: relative; z-index: 1; max-width: 1200px; margin: 0 auto; width: 100%; }
+
     .hero-eyebrow {
-      font-size: 0.72rem; font-weight: 600; letter-spacing: 3px;
-      text-transform: uppercase; color: inherit; opacity: 0.55;
-      margin-bottom: 2rem; display: flex; align-items: center; gap: 0.75rem;
+      font-family: var(--font-mono);
+      font-size: 0.74rem; font-weight: 500;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--fg-soft);
+      margin-bottom: 2.5rem;
+      display: inline-flex; align-items: center; gap: 0.6rem;
+      padding: 0.5rem 0.9rem;
+      background: rgba(255,255,255,0.55);
+      border: 1px solid rgba(255,255,255,0.8);
+      border-radius: 100px;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
     }
-    .hero-eyebrow::before {
-      content: ''; display: inline-block;
-      width: 28px; height: 1.5px; background: var(--wisteria);
+    .hero-eyebrow .dot {
+      width: 7px; height: 7px; border-radius: 50%;
+      background: #5DD17C;
+      box-shadow: 0 0 0 3px rgba(93,209,124,0.22);
     }
+
     .hero h1 {
-      font-family: 'Fraunces', serif;
-      font-size: clamp(2.8rem, 6vw, 5.5rem);
-      font-weight: 900; color: var(--onyx);
-      line-height: 1.0; letter-spacing: -0.03em;
-      margin-bottom: 2rem;
+      font-family: var(--font-serif);
+      font-weight: 400;
+      font-size: clamp(3.2rem, 8.5vw, 8rem);
+      line-height: 0.94;
+      letter-spacing: -0.02em;
+      color: var(--onyx);
+      margin-bottom: 2.25rem;
+      max-width: 14ch;
     }
-    /* Highlighted word — pink box + rotate */
-    .hl {
-      display: inline-block;
-      background: var(--lilac);
-      padding: 0 0.18em 0.04em;
-      border-radius: 5px;
+    .hero h1 em {
       font-style: italic;
-      transition: opacity 0.35s ease;
+      color: var(--onyx);
+      position: relative;
+      display: inline-block;
+      transition: opacity .35s ease;
     }
-    .hl.fade-out { opacity: 0; }
+    .hero h1 em.fade-out { opacity: 0; }
+    .hero h1 em::after {
+      content: '';
+      position: absolute; left: -2px; right: -2px; bottom: 0.05em; height: 0.18em;
+      background: linear-gradient(90deg, rgba(194,120,212,0.55), rgba(244,160,122,0.55));
+      z-index: -1;
+      border-radius: 4px;
+    }
+
     .hero-sub {
-      font-size: 1.15rem; color: rgba(15,15,15,0.72);
-      line-height: 1.8; max-width: 500px;
-      margin-bottom: 3rem; font-weight: 400;
+      font-size: 1.18rem;
+      color: rgba(19,16,21,0.72);
+      line-height: 1.65;
+      max-width: 540px;
+      margin-bottom: 2.75rem;
+      font-weight: 400;
     }
-    .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; align-items: center; }
+    .hero-btns { display: flex; gap: 0.75rem; flex-wrap: wrap; align-items: center; }
 
-    .btn-rust {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: var(--wisteria); color: #FFFFFF;
-      padding: 1rem 2rem; border-radius: 100px;
-      font-weight: 600; font-size: 0.95rem; text-decoration: none;
-      transition: opacity .2s, transform .2s;
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: var(--onyx);
+      color: #FFFFFF;
+      padding: 1rem 1.65rem;
+      border-radius: 100px;
+      font-family: var(--font-sans);
+      font-weight: 500; font-size: 0.95rem;
+      text-decoration: none;
+      transition: transform .2s, background .2s;
+      box-shadow: 0 1px 0 rgba(255,255,255,0.15) inset, 0 8px 24px -8px rgba(19,16,21,0.4);
     }
-    .btn-rust:hover { opacity: 0.88; transform: translateY(-2px); }
-    .btn-dark { display:inline-flex;align-items:center;gap:8px;background:var(--onyx);color:#fff;padding:0.85rem 1.75rem;border-radius:100px;font-weight:600;font-size:0.9rem;text-decoration:none;transition:opacity .2s; }
-    .btn-dark:hover { opacity:0.8; }
-    .btn-ghost {
-      display: inline-flex; align-items: center; gap: 6px;
-      color: var(--onyx); font-size: 0.95rem; font-weight: 500;
-      text-decoration: none; border-bottom: 1.5px solid var(--dark);
-      padding-bottom: 2px;
-      transition: color .15s, border-color .15s;
-    }
-    .btn-ghost:hover { color: var(--wisteria); border-color: var(--wisteria); }
+    .btn-primary:hover { background: var(--wisteria); transform: translateY(-2px); }
+    .btn-primary .arrow { transition: transform .2s; }
+    .btn-primary:hover .arrow { transform: translateX(3px); }
 
-    /* Dot accent */
-    .dot-accent {
-      display: inline-block; width: 10px; height: 10px;
-      background: var(--rust); border-radius: 50%;
-      vertical-align: middle;
+    .btn-glass {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: rgba(255,255,255,0.5);
+      backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+      color: var(--onyx);
+      border: 1px solid rgba(255,255,255,0.75);
+      padding: 1rem 1.65rem;
+      border-radius: 100px;
+      font-family: var(--font-sans);
+      font-weight: 500; font-size: 0.95rem;
+      text-decoration: none;
+      transition: background .2s, transform .2s;
+      box-shadow: 0 1px 0 rgba(255,255,255,0.6) inset, 0 8px 24px -10px rgba(19,16,21,0.18);
+    }
+    .btn-glass:hover { background: rgba(255,255,255,0.78); transform: translateY(-2px); }
+
+    .btn-outline {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: transparent; color: var(--onyx);
+      border: 1px solid rgba(19,16,21,0.18);
+      padding: 0.95rem 1.5rem; border-radius: 100px;
+      font-weight: 500; font-size: 0.9rem; text-decoration: none;
+      transition: border-color .15s, background .15s;
+    }
+    .btn-outline:hover { border-color: var(--onyx); background: rgba(19,16,21,0.04); }
+
+    .hero-sparkles {
+      position: absolute;
+      top: 14%; right: 12%;
+      color: rgba(19,16,21,0.65);
+      display: flex; gap: 8px; align-items: flex-start;
+      animation: float 6s ease-in-out infinite;
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50%      { transform: translateY(-8px); }
     }
 
-    /* ── MARQUEE ── */
+    .hero-meta {
+      display: flex; flex-wrap: wrap; gap: 1.5rem 2.5rem;
+      margin-top: 3.5rem;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--fg-soft);
+      letter-spacing: 0.04em;
+    }
+    .hero-meta span strong { color: var(--onyx); font-weight: 500; }
+
     .marquee-wrap {
-      background: var(--lime);
-      padding: 16px 0; overflow: hidden; white-space: nowrap;
+      background: var(--onyx);
+      color: var(--cream);
+      padding: 18px 0; overflow: hidden; white-space: nowrap;
+      position: relative;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
     }
     .marquee-track {
-      display: inline-flex; animation: marquee 28s linear infinite;
+      display: inline-flex; animation: marquee 38s linear infinite;
+      align-items: center;
     }
     .marquee-track span {
-      font-size: 0.78rem; font-weight: 600; color: var(--dark);
-      letter-spacing: 2px; text-transform: uppercase;
-      padding: 0 2rem;
+      font-family: var(--font-mono);
+      font-size: 0.78rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase;
+      padding: 0 1.5rem;
+      color: var(--cream);
     }
     .marquee-track span.sep {
-      color: rgba(15,15,15,0.4); padding: 0; font-size: 1rem; font-weight: 700;
+      color: var(--wisteria);
+      padding: 0; font-size: 0.9rem;
     }
     @keyframes marquee {
       from { transform: translateX(0); }
       to   { transform: translateX(-50%); }
     }
 
-    /* ── GENERIC SECTION ── */
-    section { padding: 100px 6%; }
-    .section-inner { max-width: 1100px; margin: 0 auto; }
-    .section-label {
-      font-size: 0.7rem; font-weight: 700; letter-spacing: 3px;
-      text-transform: uppercase; color: var(--muted);
-      margin-bottom: 1rem; display: flex; align-items: center; gap: 0.6rem;
-    }
-    .section-label::before {
-      content: ''; display: inline-block;
-      width: 20px; height: 1.5px; background: currentColor;
-    }
+    section { padding: 110px 6%; position: relative; overflow: hidden; }
+    .section-inner { max-width: 1180px; margin: 0 auto; position: relative; z-index: 1; }
+
     h2.section-title {
-      font-family: 'Fraunces', serif;
-      font-size: clamp(1.9rem, 3.8vw, 3.2rem);
-      font-weight: 900; color: inherit;
-      line-height: 1.05; letter-spacing: -0.025em;
+      font-family: var(--font-serif);
+      font-weight: 400;
+      font-size: clamp(2.2rem, 5vw, 4.4rem);
+      line-height: 0.98;
+      letter-spacing: -0.015em;
       margin-bottom: 1.25rem;
+      color: var(--onyx);
+      max-width: 22ch;
     }
-    h2.section-title em { font-style: italic; opacity: 0.7; }
+    h2.section-title em { font-style: italic; color: var(--wisteria); }
+
     .section-sub {
-      font-size: 1.05rem; color: inherit; opacity: 0.75;
-      max-width: 520px; line-height: 1.85; margin-bottom: 4rem;
+      font-size: 1.05rem; color: var(--fg-soft);
+      max-width: 560px; line-height: 1.7; margin-bottom: 4rem;
     }
 
-    /* Scroll animations */
+    .label { margin-bottom: 1.1rem; }
+
     .fade-up {
-      opacity: 0; transform: translateY(20px);
-      transition: opacity 0.6s ease, transform 0.6s ease;
+      opacity: 0; transform: translateY(18px);
+      transition: opacity .7s ease, transform .7s ease;
     }
     .fade-up.visible { opacity: 1; transform: translateY(0); }
-    .fade-up.delay-1 { transition-delay: 0.1s; }
-    .fade-up.delay-2 { transition-delay: 0.2s; }
-    .fade-up.delay-3 { transition-delay: 0.3s; }
+    .fade-up.delay-1 { transition-delay: 0.08s; }
+    .fade-up.delay-2 { transition-delay: 0.16s; }
+    .fade-up.delay-3 { transition-delay: 0.24s; }
 
-    /* ── SOBRE MÍ ── */
-    .sobre { background: #FFFFFF; padding-top: 60px; color: var(--onyx); }
-    .sobre-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
-
-    /* Tarjeta unificada foto + stats */
-    .sobre-card {
-      border-radius: 24px;
-      overflow: hidden;
-      border: 1.5px solid rgba(15,15,15,0.07);
-      box-shadow: 0 4px 32px rgba(15,15,15,0.06);
-    }
-    .sobre-foto-wrap {
-      width: 100%;
-      aspect-ratio: 4 / 5;
-      overflow: hidden;
+    .caso-chart-card {
       position: relative;
+      padding: 1.85rem 1.85rem 1.5rem;
+      border-radius: var(--radius-lg);
+      background:
+        radial-gradient(60% 80% at 0% 100%, rgba(244,160,122,0.20) 0%, transparent 65%),
+        radial-gradient(60% 80% at 100% 0%, rgba(194,120,212,0.25) 0%, transparent 65%),
+        rgba(255,255,255,0.04);
+      backdrop-filter: blur(20px) saturate(160%);
+      -webkit-backdrop-filter: blur(20px) saturate(160%);
+      border: 1px solid rgba(255,255,255,0.12);
+      box-shadow:
+        0 1px 0 rgba(255,255,255,0.10) inset,
+        0 22px 50px -22px rgba(0,0,0,0.5);
+      margin-bottom: 1.85rem;
+      overflow: hidden;
     }
-    .sobre-foto-wrap::after {
-      content: '';
-      position: absolute; inset: 0;
-      background: linear-gradient(to bottom, transparent 55%, rgba(15,15,15,0.18) 100%);
+    .chart-head {
+      display: flex; align-items: baseline; justify-content: space-between;
+      gap: 1rem; margin-bottom: 1rem;
+    }
+    .chart-head .chart-title {
+      font-family: var(--font-mono);
+      font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase;
+      color: rgba(255,255,255,0.6); font-weight: 500;
+    }
+    .chart-head .chart-delta {
+      font-family: var(--font-serif);
+      font-size: 1.6rem; font-style: italic;
+      color: var(--lilac);
+      letter-spacing: -0.01em;
+    }
+    .chart-svg { display: block; width: 100%; height: 180px; }
+    .chart-svg .grid-line { stroke: rgba(255,255,255,0.08); stroke-width: 1; }
+    .chart-svg .axis-text {
+      font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.1em;
+      fill: rgba(255,255,255,0.45); text-transform: uppercase;
+    }
+    .chart-svg .chart-path {
+      fill: none; stroke: url(#chartGrad); stroke-width: 2.5;
+      stroke-linecap: round; stroke-linejoin: round;
+      stroke-dasharray: 1000; stroke-dashoffset: 1000;
+      filter: drop-shadow(0 0 8px rgba(194,120,212,0.55));
+    }
+    .chart-svg .chart-fill { fill: url(#chartFill); opacity: 0; transition: opacity 1.2s ease .8s; }
+    .chart-svg .chart-dot {
+      fill: #fff; stroke: var(--wisteria); stroke-width: 2;
+      opacity: 0; transform: scale(0); transform-origin: center;
+      transition: opacity .3s ease, transform .4s cubic-bezier(.34,1.56,.64,1);
+    }
+    .chart-svg .chart-dot.show { opacity: 1; transform: scale(1); }
+    .chart-svg .chart-pulse {
+      fill: var(--wisteria); opacity: 0;
+    }
+    .chart-svg.animate .chart-path {
+      animation: drawLine 2.2s cubic-bezier(.65,.05,.36,1) forwards;
+    }
+    .chart-svg.animate .chart-fill { opacity: 1; }
+    .chart-svg.animate .chart-pulse {
+      animation: pulseDot 2s ease-out infinite;
+      animation-delay: 2.4s;
+    }
+    @keyframes drawLine {
+      to { stroke-dashoffset: 0; }
+    }
+    @keyframes pulseDot {
+      0%   { opacity: 0.55; transform: scale(1); transform-origin: center; transform-box: fill-box; }
+      80%  { opacity: 0; transform: scale(3); transform-origin: center; transform-box: fill-box; }
+      100% { opacity: 0; }
+    }
+
+    .cta-band {
+      position: relative;
+      padding: 90px 6%;
+      overflow: hidden;
+      background:
+        radial-gradient(60% 60% at 0% 50%, rgba(244,160,122,0.55) 0%, transparent 60%),
+        radial-gradient(60% 60% at 100% 50%, rgba(156,192,238,0.55) 0%, transparent 60%),
+        radial-gradient(80% 80% at 50% 100%, rgba(212,192,237,0.6) 0%, transparent 70%),
+        linear-gradient(180deg, var(--paper) 0%, #F4EEDF 100%);
+    }
+    .cta-band-inner {
+      position: relative; z-index: 1;
+      max-width: 1180px; margin: 0 auto;
+      display: grid; grid-template-columns: 1.4fr 1fr; gap: 3rem; align-items: center;
+    }
+    .cta-band-eyebrow {
+      font-family: var(--font-mono);
+      font-size: 0.72rem; letter-spacing: 0.16em; text-transform: uppercase;
+      color: var(--fg-soft); display: inline-flex; align-items: center; gap: 0.5rem;
+      margin-bottom: 1.1rem;
+    }
+    .cta-band-eyebrow::before {
+      content: '❦'; color: var(--wisteria); font-size: 0.9rem;
+    }
+    .cta-band h2 {
+      font-family: var(--font-serif);
+      font-size: clamp(2rem, 4.2vw, 3.5rem);
+      font-weight: 400; line-height: 1; letter-spacing: -0.02em;
+      color: var(--onyx); text-wrap: balance; margin-bottom: 1rem;
+    }
+    .cta-band h2 em { font-style: italic; color: var(--wisteria); }
+    .cta-band p {
+      font-size: 1.02rem; color: var(--fg-soft);
+      line-height: 1.6; max-width: 50ch; margin-bottom: 1.5rem;
+    }
+    .cta-band-side {
+      display: flex; flex-direction: column; gap: 0.75rem;
+      align-items: flex-start;
+    }
+    .cta-band-side ul {
+      list-style: none;
+      display: flex; flex-direction: column; gap: 0.55rem;
+      margin-bottom: 1.5rem;
+    }
+    .cta-band-side li {
+      font-family: var(--font-mono);
+      font-size: 0.8rem; color: var(--fg);
+      display: flex; align-items: center; gap: 0.6rem;
+    }
+    .cta-band-side li::before {
+      content: '✓';
+      width: 22px; height: 22px; flex-shrink: 0;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.7);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,0.9);
+      display: inline-flex; align-items: center; justify-content: center;
+      color: var(--wisteria); font-weight: 700; font-size: 0.75rem;
+    }
+
+    @media (max-width: 1000px) {
+      .cta-band-inner { grid-template-columns: 1fr; gap: 2rem; }
+    }
+    .glass {
+      background: rgba(255,255,255,0.48);
+      backdrop-filter: blur(24px) saturate(180%);
+      -webkit-backdrop-filter: blur(24px) saturate(180%);
+      border: 1px solid rgba(255,255,255,0.85);
+      box-shadow:
+        0 1px 0 rgba(255,255,255,0.95) inset,
+        0 -10px 30px -20px rgba(255,255,255,0.5) inset,
+        0 20px 60px -22px rgba(19,16,21,0.22),
+        0 4px 14px -6px rgba(19,16,21,0.08);
+      border-radius: var(--radius-lg);
+    }
+
+    .jelly { transition: transform .35s cubic-bezier(.34,1.56,.64,1), box-shadow .35s ease, border-color .25s; }
+    .jelly:hover {
+      transform: translateY(-6px) scale(1.012);
+      border-color: rgba(255,255,255,1);
+      box-shadow:
+        0 1px 0 rgba(255,255,255,1) inset,
+        0 -12px 36px -22px rgba(255,255,255,0.6) inset,
+        0 28px 70px -24px rgba(194,120,212,0.30),
+        0 8px 20px -8px rgba(19,16,21,0.12);
+    }
+
+    .cursor-glow {
+      position: absolute;
+      width: 520px; height: 520px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255,255,255,0.55) 0%, rgba(244,200,232,0.25) 35%, transparent 70%);
+      filter: blur(40px);
       pointer-events: none;
+      transform: translate(-50%, -50%);
+      opacity: 0;
+      transition: opacity .4s ease;
+      z-index: 1;
+      mix-blend-mode: screen;
+    }
+    .cursor-host:hover .cursor-glow { opacity: 1; }
+
+    .sobre {
+      background:
+        radial-gradient(60% 50% at 10% 0%, rgba(244,160,122,0.20) 0%, transparent 60%),
+        radial-gradient(50% 50% at 100% 100%, rgba(194,120,212,0.18) 0%, transparent 60%),
+        var(--paper);
+    }
+    .sobre-bloom-1 { top: 5%; right: -10%; background: var(--lilac); opacity: 0.5; }
+    .sobre-bloom-2 { bottom: -15%; left: -10%; background: var(--peach); opacity: 0.35; }
+
+    .sobre-layout { display: grid; grid-template-columns: 1.05fr 1fr; gap: 5rem; align-items: start; }
+
+    .sobre-foto-card {
+      position: relative;
+      padding: 22px;
+      border-radius: var(--radius-xl);
+      background: rgba(255,255,255,0.5);
+      backdrop-filter: blur(20px) saturate(140%);
+      -webkit-backdrop-filter: blur(20px) saturate(140%);
+      border: 1px solid rgba(255,255,255,0.75);
+      box-shadow: 0 1px 0 rgba(255,255,255,0.6) inset, 0 24px 60px -28px rgba(19,16,21,0.22);
+      margin-bottom: 1.75rem;
+      display: inline-block;
+    }
+    .sobre-foto-ring {
+      width: 160px; height: 160px; border-radius: 50%;
+      padding: 5px;
+      background: conic-gradient(from 200deg, #F4A07A, #C278D4, #9CC0EE, #DDFF33, #F4A07A);
+      display: inline-block;
     }
     .sobre-foto {
       width: 100%; height: 100%;
-      object-fit: cover; object-position: center 15%;
+      object-fit: cover; object-position: center top;
+      border-radius: 50%; display: block;
+    }
+    .sobre-foto-card .pos-sparkle {
+      position: absolute; top: -10px; right: -10px;
+      color: var(--wisteria);
+    }
+
+    .sobre-left p {
+      font-size: 1rem; color: rgba(19,16,21,0.72);
+      line-height: 1.8; margin-bottom: 1.05rem;
+      max-width: 50ch;
+    }
+    .sobre-links { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-top: 2.25rem; }
+
+    .stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.85rem; margin-bottom: 2rem; }
+    .stat-tile {
+      position: relative;
+      padding: 1.5rem 1.4rem;
+      border-radius: var(--radius);
+      background: rgba(255,255,255,0.45);
+      backdrop-filter: blur(20px) saturate(180%);
+      -webkit-backdrop-filter: blur(20px) saturate(180%);
+      border: 1px solid rgba(255,255,255,0.9);
+      box-shadow:
+        0 1px 0 rgba(255,255,255,0.95) inset,
+        0 -8px 24px -18px rgba(255,255,255,0.55) inset,
+        0 14px 36px -18px rgba(19,16,21,0.15);
+      overflow: hidden;
+      transition: transform .3s cubic-bezier(.34,1.56,.64,1), box-shadow .3s;
+    }
+    .stat-tile:hover {
+      transform: translateY(-4px) scale(1.02);
+      box-shadow:
+        0 1px 0 rgba(255,255,255,1) inset,
+        0 -10px 30px -18px rgba(255,255,255,0.65) inset,
+        0 22px 50px -20px rgba(19,16,21,0.18);
+    }
+    .stat-tile::before {
+      content: ''; position: absolute; inset: -40%;
+      background: radial-gradient(40% 40% at 0% 100%, var(--bloom-color, var(--peach)) 0%, transparent 70%);
+      opacity: 0.55;
+      z-index: 0;
+    }
+    .stat-tile > * { position: relative; z-index: 1; }
+    .stat-tile:nth-child(1) { --bloom-color: var(--peach); }
+    .stat-tile:nth-child(2) { --bloom-color: var(--wisteria); }
+    .stat-tile:nth-child(3) { --bloom-color: var(--jordy); }
+    .stat-tile:nth-child(4) { --bloom-color: var(--lime); }
+
+    .stat-tile strong {
+      font-family: var(--font-serif);
+      font-size: 2.6rem; font-weight: 400;
+      color: var(--onyx);
+      letter-spacing: -0.02em; line-height: 1;
       display: block;
-      transition: transform 0.5s ease;
     }
-    .sobre-card:hover .sobre-foto { transform: scale(1.03); }
+    .stat-tile span {
+      font-family: var(--font-mono);
+      font-size: 0.7rem; color: var(--fg-soft);
+      font-weight: 500; text-transform: uppercase; letter-spacing: 0.1em;
+      margin-top: 8px; display: block;
+    }
 
-    .sobre-left p { font-size: 1rem; color: rgba(15,15,15,0.72); line-height: 1.9; margin-bottom: 1.1rem; }
-    .sobre-links { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 2.25rem; }
-
-    .btn-dark {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: var(--onyx); color: #FFFFFF;
-      padding: 0.85rem 1.75rem; border-radius: 100px;
-      font-weight: 600; font-size: 0.9rem; text-decoration: none;
-      transition: opacity .2s;
+    .clientes-label {
+      font-family: var(--font-mono);
+      font-size: 0.7rem; font-weight: 500; color: var(--fg-soft);
+      text-transform: uppercase; letter-spacing: 0.12em;
+      margin-bottom: 0.9rem;
     }
-    .btn-dark:hover { opacity: 0.8; }
-    .btn-outline {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: transparent; color: var(--onyx);
-      border: 1.5px solid rgba(15,15,15,0.2);
-      padding: 0.85rem 1.75rem; border-radius: 100px;
-      font-weight: 500; font-size: 0.9rem; text-decoration: none;
-      transition: border-color .15s, color .15s;
-    }
-    .btn-outline:hover { border-color: var(--onyx); color: var(--onyx); }
-
-    .stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0; margin-bottom: 0; }
-    .stat-box {
-      background: var(--lilac);
-      border-radius: 0; padding: 1.5rem 1.75rem;
-      transition: filter .2s;
-      border-top: 1.5px solid rgba(15,15,15,0.07);
-    }
-    .stat-box:nth-child(even) { border-left: 1.5px solid rgba(15,15,15,0.07); }
-    .stat-box:hover { filter: brightness(0.95); }
-    .stat-box.pink-bg { background: var(--jordy); }
-    .stat-box:nth-child(2) { background: var(--peach); }
-    .stat-box:nth-child(3) { background: var(--lime); }
-    .stat-box strong {
-      display: block; font-family: 'Fraunces', serif;
-      font-size: 2.6rem; font-weight: 900; color: var(--onyx);
-      letter-spacing: -0.03em; line-height: 1;
-    }
-    .stat-box span { font-size: 0.72rem; color: rgba(15,15,15,0.7); font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; margin-top: 4px; display: block; }
-    .clientes-label { font-size: 0.7rem; font-weight: 700; color: rgba(15,15,15,0.65); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 1rem; }
-    .clientes-list { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+    .clientes-list { display: flex; flex-wrap: wrap; gap: 0.4rem; }
     .cliente-tag {
-      background: transparent;
-      border: 1px solid rgba(15,15,15,0.2);
-      color: rgba(15,15,15,0.75); padding: 5px 14px; border-radius: 100px;
+      background: rgba(255,255,255,0.5);
+      backdrop-filter: blur(14px) saturate(180%);
+      -webkit-backdrop-filter: blur(14px) saturate(180%);
+      border: 1px solid rgba(255,255,255,0.9);
+      box-shadow: 0 1px 0 rgba(255,255,255,0.95) inset, 0 4px 10px -6px rgba(19,16,21,0.1);
+      color: var(--fg);
+      padding: 6px 12px; border-radius: 100px;
       font-size: 0.78rem; font-weight: 500;
-      transition: background .15s, color .15s, border-color .15s;
+      transition: background .2s, color .2s, transform .2s, border-color .2s;
     }
-    .cliente-tag:hover { background: var(--onyx); color: #FFFFFF; border-color: var(--onyx); }
+    .cliente-tag:hover { background: var(--onyx); color: var(--cream); border-color: var(--onyx); transform: translateY(-2px); }
 
-    /* ── TESTIMONIOS ── */
-    .testimonios { background: var(--peach); color: var(--onyx); }
-    .testimonios-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.25rem; }
-    .testimonio-card { background: #fff; border-radius: 20px; padding: 2rem 1.75rem; display: flex; flex-direction: column; gap: 1.25rem; transition: transform .2s; }
-    .testimonio-card:hover { transform: translateY(-4px); }
-    .testimonio-texto { font-size: 0.92rem; color: rgba(15,15,15,0.78); line-height: 1.8; flex: 1; font-style: italic; }
-    .testimonio-texto::before { content: '\201C'; color: var(--onyx); font-size: 1.4rem; font-style: normal; line-height: 0; vertical-align: -0.3em; margin-right: 2px; font-family: 'Fraunces', serif; }
-    .testimonio-nombre { font-size: 0.85rem; font-weight: 700; color: var(--onyx); }
-    .testimonio-cargo  { font-size: 0.78rem; color: rgba(15,15,15,0.65); line-height: 1.45; margin-top: 2px; }
-    .testimonio-rel    { font-size: 0.7rem; color: rgba(15,15,15,0.55); font-weight: 600; margin-top: 6px; }
-    @media (max-width: 960px) { .testimonios-grid { grid-template-columns: 1fr; } }
-    .logros { background: var(--lilac); color: var(--onyx); }
-    .logros-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
-    .logro-card {
-      padding: 2.5rem 2rem; border-radius: 20px;
-      background: var(--white);
-      transition: transform .2s, box-shadow .2s;
+    .caso {
+      background: #0E0B12;
+      color: var(--cream);
     }
-    .logro-card:hover { transform: translateY(-5px); box-shadow: 0 12px 40px rgba(26,8,0,0.07); }
-    .logro-num {
-      font-family: 'Fraunces', serif; font-size: 1rem; font-weight: 700;
-      color: var(--wisteria); margin-bottom: 1.5rem; letter-spacing: 1px;
-    }
-    .logro-card h3 { font-size: 1rem; font-weight: 700; color: var(--onyx); margin-bottom: 0.75rem; line-height: 1.4; }
-    .logro-card p { font-size: 0.92rem; color: rgba(15,15,15,0.72); line-height: 1.8; }
+    .caso .bloom { opacity: 0.5; }
+    .caso-bloom-1 { top: -10%; left: -10%; background: #C278D4; }
+    .caso-bloom-2 { bottom: -10%; right: -5%; background: #9CC0EE; opacity: 0.4 !important; }
+    .caso-bloom-3 { top: 40%; right: 40%; background: #F4A07A; opacity: 0.25 !important; }
 
-    /* ── MÁS ALLÁ ── */
-    .masalla { background: var(--jordy); color: var(--onyx); }
-    .masalla-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center; }
-    .masalla p { font-size: 1rem; color: var(--dark); opacity: 0.7; line-height: 1.85; margin-bottom: 1rem; }
-    .platforms-wrap { display: flex; flex-wrap: wrap; gap: 0.6rem; }
-    .platform-pill {
-      background: rgba(255,255,255,0.6);
-      border: 1px solid rgba(15,15,15,0.15);
-      color: var(--onyx); padding: 0.6rem 1.2rem; border-radius: 100px;
-      font-size: 0.85rem; font-weight: 500;
-      transition: background .15s;
-    }
-    .platform-pill:hover { background: var(--onyx); color: #FFFFFF; border-color: var(--onyx); }
+    .caso .label { color: rgba(255,255,255,0.55); }
+    .caso .label::before { background: var(--wisteria); box-shadow: 0 0 0 3px rgba(194,120,212,0.3); }
+    .caso h2.section-title { color: var(--cream); }
+    .caso h2.section-title em { color: var(--lilac); }
+    .caso .section-sub { color: rgba(255,255,255,0.6); }
 
-    /* ── EEAT ── */
-    .eeat { background: #FFFFFF; color: var(--onyx); }
-    .eeat-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.25rem; }
-    .eeat-card {
-      border-radius: 20px; overflow: hidden;
-      background: var(--lilac);
-      transition: transform .2s;
-    }
-    .eeat-card:hover { transform: translateY(-5px); }
-    .eeat-top { padding: 2rem 1.75rem 1.5rem; }
-    .eeat-letter { font-family: 'Fraunces', serif; font-size: 4rem; font-weight: 900; color: var(--wisteria); line-height: 1; margin-bottom: 0.25rem; }
-    .eeat-top h3 { font-size: 0.85rem; font-weight: 700; color: var(--onyx); }
-    .eeat-top span { font-size: 0.75rem; color: rgba(15,15,15,0.6); font-weight: 500; }
-    .eeat-body { padding: 0 1.75rem 2rem; }
-    .eeat-body p { font-size: 0.88rem; color: rgba(15,15,15,0.72); line-height: 1.75; margin-bottom: 0.85rem; }
-    .eeat-body p:last-child { margin-bottom: 0; }
-    .eeat-body strong { color: var(--onyx); font-weight: 600; }
-    .eeat-card:nth-child(1) { background: var(--lilac); }
-    .eeat-card:nth-child(2) { background: var(--jordy); }
-    .eeat-card:nth-child(3) { background: var(--peach); }
-    .eeat-card:nth-child(4) { background: var(--lime); }
-    .eeat-card:nth-child(1) .eeat-letter { color: var(--wisteria); }
-    .eeat-card:nth-child(2) .eeat-letter { color: #FFFFFF; -webkit-text-stroke: 2px var(--onyx); }
-    .eeat-card:nth-child(3) .eeat-letter { color: #FFFFFF; -webkit-text-stroke: 2px var(--onyx); }
-    .eeat-card:nth-child(4) .eeat-letter { color: var(--onyx); }
-
-    /* ── CASO DE ÉXITO ── */
-    .caso { background: var(--onyx); color: #FFFFFF; }
-    .caso .section-label { color: rgba(255,255,255,0.4); }
-    .caso .section-label::before { background: var(--wisteria); }
-    .caso .section-title { color: #FFFFFF; }
-    .caso .section-sub { color: rgba(255,255,255,0.5); }
     .caso-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
-    .caso-metrics { display: flex; flex-direction: column; gap: 1rem; }
+    .caso-metrics { display: flex; flex-direction: column; gap: 0.85rem; }
     .caso-metric {
-      background: rgba(255,255,255,0.05);
+      position: relative;
+      background: rgba(255,255,255,0.04);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
       border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 16px; padding: 1.5rem 1.75rem;
+      border-radius: var(--radius);
+      padding: 1.6rem 1.85rem;
+      overflow: hidden;
     }
     .caso-metric.highlight {
-      background: var(--wisteria);
-      border-color: var(--wisteria);
+      background: linear-gradient(135deg, rgba(194,120,212,0.45), rgba(244,160,122,0.30));
+      border-color: rgba(255,255,255,0.18);
     }
     .caso-metric strong {
-      display: block; font-family: 'Fraunces', serif;
-      font-size: 2.8rem; font-weight: 900; line-height: 1;
-      letter-spacing: -0.03em; color: #FFFFFF;
+      display: block; font-family: var(--font-serif);
+      font-size: 3rem; font-weight: 400; line-height: 1;
+      letter-spacing: -0.02em; color: #FFFFFF;
     }
     .caso-metric span {
-      display: block; font-size: 0.8rem; font-weight: 600;
-      text-transform: uppercase; letter-spacing: 1px;
-      color: rgba(255,255,255,0.7); margin-top: 4px;
+      display: block; font-family: var(--font-mono);
+      font-size: 0.72rem; font-weight: 500;
+      text-transform: uppercase; letter-spacing: 0.12em;
+      color: rgba(255,255,255,0.7); margin-top: 8px;
     }
     .caso-metric small {
-      display: block; font-size: 0.78rem;
-      color: rgba(255,255,255,0.45); margin-top: 3px;
+      display: block; font-size: 0.82rem;
+      color: rgba(255,255,255,0.5); margin-top: 4px;
     }
-    .caso-metric.highlight small { color: rgba(255,255,255,0.65); }
-    .caso-desc p { font-size: 1rem; color: rgba(255,255,255,0.6); line-height: 1.85; margin-bottom: 1rem; }
-    @media (max-width: 960px) { .caso-layout { grid-template-columns: 1fr; gap: 2.5rem; } }
+    .caso-desc p {
+      font-size: 1.02rem; color: rgba(255,255,255,0.7);
+      line-height: 1.75; margin-bottom: 1rem; max-width: 50ch;
+    }
 
-    /* ── PRECIOS ── */
-    .precios { background: var(--lilac); color: var(--onyx); }
-    .precios-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
-    .precio-card {
-      background: var(--white); border-radius: 20px;
-      padding: 2.25rem;
+    .logros {
+      background:
+        radial-gradient(60% 60% at 100% 0%, rgba(156,192,238,0.30) 0%, transparent 60%),
+        radial-gradient(60% 60% at 0% 100%, rgba(212,192,237,0.35) 0%, transparent 60%),
+        var(--paper);
+    }
+    .logros-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+    .logro-card {
+      position: relative;
+      padding: 2.25rem 1.85rem 2rem;
+      border-radius: var(--radius-lg);
+      background: rgba(255,255,255,0.6);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border: 1px solid rgba(255,255,255,0.8);
+      box-shadow: 0 1px 0 rgba(255,255,255,0.6) inset, 0 16px 50px -28px rgba(19,16,21,0.15);
+      transition: transform .2s;
+      overflow: hidden;
+    }
+    .logro-card::before {
+      content: ''; position: absolute; inset: auto -30% -30% auto;
+      width: 280px; height: 280px;
+      background: radial-gradient(circle, var(--bloom-color) 0%, transparent 70%);
+      filter: blur(20px);
+      opacity: 0.45;
+      z-index: 0;
+    }
+    .logro-card > * { position: relative; z-index: 1; }
+    .logro-card:nth-child(1) { --bloom-color: var(--peach); }
+    .logro-card:nth-child(2) { --bloom-color: var(--lilac); }
+    .logro-card:nth-child(3) { --bloom-color: var(--jordy); }
+    .logro-card:hover { transform: translateY(-4px); }
+    .logro-num {
+      font-family: var(--font-mono);
+      font-size: 0.74rem; font-weight: 500;
+      color: var(--fg-soft); margin-bottom: 1.5rem;
+      letter-spacing: 0.1em;
+    }
+    .logro-card h3 {
+      font-family: var(--font-serif);
+      font-size: 1.5rem; font-weight: 400; line-height: 1.1;
+      color: var(--onyx); margin-bottom: 0.75rem;
+      letter-spacing: -0.01em;
+    }
+    .logro-card p {
+      font-size: 0.95rem; color: var(--fg-soft);
+      line-height: 1.65;
+    }
+
+    .testimonios {
+      background:
+        radial-gradient(80% 70% at 50% 0%, rgba(244,160,122,0.30) 0%, transparent 60%),
+        radial-gradient(60% 60% at 20% 100%, rgba(240,168,192,0.30) 0%, transparent 60%),
+        radial-gradient(60% 60% at 100% 100%, rgba(194,120,212,0.22) 0%, transparent 60%),
+        var(--paper);
+    }
+    .testimonios-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1rem; }
+    .testimonio-card {
+      background: rgba(255,255,255,0.6);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border: 1px solid rgba(255,255,255,0.8);
+      box-shadow: 0 1px 0 rgba(255,255,255,0.6) inset, 0 16px 50px -28px rgba(19,16,21,0.18);
+      border-radius: var(--radius-lg);
+      padding: 1.85rem 1.75rem;
+      display: flex; flex-direction: column; gap: 1.25rem;
       transition: transform .2s;
     }
-    .precio-card:hover { transform: translateY(-5px); }
+    .testimonio-card:hover { transform: translateY(-4px); }
+    .testimonio-texto {
+      font-family: var(--font-serif);
+      font-size: 1.08rem; line-height: 1.45;
+      color: var(--onyx); flex: 1;
+      font-style: italic;
+    }
+    .testimonio-texto::before {
+      content: '\201C'; color: var(--wisteria); font-size: 2.4rem;
+      line-height: 0; vertical-align: -0.55em; margin-right: 4px;
+      font-family: var(--font-serif); font-style: italic;
+    }
+    .testimonio-nombre {
+      font-family: var(--font-sans);
+      font-size: 0.92rem; font-weight: 600; color: var(--onyx);
+    }
+    .testimonio-cargo {
+      font-family: var(--font-mono);
+      font-size: 0.72rem; color: var(--fg-soft); line-height: 1.45;
+      margin-top: 4px;
+    }
+    .testimonio-rel {
+      font-family: var(--font-mono);
+      font-size: 0.68rem; color: var(--fg-faint);
+      margin-top: 8px; letter-spacing: 0.04em;
+    }
+
+    .masalla {
+      background:
+        radial-gradient(70% 60% at 30% 30%, rgba(156,192,238,0.45) 0%, transparent 60%),
+        radial-gradient(70% 60% at 80% 80%, rgba(212,192,237,0.40) 0%, transparent 60%),
+        linear-gradient(180deg, #DDE7F4 0%, #E7DCF1 100%);
+    }
+    .masalla-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
+    .masalla p {
+      font-size: 1.05rem; color: rgba(19,16,21,0.7);
+      line-height: 1.75; margin-bottom: 1rem;
+      max-width: 50ch;
+    }
+    .platforms-wrap { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+    .platform-pill {
+      background: rgba(255,255,255,0.5);
+      backdrop-filter: blur(18px) saturate(180%);
+      -webkit-backdrop-filter: blur(18px) saturate(180%);
+      border: 1px solid rgba(255,255,255,0.95);
+      box-shadow: 0 1px 0 rgba(255,255,255,1) inset, 0 6px 14px -8px rgba(19,16,21,0.12);
+      color: var(--onyx);
+      padding: 0.65rem 1.15rem; border-radius: 100px;
+      font-size: 0.85rem; font-weight: 500;
+      transition: background .2s, color .2s, transform .25s cubic-bezier(.34,1.56,.64,1), border-color .2s;
+    }
+    .platform-pill:hover { background: var(--onyx); color: var(--cream); border-color: var(--onyx); transform: translateY(-3px) scale(1.04); }
+
+    .eeat {
+      background:
+        radial-gradient(60% 50% at 10% 0%, rgba(212,192,237,0.30) 0%, transparent 60%),
+        radial-gradient(60% 50% at 100% 100%, rgba(244,160,122,0.25) 0%, transparent 60%),
+        var(--paper);
+    }
+    .eeat-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
+    .eeat-card {
+      position: relative;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      background: rgba(255,255,255,0.6);
+      backdrop-filter: blur(20px) saturate(130%);
+      -webkit-backdrop-filter: blur(20px) saturate(130%);
+      border: 1px solid rgba(255,255,255,0.8);
+      box-shadow: 0 1px 0 rgba(255,255,255,0.6) inset, 0 16px 50px -28px rgba(19,16,21,0.18);
+      transition: transform .25s;
+    }
+    .eeat-card:hover { transform: translateY(-5px); }
+    .eeat-card::before {
+      content: ''; position: absolute;
+      top: -40%; right: -30%;
+      width: 320px; height: 320px;
+      background: radial-gradient(circle, var(--bloom-color) 0%, transparent 65%);
+      filter: blur(10px);
+      opacity: 0.55;
+      z-index: 0;
+    }
+    .eeat-card > * { position: relative; z-index: 1; }
+    .eeat-card:nth-child(1) { --bloom-color: var(--peach); }
+    .eeat-card:nth-child(2) { --bloom-color: var(--wisteria); }
+    .eeat-card:nth-child(3) { --bloom-color: var(--jordy); }
+    .eeat-card:nth-child(4) { --bloom-color: var(--lime); }
+
+    .eeat-top { padding: 1.75rem 1.6rem 1.25rem; }
+    .eeat-letter {
+      font-family: var(--font-serif);
+      font-size: 5rem; font-weight: 400; font-style: italic;
+      color: var(--onyx); line-height: 0.85; margin-bottom: 0.4rem;
+      letter-spacing: -0.04em;
+    }
+    .eeat-top h3 {
+      font-family: var(--font-sans);
+      font-size: 0.9rem; font-weight: 600; color: var(--onyx);
+    }
+    .eeat-top > span {
+      font-family: var(--font-mono);
+      font-size: 0.7rem; color: var(--fg-soft);
+      font-weight: 500; text-transform: uppercase; letter-spacing: 0.08em;
+      margin-top: 2px; display: block;
+    }
+    .eeat-body { padding: 0 1.6rem 1.85rem; }
+    .eeat-body p { font-size: 0.88rem; color: var(--fg-soft); line-height: 1.7; margin-bottom: 0.65rem; }
+    .eeat-body p:last-child { margin-bottom: 0; }
+    .eeat-body strong { color: var(--onyx); font-weight: 600; }
+
+    .precios {
+      background:
+        radial-gradient(60% 50% at 100% 0%, rgba(212,192,237,0.40) 0%, transparent 60%),
+        radial-gradient(60% 50% at 0% 100%, rgba(244,160,122,0.30) 0%, transparent 60%),
+        var(--paper);
+    }
+    .precios-grid {
+      display: grid; grid-template-columns: repeat(2, 1fr);
+      gap: 1rem; max-width: 820px;
+    }
+    .precio-card {
+      position: relative;
+      background: rgba(255,255,255,0.6);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255,255,255,0.8);
+      box-shadow: 0 1px 0 rgba(255,255,255,0.6) inset, 0 16px 50px -28px rgba(19,16,21,0.15);
+      border-radius: var(--radius-lg);
+      padding: 2rem 1.85rem;
+      transition: transform .2s;
+      overflow: hidden;
+    }
+    .precio-card:hover { transform: translateY(-4px); }
     .precio-card.destacado {
-      background: var(--rust); color: var(--white);
+      background:
+        radial-gradient(80% 80% at 100% 0%, rgba(194,120,212,0.85) 0%, transparent 65%),
+        radial-gradient(80% 80% at 0% 100%, rgba(244,160,122,0.85) 0%, transparent 65%),
+        rgba(19,16,21,0.9);
+      color: var(--cream);
+      border-color: rgba(255,255,255,0.15);
     }
     .precio-badge {
-      display: inline-block; background: rgba(15,15,15,0.07); color: var(--onyx);
-      font-size: 0.65rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase;
+      display: inline-block;
+      font-family: var(--font-mono);
+      background: rgba(19,16,21,0.07); color: var(--onyx);
+      font-size: 0.65rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase;
       padding: 5px 12px; border-radius: 100px; margin-bottom: 1.25rem;
     }
-    .precio-card.destacado .precio-badge { background: rgba(255,255,255,0.2); color: var(--white); }
-    .precio-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 0.4rem; }
-    .precio-card:not(.destacado) h3 { color: var(--onyx); }
-    .precio-card.destacado h3 { color: var(--white); }
-    .precio-card p { font-size: 0.88rem; line-height: 1.7; margin-bottom: 1.5rem; }
-    .precio-card:not(.destacado) p { color: rgba(15,15,15,0.72); }
-    .precio-card.destacado p { color: rgba(255,255,255,0.8); }
-    .precio-amount { font-family: 'Fraunces', serif; font-size: 2.2rem; font-weight: 900; letter-spacing: -0.03em; }
-    .precio-card:not(.destacado) .precio-amount { color: var(--onyx); }
-    .precio-card.destacado .precio-amount { color: var(--white); }
-    .precio-amount span { font-size: 0.82rem; font-weight: 400; font-family: 'Inter', sans-serif; }
-    .precio-card:not(.destacado) .precio-amount span { color: rgba(15,15,15,0.6); }
+    .precio-card.destacado .precio-badge { background: rgba(255,255,255,0.18); color: var(--cream); }
+    .precio-card h3 {
+      font-family: var(--font-serif);
+      font-size: 1.5rem; font-weight: 400; line-height: 1.1;
+      letter-spacing: -0.01em;
+      margin-bottom: 0.5rem;
+    }
+    .precio-card.destacado h3 { color: var(--cream); }
+    .precio-card p {
+      font-size: 0.9rem; line-height: 1.65;
+      margin-bottom: 1.5rem;
+      color: var(--fg-soft);
+    }
+    .precio-card.destacado p { color: rgba(255,255,255,0.78); }
+    .precio-amount {
+      font-family: var(--font-serif);
+      font-size: 2.4rem; font-weight: 400;
+      letter-spacing: -0.02em;
+      color: var(--onyx);
+    }
+    .precio-card.destacado .precio-amount { color: var(--cream); }
+    .precio-amount span {
+      font-family: var(--font-mono);
+      font-size: 0.75rem; font-weight: 500;
+      letter-spacing: 0.08em;
+      color: var(--fg-faint); margin-left: 4px;
+    }
     .precio-card.destacado .precio-amount span { color: rgba(255,255,255,0.7); }
 
-    /* ── CÓMO EMPEZAMOS ── */
-    .como { background: #FFFFFF; color: var(--onyx); }
-    .como-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; margin-bottom: 5rem; }
+    .como {
+      background:
+        radial-gradient(70% 60% at 50% 0%, rgba(156,192,238,0.30) 0%, transparent 60%),
+        radial-gradient(60% 50% at 0% 100%, rgba(212,192,237,0.30) 0%, transparent 60%),
+        var(--paper);
+    }
+    .como-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 1rem; margin-bottom: 5rem;
+    }
     .como-card {
-      padding: 2.5rem 2rem; border-radius: 20px;
-      background: #F7F4FB;
-      transition: background .2s, transform .2s;
+      position: relative;
+      padding: 2.25rem 1.85rem;
+      border-radius: var(--radius-lg);
+      background: rgba(255,255,255,0.6);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border: 1px solid rgba(255,255,255,0.75);
+      box-shadow: 0 1px 0 rgba(255,255,255,0.6) inset;
+      transition: transform .2s;
+      overflow: hidden;
     }
-    .como-card:hover { background: var(--peach); transform: translateY(-3px); }
-    .como-card:nth-child(2) { background: #EAF3FD; }
-    .como-card:nth-child(2):hover { background: var(--jordy); }
-    .como-card:nth-child(3) { background: #FBF1E9; }
-    .como-card:nth-child(3):hover { background: var(--peach); }
+    .como-card::before {
+      content: ''; position: absolute;
+      top: -50%; left: -20%;
+      width: 280px; height: 280px;
+      background: radial-gradient(circle, var(--bloom-color, var(--lilac)) 0%, transparent 65%);
+      filter: blur(15px);
+      opacity: 0.5;
+      z-index: 0;
+    }
+    .como-card > * { position: relative; z-index: 1; }
+    .como-card:nth-child(1) { --bloom-color: var(--peach); }
+    .como-card:nth-child(2) { --bloom-color: var(--lilac); }
+    .como-card:nth-child(3) { --bloom-color: var(--jordy); }
+    .como-card:hover { transform: translateY(-4px); }
     .como-num {
-      font-family: 'Fraunces', serif; font-size: 2.5rem; font-weight: 900;
-      color: var(--wisteria); letter-spacing: -0.03em; line-height: 1; margin-bottom: 1.5rem;
+      font-family: var(--font-mono);
+      font-size: 0.78rem; font-weight: 500;
+      color: var(--fg-soft); letter-spacing: 0.12em;
+      margin-bottom: 1.25rem;
     }
-    .como-card h3 { font-size: 1rem; font-weight: 700; color: var(--onyx); margin-bottom: 0.5rem; }
-    .como-card p { font-size: 0.9rem; color: rgba(15,15,15,0.72); line-height: 1.75; }
+    .como-card h3 {
+      font-family: var(--font-serif);
+      font-size: 1.5rem; font-weight: 400; line-height: 1.1;
+      letter-spacing: -0.01em;
+      color: var(--onyx); margin-bottom: 0.5rem;
+    }
+    .como-card p { font-size: 0.95rem; color: var(--fg-soft); line-height: 1.7; }
 
-    /* ── FORM ── */
     .form-wrapper {
-      background: var(--lilac);
-      border-radius: 24px; padding: 3rem; max-width: 680px; margin: 0 auto;
+      position: relative;
+      max-width: 720px; margin: 0 auto;
+      padding: 2.75rem 2.5rem;
+      border-radius: var(--radius-xl);
+      background: rgba(255,255,255,0.55);
+      backdrop-filter: blur(24px) saturate(140%);
+      -webkit-backdrop-filter: blur(24px) saturate(140%);
+      border: 1px solid rgba(255,255,255,0.8);
+      box-shadow: 0 1px 0 rgba(255,255,255,0.7) inset, 0 24px 60px -30px rgba(19,16,21,0.25);
+      overflow: hidden;
     }
-    .form-wrapper h3 { font-family: 'Fraunces', serif; font-size: 1.9rem; font-weight: 900; color: var(--onyx); letter-spacing: -0.03em; margin-bottom: 0.4rem; }
-    .form-wrapper > p { font-size: 0.92rem; color: rgba(15,15,15,0.72); margin-bottom: 2rem; }
-    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-    .form-group { display: flex; flex-direction: column; gap: 6px; margin-bottom: 1rem; }
-    .form-group label { font-size: 0.78rem; font-weight: 600; color: var(--onyx); letter-spacing: 0.02em; }
-    .form-group input, .form-group select, .form-group textarea {
-      border: 1.5px solid rgba(26,8,0,0.12); border-radius: 10px;
-      padding: 0.8rem 1rem; font-family: 'Inter', sans-serif;
-      font-size: 0.9rem; color: var(--onyx); background: #FFFFFF;
-      outline: none; transition: border-color .15s;
+    .form-wrapper::before {
+      content: ''; position: absolute;
+      inset: auto -10% -40% -10%;
+      height: 380px;
+      background:
+        radial-gradient(60% 60% at 20% 100%, rgba(244,160,122,0.7), transparent 60%),
+        radial-gradient(60% 60% at 80% 100%, rgba(194,120,212,0.6), transparent 60%);
+      filter: blur(40px);
+      z-index: 0;
     }
-    .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
-      border-color: var(--wisteria); box-shadow: 0 0 0 3px rgba(194,120,212,0.2);
-    }
-    .form-group textarea { resize: vertical; min-height: 100px; }
-    .btn-form {
-      width: 100%; padding: 1rem; background: var(--wisteria); color: #fff;
-      border: none; border-radius: 100px;
-      font-family: 'Inter', sans-serif; font-size: 0.9rem; font-weight: 600;
-      cursor: pointer; transition: opacity .2s; margin-top: 0.5rem;
-    }
-    .btn-form:hover { opacity: 0.85; }
+    .form-wrapper > * { position: relative; z-index: 1; }
 
-    /* ── FAQs ── */
-    .faqs { background: #FFFFFF; color: var(--onyx); }
-    .faq-list { max-width: 700px; }
-    .faq-item {
-      background: var(--white);
-      border-radius: 14px;
-      margin-bottom: 0.75rem; overflow: hidden;
-      transition: box-shadow .2s;
+    .form-wrapper h3 {
+      font-family: var(--font-serif);
+      font-size: 2rem; font-weight: 400; color: var(--onyx);
+      letter-spacing: -0.015em; margin-bottom: 0.4rem;
     }
-    .faq-item:hover { box-shadow: 0 4px 24px rgba(26,8,0,0.07); }
+    .form-wrapper > p {
+      font-size: 0.95rem; color: var(--fg-soft);
+      margin-bottom: 2rem;
+    }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0.85rem; }
+    .form-group { display: flex; flex-direction: column; gap: 6px; margin-bottom: 0.85rem; }
+    .form-group label {
+      font-family: var(--font-mono);
+      font-size: 0.7rem; font-weight: 500; color: var(--fg-soft);
+      letter-spacing: 0.08em; text-transform: uppercase;
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      font-family: var(--font-sans);
+      border: 1px solid rgba(19,16,21,0.12); border-radius: 12px;
+      padding: 0.85rem 1rem;
+      font-size: 0.94rem; color: var(--onyx);
+      background: rgba(255,255,255,0.7);
+      backdrop-filter: blur(8px);
+      outline: none; transition: border-color .15s, background .15s, box-shadow .15s;
+    }
+    .form-group input::placeholder,
+    .form-group textarea::placeholder { color: var(--fg-faint); }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--wisteria); background: rgba(255,255,255,0.9);
+      box-shadow: 0 0 0 3px rgba(194,120,212,0.20);
+    }
+    .form-group textarea { resize: vertical; min-height: 110px; }
+    .btn-form {
+      width: 100%; padding: 1rem; background: var(--onyx); color: var(--cream);
+      border: none; border-radius: 100px;
+      font-family: var(--font-sans);
+      font-size: 0.94rem; font-weight: 500;
+      cursor: pointer; transition: background .2s, transform .2s;
+      margin-top: 0.5rem;
+      box-shadow: 0 8px 24px -10px rgba(19,16,21,0.4);
+    }
+    .btn-form:hover { background: var(--wisteria); transform: translateY(-2px); }
+
+    .faqs {
+      background:
+        radial-gradient(60% 50% at 50% 0%, rgba(212,192,237,0.25) 0%, transparent 60%),
+        var(--paper);
+    }
+    .faq-list { max-width: 760px; }
+    .faq-item {
+      background: rgba(255,255,255,0.55);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255,255,255,0.75);
+      border-radius: 16px;
+      margin-bottom: 0.6rem; overflow: hidden;
+      transition: border-color .2s, background .2s;
+    }
+    .faq-item:hover { border-color: rgba(194,120,212,0.5); }
+    .faq-item.open { background: rgba(255,255,255,0.78); }
     .faq-q {
       display: flex; align-items: center; justify-content: space-between;
-      padding: 1.35rem 1.75rem; cursor: pointer;
-      user-select: none;
+      padding: 1.3rem 1.6rem; cursor: pointer; user-select: none;
     }
     .faq-q span {
-      font-size: 0.975rem; font-weight: 600; color: var(--onyx); line-height: 1.4; padding-right: 1rem;
+      font-size: 1rem; font-weight: 500; color: var(--onyx);
+      line-height: 1.4; padding-right: 1rem;
     }
     .faq-icon {
-      width: 28px; height: 28px; flex-shrink: 0;
-      background: var(--lilac);
+      width: 32px; height: 32px; flex-shrink: 0;
+      background: rgba(19,16,21,0.06);
       border-radius: 50%;
       display: flex; align-items: center; justify-content: center;
-      font-size: 1.1rem; font-weight: 400; color: var(--onyx);
-      transition: transform .25s, background .15s;
+      font-family: var(--font-serif);
+      font-size: 1.2rem; font-weight: 400; color: var(--onyx);
+      transition: transform .25s, background .15s, color .15s;
     }
     .faq-item.open .faq-icon { transform: rotate(45deg); background: var(--wisteria); color: #fff; }
     .faq-a {
       max-height: 0; overflow: hidden;
-      transition: max-height .35s ease, padding .3s ease;
+      transition: max-height .35s ease;
     }
     .faq-a-inner {
-      padding: 0 1.75rem 1.5rem;
-      font-size: 0.925rem; color: rgba(15,15,15,0.65); line-height: 1.85;
+      padding: 0 1.6rem 1.4rem;
+      font-size: 0.95rem; color: var(--fg-soft); line-height: 1.75;
     }
-    .faq-item.open .faq-a { max-height: 400px; }
+    .faq-item.open .faq-a { max-height: 500px; }
 
-    /* ── CTA FINAL — rust section ── */
     .cta-final {
-      background: linear-gradient(135deg, #F4A07A 0%, #C278D4 30%, #D4C0ED 55%, #7BB8F0 75%, #DDFF33 100%);
-      text-align: center; padding: 120px 6%;
+      position: relative;
+      text-align: center; padding: 140px 6%;
+      overflow: hidden;
+      background:
+        radial-gradient(60% 60% at 20% 30%, rgba(244,160,122,0.65) 0%, transparent 60%),
+        radial-gradient(60% 60% at 80% 70%, rgba(194,120,212,0.55) 0%, transparent 60%),
+        radial-gradient(60% 60% at 50% 100%, rgba(156,192,238,0.55) 0%, transparent 60%),
+        linear-gradient(135deg, #F9DDC4 0%, #E8CFF0 50%, #D2DEF4 100%);
     }
+    .cta-final::after {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(60% 60% at 90% 10%, rgba(221,255,51,0.25) 0%, transparent 50%);
+      pointer-events: none;
+    }
+    .cta-final-inner { position: relative; z-index: 1; max-width: 760px; margin: 0 auto; }
     .cta-final h2 {
-      font-family: 'Fraunces', serif;
-      font-size: clamp(2.2rem, 5vw, 4.2rem);
-      font-weight: 900; color: var(--onyx); line-height: 1.0;
-      letter-spacing: -0.03em; margin-bottom: 1.25rem;
+      font-family: var(--font-serif);
+      font-size: clamp(2.6rem, 6.5vw, 5.5rem);
+      font-weight: 400; color: var(--onyx); line-height: 0.96;
+      letter-spacing: -0.02em; margin-bottom: 1.5rem;
+      text-wrap: balance;
     }
+    .cta-final h2 em { font-style: italic; color: var(--onyx); }
     .cta-final p {
-      font-size: 1.05rem; color: rgba(15,15,15,0.7);
-      max-width: 420px; margin: 0 auto 3rem; line-height: 1.75;
+      font-size: 1.1rem; color: rgba(19,16,21,0.7);
+      max-width: 480px; margin: 0 auto 2.75rem; line-height: 1.65;
     }
-    .btn-white {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: var(--onyx); color: #FFFFFF;
-      padding: 1.1rem 2.5rem; border-radius: 100px;
-      font-weight: 700; font-size: 1rem; text-decoration: none;
-      transition: opacity .2s, transform .2s;
+    .cta-sparkle {
+      display: block; margin: 0 auto 1.5rem;
+      color: var(--wisteria);
     }
-    .btn-white:hover { opacity: 0.9; transform: translateY(-2px); }
 
-    /* ── FOOTER ── */
     footer {
-      background: var(--onyx); color: rgba(255,255,255,0.55);
+      background: #0E0B12;
+      color: rgba(246,241,234,0.6);
       padding: 3.5rem 6%;
       display: flex; align-items: center; justify-content: space-between;
-      flex-wrap: wrap; gap: 1.25rem;
+      flex-wrap: wrap; gap: 1.5rem;
+      position: relative; overflow: hidden;
     }
+    footer::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(60% 50% at 50% 100%, rgba(194,120,212,0.18) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    footer > * { position: relative; z-index: 1; }
     .footer-logo {
-      font-family: 'Fraunces', serif; font-size: 1rem; font-weight: 900;
-      color: var(--white) !important; text-decoration: none; letter-spacing: -0.02em;
+      font-family: var(--font-serif); font-size: 1.15rem; font-weight: 400;
+      color: var(--cream) !important; text-decoration: none;
+      letter-spacing: -0.01em;
+      display: inline-flex; align-items: center; gap: 8px;
     }
-    .footer-logo span { color: var(--wisteria); }
-    footer a { color: rgba(255,255,255,0.65); text-decoration: none; transition: color .2s; font-size: 0.85rem; }
-    footer a:hover { color: var(--white); }
-    .footer-center { font-size: 0.78rem; letter-spacing: 0.5px; }
-    .footer-links { display: flex; gap: 1.75rem; align-items: center; position: relative; }
+    .footer-logo em { font-style: italic; color: var(--wisteria); }
+    .footer-logo::before { content: '✦'; color: var(--wisteria); font-size: 0.85em; }
+    footer a {
+      color: rgba(246,241,234,0.7); text-decoration: none;
+      transition: color .2s; font-size: 0.88rem;
+    }
+    footer a:hover { color: var(--cream); }
+    .footer-center {
+      font-family: var(--font-mono);
+      font-size: 0.74rem; letter-spacing: 0.04em;
+      color: rgba(246,241,234,0.5);
+    }
+    .footer-links { display: flex; gap: 1.5rem; align-items: center; position: relative; flex-wrap: wrap; }
 
-    /* ── RESPONSIVE ── */
-    @media (max-width: 960px) {
+    .footer-privacy-toggle {
+      cursor: pointer; color: rgba(246,241,234,0.7);
+      font-size: 0.85rem;
+      text-decoration: underline; text-underline-offset: 3px;
+    }
+    .footer-privacy-text {
+      display: none; position: absolute; bottom: 100%; right: 0;
+      background: rgba(20,16,26,0.95);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 14px; padding: 1.5rem;
+      max-width: 420px; font-size: 0.8rem;
+      color: rgba(255,255,255,0.72); line-height: 1.65;
+      margin-bottom: 1rem;
+    }
+
+    @media (max-width: 1000px) {
       .sobre-layout { grid-template-columns: 1fr; gap: 3rem; }
       .masalla-inner { grid-template-columns: 1fr; gap: 3rem; }
       .eeat-grid { grid-template-columns: 1fr 1fr; }
-      .precios-grid { grid-template-columns: 1fr 1fr; }
       .logros-grid { grid-template-columns: 1fr; }
+      .testimonios-grid { grid-template-columns: 1fr; }
       .como-grid { grid-template-columns: 1fr; }
-      .stats-grid { grid-template-columns: repeat(2, 1fr); }
+      .caso-layout { grid-template-columns: 1fr; gap: 2.5rem; }
+      .hero-sparkles { display: none; }
     }
     @media (max-width: 640px) {
-      nav { padding: 0 5%; }
+      nav#mainNav { top: 12px; padding: 5px 5px 5px 16px; }
       .nav-links { display: none; }
       .nav-burger { display: flex; }
-      section { padding: 72px 5%; }
-      .hero { padding: 110px 5% 72px; }
+      section { padding: 80px 5%; }
+      .hero { padding: 120px 5% 80px; min-height: auto; }
       .form-row { grid-template-columns: 1fr; }
       .eeat-grid { grid-template-columns: 1fr; }
       .precios-grid { grid-template-columns: 1fr; }
-      footer { flex-direction: column; align-items: flex-start; gap: 1.5rem; }
-      .footer-center { display: none; }
+      .form-wrapper { padding: 2rem 1.5rem; }
+      footer { flex-direction: column; align-items: flex-start; gap: 1.25rem; }
     }
 
-    /* Hero entrance */
     @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(16px); }
+      from { opacity: 0; transform: translateY(20px); }
       to   { opacity: 1; transform: translateY(0); }
     }
-    .hero-eyebrow { animation: fadeUp .5s ease both; }
-    .hero h1      { animation: fadeUp .5s .08s ease both; }
-    .hero-sub     { animation: fadeUp .5s .18s ease both; }
-    .hero-btns    { animation: fadeUp .5s .28s ease both; }
-
-    /* ── 3 CASE STUDIES GRID ── */
-    .caso-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
-    .caso-card {
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 20px; padding: 2rem 1.75rem;
-      display: flex; flex-direction: column; gap: 1rem;
-      transition: background .2s, transform .2s;
-    }
-    .caso-card:hover { background: rgba(255,255,255,0.08); transform: translateY(-4px); }
-    .caso-card-header { display: flex; flex-direction: column; gap: 0.35rem; }
-    .caso-tag {
-      display: inline-block; background: var(--wisteria); color: #fff;
-      font-size: 0.65rem; font-weight: 700; letter-spacing: 1.5px;
-      text-transform: uppercase; padding: 4px 12px; border-radius: 100px; width: fit-content;
-    }
-    .caso-duration { font-size: 0.72rem; color: rgba(255,255,255,0.45); font-weight: 500; }
-    .caso-card h3 {
-      font-family: 'Fraunces', serif; font-size: 1.2rem; font-weight: 900;
-      color: #FFFFFF; line-height: 1.2; letter-spacing: -0.02em;
-    }
-    .caso-desc-text { font-size: 0.88rem; color: rgba(255,255,255,0.55); line-height: 1.75; }
-    .caso-stat-highlight { background: var(--wisteria); border-radius: 12px; padding: 1.25rem 1.5rem; }
-    .caso-stat-highlight strong {
-      display: block; font-family: 'Fraunces', serif;
-      font-size: 2.5rem; font-weight: 900; color: #fff;
-      line-height: 1; letter-spacing: -0.03em;
-    }
-    .caso-stat-highlight span {
-      font-size: 0.75rem; font-weight: 600; color: rgba(255,255,255,0.8);
-      text-transform: uppercase; letter-spacing: 1px; display: block; margin-top: 4px;
-    }
-    .caso-metrics-mini { display: flex; gap: 0.6rem; flex-wrap: wrap; }
-    .caso-metrics-mini > div {
-      background: rgba(255,255,255,0.07); border-radius: 10px;
-      padding: 0.85rem 1rem; flex: 1; min-width: 70px;
-    }
-    .caso-metrics-mini strong {
-      display: block; font-family: 'Fraunces', serif;
-      font-size: 1.25rem; font-weight: 900; color: #fff;
-      letter-spacing: -0.02em; line-height: 1;
-    }
-    .caso-metrics-mini span {
-      font-size: 0.68rem; color: rgba(255,255,255,0.55);
-      font-weight: 500; display: block; margin-top: 3px;
-    }
-    .caso-what {
-      font-size: 0.82rem; color: rgba(255,255,255,0.45); line-height: 1.7;
-      margin-top: auto; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 1rem;
-    }
-    @media (max-width: 960px) { .caso-grid { grid-template-columns: 1fr; } }
-
-    /* ── CASE STUDY CHARTS ── */
-    .caso-chart { margin: 0.25rem 0; display: flex; flex-direction: column; gap: 0.45rem; }
-    .caso-chart-row { display: flex; align-items: center; gap: 0.6rem; }
-    .caso-chart-label {
-      font-size: 0.65rem; color: rgba(255,255,255,0.45); font-weight: 600;
-      text-transform: uppercase; letter-spacing: 0.5px;
-      width: 52px; flex-shrink: 0; text-align: right;
-    }
-    .caso-chart-bar {
-      height: 30px; border-radius: 8px;
-      display: flex; align-items: center; padding: 0 0.75rem;
-      font-size: 0.75rem; font-weight: 700; color: #fff;
-      white-space: nowrap; min-width: fit-content;
-    }
-    .caso-chart-bar.before { background: rgba(255,255,255,0.1); }
-    .caso-chart-bar.after  { background: var(--wisteria); }
-
-    /* Gradient blob in hero */
-    .hero::before {
-      content: '';
-      position: absolute; top: -80px; right: -120px;
-      width: 560px; height: 560px; border-radius: 50%;
-      background: conic-gradient(from 180deg, #F4A07A, #C278D4, #7BB8F0, #DDFF33, #F4A07A);
-      opacity: 0.2; filter: blur(90px);
-      pointer-events: none;
-      animation: blobSpin 18s linear infinite;
-    }
-    @keyframes blobSpin {
-      from { transform: rotate(0deg) scale(1); }
-      50%  { transform: rotate(180deg) scale(1.1); }
-      to   { transform: rotate(360deg) scale(1); }
-    }
-
-    /* ── CHAOS MODE ── */
-    @keyframes warn-pulse {
-      0%, 100% { box-shadow: 4px 4px 0 #000, 0 0 0 0 rgba(232,41,28,0.55); }
-      50%       { box-shadow: 4px 4px 0 #000, 0 0 0 10px rgba(232,41,28,0); }
-    }
-    @keyframes cc-drift {
-      from { opacity:0; transform: rotate(var(--r)) translate(var(--dx,0px), var(--dy,14px)) scale(0.96); }
-      to   { opacity:1; transform: rotate(var(--r)) translate(0,0) scale(1); }
-    }
-    @keyframes cc-center-in {
-      from { opacity:0; transform: translate(-50%,-50%) scale(0.92); }
-      to   { opacity:1; transform: translate(-50%,-50%) scale(1); }
-    }
-
-    /* ── Paleta chaos (diferente al home) ── */
-    #chaos-overlay, #chaos-panel {
-      --cc-bg:        #F3EFE6;
-      --cc-ink:       #1C1916;
-      --cc-terra:     #BF5A3A;
-      --cc-sage:      #7A9272;
-      --cc-blush:     #C9907E;
-      --cc-sand:      #D9C9B0;
-      --cc-muted:     rgba(28,25,22,0.38);
-    }
-
-    /* ── Botón NO TOCAR ── */
-    #chaos-btn {
-      position: fixed; bottom: 2rem; right: 2rem; z-index: 8000;
-      background: #D93B1F; color: #fff;
-      border: 3px solid #1C1916; border-radius: 10px;
-      padding: 0.7rem 1.1rem 0.65rem;
-      font-family: 'Inter', sans-serif; cursor: pointer;
-      display: flex; flex-direction: column; align-items: center; gap: 2px;
-      animation: warn-pulse 2.2s ease-in-out infinite;
-      transition: transform .1s;
-    }
-    #chaos-btn .cbw-stripes {
-      width: 100%; height: 5px; margin-bottom: 4px; border-radius: 2px;
-      background: repeating-linear-gradient(-45deg, #1C1916 0 4px, #D93B1F 4px 9px);
-    }
-    #chaos-btn .cbw-icon { font-size: 1.3rem; line-height: 1; }
-    #chaos-btn .cbw-main { font-size: 0.7rem; font-weight: 900; letter-spacing: 0.12em; text-transform: uppercase; }
-    #chaos-btn .cbw-sub  { font-size: 0.52rem; letter-spacing: 0.1em; text-transform: uppercase; opacity: 0.75; }
-    #chaos-btn:hover { transform: translateY(-2px); }
-    #chaos-btn:active { transform: translate(4px,4px); animation: none; }
-
-    /* ── Overlay ── */
-    #chaos-overlay {
-      position: fixed; inset: 0; background: var(--cc-bg); z-index: 9000;
-      opacity: 0; pointer-events: none; transition: opacity .5s ease;
-      overflow: hidden; font-family: 'Caveat', cursive;
-    }
-    #chaos-overlay.active { opacity: 1; pointer-events: all; }
-    #chaos-overlay.active .chaos-center {
-      animation: cc-center-in .6s cubic-bezier(.22,1,.36,1) both;
-    }
-    #chaos-overlay.active .chaos-el { animation: cc-drift .55s cubic-bezier(.22,1,.36,1) both; }
-    #chaos-overlay.active .chaos-el:nth-child(3) { animation-delay:.08s; }
-    #chaos-overlay.active .chaos-el:nth-child(4) { animation-delay:.14s; }
-    #chaos-overlay.active .chaos-el:nth-child(5) { animation-delay:.20s; }
-    #chaos-overlay.active .chaos-el:nth-child(6) { animation-delay:.26s; }
-    #chaos-overlay.active .chaos-el:nth-child(7) { animation-delay:.32s; }
-    #chaos-overlay.active .chaos-el:nth-child(8) { animation-delay:.38s; }
-
-    /* ── Cerrar ── */
-    #chaos-close {
-      position: fixed; top: 1.4rem; left: 1.75rem; z-index: 9100;
-      background: none; color: var(--cc-muted); border: none;
-      font-family: 'Caveat', cursive; font-size: 1.2rem; font-weight: 600;
-      cursor: pointer; transition: color .2s; padding: 0;
-      display: flex; align-items: center; gap: 6px;
-    }
-    #chaos-close::before { content: '←'; }
-    #chaos-close:hover { color: var(--cc-ink); }
-
-    /* ── Centro ── */
-    .chaos-center {
-      position: absolute; top: 50%; left: 50%;
-      transform: translate(-50%, -50%);
-      text-align: center; z-index: 9010; pointer-events: none; user-select: none;
-      white-space: nowrap;
-    }
-    .chaos-center .cc-greeting {
-      font-family: 'Caveat', cursive; font-size: clamp(1.4rem, 2.5vw, 2rem);
-      color: var(--cc-terra); display: block; margin-bottom: 0.1rem; font-weight: 400;
-    }
-    .chaos-center h1 {
-      font-family: 'Caveat', cursive; font-size: clamp(4.5rem, 11vw, 10rem);
-      font-weight: 700; color: var(--cc-ink); line-height: 0.88; letter-spacing: -0.01em;
-    }
-    .chaos-center .cc-role {
-      display: block; margin-top: 0.8rem; font-family: 'Caveat', cursive;
-      font-size: clamp(1rem, 1.8vw, 1.4rem); color: var(--cc-muted); font-weight: 400;
-      letter-spacing: 0.08em;
-    }
-
-    /* ── Elementos flotantes ── */
-    .chaos-el {
-      position: absolute; left: var(--x); top: var(--y);
-      transform: rotate(var(--r)); z-index: 9020;
-    }
-    .chaos-el[data-panel] { cursor: pointer; }
-    .chaos-el[data-panel]:hover .cc-nav-label { color: var(--cc-terra); }
-    .chaos-el[data-panel]:hover .cc-nav-line   { transform: scaleX(1); }
-    .chaos-el[data-panel]:focus-visible { outline: 2px dashed var(--cc-terra); border-radius: 4px; }
-
-    /* ── Nav label minimalista ── */
-    .cc-nav { text-align: center; }
-    .cc-nav-dot { display: none; }
-    .cc-nav-label {
-      display: block; font-family: 'Caveat', cursive;
-      font-size: clamp(1.2rem, 2vw, 1.6rem); font-weight: 600;
-      color: var(--cc-ink); line-height: 1.1;
-      transition: color .2s ease;
-      white-space: nowrap;
-    }
-    .cc-nav-line {
-      display: block; height: 1.5px; background: var(--cc-terra);
-      transform: scaleX(0); transform-origin: left;
-      transition: transform .3s ease; margin-top: 3px;
-      border-radius: 2px;
-    }
-    /* colores por item */
-    .cc-nav.sage .cc-nav-dot  { background: var(--cc-sage); }
-    .cc-nav.sage:hover .cc-nav-label,
-    .chaos-el[data-panel]:hover .cc-nav.sage .cc-nav-label { color: var(--cc-sage); }
-    .cc-nav.sage .cc-nav-line { background: var(--cc-sage); }
-    .cc-nav.blush .cc-nav-dot { background: var(--cc-blush); }
-    .cc-nav.blush:hover .cc-nav-label,
-    .chaos-el[data-panel]:hover .cc-nav.blush .cc-nav-label { color: var(--cc-blush); }
-    .cc-nav.blush .cc-nav-line { background: var(--cc-blush); }
-
-    /* ── Panel lateral ── */
-    #chaos-panel {
-      position: fixed; right: 0; top: 0; bottom: 0;
-      width: min(480px, 92vw); background: var(--cc-bg); z-index: 9200;
-      transform: translateX(105%); transition: transform .38s cubic-bezier(.4,0,.2,1);
-      overflow-y: auto; padding: 3rem 2.5rem;
-      border-left: 1px solid rgba(28,25,22,0.1);
-      font-family: 'Caveat', cursive;
-    }
-    #chaos-panel.open { transform: translateX(0); }
-    #chaos-panel-close {
-      position: sticky; top: 0; float: right; margin-bottom: 1rem;
-      background: none; border: none; font-size: 1.4rem; cursor: pointer;
-      color: var(--cc-muted); font-family: 'Caveat', cursive;
-      transition: color .2s;
-    }
-    #chaos-panel-close:hover { color: var(--cc-ink); }
-    #chaos-panel-content { clear: both; }
-    #chaos-panel-content h2 {
-      font-family: 'Caveat', cursive; font-size: 2.6rem; font-weight: 700;
-      color: var(--cc-ink); line-height: 1.1; margin-bottom: 1.75rem; margin-top: 0.25rem;
-    }
-    #chaos-panel-content .p-color-bar { display: none; }
-
-    /* ── Cursor dot ── */
-    #chaos-dot {
-      position: fixed;
-      width: 8px; height: 8px;
-      background: #BF5A3A;
-      border-radius: 50%;
-      pointer-events: none;
-      z-index: 99999;
-      left: -20px; top: -20px;          /* off-screen hasta primer mousemove */
-      transform: translate(-50%, -50%);
-      visibility: hidden;               /* oculto hasta que chaos esté activo */
-      will-change: left, top;
-    }
-    body.chaos-active #chaos-dot { visibility: visible; }
-
-    #chaos-canvas {
-      position: fixed; inset: 0;
-      pointer-events: none; z-index: 99990;
-      visibility: hidden;
-    }
-    body.chaos-active #chaos-canvas { visibility: visible; }
-
-    body.chaos-active          { cursor: none !important; }
-    body.chaos-active *        { cursor: none !important; }
-
-    /* ── Animación de entrada: página cae ── */
-    @keyframes site-fall {
-      0%   { transform: perspective(900px) rotateX(0deg) scale(1) translateY(0);   opacity: 1; }
-      40%  { transform: perspective(900px) rotateX(4deg) scale(0.97) translateY(8px);  opacity: 0.8; }
-      100% { transform: perspective(900px) rotateX(10deg) scale(0.88) translateY(60px); opacity: 0; }
-    }
-    @keyframes chaos-rise {
-      from { opacity: 0; transform: translateY(40px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-    body.chaos-entering > nav,
-    body.chaos-entering > section,
-    body.chaos-entering > footer {
-      animation: site-fall 0.45s cubic-bezier(.4,0,1,1) forwards;
-      transform-origin: center bottom;
-      pointer-events: none;
-    }
-    #chaos-overlay.chaos-rising {
-      animation: chaos-rise 0.5s cubic-bezier(.22,1,.36,1) both;
-    }
-    #chaos-panel-content .p-label {
-      font-family: 'Nunito', sans-serif; font-size: 0.72rem; font-weight: 600;
-      text-transform: uppercase; letter-spacing: 0.12em; color: var(--cc-muted);
-      display: block; margin-bottom: 0.15rem; margin-top: 1.75rem;
-    }
-    #chaos-panel-content .p-num {
-      font-family: 'Caveat', cursive; font-size: 3.2rem; font-weight: 700;
-      color: var(--cc-ink); line-height: 1; display: block; margin-bottom: 0.25rem;
-    }
-    #chaos-panel-content p {
-      font-family: 'Nunito', sans-serif; font-size: 0.97rem; font-weight: 400;
-      color: rgba(28,25,22,0.72); line-height: 1.9; margin-bottom: 1rem;
-    }
-    #chaos-panel-content strong { color: var(--cc-ink); font-weight: 600; }
-    .p-cta {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: var(--cc-ink); color: var(--cc-bg);
-      padding: 0.75rem 1.5rem; border-radius: 100px;
-      font-family: 'Nunito', sans-serif; font-size: 0.9rem; font-weight: 600;
-      text-decoration: none; margin-top: 1.5rem; transition: opacity .2s;
-    }
-    .p-cta:hover { opacity: 0.8; }
-
-    @media (max-width: 680px) {
-      .chaos-el { display: none; }
-      .chaos-el.mob { display: block; }
-      .chaos-center h1 { font-size: 3.5rem; }
-      #chaos-btn { bottom: 1.25rem; right: 1.25rem; }
-    }
+    .hero-eyebrow { animation: fadeUp .6s ease both; }
+    .hero h1      { animation: fadeUp .6s .08s ease both; }
+    .hero-sub     { animation: fadeUp .6s .2s ease both; }
+    .hero-btns    { animation: fadeUp .6s .3s ease both; }
+    .hero-meta    { animation: fadeUp .6s .42s ease both; }
   </style>
 
-  <!-- BreadcrumbList Schema -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-      {
-        "@type": "ListItem",
-        "position": 1,
-        "name": "Inicio",
-        "item": "https://gabyseo.com"
-      }
-    ]
-  }
-  </script>
-
-  <!-- Person Schema -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "Person",
     "name": "Gabriela Gómez Almeida",
     "url": "https://gabyseo.com",
-    "sameAs": [
-      "https://www.linkedin.com/in/gabrielagomezalmeida/"
-    ]
+    "sameAs": ["https://www.linkedin.com/in/gabrielagomezalmeida/"]
   }
   </script>
-
-  <!-- WebSite Schema -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "WebSite",
     "name": "GabySEO",
     "url": "https://gabyseo.com",
-    "description": "Especialista SEO con 5+ años escalando tráfico orgánico para marcas de salud y wellness en LATAM. Auditoría, estrategia y resultados medibles.",
+    "description": "Consultoría SEO, AEO y GEO para marcas que quieren ser encontradas en Google, los LLMs y más allá.",
     "inLanguage": "es",
-    "author": {
-      "@type": "Person",
-      "name": "Gabriela Gómez Almeida"
-    },
+    "author": { "@type": "Person", "name": "Gabriela Gómez Almeida" },
     "potentialAction": {
       "@type": "SearchAction",
-      "target": {
-        "@type": "EntryPoint",
-        "urlTemplate": "https://gabyseo.com/?s={search_term_string}"
-      },
+      "target": { "@type": "EntryPoint", "urlTemplate": "https://gabyseo.com/?s={search_term_string}" },
       "query-input": "required name=search_term_string"
     }
   }
   </script>
-
-  <!-- ProfessionalService Schema -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": ["LocalBusiness", "ProfessionalService"],
-    "name": "GabySEO — SEO Strategist para marcas de salud y wellness",
-    "email": "gabygomezalmeida@gmail.com",
+    "@type": "ProfessionalService",
+    "name": "GabySEO — Consultoría SEO",
     "url": "https://gabyseo.com",
     "logo": "https://gabyseo.com/favicon.svg",
     "image": "https://gabyseo.com/og-image.png",
-    "description": "Especialista SEO con 5+ años escalando tráfico orgánico para marcas de salud, beauty y wellness en LATAM. Auditoría, estrategia y ejecución end-to-end.",
+    "description": "Consultoría SEO, AEO y GEO para marcas que quieren ser encontradas en Google, los LLMs y más allá. Estrategia de contenido y visibilidad real.",
     "founder": {
       "@type": "Person",
       "name": "Gabriela Gómez Almeida",
@@ -1008,159 +1315,24 @@
       { "@type": "AdministrativeArea", "name": "LATAM" },
       { "@type": "Country", "name": "España" }
     ],
-    "address": {
-      "@type": "PostalAddress",
-      "addressLocality": "Buenos Aires",
-      "addressCountry": "AR"
-    },
-    "contactPoint": {
-      "@type": "ContactPoint",
-      "email": "gabygomezalmeida@gmail.com",
-      "contactType": "customer service",
-      "availableLanguage": "Spanish"
-    },
-    "sameAs": [
-      "https://www.linkedin.com/in/gabrielagomezalmeida/",
-      "https://gabymodoseo.substack.com/"
-    ],
-    "priceRange": "$$$",
+    "address": { "@type": "PostalAddress", "addressLocality": "Buenos Aires", "addressCountry": "AR" },
+    "contactPoint": { "@type": "ContactPoint", "email": "gabygomezalmeida@gmail.com", "contactType": "customer service", "availableLanguage": "Spanish" },
+    "sameAs": ["https://www.linkedin.com/in/gabrielagomezalmeida/", "https://gabymodoseo.substack.com/"],
+    "priceRange": "$$",
     "currenciesAccepted": "USD",
     "openingHours": "Mo-Fr 09:00-18:00",
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "5",
-      "reviewCount": "3",
-      "bestRating": "5",
-      "worstRating": "1"
-    },
-    "review": [
-      {
-        "@type": "Review",
-        "author": { "@type": "Person", "name": "Sonia Zamora" },
-        "reviewBody": "Gaby es una profesional con un dominio profundo del SEO, que entiende el ecosistema de contenidos de principio a fin. Está siempre atenta a las actualizaciones, a explorar nuevas herramientas y a encontrar formas de optimizar procesos.",
-        "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" }
-      },
-      {
-        "@type": "Review",
-        "author": { "@type": "Person", "name": "Itxara Gámez" },
-        "reviewBody": "Gabriela se destaca por su iniciativa, creatividad y la capacidad de llevar adelante sus ideas con enfoque y serenidad.",
-        "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" }
-      },
-      {
-        "@type": "Review",
-        "author": { "@type": "Person", "name": "Mariana Karina García Palmero" },
-        "reviewBody": "Gabriela es una excelente compañera de trabajo, siempre dispuesta a dar más y ayudar a los que estén a su alrededor.",
-        "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" }
-      }
-    ]
+    "aggregateRating": { "@type": "AggregateRating", "ratingValue": "5", "reviewCount": "3", "bestRating": "5", "worstRating": "1" }
   }
   </script>
-
-  <!-- Service Schemas -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "ItemList",
-    "name": "Servicios SEO para marcas de salud y wellness — GabySEO",
-    "url": "https://gabyseo.com/#precios",
-    "itemListElement": [
-      {
-        "@type": "ListItem",
-        "position": 1,
-        "item": {
-          "@type": "Service",
-          "name": "Auditoría SEO + Roadmap",
-          "description": "Diagnóstico profundo: análisis de sitio, competencia y oportunidades. Entregable: reporte detallado + roadmap estratégico de 12 meses. Duración: 3–4 semanas.",
-          "provider": { "@type": "Person", "name": "Gabriela Gómez Almeida", "url": "https://gabyseo.com" },
-          "offers": { "@type": "Offer", "priceRange": "$2500-$3500", "priceCurrency": "USD" },
-          "areaServed": "LATAM",
-          "serviceType": "SEO Audit"
-        }
-      },
-      {
-        "@type": "ListItem",
-        "position": 2,
-        "item": {
-          "@type": "Service",
-          "name": "Auditoría + Acompañamiento 3 meses",
-          "description": "Auditoría inicial + ejecución: on-page, contenido nuevo/optimizado, interlinking. Para marcas de salud y wellness que necesitan resultados rápidos. Duración: 3 meses dedicados.",
-          "provider": { "@type": "Person", "name": "Gabriela Gómez Almeida", "url": "https://gabyseo.com" },
-          "offers": { "@type": "Offer", "price": "5000", "priceCurrency": "USD" },
-          "areaServed": "LATAM",
-          "serviceType": "SEO Strategy & Execution"
-        }
-      },
-      {
-        "@type": "ListItem",
-        "position": 3,
-        "item": {
-          "@type": "Service",
-          "name": "Retainer Mensual SEO",
-          "description": "10–15 horas/mes. Optimización continua: análisis, estrategia, ejecución, reporting. Ideal para crecimiento orgánico sostenido. Mínimo 3 meses.",
-          "provider": { "@type": "Person", "name": "Gabriela Gómez Almeida", "url": "https://gabyseo.com" },
-          "offers": { "@type": "Offer", "priceRange": "$1500-$2000", "priceCurrency": "USD", "priceSpecification": { "@type": "UnitPriceSpecification", "unitCode": "MON" } },
-          "areaServed": "LATAM",
-          "serviceType": "SEO Retainer"
-        }
-      }
-    ]
-  }
-  </script>
-
-  <!-- FAQ Schema -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "FAQPage",
     "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "¿Cuánto tiempo tarda en ver resultados de SEO?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "El SEO no es magia. Típicamente, en 3–4 meses ves cambios medibles. En 6 meses, resultados significativos. Depende de la competencia del nicho y cuánto contenido ya tengas."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "¿Funciona el SEO para marcas de salud y wellness?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Sí. De hecho, Google prioriza EEAT en estos nichos. Significa que si demuestras experiencia real con tu contenido, Google te posiciona. Mis clientes en salud pasaron de 0 a 1M+ impresiones."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "¿Necesito reescribir todo mi contenido?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "No siempre. A veces es optimizar lo que tienes. Otras, arquitectura + nuevo contenido. Depende de tu situación."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "¿Qué pasa si tengo 0 contenido?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Partimos desde cero. Hacemos arquitectura de URL, keyword strategy y creamos contenido optimizado desde el inicio. Proyectos así tardaron 4–6 meses en generar resultados significativos."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "¿Cuál es tu diferencial como especialista SEO?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "5+ años en estrategia SEO end-to-end. Experiencia en salud, beauty, wellness, fintech. Equipos grandes y consultorías independientes. Y principalmente: honestidad. Te digo qué es posible y qué no."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "¿Trabajas por proyecto o retainer?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Ambas. Prefiero retainers porque el SEO es sostenido, no puntual. Pero también hago proyectos puntuales (auditoría, estrategia). Mínimo 3 meses para ver impacto real."
-        }
-      }
+      { "@type": "Question", "name": "¿Qué hace un consultor SEO?", "acceptedAnswer": { "@type": "Answer", "text": "Un consultor SEO investiga las palabras clave que usa tu audiencia, optimiza el contenido de tu sitio, mejora la estructura técnica y construye autoridad de dominio mediante linkbuilding." } },
+      { "@type": "Question", "name": "¿Qué incluye una consultoría SEO?", "acceptedAnswer": { "@type": "Answer", "text": "Auditoría SEO del sitio, investigación de palabras clave, estrategia de contenido, optimización on-page y revisión técnica." } },
+      { "@type": "Question", "name": "¿Por qué invertir en posicionamiento SEO?", "acceptedAnswer": { "@type": "Answer", "text": "El SEO genera tráfico orgánico sostenible. Los resultados se acumulan con el tiempo." } },
+      { "@type": "Question", "name": "¿Ofreces consultoría SEO en Argentina?", "acceptedAnswer": { "@type": "Answer", "text": "Sí. Trabajo con marcas argentinas y de toda LATAM desde Buenos Aires." } }
     ]
   }
   </script>
@@ -1169,15 +1341,14 @@
 
 <!-- NAV -->
 <nav id="mainNav">
-  <a href="/" class="nav-logo">Gaby<span>SEO</span></a>
+  <a href="index.html" class="nav-logo">Gaby<em>SEO</em></a>
   <div class="nav-links">
     <a href="#sobre">Sobre mí</a>
     <a href="#caso">Caso de éxito</a>
     <a href="#eeat">EEAT</a>
     <a href="#precios">Precios</a>
-    <a href="/auditoria-seo">Auditoría SEO</a>
-    <a href="/seo-checklist">SEO Checklist</a>
-    <a href="#contacto" class="nav-cta">Agenda tu auditoría</a>
+    <a href="seo-checklist.html">Checklist</a>
+    <a href="#contacto" class="nav-cta">Cuéntame tu proyecto</a>
   </div>
   <button class="nav-burger" id="burger" aria-label="Menú">
     <span></span><span></span><span></span>
@@ -1190,182 +1361,246 @@
   <a href="#caso"          onclick="closeMenu()">Caso de éxito</a>
   <a href="#eeat"          onclick="closeMenu()">EEAT</a>
   <a href="#precios"       onclick="closeMenu()">Precios</a>
-  <a href="/auditoria-seo" onclick="closeMenu()">Auditoría SEO</a>
-  <a href="/seo-checklist" onclick="closeMenu()">SEO Checklist</a>
-  <a href="#contacto" class="nav-cta" onclick="closeMenu()">Agenda tu auditoría</a>
+  <a href="seo-checklist.html" onclick="closeMenu()">SEO Checklist</a>
+  <a href="#contacto" class="nav-cta" onclick="closeMenu()">Cuéntame tu proyecto</a>
 </div>
 
 <main>
 
 <!-- HERO -->
-<section class="hero">
-  <p class="hero-eyebrow">SEO Strategist · Salud &amp; Wellness · LATAM</p>
-  <h1>Auditoría SEO y consultoría para marcas <span class="hl">que quieren escalar.</span></h1>
-  <p class="hero-sub">Especialista en posicionamiento orgánico para marcas de salud, wellness y beauty. Auditoría, estrategia y ejecución desde cero.</p>
-  <div class="hero-btns">
-    <a href="#contacto" class="btn-rust">Agenda tu auditoría</a>
-    <a href="#caso" class="btn-ghost">Ver casos de éxito →</a>
+<section class="hero cursor-host" id="hero">
+  <div class="bloom-bg">
+    <div class="bloom lg hero-bloom-1"></div>
+    <div class="bloom lg hero-bloom-2"></div>
+    <div class="bloom lg hero-bloom-3"></div>
+  </div>
+  <div class="cursor-glow" id="heroGlow"></div>
+
+  <div class="hero-sparkles" aria-hidden="true">
+    <svg width="44" height="44" viewBox="0 0 24 24" fill="none">
+      <path d="M12 2v8M12 14v8M2 12h8M14 12h8" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+      <circle cx="12" cy="12" r="1.5" fill="currentColor"/>
+    </svg>
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" style="margin-top: 24px">
+      <path d="M12 3v6M12 15v6M3 12h6M15 12h6" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+    </svg>
+    <svg width="14" height="14" viewBox="0 0 12 12" fill="currentColor" style="margin-top: 60px">
+      <rect x="5" y="0" width="2" height="2"/>
+      <rect x="5" y="10" width="2" height="2"/>
+      <rect x="0" y="5" width="2" height="2"/>
+      <rect x="10" y="5" width="2" height="2"/>
+      <rect x="5" y="5" width="2" height="2"/>
+    </svg>
+  </div>
+
+  <div class="hero-inner">
+    <div class="hero-eyebrow">
+      <span class="dot"></span>
+      SEO · AEO · GEO · Visibilidad en LLMs
+    </div>
+
+    <h1>Consultoría SEO para <em>tu marca.</em></h1>
+
+    <p class="hero-sub">
+      Ayudo a marcas a aparecer en Google, YouTube, TikTok y en los LLMs. Estrategia de contenido y visibilidad donde realmente importa.
+    </p>
+
+    <div class="hero-btns">
+      <a href="#contacto" class="btn-primary">
+        Cuéntame tu proyecto
+        <span class="arrow">→</span>
+      </a>
+      <a href="#sobre" class="btn-glass">Cómo trabajo</a>
+    </div>
+
+    <div class="hero-meta">
+      <span><strong>5+</strong> años · SEO</span>
+      <span><strong>1M+</strong> impresiones orgánicas</span>
+      <span><strong>LATAM</strong> · Argentina · México · España · Venezuela</span>
+    </div>
   </div>
 </section>
 
 <!-- MARQUEE -->
-<div class="marquee-wrap">
+<div class="marquee-wrap" aria-hidden="true">
   <div class="marquee-track">
-    <span>SEO</span><span class="sep">·</span>
-    <span>AEO</span><span class="sep">·</span>
-    <span>GEO</span><span class="sep">·</span>
-    <span>Visibilidad en LLMs</span><span class="sep">·</span>
-    <span>Estrategia de contenido</span><span class="sep">·</span>
-    <span>SEO Técnico</span><span class="sep">·</span>
-    <span>Wellness &amp; Beauty</span><span class="sep">·</span>
-    <span>Consultoría mensual</span><span class="sep">·</span>
-    <span>ChatGPT</span><span class="sep">·</span>
-    <span>Google AI Overviews</span><span class="sep">·</span>
-    <span>EEAT</span><span class="sep">·</span>
-    <span>Linkbuilding</span><span class="sep">·</span>
-    <span>SEO</span><span class="sep">·</span>
-    <span>AEO</span><span class="sep">·</span>
-    <span>GEO</span><span class="sep">·</span>
-    <span>Visibilidad en LLMs</span><span class="sep">·</span>
-    <span>Estrategia de contenido</span><span class="sep">·</span>
-    <span>SEO Técnico</span><span class="sep">·</span>
-    <span>Wellness &amp; Beauty</span><span class="sep">·</span>
-    <span>Consultoría mensual</span><span class="sep">·</span>
-    <span>ChatGPT</span><span class="sep">·</span>
-    <span>Google AI Overviews</span><span class="sep">·</span>
-    <span>EEAT</span><span class="sep">·</span>
-    <span>Linkbuilding</span><span class="sep">·</span>
+    <span>SEO</span><span class="sep">✦</span>
+    <span>AEO</span><span class="sep">✦</span>
+    <span>GEO</span><span class="sep">✦</span>
+    <span>Visibilidad en LLMs</span><span class="sep">✦</span>
+    <span>Estrategia de contenido</span><span class="sep">✦</span>
+    <span>SEO Técnico</span><span class="sep">✦</span>
+    <span>Wellness &amp; Beauty</span><span class="sep">✦</span>
+    <span>Consultoría mensual</span><span class="sep">✦</span>
+    <span>ChatGPT</span><span class="sep">✦</span>
+    <span>Google AI Overviews</span><span class="sep">✦</span>
+    <span>EEAT</span><span class="sep">✦</span>
+    <span>Linkbuilding</span><span class="sep">✦</span>
+    <span>SEO</span><span class="sep">✦</span>
+    <span>AEO</span><span class="sep">✦</span>
+    <span>GEO</span><span class="sep">✦</span>
+    <span>Visibilidad en LLMs</span><span class="sep">✦</span>
+    <span>Estrategia de contenido</span><span class="sep">✦</span>
+    <span>SEO Técnico</span><span class="sep">✦</span>
+    <span>Wellness &amp; Beauty</span><span class="sep">✦</span>
+    <span>Consultoría mensual</span><span class="sep">✦</span>
+    <span>ChatGPT</span><span class="sep">✦</span>
+    <span>Google AI Overviews</span><span class="sep">✦</span>
+    <span>EEAT</span><span class="sep">✦</span>
+    <span>Linkbuilding</span><span class="sep">✦</span>
   </div>
 </div>
 
 <!-- SOBRE MÍ -->
 <section class="sobre" id="sobre">
+  <div class="bloom-bg">
+    <div class="bloom md sobre-bloom-1"></div>
+    <div class="bloom md sobre-bloom-2"></div>
+  </div>
+
   <div class="section-inner">
     <div class="sobre-layout">
       <div class="sobre-left fade-up">
-        <span class="section-label">Sobre mí</span>
-        <h2 class="section-title">Soy Gaby Gómez Almeida.<br><em>SEO Specialist.</em></h2>
-        <p>Venezolana en Buenos Aires con 5+ años escalando tráfico orgánico para marcas de salud, beauty y wellness en LATAM.</p>
-        <p>En Meaningful, trabajé en estrategia SEO end-to-end para +10 marcas, lideré equipos de 50+ freelancers, y generé 1M+ impresiones orgánicas. También hice SEO estratégico para proyectos en España (hair care).</p>
-        <p>Ofrezco mis servicios como consultora independiente: auditoría + estrategia + ejecución para startups y marcas pequeñas que necesitan crecer sin presupuesto de agencia grande.</p>
-        <p>También enseño SEO en Coderhouse.</p>
+        <span class="label">Sobre mí</span>
+        <h2 class="section-title">Soy Gaby Gómez Almeida.<br><em>Especialista en SEO.</em></h2>
+        <p>Venezolana en Buenos Aires, apasionada por el SEO y convencida de que cualquier marca puede ser encontrada si construimos bien sus bases.</p>
+        <p>Trabajo en estrategias de contenido SEO, AEO y GEO para mejorar tu posicionamiento en Google, en los buscadores de IA y en todos los espacios donde tu audiencia está buscando respuestas.</p>
+        <p>También doy clases de SEO en Coderhouse, porque me encanta que más personas entiendan cómo funciona todo esto.</p>
         <div class="sobre-links">
-          <a href="#contacto" class="btn-rust">Trabajemos juntxs</a>
-          <a href="https://www.linkedin.com/in/gabrielagomezalmeida/" target="_blank" class="btn-outline">LinkedIn</a>
+          <a href="#contacto" class="btn-primary">Trabajemos juntxs <span class="arrow">→</span></a>
+          <a href="https://www.linkedin.com/in/gabrielagomezalmeida/" target="_blank" rel="noopener" class="btn-outline">LinkedIn ↗</a>
         </div>
       </div>
+
       <div class="sobre-right fade-up delay-2">
-        <div class="sobre-card">
-          <div class="sobre-foto-wrap">
-            <img src="gaby-gomez-seo.png" alt="Gabriela Gómez Almeida, consultora SEO especialista en salud, wellness y beauty para marcas en LATAM" class="sobre-foto" />
-          </div>
-          <div class="stats-grid">
-            <div class="stat-box"><strong>5+</strong><span>años de experiencia</span></div>
-            <div class="stat-box"><strong>1M+</strong><span>impresiones orgánicas</span></div>
-            <div class="stat-box"><strong>50+</strong><span>artículos optimizados/mes</span></div>
-            <div class="stat-box pink-bg"><strong>3+</strong><span>case studies verificables</span></div>
-          </div>
+        <div class="stats-grid">
+          <div class="stat-tile"><strong>5+</strong><span>años de experiencia</span></div>
+          <div class="stat-tile"><strong>1M+</strong><span>impresiones orgánicas</span></div>
+          <div class="stat-tile"><strong>50+</strong><span>artículos optimizados / mes</span></div>
+          <div class="stat-tile"><strong>10+</strong><span>marcas en LATAM &amp; España</span></div>
+        </div>
+
+        <p class="clientes-label">Marcas donde hice experiencia</p>
+        <div class="clientes-list">
+          <span class="cliente-tag">Platzi</span>
+          <span class="cliente-tag">IPSY</span>
+          <span class="cliente-tag">Conekta</span>
+          <span class="cliente-tag">Guidde</span>
+          <span class="cliente-tag">Dentalia</span>
+          <span class="cliente-tag">Nutriwhite</span>
+          <span class="cliente-tag">Sanarai</span>
+          <span class="cliente-tag">Sofía</span>
+          <span class="cliente-tag">Síclo</span>
+          <span class="cliente-tag">Luuna</span>
+          <span class="cliente-tag">Capilea</span>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- CASOS DE ÉXITO -->
+<!-- CASO DE ÉXITO -->
 <section class="caso" id="caso">
+  <div class="bloom-bg">
+    <div class="bloom lg caso-bloom-1"></div>
+    <div class="bloom lg caso-bloom-2"></div>
+    <div class="bloom md caso-bloom-3"></div>
+  </div>
+
   <div class="section-inner">
-    <span class="section-label">Casos de éxito</span>
-    <h2 class="section-title fade-up">Resultados reales. <em>Números verificables.</em></h2>
-    <div class="caso-grid">
+    <span class="label">Resultado real</span>
+    <h2 class="section-title fade-up">De 15K a 61K impresiones <em>en dos meses.</em></h2>
+    <p class="section-sub fade-up delay-1">Una marca de skincare infantil cuyo blog no estaba apuntado a búsquedas de negocio. Se identificaron los pilares correctos y se publicó contenido sobre ellos.</p>
 
-      <div class="caso-card fade-up delay-1">
-        <div class="caso-card-header">
-          <span class="caso-tag">Salud Mental</span>
-          <span class="caso-duration">6 meses · Auditoría + estrategia de contenido</span>
-        </div>
-        <h3>Posicionamiento en salud mental</h3>
-        <p class="caso-desc-text">Una marca de contenido de psicología buscaba aparecer en "psicólogo", "terapia", "ansiedad".</p>
-        <div class="caso-chart">
-          <div class="caso-chart-row">
-            <span class="caso-chart-label">Antes</span>
-            <div class="caso-chart-bar before" style="width:38%">Base</div>
+    <div class="caso-layout fade-up delay-2">
+      <div>
+        <div class="caso-chart-card">
+          <div class="chart-head">
+            <span class="chart-title">GSC · Impresiones orgánicas</span>
+            <span class="chart-delta">+297%</span>
           </div>
-          <div class="caso-chart-row">
-            <span class="caso-chart-label">6 meses</span>
-            <div class="caso-chart-bar after" style="width:100%">+165%</div>
+          <svg class="chart-svg" id="casoChart" viewBox="0 0 400 180" preserveAspectRatio="none" aria-label="Crecimiento de impresiones orgánicas de 15.5K a 61.7K">
+            <defs>
+              <linearGradient id="chartGrad" x1="0" y1="0" x2="1" y2="0">
+                <stop offset="0"  stop-color="#9CC0EE"/>
+                <stop offset="0.5" stop-color="#C278D4"/>
+                <stop offset="1"  stop-color="#F4A07A"/>
+              </linearGradient>
+              <linearGradient id="chartFill" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#C278D4" stop-opacity="0.35"/>
+                <stop offset="1" stop-color="#C278D4" stop-opacity="0"/>
+              </linearGradient>
+            </defs>
+            <line class="grid-line" x1="0" y1="30" x2="400" y2="30"/>
+            <line class="grid-line" x1="0" y1="80" x2="400" y2="80"/>
+            <line class="grid-line" x1="0" y1="130" x2="400" y2="130"/>
+            <text class="axis-text" x="4" y="24">60K</text>
+            <text class="axis-text" x="4" y="74">35K</text>
+            <text class="axis-text" x="4" y="124">15K</text>
+            <text class="axis-text" x="30"  y="175">M1</text>
+            <text class="axis-text" x="125" y="175">M2</text>
+            <text class="axis-text" x="225" y="175">M3</text>
+            <text class="axis-text" x="345" y="175">HOY</text>
+            <path class="chart-fill" d="M30,135 C70,132 100,128 130,118 C170,108 200,92 235,68 C275,48 320,32 370,22 L370,160 L30,160 Z"/>
+            <path class="chart-path" d="M30,135 C70,132 100,128 130,118 C170,108 200,92 235,68 C275,48 320,32 370,22"/>
+            <g class="dots">
+              <circle class="chart-dot" cx="30"  cy="135" r="4"/>
+              <circle class="chart-dot" cx="130" cy="118" r="4"/>
+              <circle class="chart-dot" cx="235" cy="68"  r="4"/>
+              <circle class="chart-pulse"   cx="370" cy="22"  r="5"/>
+              <circle class="chart-dot" cx="370" cy="22"  r="5"/>
+            </g>
+          </svg>
+        </div>
+
+        <div class="caso-metrics">
+          <div class="caso-metric">
+            <strong>+297%</strong>
+            <span>impresiones orgánicas</span>
+            <small>de 15.5K a 61.7K en 3 meses</small>
+          </div>
+          <div class="caso-metric highlight">
+            <strong>+319%</strong>
+            <span>clicks orgánicos</span>
+            <small>de 103 a 432 en el mismo período</small>
+          </div>
+          <div class="caso-metric">
+            <strong>6.1</strong>
+            <span>posición promedio</span>
+            <small>desde 8.1 — mejora de 2 posiciones</small>
           </div>
         </div>
-        <p class="caso-what">Arquitectura temática, clustering de keywords por intención, contenido optimizado, link building. Keywords como "terapia", "psicología", "salud mental" en Top 10.</p>
       </div>
-
-      <div class="caso-card fade-up delay-2">
-        <div class="caso-card-header">
-          <span class="caso-tag">Hair Health</span>
-          <span class="caso-duration">4 meses + retainer · Multi-país</span>
-        </div>
-        <h3>De 0 a 1.29M impresiones en año 1</h3>
-        <p class="caso-desc-text">Lanzamiento SEO desde cero en nicho de hair health/transplants en España. Sin contenido SEO previo.</p>
-        <div class="caso-chart">
-          <div class="caso-chart-row">
-            <span class="caso-chart-label">Año 1</span>
-            <div class="caso-chart-bar before" style="width:58%">1.29M imp · 306K clicks</div>
-          </div>
-          <div class="caso-chart-row">
-            <span class="caso-chart-label">Año 2</span>
-            <div class="caso-chart-bar after" style="width:100%">2.22M imp · +72%</div>
-          </div>
-        </div>
-        <p class="caso-what">Arquitectura de URL, keyword strategy, contenido desde cero optimizado para search intent, implementación técnica SEO. Hoy marca referente en España.</p>
+      <div class="caso-desc">
+        <p>Marca de skincare infantil en Shopify. El blog ya existía pero las publicaciones no estaban apuntadas a las búsquedas que generan negocio.</p>
+        <p>En dos meses se identificaron los pilares temáticos por ingrediente y tipo de piel, se mapearon las <em>money keywords</em> de la categoría y se publicaron <strong>más de 10 artículos</strong> nuevos sobre esos temas, con optimización on-page e interlinking. Los números los muestra Google Search Console.</p>
+        <a href="#contacto" class="btn-primary" style="margin-top:1.5rem;">Quiero resultados así <span class="arrow">→</span></a>
       </div>
-
-      <div class="caso-card fade-up delay-3">
-        <div class="caso-card-header">
-          <span class="caso-tag">Skincare Infantil</span>
-          <span class="caso-duration">3 meses · Auditoría + optimización on-page</span>
-        </div>
-        <h3>De 15K a 61K impresiones</h3>
-        <p class="caso-desc-text">Creación de blogs de contenido pensando en las money keywords de la marca. Para aparecer en top 3 de sus principales keywords.</p>
-        <div class="caso-chart">
-          <div class="caso-chart-row">
-            <span class="caso-chart-label">Antes</span>
-            <div class="caso-chart-bar before" style="width:25%">15K imp</div>
-          </div>
-          <div class="caso-chart-row">
-            <span class="caso-chart-label">3 meses</span>
-            <div class="caso-chart-bar after" style="width:100%">61K imp · +297%</div>
-          </div>
-        </div>
-        <p class="caso-what">Arquitectura de contenido, optimización on-page, interlinking estratégico. +319% clicks. Posición promedio: 8.1 → 6.1.</p>
-      </div>
-
-    </div>
-    <div style="text-align:center;margin-top:3rem;">
-      <a href="#contacto" class="btn-rust">Quiero resultados así →</a>
     </div>
   </div>
 </section>
 
-<!-- QUÉ LOGRAMOS -->
+<!-- LOGROS -->
 <section class="logros" id="logros">
   <div class="section-inner">
-    <span class="section-label">Lo que logramos juntas</span>
-    <h2 class="section-title fade-up">Visibilidad más allá de tu nombre.</h2>
+    <span class="label">Lo que logramos juntas</span>
+    <h2 class="section-title fade-up">Visibilidad más allá de <em>tu nombre.</em></h2>
     <p class="section-sub fade-up delay-1">Que te encuentren por el problema que resuelves. Antes de que sepan que existes.</p>
     <div class="logros-grid">
       <div class="logro-card fade-up delay-1">
-        <div class="logro-num">01</div>
-        <h3>Aparecer en búsquedas donde tu cliente está</h3>
-        <p>Identificamos las keywords que busca tu audiencia (informacionales, comparativas, de descubrimiento) y te posicionamos en Top 10.</p>
+        <div class="logro-num">01 · Alcance</div>
+        <h3>Llegar a personas que todavía no te conocían</h3>
+        <p>Se identifican las palabras clave que busca tu audiencia y se posiciona el sitio en búsquedas informacionales, comparativas y de descubrimiento. Nuevo tráfico, nuevas personas.</p>
       </div>
       <div class="logro-card fade-up delay-2">
-        <div class="logro-num">02</div>
-        <h3>Más tráfico = más clientes</h3>
-        <p>Sin gastar en publicidad. SEO genera tráfico sostenible que se acumula con el tiempo. A diferencia de ads, el costo por visita baja cada mes.</p>
+        <div class="logro-num">02 · IA</div>
+        <h3>Que los LLMs reconozcan y recomienden tu marca</h3>
+        <p>ChatGPT, Perplexity, Gemini. Se trabaja para que tu marca sea citada y recomendada por la IA cuando alguien pregunta sobre tu industria.</p>
       </div>
       <div class="logro-card fade-up delay-3">
-        <div class="logro-num">03</div>
-        <h3>Ser recomendado por autoridades en tu nicho</h3>
-        <p>Trabajamos en autoridad de dominio, menciones y que bloguers, influencers y AI (ChatGPT, Perplexity) te reconozcan.</p>
+        <div class="logro-num">03 · Omnipresencia</div>
+        <h3>Ocupar todos los espacios que tu marca puede ocupar</h3>
+        <p>Posición cero, PAAs, Google Discover, imágenes, videos, foros. Que estés en todos lados cuando alguien busca lo que tú ofreces.</p>
       </div>
     </div>
   </div>
@@ -1374,31 +1609,31 @@
 <!-- TESTIMONIOS -->
 <section class="testimonios">
   <div class="section-inner">
-    <span class="section-label">Lo que dicen de mí</span>
-    <h2 class="section-title fade-up">Quienes trabajaron conmigo.</h2>
-    <p class="section-sub fade-up delay-1">Reseñas reales de LinkedIn.</p>
+    <span class="label">Lo que dicen de mí</span>
+    <h2 class="section-title fade-up">Quienes trabajaron <em>conmigo.</em></h2>
+    <p class="section-sub fade-up delay-1">Reseñas reales de LinkedIn de colegas y supervisoras.</p>
     <div class="testimonios-grid">
       <div class="testimonio-card fade-up delay-1">
-        <p class="testimonio-texto">Gaby es una profesional con un dominio profundo del SEO, que entiende el ecosistema de contenidos de principio a fin. Está siempre atenta a las actualizaciones, a explorar nuevas herramientas y a encontrar formas de optimizar procesos. Lo que más destaco de ella es su curiosidad, su empatía y su espíritu colaborativo.</p>
+        <p class="testimonio-texto">Gaby es una profesional con un dominio profundo del SEO, que entiende el ecosistema de contenidos de principio a fin. Lo que más destaco de ella es su curiosidad, su empatía y su espíritu colaborativo.</p>
         <div>
           <p class="testimonio-nombre">Sonia Zamora</p>
-          <p class="testimonio-cargo">SEO Manager | Organic Growth Strategist | GEO & AI Search</p>
+          <p class="testimonio-cargo">SEO Manager · Organic Growth Strategist · GEO &amp; AI Search</p>
           <p class="testimonio-rel">Trabajaron en equipos distintos · Meaningful</p>
         </div>
       </div>
       <div class="testimonio-card fade-up delay-2">
-        <p class="testimonio-texto">Gabriela se destaca por su iniciativa, creatividad y la capacidad de llevar adelante sus ideas con enfoque y serenidad. Es una profesional que combina muy bien el pensamiento innovador con una actitud positiva y colaborativa, lo que contribuye significativamente al buen clima de trabajo.</p>
+        <p class="testimonio-texto">Gabriela se destaca por su iniciativa, creatividad y la capacidad de llevar adelante sus ideas con enfoque y serenidad. Combina muy bien el pensamiento innovador con una actitud positiva y colaborativa.</p>
         <div>
           <p class="testimonio-nombre">Itxara Gámez</p>
-          <p class="testimonio-cargo">SEO Specialist | Optimización On-Page | SEO Copywriter</p>
+          <p class="testimonio-cargo">SEO Specialist · On-Page · SEO Copywriter</p>
           <p class="testimonio-rel">Supervisora directa · 2025</p>
         </div>
       </div>
       <div class="testimonio-card fade-up delay-3">
-        <p class="testimonio-texto">Gabriela es una excelente compañera de trabajo, siempre dispuesta a dar más y ayudar a los que estén a su alrededor. Busca ver el lado positivo a cada situación y recibe nuevos retos con la mejor actitud. No podría recomendarla más.</p>
+        <p class="testimonio-texto">Gabriela es una excelente compañera de trabajo, siempre dispuesta a dar más y ayudar a los que estén a su alrededor. Recibe nuevos retos con la mejor actitud. No podría recomendarla más.</p>
         <div>
           <p class="testimonio-nombre">Mariana Karina García Palmero</p>
-          <p class="testimonio-cargo">Senior Learning & Development Specialist</p>
+          <p class="testimonio-cargo">Senior Learning &amp; Development Specialist</p>
           <p class="testimonio-rel">Mismo equipo · proyecto exigente</p>
         </div>
       </div>
@@ -1406,15 +1641,15 @@
   </div>
 </section>
 
-<!-- MÁS ALLÁ DE GOOGLE — pink section -->
+<!-- MÁS ALLÁ DE GOOGLE -->
 <section class="masalla">
   <div class="section-inner">
     <div class="masalla-inner">
       <div class="fade-up">
-        <span class="section-label">Visión multicanal</span>
-        <h2 class="section-title">SEO + AEO + Visibilidad <em>donde importa.</em></h2>
-        <p>No solo apareces en Google. Hoy tu cliente también busca en YouTube y TikTok (video search), ChatGPT y Perplexity (AI search) y Google AI Overviews (respuestas en SERP).</p>
-        <p>Estrategia que abarca todos estos espacios. Un cliente que te encuentra en Google Search también te encuentra cuando pregunta a ChatGPT.</p>
+        <span class="label">Visión multicanal</span>
+        <h2 class="section-title">Presencia donde <em>importa.</em></h2>
+        <p>Tu cliente ideal puede estar en YouTube, TikTok, Reddit, Quora o Discord. Y cada vez más, le pregunta directamente a ChatGPT o Perplexity.</p>
+        <p>Se construye tu presencia en todos esos espacios. Desde la auditoría SEO inicial hasta la estrategia multicanal: para que cuando alguien tenga el problema que tú resuelves, te encuentre.</p>
       </div>
       <div class="platforms-wrap fade-up delay-2">
         <div class="platform-pill">Google</div>
@@ -1435,7 +1670,7 @@
 <!-- EEAT -->
 <section class="eeat" id="eeat">
   <div class="section-inner">
-    <span class="section-label">Framework de trabajo</span>
+    <span class="label">Framework de trabajo</span>
     <h2 class="section-title fade-up">Las bases que Google valora. <em>Y los LLMs también.</em></h2>
     <p class="section-sub fade-up delay-1">Todo lo que hacemos está diseñado alrededor del framework EEAT. Cada letra tiene un impacto concreto en tu visibilidad.</p>
     <div class="eeat-grid">
@@ -1446,7 +1681,7 @@
         </div>
         <div class="eeat-body">
           <p><strong>Qué es:</strong> Google valora que quien crea el contenido haya vivido la experiencia de primera mano.</p>
-          <p><strong>Qué hacemos:</strong> Construimos contenido que refleja tu experiencia real: casos de éxito, aprendizajes, perspectiva propia.</p>
+          <p><strong>Qué se hace:</strong> Contenido que refleja tu experiencia real: casos, aprendizajes, perspectiva propia.</p>
         </div>
       </div>
       <div class="eeat-card fade-up delay-2">
@@ -1456,7 +1691,7 @@
         </div>
         <div class="eeat-body">
           <p><strong>Qué es:</strong> El nivel de dominio del tema que demuestras en tu contenido.</p>
-          <p><strong>Qué hacemos:</strong> Desarrollamos pilares temáticos y contenido profundo que demuestre que sabes de lo que hablas.</p>
+          <p><strong>Qué se hace:</strong> Se desarrollan pilares temáticos y contenido profundo que demuestre que sabes de lo que hablas.</p>
         </div>
       </div>
       <div class="eeat-card fade-up delay-2">
@@ -1466,7 +1701,7 @@
         </div>
         <div class="eeat-body">
           <p><strong>Qué es:</strong> La percepción de autoridad que tienen otras fuentes sobre ti.</p>
-          <p><strong>Qué hacemos:</strong> Trabajamos link building, menciones en medios y presencia en comunidades.</p>
+          <p><strong>Qué se hace:</strong> Se trabaja link building, menciones en medios y presencia en comunidades.</p>
         </div>
       </div>
       <div class="eeat-card fade-up delay-3">
@@ -1476,13 +1711,29 @@
         </div>
         <div class="eeat-body">
           <p><strong>Qué es:</strong> Qué tan confiable parece tu sitio para Google y para las personas.</p>
-          <p><strong>Qué hacemos:</strong> Optimizamos estructura, datos de contacto, reviews y todo lo que genera confianza.</p>
+          <p><strong>Qué se hace:</strong> Se optimiza estructura, datos de contacto, reviews y todo lo que genera confianza.</p>
         </div>
       </div>
     </div>
-    <div class="fade-up" style="margin-top:3rem;background:#fff;border:1.5px solid rgba(15,15,15,0.08);border-left:4px solid var(--wisteria);border-radius:16px;padding:1.75rem 2rem;max-width:680px;">
-      <h3 style="font-size:1rem;font-weight:700;color:var(--onyx);margin-bottom:0.75rem;">¿Por qué EEAT importa para salud?</h3>
-      <p style="font-size:0.92rem;color:rgba(15,15,15,0.72);line-height:1.8;">Google prioriza EEAT en nichos de salud (nicho YMYL). Por eso nuestro framework está diseñado específicamente para que marcas de salud y wellness construyan autoridad real.</p>
+  </div>
+</section>
+
+<!-- CTA BAND — SEO CHECKLIST -->
+<section class="cta-band">
+  <div class="cta-band-inner">
+    <div class="fade-up">
+      <span class="cta-band-eyebrow">Recurso gratis</span>
+      <h2>Empieza por una base sólida con la <em>SEO Checklist.</em></h2>
+      <p>Una guía práctica y accionable para revisar el SEO de tu sitio antes de invertir en estrategia. Lo que importa, ordenado por prioridad.</p>
+      <a href="seo-checklist.html" class="btn-primary">Ver la SEO Checklist <span class="arrow">→</span></a>
+    </div>
+    <div class="cta-band-side fade-up delay-2">
+      <ul>
+        <li>Estructura técnica e indexación</li>
+        <li>On-page y arquitectura de contenido</li>
+        <li>EEAT y autoridad</li>
+        <li>Preparación para LLMs</li>
+      </ul>
     </div>
   </div>
 </section>
@@ -1490,36 +1741,22 @@
 <!-- PRECIOS -->
 <section class="precios" id="precios">
   <div class="section-inner">
-    <span class="section-label">Servicios y precios</span>
-    <h2 class="section-title fade-up">Inversión clara. <em>Resultados medibles.</em></h2>
-    <p class="section-sub fade-up delay-1">Servicios diseñados para marcas de salud y wellness que necesitan crecer de forma sostenida.</p>
-    <div class="fade-up" style="background:#F7F4FB;border-radius:16px;padding:1.5rem 2rem;max-width:640px;margin-bottom:2.5rem;border-left:4px solid var(--wisteria);">
-      <p style="font-size:0.93rem;color:rgba(15,15,15,0.75);line-height:1.85;"><strong style="color:var(--onyx);">¿Qué es una auditoría SEO?</strong> Es un diagnóstico completo de tu sitio: técnico, contenido, keywords y competencia. Sirve para entender por qué tu sitio no aparece donde debería, qué oportunidades estás perdiendo y qué hay que hacer primero. <a href="/auditoria-seo" style="color:var(--wisteria);font-weight:600;text-decoration:none;">Ver qué incluye →</a></p>
-    </div>
+    <span class="label">Servicios y precios</span>
+    <h2 class="section-title fade-up">A tu medida. <em>Desde $100.</em></h2>
+    <p class="section-sub fade-up delay-1">El plan se arma según lo que tu marca necesita. Empezamos con lo que tiene más impacto.</p>
     <div class="precios-grid">
       <div class="precio-card fade-up delay-1">
         <span class="precio-badge">Punto de entrada</span>
-        <h3>Auditoría SEO + Roadmap</h3>
-        <p>Diagnóstico profundo: análisis de tu sitio, competencia, oportunidades. Entregable: reporte detallado + roadmap estratégico de 12 meses. Duración: 3–4 semanas.</p>
-        <div class="precio-amount">$2,500–$3,500 <span>USD</span></div>
-        <a href="/auditoria-seo" style="display:inline-block;margin-top:1rem;color:var(--wisteria);font-size:0.82rem;font-weight:600;text-decoration:none;">Ver qué incluye →</a>
+        <h3>Auditoría SEO</h3>
+        <p>Diagnóstico profundo de tu sitio, competencia y oportunidades. Entregable: reporte y roadmap accionable.</p>
+        <div class="precio-amount">$100<span>USD</span></div>
       </div>
       <div class="precio-card destacado fade-up delay-2">
-        <span class="precio-badge">Más popular</span>
-        <h3>Auditoría + Acompañamiento 3 meses</h3>
-        <p>Auditoría inicial + ejecución: on-page, contenido nuevo/optimizado, interlinking. Para marcas que necesitan resultados rápidos. Duración: 3 meses dedicados.</p>
-        <div class="precio-amount">$5,000 <span>USD</span></div>
+        <span class="precio-badge">A medida</span>
+        <h3>¿Tienes algo específico?</h3>
+        <p>Cuéntame tu situación y armamos un plan que tenga sentido para tu marca.</p>
+        <a href="#contacto" class="btn-glass" style="margin-top:0.75rem; color: #fff; background: rgba(255,255,255,0.16); border-color: rgba(255,255,255,0.3);">Escribirme <span class="arrow">→</span></a>
       </div>
-      <div class="precio-card fade-up delay-3">
-        <span class="precio-badge">Crecimiento sostenido</span>
-        <h3>Retainer Mensual</h3>
-        <p>10–15 horas/mes. Optimización continua: análisis, estrategia, ejecución, reporting. Ideal para crecimiento sostenido. Mínimo 3 meses.</p>
-        <div class="precio-amount">$1,500–$2,000 <span>USD/mes</span></div>
-      </div>
-    </div>
-    <div style="text-align:center;margin-top:3rem;">
-      <p style="font-size:0.95rem;color:rgba(15,15,15,0.7);margin-bottom:1.25rem;">¿Tienes dudas sobre qué elegir?</p>
-      <a href="#contacto" class="btn-rust">Agenda una llamada de 30 min →</a>
     </div>
   </div>
 </section>
@@ -1527,61 +1764,50 @@
 <!-- CÓMO EMPEZAMOS -->
 <section class="como" id="contacto">
   <div class="section-inner">
-    <span class="section-label">El primer paso</span>
-    <h2 class="section-title fade-up">¿Cómo empezamos?</h2>
+    <span class="label">El primer paso</span>
+    <h2 class="section-title fade-up">¿Cómo <em>empezamos?</em></h2>
     <p class="section-sub fade-up delay-1">Elige la forma que mejor se adapte a tu momento.</p>
     <div class="como-grid">
       <div class="como-card fade-up delay-1">
-        <div class="como-num">01</div>
-        <h3>Agenda una llamada (30 min, gratis)</h3>
-        <p>Cuéntame sobre tu marca, tus objetivos, dónde estás ahora. Sin presión.</p>
+        <div class="como-num">01 · Diagnóstico</div>
+        <h3>Formulario</h3>
+        <p>Cuéntame sobre tu negocio y te armo una propuesta personalizada. El punto de partida más completo.</p>
       </div>
       <div class="como-card fade-up delay-2">
-        <div class="como-num">02</div>
-        <h3>Te envío una propuesta</h3>
-        <p>Personalizada. Basada en lo que realmente necesitas.</p>
+        <div class="como-num">02 · Auditoría</div>
+        <h3>SEO inicial</h3>
+        <p>Si ya tienes un sitio, puedo hacer un diagnóstico de dónde estás y qué oportunidades hay.</p>
       </div>
       <div class="como-card fade-up delay-3">
-        <div class="como-num">03</div>
-        <h3>Empezamos</h3>
-        <p>Si da para más, empezamos con auditoría o con el plan que acordemos.</p>
+        <div class="como-num">03 · Llamada</div>
+        <h3>30 minutos · sin compromiso</h3>
+        <p>Para proyectos más grandes o si prefieres hablar primero. Una llamada de discovery.</p>
       </div>
     </div>
 
     <div class="form-wrapper fade-up">
-      <h3>Agenda tu auditoría</h3>
+      <h3>Cuéntame tu proyecto</h3>
       <p>Completa el formulario y te respondo en menos de 48 horas.</p>
       <form action="https://formspree.io/f/maqankbq" method="POST">
         <div class="form-row">
           <div class="form-group"><label for="nombre">Tu nombre</label><input type="text" name="nombre" id="nombre" placeholder="Tu nombre" required /></div>
           <div class="form-group"><label for="email">Email</label><input type="email" name="email" id="email" placeholder="tu@email.com" required /></div>
         </div>
-        <div class="form-group"><label for="marca">Nombre de tu marca o proyecto</label><input type="text" name="marca" id="marca" placeholder="¿Cómo se llama tu negocio?" /></div>
+        <div class="form-group"><label for="marca">Marca o proyecto</label><input type="text" name="marca" id="marca" placeholder="¿Cómo se llama tu negocio?" /></div>
         <div class="form-group"><label for="rubro">Rubro / industria</label><input type="text" name="rubro" id="rubro" placeholder="Ej: wellness, beauty, nutrición, salud..." /></div>
-        <div class="form-group">
-          <label for="gsc">¿Tienes Google Search Console configurado?</label>
-          <select name="gsc" id="gsc">
-            <option value="">Selecciona</option>
-            <option>Sí, lo uso regularmente</option>
-            <option>Sí, pero no lo reviso</option>
-            <option>No</option>
-            <option>No sé qué es eso</option>
-          </select>
-        </div>
-        <div class="form-group"><label for="desafio">¿Cuál es tu mayor desafío de SEO ahora?</label><textarea name="desafio" id="desafio" placeholder="Cuéntame qué está pasando con tu sitio o qué quieres lograr..."></textarea></div>
+        <div class="form-group"><label for="desafio">¿Cuál es tu mayor desafío de visibilidad hoy?</label><textarea name="desafio" id="desafio" placeholder="Cuéntame qué está pasando con tu sitio o qué quieres lograr..."></textarea></div>
         <div class="form-row">
           <div class="form-group">
-            <label for="presupuesto">Presupuesto aproximado (USD/mes)</label>
+            <label for="presupuesto">Presupuesto (USD/mes)</label>
             <select name="presupuesto" id="presupuesto">
               <option value="">Selecciona un rango</option>
-              <option>Auditoría SEO ($2,500–$3,500)</option>
-              <option>Auditoría + Acompañamiento ($5,000)</option>
-              <option>Retainer mensual ($1,500–$2,000/mes)</option>
-              <option>Todavía explorando</option>
+              <option>Menos de $300</option><option>$300 a $600</option>
+              <option>$600 a $1200</option><option>Más de $1200</option>
+              <option>Todavía no lo sé</option>
             </select>
           </div>
           <div class="form-group">
-            <label for="cuando">¿Cuándo quieres arrancar?</label>
+            <label for="cuando">¿Cuándo arrancar?</label>
             <select name="cuando" id="cuando">
               <option value="">Selecciona</option>
               <option>Lo antes posible</option><option>En el próximo mes</option>
@@ -1589,7 +1815,7 @@
             </select>
           </div>
         </div>
-        <button type="submit" class="btn-form">Enviar y recibir propuesta personalizada</button>
+        <button type="submit" class="btn-form">Enviar y recibir propuesta personalizada →</button>
       </form>
     </div>
   </div>
@@ -1598,78 +1824,54 @@
 <!-- FAQs -->
 <section class="faqs" id="faqs">
   <div class="section-inner">
-    <span class="section-label">Preguntas frecuentes</span>
+    <span class="label">Preguntas frecuentes</span>
     <h2 class="section-title fade-up">Todo lo que quieres saber sobre <em>SEO.</em></h2>
-    <div class="faq-list">
+    <div class="faq-list" style="margin-top: 2.5rem;">
 
       <div class="faq-item fade-up delay-1">
         <div class="faq-q" onclick="toggleFaq(this)">
-          <span>¿Cuánto tiempo tarda en ver resultados?</span>
+          <span>¿Qué hace una consultora SEO?</span>
           <div class="faq-icon">+</div>
         </div>
         <div class="faq-a">
           <div class="faq-a-inner">
-            El SEO no es magia. Típicamente, en 3–4 meses ves cambios medibles. En 6 meses, resultados significativos. Depende de la competencia del nicho y cuánto contenido ya tengas.
-          </div>
-        </div>
-      </div>
-
-      <div class="faq-item fade-up delay-1">
-        <div class="faq-q" onclick="toggleFaq(this)">
-          <span>¿Funciona el SEO para salud y wellness?</span>
-          <div class="faq-icon">+</div>
-        </div>
-        <div class="faq-a">
-          <div class="faq-a-inner">
-            Sí. De hecho, Google prioriza EEAT en estos nichos. Significa que si demuestras experiencia real con tu contenido, Google te posiciona. Mis clientes en salud pasaron de 0 a 1M+ impresiones.
+            Una consultora SEO investiga las palabras clave que usa tu audiencia, optimiza el contenido de tu sitio, mejora la estructura técnica y construye autoridad de dominio mediante linkbuilding. El objetivo: que tu marca aparezca en los primeros resultados de Google y de los buscadores de IA cuando alguien busca lo que tú ofreces.
           </div>
         </div>
       </div>
 
       <div class="faq-item fade-up delay-2">
         <div class="faq-q" onclick="toggleFaq(this)">
-          <span>¿Necesito reescribir todo mi contenido?</span>
+          <span>¿Qué incluye una consultoría SEO?</span>
           <div class="faq-icon">+</div>
         </div>
         <div class="faq-a">
           <div class="faq-a-inner">
-            No siempre. A veces es optimizar lo que tienes. Otras, arquitectura + nuevo contenido. Depende de tu situación.
+            Depende del servicio, pero generalmente incluye: auditoría SEO del sitio, investigación de palabras clave, estrategia de contenido, optimización on-page (títulos, metas, headings), revisión técnica (velocidad, indexación, Core Web Vitals) y reportes periódicos de resultados. En mi caso, cada plan se arma según lo que la marca necesita.
           </div>
         </div>
       </div>
 
       <div class="faq-item fade-up delay-2">
         <div class="faq-q" onclick="toggleFaq(this)">
-          <span>¿Qué pasa si tengo 0 contenido?</span>
+          <span>¿Por qué invertir en posicionamiento SEO?</span>
           <div class="faq-icon">+</div>
         </div>
         <div class="faq-a">
           <div class="faq-a-inner">
-            Partimos desde cero. Hacemos arquitectura de URL, keyword strategy y creamos contenido optimizado desde el inicio. Proyectos así tardaron 4–6 meses en generar resultados significativos.
+            El SEO genera tráfico orgánico sostenible. A diferencia de la publicidad pagada, los resultados se acumulan con el tiempo y el costo por visita disminuye progresivamente. Una marca bien posicionada en Google recibe visitas constantes sin pagar por cada clic.
           </div>
         </div>
       </div>
 
       <div class="faq-item fade-up delay-3">
         <div class="faq-q" onclick="toggleFaq(this)">
-          <span>¿Cuál es tu diferencial?</span>
+          <span>¿Ofreces consultoría SEO en Argentina?</span>
           <div class="faq-icon">+</div>
         </div>
         <div class="faq-a">
           <div class="faq-a-inner">
-            5+ años en estrategia SEO end-to-end. Experiencia en salud, beauty, wellness, fintech. Equipos grandes y consultorías independientes. Y principalmente: honestidad. Te digo qué es posible y qué no.
-          </div>
-        </div>
-      </div>
-
-      <div class="faq-item fade-up delay-3">
-        <div class="faq-q" onclick="toggleFaq(this)">
-          <span>¿Trabajas por proyecto o retainer?</span>
-          <div class="faq-icon">+</div>
-        </div>
-        <div class="faq-a">
-          <div class="faq-a-inner">
-            Ambas. Prefiero retainers porque el SEO es sostenido, no puntual. Pero también hago proyectos puntuales (auditoría, estrategia). Mínimo 3 meses para ver impacto real.
+            Sí. Estoy radicada en Buenos Aires y trabajo con marcas argentinas y de toda LATAM. Entiendo el contexto local del mercado digital en Argentina y puedo ayudarte a posicionarte tanto en búsquedas locales como en mercados internacionales de habla hispana.
           </div>
         </div>
       </div>
@@ -1678,14 +1880,17 @@
   </div>
 </section>
 
-<!-- CTA FINAL — rust section -->
-<section class="cta-final">
-  <h2>Tu próximo cliente ya te está buscando.</h2>
-  <p>La pregunta es si te encuentra a vos o a tu competencia. Una auditoría SEO es el primer paso para saberlo.</p>
-  <div style="display:flex;gap:1rem;flex-wrap:wrap;justify-content:center;align-items:center;">
-    <a href="#contacto" class="btn-white">Agendar auditoría →</a>
-    <a href="https://www.linkedin.com/in/gabrielagomezalmeida/" target="_blank" class="btn-white" style="background:rgba(15,15,15,0.12);color:var(--onyx);">LinkedIn</a>
-    <a href="mailto:gabygomezalmeida@gmail.com" class="btn-white" style="background:rgba(15,15,15,0.12);color:var(--onyx);">Email</a>
+<!-- CTA FINAL -->
+<section class="cta-final cursor-host" id="ctaFinal">
+  <div class="cursor-glow" id="ctaGlow"></div>
+  <div class="cta-final-inner">
+    <svg class="cta-sparkle" width="42" height="42" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path d="M12 2v8M12 14v8M2 12h8M14 12h8" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+      <circle cx="12" cy="12" r="1.8" fill="currentColor"/>
+    </svg>
+    <h2>Tu marca merece <em>ser encontrada.</em></h2>
+    <p>Cuéntame tu proyecto y armamos un plan para aumentar tu visibilidad en Google, los LLMs y más allá.</p>
+    <a href="#contacto" class="btn-primary">Cuéntame tu proyecto <span class="arrow">→</span></a>
   </div>
 </section>
 
@@ -1693,114 +1898,21 @@
 
 <!-- FOOTER -->
 <footer>
-  <a href="/" class="footer-logo">Gaby<span>SEO</span></a>
-  <span class="footer-center">2026 · Gabriela Gómez Almeida · gabyseo.com · Buenos Aires, Argentina</span>
+  <a href="index.html" class="footer-logo">Gaby<em>SEO</em></a>
+  <span class="footer-center">2026 · Gabriela Gómez Almeida · gabyseo.com · Buenos Aires, AR</span>
   <div class="footer-links">
-    <a href="https://www.linkedin.com/in/gabrielagomezalmeida/" target="_blank">LinkedIn</a>
+    <a href="https://www.linkedin.com/in/gabrielagomezalmeida/" target="_blank" rel="noopener">LinkedIn ↗</a>
     <a href="mailto:gabygomezalmeida@gmail.com">Email</a>
-    <a href="https://gabymodoseo.substack.com/" target="_blank">Substack</a>
-    <span class="footer-privacy-toggle" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='block'?'none':'block'" style="cursor:pointer;color:rgba(255,255,255,0.65);font-size:0.85rem;text-decoration:underline;text-underline-offset:3px;">Privacidad</span>
-    <div class="footer-privacy-text" style="display:none;position:absolute;bottom:100%;right:6%;background:var(--onyx);border:1px solid rgba(255,255,255,0.1);border-radius:12px;padding:1.5rem;max-width:420px;font-size:0.78rem;color:rgba(255,255,255,0.7);line-height:1.7;margin-bottom:1rem;z-index:10;">
+    <a href="https://gabymodoseo.substack.com/" target="_blank" rel="noopener">Substack ↗</a>
+    <span class="footer-privacy-toggle" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='block'?'none':'block'">Privacidad</span>
+    <div class="footer-privacy-text">
       <strong style="color:#fff;display:block;margin-bottom:0.5rem;">Política de privacidad</strong>
       Responsable: Gabriela Gómez Almeida · gabyseo.com · Buenos Aires, Argentina. Los datos del formulario (nombre, email, proyecto) se usan exclusivamente para responder tu consulta y se procesan vía Formspree. No se ceden a terceros ni se usan para marketing sin consentimiento. Podés ejercer tus derechos de acceso, rectificación y supresión escribiendo a <a href="mailto:gabygomezalmeida@gmail.com" style="color:var(--wisteria);">gabygomezalmeida@gmail.com</a>. Ley 25.326 · DNPDP · Actualizado mayo 2026.
     </div>
   </div>
 </footer>
 
-<!-- ── CHAOS BUTTON ── -->
-<!-- ── BOTÓN NO TOCAR ── -->
-<button id="chaos-btn" title="No presionar">
-  <span class="cbw-stripes"></span>
-  <span class="cbw-icon">⚠</span>
-  <span class="cbw-main">No tocar</span>
-  <span class="cbw-sub">Versión alternativa</span>
-</button>
-
-<!-- ── CHAOS OVERLAY ── -->
-<div id="chaos-overlay" role="dialog" aria-modal="true" aria-label="Versión alternativa" aria-hidden="true">
-  <button id="chaos-close" aria-label="Salir">salir</button>
-
-  <!-- Centro -->
-  <div class="chaos-center">
-    <span class="cc-greeting">hola, soy gaby gómez</span>
-    <h1>Gaby<br/>Gómez.</h1>
-    <span class="cc-role">( y hago seo )</span>
-  </div>
-
-  <!-- quién soy — top-left -->
-  <div class="chaos-el mob" style="--x:6%;--y:9%;--r:-2deg;--dx:-18px;--dy:-14px"
-       data-panel="bio" tabindex="0" role="button" aria-label="Quién soy">
-    <div class="cc-nav">
-      <span class="cc-nav-dot"></span>
-      <span class="cc-nav-label">quién soy</span>
-      <span class="cc-nav-line"></span>
-    </div>
-  </div>
-
-  <!-- qué hago — top-right -->
-  <div class="chaos-el mob" style="--x:74%;--y:9%;--r:2deg;--dx:18px;--dy:-14px"
-       data-panel="quehago" tabindex="0" role="button" aria-label="Qué hago">
-    <div class="cc-nav sage">
-      <span class="cc-nav-dot"></span>
-      <span class="cc-nav-label">qué hago</span>
-      <span class="cc-nav-line"></span>
-    </div>
-  </div>
-
-  <!-- mi e-e-a-t — left -->
-  <div class="chaos-el mob" style="--x:4%;--y:50%;--r:-1deg;--dx:-22px;--dy:0"
-       data-panel="eeat" tabindex="0" role="button" aria-label="Mi E-E-A-T">
-    <div class="cc-nav blush">
-      <span class="cc-nav-dot"></span>
-      <span class="cc-nav-label">mi e·e·a·t</span>
-      <span class="cc-nav-line"></span>
-    </div>
-  </div>
-
-  <!-- preguntas — right -->
-  <div class="chaos-el mob" style="--x:77%;--y:50%;--r:1deg;--dx:22px;--dy:0"
-       data-panel="preguntas" tabindex="0" role="button" aria-label="Preguntas">
-    <div class="cc-nav">
-      <span class="cc-nav-dot"></span>
-      <span class="cc-nav-label">preguntas</span>
-      <span class="cc-nav-line"></span>
-    </div>
-  </div>
-
-  <!-- empecemos — bottom-left -->
-  <div class="chaos-el mob" style="--x:12%;--y:80%;--r:-2deg;--dx:-14px;--dy:16px"
-       data-panel="empecemos" tabindex="0" role="button" aria-label="Empecemos">
-    <div class="cc-nav sage">
-      <span class="cc-nav-dot"></span>
-      <span class="cc-nav-label">empecemos →</span>
-      <span class="cc-nav-line"></span>
-    </div>
-  </div>
-
-  <!-- casos — bottom-right -->
-  <div class="chaos-el mob" style="--x:68%;--y:80%;--r:2deg;--dx:14px;--dy:16px"
-       data-panel="casos" tabindex="0" role="button" aria-label="Casos">
-    <div class="cc-nav blush">
-      <span class="cc-nav-dot"></span>
-      <span class="cc-nav-label">casos reales</span>
-      <span class="cc-nav-line"></span>
-    </div>
-  </div>
-
-  <!-- Panel lateral -->
-  <aside id="chaos-panel" aria-label="Detalle">
-    <button id="chaos-panel-close" aria-label="Cerrar panel">✕</button>
-    <div id="chaos-panel-content"></div>
-  </aside>
-
-</div>
-
-<!-- Cursor chaos — fuera del overlay -->
-<div id="chaos-dot" aria-hidden="true"></div>
-<canvas id="chaos-canvas" aria-hidden="true"></canvas>
-
 <script>
-  // ── HAMBURGER MENU ──
   const burger = document.getElementById('burger');
   const mobileMenu = document.getElementById('mobileMenu');
   burger.addEventListener('click', () => {
@@ -1812,7 +1924,6 @@
     mobileMenu.classList.remove('open');
   }
 
-  // ── NAVBAR HIDE ON SCROLL ──
   let lastY = 0;
   window.addEventListener('scroll', () => {
     const nav = document.getElementById('mainNav');
@@ -1822,13 +1933,11 @@
     lastY = y;
   }, { passive: true });
 
-  // ── SCROLL FADE-UP ──
   const observer = new IntersectionObserver(entries => {
     entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
   }, { threshold: 0.12 });
   document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
 
-  // ── FAQ ACCORDION ──
   function toggleFaq(btn) {
     const item = btn.closest('.faq-item');
     const isOpen = item.classList.contains('open');
@@ -1836,222 +1945,49 @@
     if (!isOpen) item.classList.add('open');
   }
 
-  // ── CHAOS MODE ──
-  const chaosContent = {
-    bio: {
-      color: '#BF5A3A',
-      title: 'hola, soy Gaby.',
-      body: `
-        <p>Venezolana en Buenos Aires. 5+ años escalando tráfico orgánico para marcas de salud, beauty y wellness en LATAM.</p>
-        <p>En Meaningful, lideré equipos de 50+ freelancers y generé <strong>1M+ impresiones orgánicas</strong> para +10 marcas.</p>
-        <p>También hice SEO para proyectos en España (hair care) y enseño SEO en Coderhouse.</p>
-        <p>Hoy trabajo como consultora independiente: auditoría + estrategia + ejecución para marcas que quieren crecer sin presupuesto de agencia grande.</p>
-
-      `
-    },
-    quehago: {
-      color: '#7A9272',
-      title: 'qué hago.',
-      body: `
-        <p>SEO estratégico para marcas de <strong>salud, beauty y wellness</strong> que quieren ser encontradas en Google.</p>
-        <p>No solo técnica. Entiendo tu negocio, tu audiencia y tu competencia — y construyo desde ahí.</p>
-        <span class="p-label">mis servicios</span>
-        <p>— Auditoría SEO completa · desde $2,500 USD</p>
-        <p>— Estrategia + Ejecución end-to-end · $5,000 USD</p>
-        <p>— Retainer mensual · $1,500–$2,000/mes</p>
-
-      `
-    },
-    eeat: {
-      color: '#C9907E',
-      title: 'mi e·e·a·t.',
-      body: `
-        <p><strong>Experiencia.</strong> 5+ años haciendo SEO real: auditorías, estrategia de contenido, link building, SEO técnico. No teoría — resultados medibles.</p>
-        <p><strong>Expertise.</strong> Especialista en salud, beauty y wellness — nichos YMYL donde la confianza importa más que el volumen.</p>
-        <p><strong>Autoridad.</strong> Docente de SEO en Coderhouse. Exlíder de equipo SEO con +10 marcas simultáneas.</p>
-        <p><strong>Confianza.</strong> Trabajo con transparencia total: te explico qué hago, por qué y qué esperar.</p>
-
-      `
-    },
-    preguntas: {
-      color: '#BF5A3A',
-      title: 'preguntas.',
-      body: `
-        <p><strong>¿Cuánto tarda en verse resultados?</strong><br/>El SEO es inversión a mediano plazo. Primeros cambios: 60–90 días. Resultados sólidos: 4–6 meses.</p>
-        <p><strong>¿Trabajas con cualquier industria?</strong><br/>Me especializo en salud, beauty y wellness — donde tengo más expertise y resultados verificables.</p>
-        <p><strong>¿Haces todo tú sola?</strong><br/>Estrategia y auditoría, sí. Para contenido a escala cuento con una red de redactores especializados.</p>
-        <p><strong>¿Puedo ver casos de éxito?</strong><br/>Sí, todos verificables en el sitio.</p>
-
-      `
-    },
-    empecemos: {
-      color: '#7A9272',
-      title: 'empecemos.',
-      body: `
-        <p>Si tu marca de salud, beauty o wellness necesita crecer en Google, este es el lugar.</p>
-        <p>Agenda una llamada de 30 min sin costo. Vemos si hay fit y qué necesita tu sitio.</p>
-        <span class="p-label">inversión desde</span>
-        <span class="p-num">$2,500</span>
-        <p>USD · Auditoría SEO completa con hoja de ruta de 90 días.</p>
-
-      `
-    },
-    casos: {
-      color: '#C9907E',
-      title: 'casos reales.',
-      body: `
-        <span class="p-label">salud mental · 6 meses</span>
-        <span class="p-num">+165%</span>
-        <p>tráfico orgánico. Keywords como "terapia" y "psicología" en Top 10.</p>
-        <span class="p-label">hair health · españa · año 1</span>
-        <span class="p-num">1.29M</span>
-        <p>impresiones orgánicas · 306K clicks. Año 2: 2.22M impresiones.</p>
-        <span class="p-label">skincare infantil · 3 meses</span>
-        <span class="p-num">×4</span>
-        <p>De 15K a 61K impresiones. Top 3 en keywords de la marca.</p>
-
-      `
-    }
-  };
-
-  const chaosBtn          = document.getElementById('chaos-btn');
-  const chaosOverlay      = document.getElementById('chaos-overlay');
-  const chaosClose        = document.getElementById('chaos-close');
-  const chaosPanel        = document.getElementById('chaos-panel');
-  const chaosPanelClose   = document.getElementById('chaos-panel-close');
-  const chaosPanelContent = document.getElementById('chaos-panel-content');
-
-  function openChaos() {
-    chaosBtn.style.display = 'none';
-    document.body.classList.add('chaos-entering');          // página cae
-    setTimeout(() => {
-      document.body.classList.remove('chaos-entering');
-      chaosOverlay.classList.add('active', 'chaos-rising'); // chaos sube
-      chaosOverlay.setAttribute('aria-hidden', 'false');
-      document.body.style.overflow = 'hidden';
-      document.body.classList.add('chaos-active');
-      // quitar clase de animación cuando termina
-      chaosOverlay.addEventListener('animationend', () => {
-        chaosOverlay.classList.remove('chaos-rising');
-      }, { once: true });
-      startCursor();
-    }, 400);
-  }
-  function closeChaos() {
-    closePanel();
-    stopCursor();
-    chaosOverlay.classList.remove('active', 'chaos-rising');
-    chaosOverlay.setAttribute('aria-hidden', 'true');
-    document.body.style.overflow = '';
-    document.body.classList.remove('chaos-active');
-    chaosBtn.style.display = '';
-  }
-  function openPanel(id) {
-    const d = chaosContent[id];
-    if (!d) return;
-    chaosPanelContent.innerHTML = `
-      <h2>${d.title}</h2>
-      <div class="p-color-bar" style="background:${d.color}"></div>
-      ${d.body}
-    `;
-    chaosPanel.classList.add('open');
-  }
-  function closePanel() {
-    chaosPanel.classList.remove('open');
+  const rotatingWords = ['tu marca.', 'tu visibilidad.', 'tu contenido.', 'tu autoridad.'];
+  let wordIdx = 0;
+  const rotator = document.querySelector('.hero h1 em');
+  if (rotator) {
+    setInterval(() => {
+      rotator.classList.add('fade-out');
+      setTimeout(() => {
+        wordIdx = (wordIdx + 1) % rotatingWords.length;
+        rotator.textContent = rotatingWords[wordIdx];
+        rotator.classList.remove('fade-out');
+      }, 380);
+    }, 3600);
   }
 
-  chaosBtn.addEventListener('click', openChaos);
-  chaosClose.addEventListener('click', closeChaos);
-  chaosPanelClose.addEventListener('click', closePanel);
-
-  document.querySelectorAll('.chaos-el[data-panel]').forEach(el => {
-    el.addEventListener('click', () => openPanel(el.dataset.panel));
-    el.addEventListener('keydown', e => {
-      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openPanel(el.dataset.panel); }
+  function bindCursorGlow(hostSelector, glowId) {
+    const host = document.querySelector(hostSelector);
+    const glow = document.getElementById(glowId);
+    if (!host || !glow) return;
+    host.addEventListener('mousemove', (e) => {
+      const rect = host.getBoundingClientRect();
+      glow.style.left = (e.clientX - rect.left) + 'px';
+      glow.style.top  = (e.clientY - rect.top) + 'px';
     });
-  });
-
-  // Cerrar panel al hacer clic en el fondo
-  chaosOverlay.addEventListener('click', e => {
-    if (e.target === chaosOverlay) closePanel();
-  });
-
-  // Esc para cerrar
-  document.addEventListener('keydown', e => {
-    if (e.key === 'Escape') {
-      if (chaosPanel.classList.contains('open')) closePanel();
-      else if (chaosOverlay.classList.contains('active')) closeChaos();
-    }
-  });
-
-  // ── Cursor dot + canvas drawing ──
-  const chaosDot    = document.getElementById('chaos-dot');
-  const chaosCanvas = document.getElementById('chaos-canvas');
-  const ctx         = chaosCanvas.getContext('2d');
-  const FADE_MS     = 3200;
-  const pts         = [];
-  let lastMoveT     = 0;
-  let drawRaf       = null;
-  let isActive      = false;
-
-  function resizeCanvas() {
-    chaosCanvas.width  = window.innerWidth;
-    chaosCanvas.height = window.innerHeight;
   }
-  resizeCanvas();
-  window.addEventListener('resize', () => { if (isActive) resizeCanvas(); });
+  bindCursorGlow('.hero.cursor-host', 'heroGlow');
+  bindCursorGlow('.cta-final.cursor-host', 'ctaGlow');
 
-  // Activar/desactivar cursor desde openChaos / closeChaos
-  function startCursor() {
-    isActive = true;
-    pts.length = 0;
-    resizeCanvas();
-    if (!drawRaf) drawRaf = requestAnimationFrame(drawLoop);
-  }
-  function stopCursor() {
-    isActive = false;
-    pts.length = 0;
-    if (drawRaf) { cancelAnimationFrame(drawRaf); drawRaf = null; }
-    ctx.clearRect(0, 0, chaosCanvas.width, chaosCanvas.height);
-  }
-
-  window.addEventListener('mousemove', e => {
-    if (!isActive) return;
-    const now = Date.now();
-    // Mover puntito exactamente al cursor
-    chaosDot.style.left = e.clientX + 'px';
-    chaosDot.style.top  = e.clientY + 'px';
-    pts.push({ x: e.clientX, y: e.clientY, t: now, linked: (now - lastMoveT) < 80 });
-    lastMoveT = now;
-  });
-
-  function drawLoop() {
-    const now = Date.now();
-    ctx.clearRect(0, 0, chaosCanvas.width, chaosCanvas.height);
-    while (pts.length && now - pts[0].t > FADE_MS) pts.shift();
-
-    for (let i = 0; i < pts.length; i++) {
-      const p = pts[i];
-      const alpha = Math.pow(Math.max(0, 1 - (now - p.t) / FADE_MS), 1.6);
-      if (p.linked && i > 0) {
-        const q = pts[i - 1];
-        const qa = Math.pow(Math.max(0, 1 - (now - q.t) / FADE_MS), 1.6);
-        ctx.beginPath();
-        ctx.moveTo(q.x, q.y);
-        ctx.lineTo(p.x, p.y);
-        ctx.strokeStyle = `rgba(191,90,58,${Math.min(alpha, qa) * 0.55})`;
-        ctx.lineWidth = 2;
-        ctx.lineCap = 'round';
-        ctx.stroke();
-      }
-      ctx.beginPath();
-      ctx.arc(p.x, p.y, 2.2, 0, Math.PI * 2);
-      ctx.fillStyle = `rgba(191,90,58,${alpha * 0.85})`;
-      ctx.fill();
-    }
-    drawRaf = requestAnimationFrame(drawLoop);
+  const chart = document.getElementById('casoChart');
+  if (chart) {
+    const chartObs = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          chart.classList.add('animate');
+          const dots = chart.querySelectorAll('.chart-dot');
+          dots.forEach((d, i) => {
+            setTimeout(() => d.classList.add('show'), 600 + i * 380);
+          });
+          chartObs.unobserve(chart);
+        }
+      });
+    }, { threshold: 0.3 });
+    chartObs.observe(chart);
   }
 </script>
-
 </body>
 </html>
