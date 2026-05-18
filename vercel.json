@@ -1,3 +1,11 @@
 {
-  "cleanUrls": true
+  "cleanUrls": true,
+  "redirects": [
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "www.gabyseo.com" }],
+      "destination": "https://gabyseo.com/:path*",
+      "permanent": true
+    }
+  ]
 }
