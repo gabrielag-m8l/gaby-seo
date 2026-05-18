@@ -1,0 +1,988 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blog · Notas de SEO, AEO y GEO | GabySEO</title>
+  <meta name="description" content="Apuntes sobre SEO, AEO y GEO para marcas que quieren ser encontradas en Google, en los LLMs y más allá. Por Gabriela Gómez Almeida." />
+  <link rel="canonical" href="https://gabyseo.com/blog/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://gabyseo.com/blog/" />
+  <meta property="og:title" content="Blog · GabySEO" />
+  <meta property="og:description" content="Apuntes de SEO, AEO y GEO para marcas que quieren ser encontradas." />
+  <meta property="og:image" content="https://gabyseo.com/og-image.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --onyx:     #131015;
+      --ink:      #1a1620;
+      --cream:    #F6F1EA;
+      --paper:    #FAF6F0;
+
+      --peach:    #F4A07A;
+      --wisteria: #C278D4;
+      --lilac:    #D4C0ED;
+      --jordy:    #9CC0EE;
+      --lime:     #DDFF33;
+      --rose:     #F0A8C0;
+      --sage:     #C7DBC1;
+
+      --fg:        var(--onyx);
+      --fg-soft:   rgba(19,16,21,0.62);
+      --fg-faint:  rgba(19,16,21,0.42);
+      --line:      rgba(19,16,21,0.10);
+
+      --font-serif: 'Instrument Serif', 'Times New Roman', serif;
+      --font-sans:  'Geist', system-ui, -apple-system, sans-serif;
+      --font-mono:  'JetBrains Mono', 'IBM Plex Mono', monospace;
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font-sans);
+      color: var(--fg);
+      background: var(--paper);
+      line-height: 1.55;
+      overflow-x: hidden;
+      font-feature-settings: "ss01", "cv01", "cv11";
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── Grain ── */
+    body::before {
+      content: '';
+      position: fixed; inset: 0;
+      pointer-events: none; z-index: 9000;
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.55 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+      background-size: 240px 240px;
+      opacity: 0.22;
+      mix-blend-mode: multiply;
+    }
+
+    /* ── NAV (liquid glass pill, identical to site) ── */
+    nav#mainNav {
+      position: fixed; top: 18px; left: 50%; transform: translateX(-50%);
+      z-index: 100;
+      display: flex; align-items: center; gap: 0.4rem;
+      white-space: nowrap; flex-wrap: nowrap;
+      width: max-content;
+      background: rgba(255,255,255,0.22);
+      backdrop-filter: blur(28px) saturate(200%);
+      -webkit-backdrop-filter: blur(28px) saturate(200%);
+      border: 1px solid rgba(255,255,255,0.45);
+      box-shadow:
+        0 1px 0 rgba(255,255,255,0.85) inset,
+        0 -1px 0 rgba(19,16,21,0.06) inset,
+        0 -10px 24px -16px rgba(255,255,255,0.4) inset,
+        0 12px 40px -12px rgba(19,16,21,0.18);
+      border-radius: 100px;
+      padding: 6px 6px 6px 18px;
+      max-width: calc(100% - 24px);
+      transition: transform .3s ease, opacity .3s ease;
+    }
+    nav#mainNav.nav-hidden { transform: translateX(-50%) translateY(-130%); opacity: 0; }
+
+    .nav-logo {
+      font-family: var(--font-serif);
+      font-size: 1.15rem; font-weight: 400;
+      color: var(--onyx); text-decoration: none;
+      letter-spacing: -0.01em; padding-right: 0.5rem;
+      display: inline-flex; align-items: center; gap: 6px;
+    }
+    .nav-logo em { font-style: italic; color: var(--wisteria); }
+    .nav-logo::before { content: '✦'; font-size: 0.85em; color: var(--wisteria); transform: translateY(-2px); }
+
+    .nav-links { display: flex; gap: 0.15rem; align-items: center; }
+    .nav-links a {
+      text-decoration: none; color: var(--fg-soft);
+      font-size: 0.82rem; font-weight: 500;
+      padding: 0.5rem 0.85rem; border-radius: 100px;
+      white-space: nowrap; transition: color .15s, background .15s;
+    }
+    .nav-links a:hover { color: var(--fg); background: rgba(19,16,21,0.04); }
+    .nav-cta {
+      background: var(--onyx) !important; color: #FFFFFF !important;
+      padding: 0.6rem 1.15rem !important; border-radius: 100px;
+      font-weight: 500 !important; white-space: nowrap;
+      transition: background .2s !important;
+    }
+    .nav-cta:hover { background: var(--wisteria) !important; }
+    .nav-burger {
+      display: none; flex-direction: column; justify-content: center;
+      gap: 4px; width: 36px; height: 36px; cursor: pointer;
+      background: none; border: none; padding: 0; margin-left: 4px;
+    }
+    .nav-burger span {
+      display: block; height: 1.5px; width: 18px; margin: 0 auto;
+      background: var(--onyx); border-radius: 2px; transition: all .25s;
+    }
+    .nav-mobile {
+      position: fixed; top: 78px; left: 12px; right: 12px;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(28px) saturate(200%);
+      -webkit-backdrop-filter: blur(28px) saturate(200%);
+      border: 1px solid rgba(19,16,21,0.08);
+      border-radius: 24px; padding: 1.25rem;
+      box-shadow: 0 20px 50px -20px rgba(19,16,21,0.25);
+      z-index: 99; display: none; flex-direction: column; gap: 0.25rem;
+    }
+    .nav-mobile.is-open { display: flex; }
+    .nav-mobile a {
+      padding: 0.85rem 1rem; border-radius: 12px;
+      text-decoration: none; color: var(--fg); font-weight: 500; font-size: 0.95rem;
+    }
+    .nav-mobile a.nav-cta {
+      margin-top: 0.5rem; text-align: center;
+    }
+
+    /* ── Shared utilities ── */
+    .label {
+      display: inline-flex; align-items: center; gap: 0.55rem;
+      font-family: var(--font-mono);
+      font-size: 0.72rem; font-weight: 500;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--fg-soft);
+    }
+    .label::before {
+      content: '';
+      width: 8px; height: 8px; border-radius: 50%;
+      background: var(--wisteria);
+      box-shadow: 0 0 0 3px rgba(194,120,212,0.18);
+    }
+
+    .display {
+      font-family: var(--font-serif);
+      font-weight: 400;
+      letter-spacing: -0.015em;
+      line-height: 0.99;
+      text-wrap: balance;
+    }
+    .display em { font-style: italic; color: var(--wisteria); }
+
+    /* ── HERO ── */
+    .blog-header {
+      padding: 150px 6% 70px;
+      position: relative;
+    }
+    .header-inner {
+      max-width: 1180px;
+      margin: 0 auto;
+    }
+    .breadcrumb {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      font-family: var(--font-mono);
+      font-size: 0.7rem; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--fg-soft);
+      padding: 0.45rem 0.95rem; border-radius: 100px;
+      background: rgba(255,255,255,0.45);
+      border: 1px solid rgba(19,16,21,0.08);
+      backdrop-filter: blur(8px);
+      margin-bottom: 1.75rem;
+    }
+    .breadcrumb a { color: var(--fg-soft); text-decoration: none; }
+    .breadcrumb a:hover { color: var(--onyx); }
+    .breadcrumb .arrow { opacity: 0.4; }
+
+    h1.blog-title {
+      font-family: var(--font-serif);
+      font-weight: 400;
+      font-size: clamp(2.6rem, 6.5vw, 5.4rem);
+      line-height: 0.99;
+      letter-spacing: -0.02em;
+      max-width: 16ch;
+      margin-bottom: 1.5rem;
+      text-wrap: balance;
+    }
+    h1.blog-title em { font-style: italic; color: var(--wisteria); }
+
+    .blog-lede {
+      font-size: 1.15rem;
+      line-height: 1.6;
+      color: var(--fg-soft);
+      max-width: 56ch;
+      margin-bottom: 2.75rem;
+    }
+
+    /* ── Filter row: overlapping folder tabs ── */
+    .filters-wrap {
+      padding-top: 2.5rem;
+      border-top: 1px solid rgba(19,16,21,0.10);
+      display: flex; align-items: flex-end; justify-content: space-between;
+      flex-wrap: wrap; gap: 1rem;
+    }
+    .filters {
+      display: flex;
+      align-items: flex-end;
+      padding-left: 0.25rem;
+    }
+    .filter {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      font-family: var(--font-mono);
+      font-size: 0.74rem; font-weight: 600;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      padding: 0.85rem 2rem 1.05rem 1.4rem;
+      background: rgba(255,255,255,0.32);
+      backdrop-filter: blur(18px) saturate(180%);
+      -webkit-backdrop-filter: blur(18px) saturate(180%);
+      border: 1px solid rgba(255,255,255,0.55);
+      border-bottom: none;
+      color: var(--fg-soft);
+      cursor: pointer;
+      transition: all .25s ease;
+      margin-right: -22px;
+      /* file-folder diagonal cut on right */
+      clip-path: polygon(0 0, calc(100% - 24px) 0, 100% 100%, 0 100%);
+      box-shadow:
+        0 1px 0 rgba(255,255,255,0.7) inset,
+        0 -10px 22px -16px rgba(255,255,255,0.5) inset;
+      position: relative;
+    }
+    .filter:nth-child(1) { z-index: 5; }
+    .filter:nth-child(2) { z-index: 4; }
+    .filter:nth-child(3) { z-index: 3; }
+    .filter:nth-child(4) { z-index: 2; }
+    .filter:nth-child(5) { z-index: 1; }
+
+    .filter:hover:not([disabled]) {
+      color: var(--onyx);
+      background: rgba(255,255,255,0.55);
+      transform: translateY(-2px);
+    }
+    .filter.is-active {
+      background: var(--lime);
+      color: var(--onyx);
+      border-color: rgba(19,16,21,0.18);
+      z-index: 10;
+      transform: translateY(-4px);
+      padding-bottom: 1.25rem;
+    }
+    .filter[disabled] { cursor: not-allowed; opacity: 0.6; }
+    .filter .pronto {
+      font-size: 0.58rem;
+      padding: 2px 6px;
+      background: rgba(19,16,21,0.10);
+      border-radius: 100px;
+      letter-spacing: 0.08em;
+      text-transform: lowercase;
+      font-weight: 500;
+    }
+    .filters-count {
+      font-family: var(--font-mono);
+      font-size: 0.7rem; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--fg-faint);
+      padding-bottom: 0.5rem;
+    }
+
+    /* ── Archive section ── */
+    .archive {
+      padding: 30px 6% 80px;
+    }
+    .archive-inner {
+      max-width: 1180px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 1.75rem;
+    }
+
+    /* ── FOLDER component ── */
+    .folder {
+      --tone: var(--lilac);
+      --tone-glass: rgba(212,192,237,0.78);
+      position: relative;
+      margin-top: 1.25rem; /* room for the tab */
+      isolation: isolate;
+    }
+
+    /* Paper sheet that peeks out on hover (page about to slip out) */
+    .folder::before {
+      content: '';
+      position: absolute;
+      left: 6%; right: 6%;
+      top: 38px;
+      height: 70%;
+      background: #FFFEFB;
+      border-radius: 6px 6px 0 0;
+      box-shadow:
+        0 -1px 0 rgba(19,16,21,0.04) inset,
+        0 -10px 20px -10px rgba(19,16,21,0.10);
+      transform: translateY(6px);
+      opacity: 0;
+      transition: transform .45s cubic-bezier(.22,1.2,.36,1), opacity .25s ease;
+      z-index: 0;
+    }
+    .folder:hover::before {
+      opacity: 1;
+      transform: translateY(-26px);
+    }
+    /* A faint horizontal rule on the paper to suggest text inside */
+    .folder::after {
+      content: '';
+      position: absolute;
+      left: 12%; right: 22%;
+      top: 32px;
+      height: 1px;
+      background: rgba(19,16,21,0.10);
+      opacity: 0;
+      transition: opacity .35s ease .1s, transform .45s cubic-bezier(.22,1.2,.36,1);
+      transform: translateY(6px);
+      z-index: 0;
+    }
+    .folder:hover::after {
+      opacity: 1;
+      transform: translateY(-26px);
+    }
+
+    .folder-tab {
+      position: relative;
+      z-index: 2;
+      display: inline-flex;
+      align-items: center;
+      gap: 1rem;
+      background: var(--tone-glass);
+      backdrop-filter: blur(20px) saturate(180%);
+      -webkit-backdrop-filter: blur(20px) saturate(180%);
+      padding: 11px 46px 20px 26px;
+      margin-bottom: -10px;
+      margin-left: var(--tab-x, 0px);
+      border-radius: 14px 14px 0 0;
+      font-family: var(--font-mono);
+      font-size: 0.74rem; font-weight: 600;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--onyx);
+      /* file-folder diagonal cut on right */
+      clip-path: polygon(0 0, calc(100% - 24px) 0, 100% 100%, 0 100%);
+      box-shadow:
+        0 1px 0 rgba(255,255,255,0.7) inset;
+      transition: transform .35s cubic-bezier(.22,1.2,.36,1);
+    }
+    .folder-tab .dot {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: var(--onyx); opacity: 0.45;
+      display: inline-block;
+    }
+    .folder-tab-cat { font-weight: 700; }
+    .folder-tab-num { opacity: 0.65; font-weight: 500; }
+
+    .folder-body {
+      position: relative;
+      z-index: 2;
+      background: var(--tone-glass);
+      backdrop-filter: blur(24px) saturate(180%);
+      -webkit-backdrop-filter: blur(24px) saturate(180%);
+      border-radius: 0 22px 22px 22px;
+      padding: 2.4rem 3rem 2.1rem;
+      box-shadow:
+        0 1px 0 rgba(255,255,255,0.7) inset,
+        0 -1px 0 rgba(19,16,21,0.06) inset,
+        0 -12px 28px -16px rgba(255,255,255,0.55) inset,
+        0 18px 38px -22px rgba(19,16,21,0.22);
+      transition: transform .35s cubic-bezier(.22,1.2,.36,1), box-shadow .25s ease;
+    }
+    .folder:hover .folder-body {
+      transform: translateY(-4px);
+      box-shadow:
+        0 1px 0 rgba(255,255,255,0.75) inset,
+        0 -1px 0 rgba(19,16,21,0.06) inset,
+        0 -12px 28px -16px rgba(255,255,255,0.6) inset,
+        0 28px 54px -22px rgba(19,16,21,0.30);
+    }
+    .folder:hover .folder-tab { transform: translateY(-4px); }
+
+    .folder-meta {
+      display: flex; align-items: center; gap: 0.75rem;
+      font-family: var(--font-mono);
+      font-size: 0.72rem; letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(19,16,21,0.62);
+      margin-bottom: 1.1rem;
+    }
+    .folder-meta .sep { opacity: 0.4; }
+    .folder-pin {
+      margin-left: auto;
+      background: var(--onyx);
+      color: var(--paper);
+      padding: 4px 10px;
+      border-radius: 100px;
+      font-size: 0.62rem;
+      letter-spacing: 0.16em;
+    }
+    .folder-soon-pin {
+      margin-left: auto;
+      background: rgba(19,16,21,0.10);
+      color: var(--onyx);
+      padding: 4px 10px;
+      border-radius: 100px;
+      font-size: 0.62rem;
+      letter-spacing: 0.16em;
+    }
+
+    .folder-title {
+      font-family: var(--font-serif);
+      font-weight: 400;
+      font-size: clamp(1.6rem, 3.2vw, 2.4rem);
+      line-height: 1.05;
+      letter-spacing: -0.015em;
+      margin-bottom: 0.85rem;
+      text-wrap: balance;
+      max-width: 26ch;
+    }
+    .folder-title em { font-style: italic; color: var(--onyx); opacity: 0.78; }
+    .folder-title a {
+      color: var(--onyx);
+      text-decoration: none;
+      background-image: linear-gradient(currentColor, currentColor);
+      background-position: 0 100%;
+      background-size: 0 1px;
+      background-repeat: no-repeat;
+      transition: background-size .35s ease;
+    }
+    .folder-title a:hover { background-size: 100% 1px; }
+
+    .folder-excerpt {
+      font-size: 1.02rem;
+      line-height: 1.6;
+      color: rgba(19,16,21,0.72);
+      max-width: 60ch;
+      margin-bottom: 1.6rem;
+    }
+
+    .folder-foot {
+      display: flex; align-items: center; gap: 1rem;
+      padding-top: 1.1rem;
+      border-top: 1px solid rgba(19,16,21,0.10);
+    }
+    .folder-read {
+      display: inline-flex; align-items: center; gap: 0.45rem;
+      font-family: var(--font-mono);
+      font-size: 0.74rem; font-weight: 600;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--onyx);
+      text-decoration: none;
+      padding: 0.55rem 1rem 0.55rem 1.1rem;
+      border-radius: 100px;
+      background: rgba(255,255,255,0.55);
+      border: 1px solid rgba(19,16,21,0.12);
+      transition: all .2s;
+    }
+    .folder-read .arrow { transition: transform .2s; }
+    .folder-read:hover {
+      background: var(--onyx); color: var(--paper); border-color: var(--onyx);
+    }
+    .folder-read:hover .arrow { transform: translateX(3px); }
+    .folder-soon {
+      font-family: var(--font-mono);
+      font-size: 0.7rem; font-weight: 500;
+      letter-spacing: 0.16em; text-transform: uppercase;
+      color: var(--fg-soft);
+    }
+    .folder-foot-right {
+      margin-left: auto;
+      font-family: var(--font-mono);
+      font-size: 0.7rem; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--fg-soft);
+    }
+
+    /* Featured variant — bigger, two-column */
+    .folder-featured .folder-body {
+      padding: 2.75rem 3.2rem 2.5rem;
+    }
+    .folder-featured .folder-title {
+      font-size: clamp(2rem, 4.4vw, 3.4rem);
+      max-width: 22ch;
+    }
+    .folder-featured .folder-excerpt {
+      font-size: 1.1rem;
+      max-width: 64ch;
+    }
+
+    /* Soon (placeholder) folders are slightly muted */
+    .folder.is-soon .folder-body { opacity: 0.88; }
+    .folder.is-soon .folder-title { color: rgba(19,16,21,0.78); }
+    .folder.is-soon .folder-tab { opacity: 0.92; }
+
+    /* ── Newsletter folder ── */
+    .newsletter-section {
+      padding: 30px 6% 100px;
+    }
+    .newsletter-inner {
+      max-width: 1180px;
+      margin: 0 auto;
+    }
+    .folder-sub .folder-tab {
+      background: var(--lime);
+      color: var(--onyx);
+    }
+    .folder-sub .folder-body {
+      background: var(--onyx);
+      color: var(--cream);
+      padding: 3rem 3.2rem 2.75rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .folder-sub .folder-body::before {
+      content: '';
+      position: absolute;
+      inset: auto -10% -60% auto;
+      width: 75%; aspect-ratio: 1;
+      background: radial-gradient(circle, rgba(221,255,51,0.22), transparent 70%);
+      filter: blur(40px);
+      pointer-events: none;
+    }
+    .folder-sub .folder-body > * { position: relative; z-index: 1; }
+    .folder-sub h2 {
+      font-family: var(--font-serif);
+      font-weight: 400;
+      font-size: clamp(2rem, 4vw, 3rem);
+      line-height: 1.02;
+      letter-spacing: -0.015em;
+      max-width: 18ch;
+      margin-bottom: 1rem;
+    }
+    .folder-sub h2 em { font-style: italic; color: var(--lime); }
+    .folder-sub p {
+      font-size: 1.05rem;
+      line-height: 1.6;
+      color: rgba(246,241,234,0.7);
+      max-width: 52ch;
+      margin-bottom: 2rem;
+    }
+    .sub-btn {
+      display: inline-flex; align-items: center; gap: 0.65rem;
+      padding: 0.95rem 1.5rem;
+      background: var(--lime);
+      color: var(--onyx);
+      border-radius: 100px;
+      font-family: var(--font-mono);
+      font-size: 0.8rem; font-weight: 600;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      text-decoration: none;
+      transition: transform .2s, box-shadow .2s;
+      box-shadow: 0 8px 24px -10px rgba(221,255,51,0.55);
+    }
+    .sub-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 28px -10px rgba(221,255,51,0.7);
+    }
+    .sub-btn .arrow { transition: transform .2s; }
+    .sub-btn:hover .arrow { transform: translateX(3px); }
+    .sub-meta {
+      display: flex; gap: 1.25rem; align-items: center;
+      margin-top: 1.5rem;
+      font-family: var(--font-mono);
+      font-size: 0.7rem; letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(246,241,234,0.45);
+    }
+    .sub-meta .dot {
+      width: 5px; height: 5px; border-radius: 50%;
+      background: var(--lime); display: inline-block;
+      box-shadow: 0 0 0 3px rgba(221,255,51,0.2);
+      margin-right: 0.4rem;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #0E0B12;
+      color: rgba(246,241,234,0.6);
+      padding: 3.5rem 6%;
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 1.5rem;
+      position: relative; overflow: hidden;
+    }
+    footer::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(60% 50% at 50% 100%, rgba(194,120,212,0.18) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    footer > * { position: relative; z-index: 1; }
+    .footer-logo {
+      font-family: var(--font-serif); font-size: 1.15rem; font-weight: 400;
+      color: var(--cream) !important; text-decoration: none;
+      letter-spacing: -0.01em;
+      display: inline-flex; align-items: center; gap: 8px;
+    }
+    .footer-logo em { font-style: italic; color: var(--wisteria); }
+    .footer-logo::before { content: '✦'; color: var(--wisteria); font-size: 0.85em; }
+    footer a {
+      color: rgba(246,241,234,0.7); text-decoration: none;
+      transition: color .2s; font-size: 0.88rem;
+    }
+    footer a:hover { color: var(--cream); }
+    .footer-center {
+      font-family: var(--font-mono);
+      font-size: 0.74rem; letter-spacing: 0.04em;
+      color: rgba(246,241,234,0.5);
+    }
+    .footer-links { display: flex; gap: 1.5rem; align-items: center; flex-wrap: wrap; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .nav-links { display: none; }
+      .nav-burger { display: flex; }
+      .blog-header { padding: 130px 5% 50px; }
+      .folder-body { padding: 2rem 1.65rem 1.75rem; }
+      .folder-featured .folder-body { padding: 2.25rem 1.65rem 2rem; }
+      .folder-sub .folder-body { padding: 2.25rem 1.65rem 2rem; }
+      .folder-tab { padding: 10px 38px 18px 20px; font-size: 0.66rem; }
+      .folder-meta { flex-wrap: wrap; gap: 0.5rem; font-size: 0.66rem; }
+      .folder-pin, .folder-soon-pin { margin-left: 0; }
+      .folder-foot { flex-wrap: wrap; gap: 0.75rem; }
+      .folder-foot-right { margin-left: 0; }
+      .filters { gap: 0.4rem; }
+      .filters-count { margin-left: 0; width: 100%; padding-top: 0.5rem; }
+      .filter { padding: 0.5rem 0.85rem; font-size: 0.7rem; }
+      footer { flex-direction: column; text-align: center; padding: 2.5rem 6%; }
+    }
+  </style>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Blog",
+    "name": "GabySEO · Blog",
+    "url": "https://gabyseo.com/blog/",
+    "description": "Apuntes de SEO, AEO y GEO para marcas que quieren ser encontradas.",
+    "author": { "@type": "Person", "name": "Gabriela Gómez Almeida", "url": "https://gabyseo.com/#sobre" },
+    "inLanguage": "es"
+  }
+  </script>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="mainNav">
+  <a href="../index.html" class="nav-logo">Gaby<em>SEO</em></a>
+  <div class="nav-links">
+    <a href="../index.html#sobre">Sobre mí</a>
+    <a href="../index.html#caso">Caso de éxito</a>
+    <a href="../index.html#eeat">EEAT</a>
+    <a href="../index.html#precios">Precios</a>
+    <a href="index.html">Blog</a>
+    <a href="../seo-checklist.html">Checklist</a>
+    <a href="../index.html#contacto" class="nav-cta">Cuéntame tu proyecto</a>
+  </div>
+  <button class="nav-burger" id="burger" aria-label="Menú">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="nav-mobile" id="mobileMenu">
+  <a href="../index.html#sobre" onclick="closeMenu()">Sobre mí</a>
+  <a href="../index.html#caso" onclick="closeMenu()">Caso de éxito</a>
+  <a href="../index.html#eeat" onclick="closeMenu()">EEAT</a>
+  <a href="../index.html#precios" onclick="closeMenu()">Precios</a>
+  <a href="index.html" onclick="closeMenu()">Blog</a>
+  <a href="../seo-checklist.html" onclick="closeMenu()">Checklist</a>
+  <a href="../index.html#contacto" class="nav-cta" onclick="closeMenu()">Cuéntame tu proyecto</a>
+</div>
+
+<main>
+
+  <!-- ── HERO / HEADER ── -->
+  <header class="blog-header">
+    <div class="header-inner">
+
+      <div class="breadcrumb">
+        <a href="../index.html">Inicio</a>
+        <span class="arrow">/</span>
+        <span>Blog</span>
+      </div>
+
+      <h1 class="blog-title">Apuntes de <em>SEO, AEO &amp; GEO</em> para marcas que quieren ser encontradas.</h1>
+
+      <p class="blog-lede">Notas sobre cómo posicionar una marca en Google, en los LLMs y más allá. Casos reales, frameworks que uso con clientes, y lo que voy aprendiendo en el camino. Sin trucos. Con criterio.</p>
+
+      <div class="filters-wrap">
+        <div class="filters" role="tablist" aria-label="Filtrar por categoría">
+          <button class="filter is-active" type="button" data-cat="todos" aria-selected="true">Todos</button>
+          <button class="filter" type="button" data-cat="seo">SEO</button>
+          <button class="filter" type="button" data-cat="seo-ia">SEO para IA</button>
+          <button class="filter" type="button" data-cat="seo-onpage">SEO on page</button>
+          <button class="filter" type="button" data-cat="seo-tecnico">SEO técnico</button>
+        </div>
+        <span class="filters-count" id="resultsCount">8 carpetas en el archivo</span>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- ── ARCHIVE: STACKED FOLDERS ── -->
+  <section class="archive">
+    <div class="archive-inner">
+
+      <!-- FEATURED ── Nº 01 ── REAL -->
+      <article class="folder folder-featured" style="--tone: var(--lilac); --tone-glass: rgba(212,192,237,0.78); --tab-x: 16px;" data-cat="seo-ia">
+        <header class="folder-tab">
+          <span class="folder-tab-cat">SEO para IA</span>
+          <span class="dot"></span>
+          <span class="folder-tab-num">Nº 01</span>
+        </header>
+        <div class="folder-body">
+          <div class="folder-meta">
+            <time datetime="2026-05-12">12 May 2026</time>
+            <span class="sep">·</span>
+            <span>8 min lectura</span>
+            <span class="folder-pin">Destacado</span>
+          </div>
+          <h2 class="folder-title">
+            <a href="como-aparecer-en-chatgpt-geo.html">Cómo aparecer en ChatGPT y los <em>LLMs</em>: guía de GEO 2026</a>
+          </h2>
+          <p class="folder-excerpt">El SEO ya no termina en Google. Hoy, ChatGPT, Perplexity y Gemini deciden cuándo y cómo se menciona tu marca en sus respuestas. Esta guía explica qué es GEO (Generative Engine Optimization) y los pasos concretos para que los LLMs te citen.</p>
+          <div class="folder-foot">
+            <a class="folder-read" href="como-aparecer-en-chatgpt-geo.html">
+              Leer artículo <span class="arrow">→</span>
+            </a>
+            <span class="folder-foot-right">/blog/como-aparecer-en-chatgpt-geo</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Nº 02 ── REAL: ¿Qué es SEO? -->
+      <article class="folder" style="--tone: var(--jordy); --tone-glass: rgba(156,192,238,0.78); --tab-x: 140px;" data-cat="seo">
+        <header class="folder-tab">
+          <span class="folder-tab-cat">SEO</span>
+          <span class="dot"></span>
+          <span class="folder-tab-num">Nº 02</span>
+        </header>
+        <div class="folder-body">
+          <div class="folder-meta">
+            <time datetime="2026-04-22">22 Abr 2026</time>
+            <span class="sep">·</span>
+            <span>11 min lectura</span>
+            <span class="folder-pin">Guía</span>
+          </div>
+          <h2 class="folder-title">
+            <a href="que-es-seo-guia.html">¿Qué es <em>SEO?</em> La guía completa para empezar a posicionar tu marca.</a>
+          </h2>
+          <p class="folder-excerpt">Qué significa SEO en 2026, cómo funcionan los motores de búsqueda hoy, los tres tipos clave (técnico, on page y off page), y por qué sigue siendo la base de cualquier estrategia de visibilidad orgánica. Una intro pensada para marcas que recién empiezan.</p>
+          <div class="folder-foot">
+            <a class="folder-read" href="que-es-seo-guia.html">
+              Leer artículo <span class="arrow">→</span>
+            </a>
+            <span class="folder-foot-right">/blog/que-es-seo-guia</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Nº 03 -->
+      <article class="folder is-soon" style="--tone: var(--peach); --tone-glass: rgba(244,160,122,0.72); --tab-x: 60px;" data-cat="seo-onpage">
+        <header class="folder-tab">
+          <span class="folder-tab-cat">SEO on page</span>
+          <span class="dot"></span>
+          <span class="folder-tab-num">Nº 03</span>
+        </header>
+        <div class="folder-body">
+          <div class="folder-meta">
+            <time>Junio 2026</time>
+            <span class="sep">·</span>
+            <span>~7 min</span>
+            <span class="folder-soon-pin">En proceso</span>
+          </div>
+          <h2 class="folder-title">Cómo armar un calendario de contenidos que <em>posicione,</em> no que rellene.</h2>
+          <p class="folder-excerpt">El método que uso con clientes: del keyword research a los pilares temáticos, los formatos por intención de búsqueda y cómo medir qué está funcionando antes de seguir publicando.</p>
+          <div class="folder-foot">
+            <span class="folder-soon">Próximamente</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Nº 04 -->
+      <article class="folder is-soon" style="--tone: var(--rose); --tone-glass: rgba(240,168,192,0.72); --tab-x: 220px;" data-cat="seo-ia">
+        <header class="folder-tab">
+          <span class="folder-tab-cat">SEO para IA</span>
+          <span class="dot"></span>
+          <span class="folder-tab-num">Nº 04</span>
+        </header>
+        <div class="folder-body">
+          <div class="folder-meta">
+            <time>Julio 2026</time>
+            <span class="sep">·</span>
+            <span>~9 min</span>
+            <span class="folder-soon-pin">En proceso</span>
+          </div>
+          <h2 class="folder-title">AEO: cómo optimizar para los Featured Snippets y la <em>AI Overview</em> de Google.</h2>
+          <p class="folder-excerpt">Las posiciones cero ya no son una sola caja. Cómo escribir respuestas que Google levante para sus answer boxes y para los resúmenes generados por IA en la SERP.</p>
+          <div class="folder-foot">
+            <span class="folder-soon">Próximamente</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Nº 05 -->
+      <article class="folder is-soon" style="--tone: var(--sage); --tone-glass: rgba(199,219,193,0.72); --tab-x: 100px;" data-cat="seo-tecnico">
+        <header class="folder-tab">
+          <span class="folder-tab-cat">SEO técnico</span>
+          <span class="dot"></span>
+          <span class="folder-tab-num">Nº 05</span>
+        </header>
+        <div class="folder-body">
+          <div class="folder-meta">
+            <time>Agosto 2026</time>
+            <span class="sep">·</span>
+            <span>~12 min</span>
+            <span class="folder-soon-pin">En proceso</span>
+          </div>
+          <h2 class="folder-title">Schema markup en castellano: qué tipos de datos estructurados <em>sí</em> mueven la aguja.</h2>
+          <p class="folder-excerpt">Article, FAQ, HowTo, Product, Organization. Cuáles vale la pena implementar primero según el tipo de negocio, y errores comunes que rompen el rich result.</p>
+          <div class="folder-foot">
+            <span class="folder-soon">Próximamente</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Nº 06 -->
+      <article class="folder is-soon" style="--tone: var(--lilac); --tone-glass: rgba(212,192,237,0.72); --tab-x: 280px;" data-cat="seo-onpage">
+        <header class="folder-tab">
+          <span class="folder-tab-cat">SEO on page</span>
+          <span class="dot"></span>
+          <span class="folder-tab-num">Nº 06</span>
+        </header>
+        <div class="folder-body">
+          <div class="folder-meta">
+            <time>Septiembre 2026</time>
+            <span class="sep">·</span>
+            <span>~6 min</span>
+            <span class="folder-soon-pin">En proceso</span>
+          </div>
+          <h2 class="folder-title">Internal linking que escala: cómo armar la red interna de tu sitio para <em>moverle la aguja</em> a Google.</h2>
+          <p class="folder-excerpt">El recurso más subestimado del on page. Cómo decidir qué enlazar a qué, el anchor text que sí cuenta, y la arquitectura silos vs hub-and-spoke explicada con ejemplos concretos.</p>
+          <div class="folder-foot">
+            <span class="folder-soon">Próximamente</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Nº 07 -->
+      <article class="folder is-soon" style="--tone: var(--jordy); --tone-glass: rgba(156,192,238,0.72); --tab-x: 40px;" data-cat="seo-ia">
+        <header class="folder-tab">
+          <span class="folder-tab-cat">SEO para IA · Caso</span>
+          <span class="dot"></span>
+          <span class="folder-tab-num">Nº 07</span>
+        </header>
+        <div class="folder-body">
+          <div class="folder-meta">
+            <time>Octubre 2026</time>
+            <span class="sep">·</span>
+            <span>~11 min</span>
+            <span class="folder-soon-pin">En proceso</span>
+          </div>
+          <h2 class="folder-title">Caso: cómo logré que Perplexity citara a una marca de skincare <em>en 60 días.</em></h2>
+          <p class="folder-excerpt">El proceso completo, los entregables, qué cambió en el contenido, qué señales externas trabajamos, y los aprendizajes que se replican en otros rubros.</p>
+          <div class="folder-foot">
+            <span class="folder-soon">Próximamente</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Nº 08 -->
+      <article class="folder is-soon" style="--tone: var(--sage); --tone-glass: rgba(199,219,193,0.72); --tab-x: 180px;" data-cat="seo-tecnico">
+        <header class="folder-tab">
+          <span class="folder-tab-cat">SEO técnico</span>
+          <span class="dot"></span>
+          <span class="folder-tab-num">Nº 08</span>
+        </header>
+        <div class="folder-body">
+          <div class="folder-meta">
+            <time>Noviembre 2026</time>
+            <span class="sep">·</span>
+            <span>~9 min</span>
+            <span class="folder-soon-pin">En proceso</span>
+          </div>
+          <h2 class="folder-title">Core Web Vitals 2026: la guía para que tu sitio <em>no pierda posiciones</em> por velocidad.</h2>
+          <p class="folder-excerpt">LCP, INP y CLS explicadas sin tecnicismos. Cómo medir, qué herramientas usar, y la lista priorizada de cambios que realmente mueven los Core Web Vitals en sitios en producción.</p>
+          <div class="folder-foot">
+            <span class="folder-soon">Próximamente</span>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ── NEWSLETTER / SUBSTACK FOLDER ── -->
+  <section class="newsletter-section">
+    <div class="newsletter-inner">
+      <article class="folder folder-sub" style="--tab-x: 24px;">
+        <header class="folder-tab">
+          <span class="folder-tab-cat">Substack</span>
+          <span class="dot"></span>
+          <span class="folder-tab-num">Modo SEO</span>
+        </header>
+        <div class="folder-body">
+          <h2>Notas extra, los lunes, en <em>Modo SEO.</em></h2>
+          <p>Mi newsletter en Substack. Análisis cortos, casos en vivo, recursos que voy encontrando y respuestas a preguntas que me hacen en privado. Una vez por semana. Sin relleno.</p>
+          <a href="https://gabymodoseo.substack.com/" target="_blank" rel="noopener" class="sub-btn">
+            Suscribirme en Substack <span class="arrow">→</span>
+          </a>
+          <div class="sub-meta">
+            <span><span class="dot"></span> Lunes</span>
+            <span>gabymodoseo.substack.com</span>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <a href="../index.html" class="footer-logo">Gaby<em>SEO</em></a>
+  <span class="footer-center">2026 · Gabriela Gómez Almeida · gabyseo.com · Buenos Aires, AR</span>
+  <div class="footer-links">
+    <a href="https://www.linkedin.com/in/gabrielagomezalmeida/" target="_blank" rel="noopener">LinkedIn ↗</a>
+    <a href="mailto:gabygomezalmeida@gmail.com">Email</a>
+    <a href="https://gabymodoseo.substack.com/" target="_blank" rel="noopener">Substack ↗</a>
+  </div>
+</footer>
+
+<script>
+  // ── Nav: mobile burger + hide on scroll-down ──
+  const nav = document.getElementById('mainNav');
+  const burger = document.getElementById('burger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  burger.addEventListener('click', () => mobileMenu.classList.toggle('is-open'));
+  window.closeMenu = () => mobileMenu.classList.remove('is-open');
+
+  let lastY = window.scrollY;
+  window.addEventListener('scroll', () => {
+    const y = window.scrollY;
+    if (y > 80 && y > lastY) nav.classList.add('nav-hidden');
+    else nav.classList.remove('nav-hidden');
+    lastY = y;
+  }, { passive: true });
+
+  // ── Filters (visual demo: filtering by category) ──
+  const filters = document.querySelectorAll('.filter');
+  const folders = document.querySelectorAll('.folder[data-cat]');
+  const countEl = document.getElementById('resultsCount');
+
+  filters.forEach(btn => {
+    if (btn.disabled) return;
+    btn.addEventListener('click', () => {
+      filters.forEach(b => { b.classList.remove('is-active'); b.setAttribute('aria-selected', 'false'); });
+      btn.classList.add('is-active');
+      btn.setAttribute('aria-selected', 'true');
+      const cat = btn.dataset.cat;
+      let visible = 0;
+      folders.forEach(f => {
+        const match = cat === 'todos' || f.dataset.cat === cat;
+        f.style.display = match ? '' : 'none';
+        if (match) visible++;
+      });
+      countEl.textContent = `${visible} ${visible === 1 ? 'carpeta' : 'carpetas'} en el archivo`;
+    });
+  });
+</script>
+
+</body>
+</html>
