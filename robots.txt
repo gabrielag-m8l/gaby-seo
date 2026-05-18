@@ -1,5 +1,6 @@
 User-agent: *
 Allow: /
+Disallow: /og/
 
 # AI / LLM crawlers — explícitamente permitidos para AEO/GEO
 User-agent: GPTBot
@@ -21,6 +22,12 @@ User-agent: anthropic-ai
 Allow: /
 
 User-agent: CCBot
+Allow: /
+
+User-agent: Bytespider
+Allow: /
+
+User-agent: cohere-ai
 Allow: /
 
 Sitemap: https://gabyseo.com/sitemap.xml
