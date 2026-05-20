@@ -3,13 +3,18 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-NQTHYEL15N"></script>
+  <!-- Google Analytics - deferred after page load to avoid render blocking -->
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag("js", new Date());
     gtag("config", "G-NQTHYEL15N");
+    window.addEventListener("load", function() {
+      var s = document.createElement("script");
+      s.async = true;
+      s.src = "https://www.googletagmanager.com/gtag/js?id=G-NQTHYEL15N";
+      document.head.appendChild(s);
+    }, {once: true});
   </script>
   <title>GEO vs AEO vs SEO: el SEO es lo único que necesitas (sin trucos) | GabySEO</title>
   <meta name="description" content="Si haces buen SEO, automáticamente estás optimizado para que Google AI Overview y otros LLMs citen tu contenido. Sin archivos especiales, sin reescrituras." />
@@ -24,7 +29,9 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" />
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" media="print" onload="this.media='all'" />
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" /></noscript>
 
   <script type="application/ld+json">
   {
@@ -1012,13 +1019,13 @@
 
         <div class="author-wrap" id="authorWrap">
           <a href="../index.html#sobre" class="author-chip" id="authorChip" tabindex="0">
-            <img src="../gaby-gomez-seo.png" alt="Gaby Gómez Almeida" />
+            <img src="../gaby-gomez-seo-opt.jpg" alt="Gaby Gómez Almeida" width="300" height="400" loading="lazy" />
             <span class="author-name">Por Gaby <em>Gómez</em></span>
           </a>
           <div class="author-card" role="tooltip">
             <div class="author-card-top">
               <div class="author-card-photo">
-                <img src="../gaby-gomez-seo.png" alt="Gaby Gómez Almeida" />
+                <img src="../gaby-gomez-seo-opt.jpg" alt="Gaby Gómez Almeida" width="300" height="400" loading="lazy" />
               </div>
               <div class="author-card-head">
                 <div class="author-card-name">Gaby <em>Gómez Almeida</em></div>
@@ -1315,7 +1322,7 @@
       <!-- AUTHOR FOOTER -->
       <div class="post-author-foot">
         <div class="post-author-foot-photo">
-          <img src="../gaby-gomez-seo.png" alt="Gaby Gómez Almeida" />
+          <img src="../gaby-gomez-seo-opt.jpg" alt="Gaby Gómez Almeida" width="300" height="400" loading="lazy" />
         </div>
         <div class="post-author-foot-text">
           <div class="post-author-foot-name">Gaby <em>Gómez Almeida</em></div>
