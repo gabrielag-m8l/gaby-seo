@@ -139,40 +139,33 @@
       display: block; height: 1.5px; width: 18px; margin: 0 auto;
       background: var(--onyx); border-radius: 2px; transition: all .25s;
     }
+    .nav-burger.open span:nth-child(1) { transform: translateY(5.5px) rotate(45deg); }
+    .nav-burger.open span:nth-child(2) { opacity: 0; }
+    .nav-burger.open span:nth-child(3) { transform: translateY(-5.5px) rotate(-45deg); }
+
     .nav-mobile {
-      position: fixed; top: 78px; left: 12px; right: 12px;
-      background: rgba(255,255,255,0.92);
-      backdrop-filter: blur(28px) saturate(200%);
-      -webkit-backdrop-filter: blur(28px) saturate(200%);
-      border: 1px solid rgba(19,16,21,0.08);
-      border-radius: 24px; padding: 1.25rem;
-      box-shadow: 0 20px 50px -20px rgba(19,16,21,0.25);
-      z-index: 99; display: none; flex-direction: column; gap: 0.25rem;
+      display: none; position: fixed; top: 78px; left: 12px; right: 12px;
+      background: rgba(255,255,255,0.35);
+      backdrop-filter: blur(28px) saturate(200%); -webkit-backdrop-filter: blur(28px) saturate(200%);
+      border: 1px solid rgba(255,255,255,0.5);
+      box-shadow:
+        0 1px 0 rgba(255,255,255,0.9) inset,
+        0 -10px 24px -16px rgba(255,255,255,0.4) inset,
+        0 20px 50px -20px rgba(19,16,21,0.22);
+      border-radius: 24px;
+      padding: 1.25rem; flex-direction: column; gap: 0.5rem; z-index: 99;
     }
-    .nav-mobile.is-open { display: flex; }
+    .nav-mobile.open { display: flex; }
     .nav-mobile a {
-      padding: 0.85rem 1rem; border-radius: 12px;
-      text-decoration: none; color: var(--fg); font-weight: 500; font-size: 0.95rem;
+      text-decoration: none; color: var(--fg);
+      font-size: 0.95rem; font-weight: 500;
+      padding: 0.6rem 0.85rem; border-radius: 12px;
     }
-    .nav-mobile a.nav-cta {
-      margin-top: 0.5rem; text-align: center;
-    }
-
-    /* ── Shared utilities ── */
-    .label {
-      display: inline-flex; align-items: center; gap: 0.55rem;
-      font-family: var(--font-mono);
-      font-size: 0.72rem; font-weight: 500;
-      letter-spacing: 0.18em; text-transform: uppercase;
-      color: var(--fg-soft);
-    }
-    .label::before {
-      content: '';
-      width: 8px; height: 8px; border-radius: 50%;
-      background: var(--wisteria);
-      box-shadow: 0 0 0 3px rgba(194,120,212,0.18);
+    .nav-mobile .nav-cta {
+      display: inline-block; text-align: center;
     }
 
+    /* ── Display & label utilities ── */
     .display {
       font-family: var(--font-serif);
       font-weight: 400;
@@ -184,7 +177,7 @@
 
     /* ── HERO ── */
     .blog-header {
-      padding: 150px 6% 70px;
+      padding: 150px 6% 50px;
       position: relative;
     }
     .header-inner {
@@ -223,308 +216,260 @@
       line-height: 1.6;
       color: var(--fg-soft);
       max-width: 56ch;
-      margin-bottom: 2.75rem;
+      margin-bottom: 0;
     }
 
-    /* ── Filter row: overlapping folder tabs ── */
-    .filters-wrap {
-      padding-top: 2.5rem;
-      border-top: 1px solid rgba(19,16,21,0.10);
-      display: flex; align-items: flex-end; justify-content: space-between;
-      flex-wrap: wrap; gap: 1rem;
+    /* ── FEATURED CARD (newest post, hero treatment) ── */
+    .featured-section {
+      padding: 40px 6% 30px;
     }
-    .filters {
-      display: flex;
-      align-items: flex-end;
-      padding-left: 0.25rem;
-    }
-    .filter {
-      display: inline-flex; align-items: center; gap: 0.5rem;
-      font-family: var(--font-mono);
-      font-size: 0.74rem; font-weight: 600;
-      letter-spacing: 0.14em; text-transform: uppercase;
-      padding: 0.85rem 2rem 1.05rem 1.4rem;
-      background: rgba(255,255,255,0.32);
-      backdrop-filter: blur(18px) saturate(180%);
-      -webkit-backdrop-filter: blur(18px) saturate(180%);
-      border: 1px solid rgba(255,255,255,0.55);
-      border-bottom: none;
-      color: var(--fg-soft);
-      cursor: pointer;
-      transition: all .25s ease;
-      margin-right: -22px;
-      /* file-folder diagonal cut on right */
-      clip-path: polygon(0 0, calc(100% - 24px) 0, 100% 100%, 0 100%);
-      box-shadow:
-        0 1px 0 rgba(255,255,255,0.7) inset,
-        0 -10px 22px -16px rgba(255,255,255,0.5) inset;
-      position: relative;
-    }
-    .filter:nth-child(1) { z-index: 5; }
-    .filter:nth-child(2) { z-index: 4; }
-    .filter:nth-child(3) { z-index: 3; }
-    .filter:nth-child(4) { z-index: 2; }
-    .filter:nth-child(5) { z-index: 1; }
-
-    .filter:hover:not([disabled]) {
-      color: var(--onyx);
-      background: rgba(255,255,255,0.55);
-      transform: translateY(-2px);
-    }
-    .filter.is-active {
-      background: var(--lime);
-      color: var(--onyx);
-      border-color: rgba(19,16,21,0.18);
-      z-index: 10;
-      transform: translateY(-4px);
-      padding-bottom: 1.25rem;
-    }
-    .filter[disabled] { cursor: not-allowed; opacity: 0.6; }
-    .filter .pronto {
-      font-size: 0.58rem;
-      padding: 2px 6px;
-      background: rgba(19,16,21,0.10);
-      border-radius: 100px;
-      letter-spacing: 0.08em;
-      text-transform: lowercase;
-      font-weight: 500;
-    }
-    .filters-count {
-      font-family: var(--font-mono);
-      font-size: 0.7rem; letter-spacing: 0.14em;
-      text-transform: uppercase; color: var(--fg-faint);
-      padding-bottom: 0.5rem;
-    }
-
-    /* ── Archive section ── */
-    .archive {
-      padding: 30px 6% 80px;
-    }
-    .archive-inner {
+    .featured-inner {
       max-width: 1180px;
       margin: 0 auto;
-      display: flex;
-      flex-direction: column;
-      gap: 1.75rem;
+    }
+    .featured-eyebrow-row {
+      display: inline-flex; align-items: center; gap: 0.7rem;
+      font-family: var(--font-mono);
+      font-size: 0.72rem; letter-spacing: 0.16em;
+      text-transform: uppercase; color: var(--fg-soft);
+      margin-bottom: 1rem;
+    }
+    .featured-eyebrow-row .pin-dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: var(--wisteria);
+      box-shadow: 0 0 0 3px rgba(194,120,212,0.18);
     }
 
-    /* ── FOLDER component ── */
-    .folder {
+    .featured-card {
       --tone: var(--lilac);
-      --tone-glass: rgba(212,192,237,0.78);
+      --tone-strong: rgba(194,120,212,0.30);
       position: relative;
-      margin-top: 1.25rem; /* room for the tab */
-      isolation: isolate;
+      background: rgba(212,192,237,0.42);
+      backdrop-filter: blur(32px) saturate(200%);
+      -webkit-backdrop-filter: blur(32px) saturate(200%);
+      border: 1px solid rgba(255,255,255,0.55);
+      border-radius: 32px;
+      padding: 3.2rem 3.4rem 2.85rem;
+      box-shadow:
+        0 1px 0 rgba(255,255,255,0.85) inset,
+        0 -1px 0 rgba(19,16,21,0.06) inset,
+        0 -18px 36px -20px rgba(255,255,255,0.55) inset,
+        0 30px 60px -22px rgba(19,16,21,0.30);
+      overflow: hidden;
     }
-
-    /* Paper sheet that peeks out on hover (page about to slip out) */
-    .folder::before {
+    .featured-card::before {
       content: '';
       position: absolute;
-      left: 6%; right: 6%;
-      top: 38px;
-      height: 70%;
-      background: #FFFEFB;
-      border-radius: 6px 6px 0 0;
-      box-shadow:
-        0 -1px 0 rgba(19,16,21,0.04) inset,
-        0 -10px 20px -10px rgba(19,16,21,0.10);
-      transform: translateY(6px);
-      opacity: 0;
-      transition: transform .45s cubic-bezier(.22,1.2,.36,1), opacity .25s ease;
+      inset: -30% -15% auto auto;
+      width: 55%; aspect-ratio: 1;
+      background: radial-gradient(circle, var(--tone-strong), transparent 65%);
+      filter: blur(20px);
+      pointer-events: none;
       z-index: 0;
     }
-    .folder:hover::before {
-      opacity: 1;
-      transform: translateY(-26px);
-    }
-    /* A faint horizontal rule on the paper to suggest text inside */
-    .folder::after {
-      content: '';
-      position: absolute;
-      left: 12%; right: 22%;
-      top: 32px;
-      height: 1px;
-      background: rgba(19,16,21,0.10);
-      opacity: 0;
-      transition: opacity .35s ease .1s, transform .45s cubic-bezier(.22,1.2,.36,1);
-      transform: translateY(6px);
-      z-index: 0;
-    }
-    .folder:hover::after {
-      opacity: 1;
-      transform: translateY(-26px);
-    }
+    .featured-card > * { position: relative; z-index: 1; }
 
-    .folder-tab {
-      position: relative;
-      z-index: 2;
-      display: inline-flex;
-      align-items: center;
-      gap: 1rem;
-      background: var(--tone-glass);
-      backdrop-filter: blur(20px) saturate(180%);
-      -webkit-backdrop-filter: blur(20px) saturate(180%);
-      padding: 11px 46px 20px 26px;
-      margin-bottom: -10px;
-      margin-left: var(--tab-x, 0px);
-      border-radius: 14px 14px 0 0;
+    .featured-meta {
+      display: inline-flex; align-items: center; gap: 0.7rem;
       font-family: var(--font-mono);
-      font-size: 0.74rem; font-weight: 600;
-      letter-spacing: 0.14em; text-transform: uppercase;
-      color: var(--onyx);
-      /* file-folder diagonal cut on right */
-      clip-path: polygon(0 0, calc(100% - 24px) 0, 100% 100%, 0 100%);
-      box-shadow:
-        0 1px 0 rgba(255,255,255,0.7) inset;
-      transition: transform .35s cubic-bezier(.22,1.2,.36,1);
-    }
-    .folder-tab .dot {
-      width: 6px; height: 6px; border-radius: 50%;
-      background: var(--onyx); opacity: 0.45;
-      display: inline-block;
-    }
-    .folder-tab-cat { font-weight: 700; }
-    .folder-tab-num { opacity: 0.65; font-weight: 500; }
-
-    .folder-body {
-      position: relative;
-      z-index: 2;
-      background: var(--tone-glass);
-      backdrop-filter: blur(24px) saturate(180%);
-      -webkit-backdrop-filter: blur(24px) saturate(180%);
-      border-radius: 0 22px 22px 22px;
-      padding: 2.4rem 3rem 2.1rem;
-      box-shadow:
-        0 1px 0 rgba(255,255,255,0.7) inset,
-        0 -1px 0 rgba(19,16,21,0.06) inset,
-        0 -12px 28px -16px rgba(255,255,255,0.55) inset,
-        0 18px 38px -22px rgba(19,16,21,0.22);
-      transition: transform .35s cubic-bezier(.22,1.2,.36,1), box-shadow .25s ease;
-    }
-    .folder:hover .folder-body {
-      transform: translateY(-4px);
-      box-shadow:
-        0 1px 0 rgba(255,255,255,0.75) inset,
-        0 -1px 0 rgba(19,16,21,0.06) inset,
-        0 -12px 28px -16px rgba(255,255,255,0.6) inset,
-        0 28px 54px -22px rgba(19,16,21,0.30);
-    }
-    .folder:hover .folder-tab { transform: translateY(-4px); }
-
-    .folder-meta {
-      display: flex; align-items: center; gap: 0.75rem;
-      font-family: var(--font-mono);
-      font-size: 0.72rem; letter-spacing: 0.1em;
+      font-size: 0.72rem; letter-spacing: 0.14em;
       text-transform: uppercase;
       color: rgba(19,16,21,0.62);
-      margin-bottom: 1.1rem;
+      margin-bottom: 1.5rem;
+      flex-wrap: wrap;
     }
-    .folder-meta .sep { opacity: 0.4; }
-    .folder-pin {
-      margin-left: auto;
-      background: var(--onyx);
-      color: var(--paper);
-      padding: 4px 10px;
-      border-radius: 100px;
-      font-size: 0.62rem;
-      letter-spacing: 0.16em;
+    .featured-meta .pin {
+      background: var(--onyx); color: var(--paper);
+      padding: 5px 11px; border-radius: 100px;
+      font-size: 0.62rem; letter-spacing: 0.16em;
+      font-weight: 500;
     }
-    .folder-soon-pin {
-      margin-left: auto;
-      background: rgba(19,16,21,0.10);
-      color: var(--onyx);
-      padding: 4px 10px;
-      border-radius: 100px;
-      font-size: 0.62rem;
-      letter-spacing: 0.16em;
-    }
+    .featured-meta .sep { opacity: 0.35; }
 
-    .folder-title {
+    .featured-title {
       font-family: var(--font-serif);
       font-weight: 400;
-      font-size: clamp(1.6rem, 3.2vw, 2.4rem);
-      line-height: 1.05;
-      letter-spacing: -0.015em;
-      margin-bottom: 0.85rem;
+      font-size: clamp(2.2rem, 5vw, 3.6rem);
+      line-height: 0.99;
+      letter-spacing: -0.018em;
+      margin-bottom: 1.5rem;
       text-wrap: balance;
-      max-width: 26ch;
+      max-width: 22ch;
     }
-    .folder-title em { font-style: italic; color: var(--onyx); opacity: 0.78; }
-    .folder-title a {
-      color: var(--onyx);
-      text-decoration: none;
+    .featured-title em { font-style: italic; color: var(--onyx); opacity: 0.7; }
+    .featured-title a {
+      color: var(--onyx); text-decoration: none;
       background-image: linear-gradient(currentColor, currentColor);
       background-position: 0 100%;
       background-size: 0 1px;
       background-repeat: no-repeat;
-      transition: background-size .35s ease;
+      transition: background-size .4s ease;
     }
-    .folder-title a:hover { background-size: 100% 1px; }
+    .featured-title a:hover { background-size: 100% 1px; }
 
-    .folder-excerpt {
-      font-size: 1.02rem;
+    .featured-excerpt {
+      font-size: 1.1rem;
       line-height: 1.6;
       color: rgba(19,16,21,0.72);
       max-width: 60ch;
-      margin-bottom: 1.6rem;
+      margin-bottom: 2rem;
     }
-
-    .folder-foot {
-      display: flex; align-items: center; gap: 1rem;
-      padding-top: 1.1rem;
-      border-top: 1px solid rgba(19,16,21,0.10);
-    }
-    .folder-read {
-      display: inline-flex; align-items: center; gap: 0.45rem;
+    .featured-cta {
+      display: inline-flex; align-items: center; gap: 0.55rem;
       font-family: var(--font-mono);
-      font-size: 0.74rem; font-weight: 600;
+      font-size: 0.78rem; font-weight: 600;
       letter-spacing: 0.14em; text-transform: uppercase;
-      color: var(--onyx);
+      color: var(--paper); background: var(--onyx);
+      padding: 0.95rem 1.55rem; border-radius: 100px;
       text-decoration: none;
-      padding: 0.55rem 1rem 0.55rem 1.1rem;
-      border-radius: 100px;
-      background: rgba(255,255,255,0.55);
-      border: 1px solid rgba(19,16,21,0.12);
-      transition: all .2s;
+      transition: background .25s ease, transform .25s ease, box-shadow .25s ease;
+      box-shadow: 0 10px 24px -10px rgba(19,16,21,0.4);
     }
-    .folder-read .arrow { transition: transform .2s; }
-    .folder-read:hover {
-      background: var(--onyx); color: var(--paper); border-color: var(--onyx);
+    .featured-cta:hover {
+      background: var(--wisteria);
+      transform: translateY(-2px);
+      box-shadow: 0 16px 32px -10px rgba(194,120,212,0.55);
     }
-    .folder-read:hover .arrow { transform: translateX(3px); }
-    .folder-soon {
+    .featured-cta .arrow { transition: transform .2s; }
+    .featured-cta:hover .arrow { transform: translateX(3px); }
+
+    /* ── ARCHIVE LEDGER ── */
+    .archive-section {
+      padding: 50px 6% 120px;
+    }
+    .archive-inner {
+      max-width: 1180px;
+      margin: 0 auto;
+    }
+    .archive-head {
+      display: flex; align-items: baseline; justify-content: space-between;
+      gap: 1rem; margin-bottom: 0.5rem;
+      padding-bottom: 1.4rem;
+      border-bottom: 1px solid rgba(19,16,21,0.18);
+      flex-wrap: wrap;
+    }
+    .archive-head h2 {
+      font-family: var(--font-serif);
+      font-weight: 400;
+      font-size: clamp(1.7rem, 3vw, 2.3rem);
+      letter-spacing: -0.015em;
+      line-height: 1;
+    }
+    .archive-head h2 em { font-style: italic; color: var(--wisteria); }
+    .archive-head .head-meta {
       font-family: var(--font-mono);
-      font-size: 0.7rem; font-weight: 500;
-      letter-spacing: 0.16em; text-transform: uppercase;
-      color: var(--fg-soft);
-    }
-    .folder-foot-right {
-      margin-left: auto;
-      font-family: var(--font-mono);
-      font-size: 0.7rem; letter-spacing: 0.12em;
+      font-size: 0.72rem; letter-spacing: 0.16em;
       text-transform: uppercase; color: var(--fg-soft);
     }
 
-    /* Featured variant — bigger, two-column */
-    .folder-featured .folder-body {
-      padding: 2.75rem 3.2rem 2.5rem;
+    .archive-list {
+      display: flex; flex-direction: column;
     }
-    .folder-featured .folder-title {
-      font-size: clamp(2rem, 4.4vw, 3.4rem);
-      max-width: 22ch;
+    .archive-row {
+      --tone: var(--lilac);
+      display: grid;
+      grid-template-columns: 64px 1fr auto 28px;
+      align-items: center;
+      gap: 1.5rem;
+      padding: 1.65rem 1.4rem 1.65rem 1.4rem;
+      border-bottom: 1px solid rgba(19,16,21,0.10);
+      text-decoration: none;
+      color: var(--onyx);
+      position: relative;
+      cursor: pointer;
+      transition: background .3s ease, padding .3s ease;
     }
-    .folder-featured .folder-excerpt {
-      font-size: 1.1rem;
-      max-width: 64ch;
+    .archive-row::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 3px;
+      background: var(--tone);
+      opacity: 0;
+      transition: opacity .25s ease, width .25s ease;
     }
+    .archive-row:hover {
+      background: color-mix(in srgb, var(--tone) 26%, transparent);
+      padding-left: 2rem;
+    }
+    .archive-row:hover::before {
+      opacity: 1;
+      width: 5px;
+    }
+    .archive-row.is-soon { cursor: default; }
+    .archive-row.is-soon:hover {
+      background: transparent;
+      padding-left: 1.4rem;
+    }
+    .archive-row.is-soon:hover::before { opacity: 0; }
 
-    /* Soon (placeholder) folders are slightly muted */
-    .folder.is-soon .folder-body { opacity: 0.88; }
-    .folder.is-soon .folder-title { color: rgba(19,16,21,0.78); }
-    .folder.is-soon .folder-tab { opacity: 0.92; }
+    .row-num {
+      font-family: var(--font-mono);
+      font-size: 0.78rem; font-weight: 600;
+      letter-spacing: 0.14em;
+      color: var(--fg-faint);
+    }
+    .row-main {
+      display: flex; flex-direction: column; gap: 0.45rem;
+      min-width: 0;
+    }
+    .row-title {
+      font-family: var(--font-serif);
+      font-weight: 400;
+      font-size: clamp(1.4rem, 2.4vw, 1.85rem);
+      line-height: 1.12;
+      letter-spacing: -0.012em;
+      text-wrap: balance;
+      color: var(--onyx);
+    }
+    .archive-row.is-soon .row-title { color: rgba(19,16,21,0.6); }
+    .row-title em { font-style: italic; color: var(--onyx); opacity: 0.72; }
+    .row-sub {
+      display: flex; align-items: center; gap: 0.65rem;
+      font-family: var(--font-mono);
+      font-size: 0.72rem; letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--fg-soft);
+      flex-wrap: wrap;
+    }
+    .row-sub .cat {
+      display: inline-flex; align-items: center; gap: 0.45rem;
+      font-weight: 600; color: var(--onyx);
+    }
+    .row-sub .cat-dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: var(--tone);
+      box-shadow: 0 0 0 3px rgba(19,16,21,0.04);
+    }
+    .row-sub .sep { opacity: 0.35; }
+    .row-sub .soon-tag {
+      padding: 3px 9px;
+      background: rgba(19,16,21,0.08);
+      border-radius: 100px;
+      font-size: 0.62rem;
+      letter-spacing: 0.14em;
+    }
+    .row-date {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      color: var(--fg-soft);
+      letter-spacing: 0.04em;
+      white-space: nowrap;
+      text-align: right;
+    }
+    .row-arrow {
+      font-family: var(--font-mono);
+      font-size: 1.2rem;
+      color: var(--fg-faint);
+      transition: transform .25s ease, color .25s ease;
+    }
+    .archive-row:not(.is-soon):hover .row-arrow {
+      transform: translateX(4px);
+      color: var(--onyx);
+    }
+    .archive-row.is-soon .row-arrow { opacity: 0.25; }
 
-    /* ── Newsletter folder ── */
+    /* ── NEWSLETTER CARD (dark, lime accent) ── */
     .newsletter-section {
       padding: 30px 6% 100px;
     }
@@ -532,38 +477,51 @@
       max-width: 1180px;
       margin: 0 auto;
     }
-    .folder-sub .folder-tab {
-      background: var(--lime);
-      color: var(--onyx);
-    }
-    .folder-sub .folder-body {
+    .newsletter-card {
       background: var(--onyx);
       color: var(--cream);
-      padding: 3rem 3.2rem 2.75rem;
+      border-radius: 32px;
+      padding: 3.5rem 3.5rem 3rem;
       position: relative;
       overflow: hidden;
+      box-shadow: 0 24px 50px -22px rgba(19,16,21,0.45);
     }
-    .folder-sub .folder-body::before {
+    .newsletter-card::before {
       content: '';
       position: absolute;
       inset: auto -10% -60% auto;
-      width: 75%; aspect-ratio: 1;
+      width: 70%; aspect-ratio: 1;
       background: radial-gradient(circle, rgba(221,255,51,0.22), transparent 70%);
       filter: blur(40px);
       pointer-events: none;
     }
-    .folder-sub .folder-body > * { position: relative; z-index: 1; }
-    .folder-sub h2 {
+    .newsletter-card > * { position: relative; z-index: 1; }
+    .newsletter-eyebrow {
+      display: inline-flex; align-items: center; gap: 0.7rem;
+      font-family: var(--font-mono);
+      font-size: 0.72rem; letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: rgba(246,241,234,0.5);
+      margin-bottom: 1.5rem;
+      flex-wrap: wrap;
+    }
+    .newsletter-eyebrow .dot {
+      width: 7px; height: 7px; border-radius: 50%;
+      background: var(--lime);
+      box-shadow: 0 0 0 3px rgba(221,255,51,0.2);
+    }
+    .newsletter-eyebrow .sep { opacity: 0.35; }
+    .newsletter-card h2 {
       font-family: var(--font-serif);
       font-weight: 400;
       font-size: clamp(2rem, 4vw, 3rem);
       line-height: 1.02;
       letter-spacing: -0.015em;
-      max-width: 18ch;
+      max-width: 20ch;
       margin-bottom: 1rem;
     }
-    .folder-sub h2 em { font-style: italic; color: var(--lime); }
-    .folder-sub p {
+    .newsletter-card h2 em { font-style: italic; color: var(--lime); }
+    .newsletter-card p {
       font-size: 1.05rem;
       line-height: 1.6;
       color: rgba(246,241,234,0.7);
@@ -572,7 +530,7 @@
     }
     .sub-btn {
       display: inline-flex; align-items: center; gap: 0.65rem;
-      padding: 0.95rem 1.5rem;
+      padding: 0.95rem 1.55rem;
       background: var(--lime);
       color: var(--onyx);
       border-radius: 100px;
@@ -585,24 +543,10 @@
     }
     .sub-btn:hover {
       transform: translateY(-2px);
-      box-shadow: 0 12px 28px -10px rgba(221,255,51,0.7);
+      box-shadow: 0 14px 30px -10px rgba(221,255,51,0.7);
     }
     .sub-btn .arrow { transition: transform .2s; }
     .sub-btn:hover .arrow { transform: translateX(3px); }
-    .sub-meta {
-      display: flex; gap: 1.25rem; align-items: center;
-      margin-top: 1.5rem;
-      font-family: var(--font-mono);
-      font-size: 0.7rem; letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: rgba(246,241,234,0.45);
-    }
-    .sub-meta .dot {
-      width: 5px; height: 5px; border-radius: 50%;
-      background: var(--lime); display: inline-block;
-      box-shadow: 0 0 0 3px rgba(221,255,51,0.2);
-      margin-right: 0.4rem;
-    }
 
     /* ── FOOTER ── */
     footer {
@@ -640,21 +584,24 @@
     .footer-links { display: flex; gap: 1.5rem; align-items: center; flex-wrap: wrap; }
 
     /* ── RESPONSIVE ── */
+    @media (max-width: 640px) {
+      nav#mainNav { top: 12px; padding: 5px 5px 5px 16px; }
+    }
+
     @media (max-width: 900px) {
       .nav-links { display: none; }
       .nav-burger { display: flex; }
-      .blog-header { padding: 130px 5% 50px; }
-      .folder-body { padding: 2rem 1.65rem 1.75rem; }
-      .folder-featured .folder-body { padding: 2.25rem 1.65rem 2rem; }
-      .folder-sub .folder-body { padding: 2.25rem 1.65rem 2rem; }
-      .folder-tab { padding: 10px 38px 18px 20px; font-size: 0.66rem; }
-      .folder-meta { flex-wrap: wrap; gap: 0.5rem; font-size: 0.66rem; }
-      .folder-pin, .folder-soon-pin { margin-left: 0; }
-      .folder-foot { flex-wrap: wrap; gap: 0.75rem; }
-      .folder-foot-right { margin-left: 0; }
-      .filters { gap: 0.4rem; }
-      .filters-count { margin-left: 0; width: 100%; padding-top: 0.5rem; }
-      .filter { padding: 0.5rem 0.85rem; font-size: 0.7rem; }
+      .blog-header { padding: 130px 5% 40px; }
+      .featured-card { padding: 2.25rem 1.8rem 2rem; border-radius: 24px; }
+      .newsletter-card { padding: 2.5rem 1.8rem 2.25rem; border-radius: 24px; }
+      .archive-row {
+        grid-template-columns: 44px 1fr 24px;
+        gap: 1rem;
+        padding: 1.25rem 0.9rem;
+      }
+      .archive-row:hover { padding-left: 1.4rem; }
+      .row-date { display: none; }
+      .row-num { font-size: 0.7rem; }
       footer { flex-direction: column; text-align: center; padding: 2.5rem 6%; }
     }
   </style>
@@ -706,7 +653,7 @@
   <a href="../index.html#eeat" onclick="closeMenu()">EEAT</a>
   <a href="../index.html#precios" onclick="closeMenu()">Precios</a>
   <a href="index.html" onclick="closeMenu()">Blog</a>
-  <a href="../seo-checklist.html" onclick="closeMenu()">Checklist</a>
+  <a href="../seo-checklist.html" onclick="closeMenu()">SEO Checklist</a>
   <a href="../index.html#contacto" class="nav-cta" onclick="closeMenu()">Cuéntame tu proyecto</a>
 </div>
 
@@ -726,260 +673,200 @@
 
       <p class="blog-lede">Notas sobre cómo posicionar una marca en Google, en los LLMs y más allá. Casos reales, frameworks que uso con clientes, y lo que voy aprendiendo en el camino. Sin trucos. Con criterio.</p>
 
-      <div class="filters-wrap">
-        <div class="filters" role="tablist" aria-label="Filtrar por categoría">
-          <button class="filter is-active" type="button" data-cat="todos" aria-selected="true">Todos</button>
-          <button class="filter" type="button" data-cat="seo">SEO</button>
-          <button class="filter" type="button" data-cat="seo-ia">SEO para IA</button>
-          <button class="filter" type="button" data-cat="seo-onpage">SEO on page</button>
-          <button class="filter" type="button" data-cat="seo-tecnico">SEO técnico</button>
-        </div>
-        <span class="filters-count" id="resultsCount">8 carpetas en el archivo</span>
-      </div>
-
     </div>
   </header>
 
-  <!-- ── ARCHIVE: STACKED FOLDERS ── -->
-  <section class="archive">
-    <div class="archive-inner">
+  <!-- ── FEATURED CARD (newest post) ── -->
+  <section class="featured-section">
+    <div class="featured-inner">
 
-      <!-- FEATURED ── Nº 01 ── REAL -->
-      <article class="folder folder-featured" style="--tone: var(--lilac); --tone-glass: rgba(212,192,237,0.78); --tab-x: 16px;" data-cat="seo-ia">
-        <header class="folder-tab">
-          <span class="folder-tab-cat">SEO para IA</span>
-          <span class="dot"></span>
-          <span class="folder-tab-num">Nº 01</span>
-        </header>
-        <div class="folder-body">
-          <div class="folder-meta">
-            <time datetime="2026-05-17">17 May 2026</time>
-            <span class="sep">·</span>
-            <span>7 min lectura</span>
-            <span class="folder-pin">Destacado</span>
-          </div>
-          <h2 class="folder-title">
-            <a href="/blog/como-optimizar-para-geo-aeo">GEO vs AEO vs <em>SEO</em>: el SEO es lo único que necesitas</a>
-          </h2>
-          <p class="folder-excerpt">Si haces buen SEO, automáticamente estás optimizado para que Google AI Overview y otros LLMs citen tu contenido. Sin archivos especiales, sin reescrituras, sin estrategias paralelas. La guía definitiva para no perderte en el ruido del momento.</p>
-          <div class="folder-foot">
-            <a class="folder-read" href="/blog/como-optimizar-para-geo-aeo">
-              Leer artículo <span class="arrow">→</span>
-            </a>
-            <span class="folder-foot-right">/blog/como-optimizar-para-geo-aeo</span>
-          </div>
-        </div>
-      </article>
+      <div class="featured-eyebrow-row">
+        <span class="pin-dot"></span>
+        <span>Último publicado</span>
+      </div>
 
-      <!-- Nº 02 ── REAL: ¿Qué es SEO? -->
-      <article class="folder" style="--tone: var(--jordy); --tone-glass: rgba(156,192,238,0.78); --tab-x: 140px;" data-cat="seo">
-        <header class="folder-tab">
-          <span class="folder-tab-cat">SEO</span>
-          <span class="dot"></span>
-          <span class="folder-tab-num">Nº 02</span>
-        </header>
-        <div class="folder-body">
-          <div class="folder-meta">
-            <time datetime="2026-04-22">22 Abr 2026</time>
-            <span class="sep">·</span>
-            <span>11 min lectura</span>
-            <span class="folder-pin">Guía</span>
-          </div>
-          <h2 class="folder-title">
-            <a href="/blog/que-es-seo-guia">¿Qué es <em>SEO?</em> La guía completa para empezar a posicionar tu marca.</a>
-          </h2>
-          <p class="folder-excerpt">Qué significa SEO en 2026, cómo funcionan los motores de búsqueda hoy, los tres tipos clave (técnico, on page y off page), y por qué sigue siendo la base de cualquier estrategia de visibilidad orgánica. Una intro pensada para marcas que recién empiezan.</p>
-          <div class="folder-foot">
-            <a class="folder-read" href="/blog/que-es-seo-guia">
-              Leer artículo <span class="arrow">→</span>
-            </a>
-            <span class="folder-foot-right">/blog/que-es-seo-guia</span>
-          </div>
+      <article class="featured-card">
+        <div class="featured-meta">
+          <span class="pin">Destacado</span>
+          <span>SEO · Argentina</span>
+          <span class="sep">·</span>
+          <time datetime="2026-05-21">21 May 2026</time>
+          <span class="sep">·</span>
+          <span>8 min lectura</span>
         </div>
-      </article>
-
-      <!-- Nº 03 ── REAL: SEO en Argentina -->
-      <article class="folder" style="--tone: var(--peach); --tone-glass: rgba(244,160,122,0.78); --tab-x: 220px;" data-cat="seo">
-        <header class="folder-tab">
-          <span class="folder-tab-cat">SEO Argentina</span>
-          <span class="dot"></span>
-          <span class="folder-tab-num">Nº 03</span>
-        </header>
-        <div class="folder-body">
-          <div class="folder-meta">
-            <time datetime="2026-05-21">21 May 2026</time>
-            <span class="sep">·</span>
-            <span>8 min lectura</span>
-            <span class="folder-pin">Guía</span>
-          </div>
-          <h2 class="folder-title">
-            <a href="/blog/seo-en-argentina">SEO en Argentina: qué funciona, cuánto cuesta y cómo <em>elegir bien.</em></a>
-          </h2>
-          <p class="folder-excerpt">El contexto económico, el usuario argentino y la IA cambiaron las reglas. Qué estrategias funcionan realmente en 2026, cuánto cobran agencias y consultores, y cómo saber si quien te ofrece SEO está actualizado o te está vendiendo humo.</p>
-          <div class="folder-foot">
-            <a class="folder-read" href="/blog/seo-en-argentina">
-              Leer artículo <span class="arrow">→</span>
-            </a>
-            <span class="folder-foot-right">/blog/seo-en-argentina</span>
-          </div>
-        </div>
-      </article>
-
-      <!-- Nº 04 -->
-      <article class="folder is-soon" style="--tone: var(--peach); --tone-glass: rgba(244,160,122,0.72); --tab-x: 60px;" data-cat="seo-onpage">
-        <header class="folder-tab">
-          <span class="folder-tab-cat">SEO on page</span>
-          <span class="dot"></span>
-          <span class="folder-tab-num">Nº 04</span>
-        </header>
-        <div class="folder-body">
-          <div class="folder-meta">
-            <time>Junio 2026</time>
-            <span class="sep">·</span>
-            <span>~7 min</span>
-            <span class="folder-soon-pin">En proceso</span>
-          </div>
-          <h2 class="folder-title">Cómo armar un calendario de contenidos que <em>posicione,</em> no que rellene.</h2>
-          <p class="folder-excerpt">El método que uso con clientes: del keyword research a los pilares temáticos, los formatos por intención de búsqueda y cómo medir qué está funcionando antes de seguir publicando.</p>
-          <div class="folder-foot">
-            <span class="folder-soon">Próximamente</span>
-          </div>
-        </div>
-      </article>
-
-      <!-- Nº 05 -->
-      <article class="folder is-soon" style="--tone: var(--rose); --tone-glass: rgba(240,168,192,0.72); --tab-x: 220px;" data-cat="seo-ia">
-        <header class="folder-tab">
-          <span class="folder-tab-cat">SEO para IA</span>
-          <span class="dot"></span>
-          <span class="folder-tab-num">Nº 05</span>
-        </header>
-        <div class="folder-body">
-          <div class="folder-meta">
-            <time>Julio 2026</time>
-            <span class="sep">·</span>
-            <span>~9 min</span>
-            <span class="folder-soon-pin">En proceso</span>
-          </div>
-          <h2 class="folder-title">AEO: cómo optimizar para los Featured Snippets y la <em>AI Overview</em> de Google.</h2>
-          <p class="folder-excerpt">Las posiciones cero ya no son una sola caja. Cómo escribir respuestas que Google levante para sus answer boxes y para los resúmenes generados por IA en la SERP.</p>
-          <div class="folder-foot">
-            <span class="folder-soon">Próximamente</span>
-          </div>
-        </div>
-      </article>
-
-      <!-- Nº 05 -->
-      <article class="folder is-soon" style="--tone: var(--sage); --tone-glass: rgba(199,219,193,0.72); --tab-x: 100px;" data-cat="seo-tecnico">
-        <header class="folder-tab">
-          <span class="folder-tab-cat">SEO técnico</span>
-          <span class="dot"></span>
-          <span class="folder-tab-num">Nº 05</span>
-        </header>
-        <div class="folder-body">
-          <div class="folder-meta">
-            <time>Agosto 2026</time>
-            <span class="sep">·</span>
-            <span>~12 min</span>
-            <span class="folder-soon-pin">En proceso</span>
-          </div>
-          <h2 class="folder-title">Schema markup en castellano: qué tipos de datos estructurados <em>sí</em> mueven la aguja.</h2>
-          <p class="folder-excerpt">Article, FAQ, HowTo, Product, Organization. Cuáles vale la pena implementar primero según el tipo de negocio, y errores comunes que rompen el rich result.</p>
-          <div class="folder-foot">
-            <span class="folder-soon">Próximamente</span>
-          </div>
-        </div>
-      </article>
-
-      <!-- Nº 06 -->
-      <article class="folder is-soon" style="--tone: var(--lilac); --tone-glass: rgba(212,192,237,0.72); --tab-x: 280px;" data-cat="seo-onpage">
-        <header class="folder-tab">
-          <span class="folder-tab-cat">SEO on page</span>
-          <span class="dot"></span>
-          <span class="folder-tab-num">Nº 06</span>
-        </header>
-        <div class="folder-body">
-          <div class="folder-meta">
-            <time>Septiembre 2026</time>
-            <span class="sep">·</span>
-            <span>~6 min</span>
-            <span class="folder-soon-pin">En proceso</span>
-          </div>
-          <h2 class="folder-title">Internal linking que escala: cómo armar la red interna de tu sitio para <em>moverle la aguja</em> a Google.</h2>
-          <p class="folder-excerpt">El recurso más subestimado del on page. Cómo decidir qué enlazar a qué, el anchor text que sí cuenta, y la arquitectura silos vs hub-and-spoke explicada con ejemplos concretos.</p>
-          <div class="folder-foot">
-            <span class="folder-soon">Próximamente</span>
-          </div>
-        </div>
-      </article>
-
-      <!-- Nº 07 -->
-      <article class="folder is-soon" style="--tone: var(--jordy); --tone-glass: rgba(156,192,238,0.72); --tab-x: 40px;" data-cat="seo-ia">
-        <header class="folder-tab">
-          <span class="folder-tab-cat">SEO para IA · Caso</span>
-          <span class="dot"></span>
-          <span class="folder-tab-num">Nº 07</span>
-        </header>
-        <div class="folder-body">
-          <div class="folder-meta">
-            <time>Octubre 2026</time>
-            <span class="sep">·</span>
-            <span>~11 min</span>
-            <span class="folder-soon-pin">En proceso</span>
-          </div>
-          <h2 class="folder-title">Caso: cómo logré que Perplexity citara a una marca de skincare <em>en 60 días.</em></h2>
-          <p class="folder-excerpt">El proceso completo, los entregables, qué cambió en el contenido, qué señales externas trabajamos, y los aprendizajes que se replican en otros rubros.</p>
-          <div class="folder-foot">
-            <span class="folder-soon">Próximamente</span>
-          </div>
-        </div>
-      </article>
-
-      <!-- Nº 08 -->
-      <article class="folder is-soon" style="--tone: var(--sage); --tone-glass: rgba(199,219,193,0.72); --tab-x: 180px;" data-cat="seo-tecnico">
-        <header class="folder-tab">
-          <span class="folder-tab-cat">SEO técnico</span>
-          <span class="dot"></span>
-          <span class="folder-tab-num">Nº 08</span>
-        </header>
-        <div class="folder-body">
-          <div class="folder-meta">
-            <time>Noviembre 2026</time>
-            <span class="sep">·</span>
-            <span>~9 min</span>
-            <span class="folder-soon-pin">En proceso</span>
-          </div>
-          <h2 class="folder-title">Core Web Vitals 2026: la guía para que tu sitio <em>no pierda posiciones</em> por velocidad.</h2>
-          <p class="folder-excerpt">LCP, INP y CLS explicadas sin tecnicismos. Cómo medir, qué herramientas usar, y la lista priorizada de cambios que realmente mueven los Core Web Vitals en sitios en producción.</p>
-          <div class="folder-foot">
-            <span class="folder-soon">Próximamente</span>
-          </div>
-        </div>
+        <h2 class="featured-title">
+          <a href="seo-en-argentina.html">SEO en Argentina: qué funciona, cuánto cuesta y cómo <em>elegir bien.</em></a>
+        </h2>
+        <p class="featured-excerpt">El contexto económico, el usuario argentino y la IA cambiaron las reglas. Qué estrategias funcionan realmente en 2026, cuánto cobran agencias y consultores, y cómo saber si quien te ofrece SEO está actualizado o te está vendiendo humo.</p>
+        <a class="featured-cta" href="seo-en-argentina.html">
+          Leer artículo <span class="arrow">→</span>
+        </a>
       </article>
 
     </div>
   </section>
 
-  <!-- ── NEWSLETTER / SUBSTACK FOLDER ── -->
+  <!-- ── ARCHIVE LEDGER ── -->
+  <section class="archive-section">
+    <div class="archive-inner">
+
+      <div class="archive-head">
+        <h2><em>Archivo</em></h2>
+        <span class="head-meta">8 notas · 2026</span>
+      </div>
+
+      <div class="archive-list">
+
+        <!-- Nº 01 — REAL -->
+        <a class="archive-row" href="como-optimizar-para-geo-aeo.html" style="--tone: var(--lilac);">
+          <span class="row-num">Nº 01</span>
+          <div class="row-main">
+            <h3 class="row-title">GEO vs AEO vs <em>SEO:</em> el SEO es lo único que necesitas (sin trucos).</h3>
+            <div class="row-sub">
+              <span class="cat"><span class="cat-dot"></span>SEO para IA</span>
+              <span class="sep">·</span>
+              <span>7 min</span>
+              <span class="sep">·</span>
+              <span>Guía</span>
+            </div>
+          </div>
+          <span class="row-date">17 May 2026</span>
+          <span class="row-arrow">→</span>
+        </a>
+
+        <!-- Nº 02 — REAL -->
+        <a class="archive-row" href="que-es-seo-guia.html" style="--tone: var(--jordy);">
+          <span class="row-num">Nº 02</span>
+          <div class="row-main">
+            <h3 class="row-title">¿Qué es <em>SEO?</em> La guía completa para empezar a posicionar tu marca.</h3>
+            <div class="row-sub">
+              <span class="cat"><span class="cat-dot"></span>SEO</span>
+              <span class="sep">·</span>
+              <span>12 min</span>
+              <span class="sep">·</span>
+              <span>Guía</span>
+            </div>
+          </div>
+          <span class="row-date">22 Abr 2026</span>
+          <span class="row-arrow">→</span>
+        </a>
+
+        <!-- Nº 03 — REAL -->
+        <a class="archive-row" href="seo-en-argentina.html" style="--tone: var(--peach);">
+          <span class="row-num">Nº 03</span>
+          <div class="row-main">
+            <h3 class="row-title">SEO en <em>Argentina:</em> qué funciona, cuánto cuesta y cómo elegir bien.</h3>
+            <div class="row-sub">
+              <span class="cat"><span class="cat-dot"></span>SEO · Argentina</span>
+              <span class="sep">·</span>
+              <span>8 min</span>
+              <span class="sep">·</span>
+              <span>Guía</span>
+            </div>
+          </div>
+          <span class="row-date">21 May 2026</span>
+          <span class="row-arrow">→</span>
+        </a>
+
+        <!-- Nº 04 -->
+        <div class="archive-row is-soon" style="--tone: var(--peach);">
+          <span class="row-num">Nº 04</span>
+          <div class="row-main">
+            <h3 class="row-title">Cómo armar un calendario de contenidos que <em>posicione,</em> no que rellene.</h3>
+            <div class="row-sub">
+              <span class="cat"><span class="cat-dot"></span>SEO on page</span>
+              <span class="sep">·</span>
+              <span>~7 min</span>
+              <span class="soon-tag">En proceso</span>
+            </div>
+          </div>
+          <span class="row-date">Junio 2026</span>
+          <span class="row-arrow">→</span>
+        </div>
+
+        <!-- Nº 05 -->
+        <div class="archive-row is-soon" style="--tone: var(--lilac);">
+          <span class="row-num">Nº 05</span>
+          <div class="row-main">
+            <h3 class="row-title">AEO: cómo optimizar para los Featured Snippets y la <em>AI Overview</em> de Google.</h3>
+            <div class="row-sub">
+              <span class="cat"><span class="cat-dot"></span>SEO para IA</span>
+              <span class="sep">·</span>
+              <span>~9 min</span>
+              <span class="soon-tag">En proceso</span>
+            </div>
+          </div>
+          <span class="row-date">Julio 2026</span>
+          <span class="row-arrow">→</span>
+        </div>
+
+        <!-- Nº 06 -->
+        <div class="archive-row is-soon" style="--tone: var(--sage);">
+          <span class="row-num">Nº 06</span>
+          <div class="row-main">
+            <h3 class="row-title">Schema markup en castellano: qué tipos de datos estructurados <em>sí</em> mueven la aguja.</h3>
+            <div class="row-sub">
+              <span class="cat"><span class="cat-dot"></span>SEO técnico</span>
+              <span class="sep">·</span>
+              <span>~12 min</span>
+              <span class="soon-tag">En proceso</span>
+            </div>
+          </div>
+          <span class="row-date">Agosto 2026</span>
+          <span class="row-arrow">→</span>
+        </div>
+
+        <!-- Nº 07 -->
+        <div class="archive-row is-soon" style="--tone: var(--peach);">
+          <span class="row-num">Nº 07</span>
+          <div class="row-main">
+            <h3 class="row-title">Internal linking que escala: cómo armar la red interna de tu sitio para <em>moverle la aguja</em> a Google.</h3>
+            <div class="row-sub">
+              <span class="cat"><span class="cat-dot"></span>SEO on page</span>
+              <span class="sep">·</span>
+              <span>~6 min</span>
+              <span class="soon-tag">En proceso</span>
+            </div>
+          </div>
+          <span class="row-date">Sept 2026</span>
+          <span class="row-arrow">→</span>
+        </div>
+
+        <!-- Nº 08 -->
+        <div class="archive-row is-soon" style="--tone: var(--lilac);">
+          <span class="row-num">Nº 08</span>
+          <div class="row-main">
+            <h3 class="row-title">Caso: cómo logré que Perplexity citara a una marca de skincare <em>en 60 días.</em></h3>
+            <div class="row-sub">
+              <span class="cat"><span class="cat-dot"></span>SEO para IA · Caso</span>
+              <span class="sep">·</span>
+              <span>~11 min</span>
+              <span class="soon-tag">En proceso</span>
+            </div>
+          </div>
+          <span class="row-date">Oct 2026</span>
+          <span class="row-arrow">→</span>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── NEWSLETTER CARD ── -->
   <section class="newsletter-section">
     <div class="newsletter-inner">
-      <article class="folder folder-sub" style="--tab-x: 24px;">
-        <header class="folder-tab">
-          <span class="folder-tab-cat">Substack</span>
+      <article class="newsletter-card">
+        <div class="newsletter-eyebrow">
           <span class="dot"></span>
-          <span class="folder-tab-num">Modo SEO</span>
-        </header>
-        <div class="folder-body">
-          <h2>Notas extra, los lunes, en <em>Modo SEO.</em></h2>
-          <p>Mi newsletter en Substack. Análisis cortos, casos en vivo, recursos que voy encontrando y respuestas a preguntas que me hacen en privado. Una vez por semana. Sin relleno.</p>
-          <a href="https://gabymodoseo.substack.com/" target="_blank" rel="noopener" class="sub-btn">
-            Suscribirme en Substack <span class="arrow">→</span>
-          </a>
-          <div class="sub-meta">
-            <span><span class="dot"></span> Lunes</span>
-            <span>gabymodoseo.substack.com</span>
-          </div>
+          <span>Substack</span>
+          <span class="sep">·</span>
+          <span>Modo SEO</span>
         </div>
+        <h2>Notas extra, los lunes, en <em>Modo SEO.</em></h2>
+        <p>Mi newsletter en Substack. Análisis cortos, casos en vivo, recursos que voy encontrando y respuestas a preguntas que me hacen en privado. Una vez por semana. Sin relleno.</p>
+        <a href="https://gabymodoseo.substack.com/" target="_blank" rel="noopener" class="sub-btn">
+          Suscribirme en Substack <span class="arrow">→</span>
+        </a>
       </article>
     </div>
   </section>
@@ -991,6 +878,7 @@
   <a href="../index.html" class="footer-logo">Gaby<em>SEO</em></a>
   <span class="footer-center">2026 · Gabriela Gómez Almeida · gabyseo.com · Buenos Aires, AR</span>
   <div class="footer-links">
+    <a href="index.html">Blog</a>
     <a href="https://www.linkedin.com/in/gabrielagomezalmeida/" target="_blank" rel="noopener">LinkedIn ↗</a>
     <a href="mailto:gabygomezalmeida@gmail.com">Email</a>
     <a href="https://gabymodoseo.substack.com/" target="_blank" rel="noopener">Substack ↗</a>
@@ -1002,8 +890,14 @@
   const nav = document.getElementById('mainNav');
   const burger = document.getElementById('burger');
   const mobileMenu = document.getElementById('mobileMenu');
-  burger.addEventListener('click', () => mobileMenu.classList.toggle('is-open'));
-  window.closeMenu = () => mobileMenu.classList.remove('is-open');
+  burger.addEventListener('click', () => {
+    mobileMenu.classList.toggle('open');
+    burger.classList.toggle('open');
+  });
+  window.closeMenu = () => {
+    mobileMenu.classList.remove('open');
+    burger.classList.remove('open');
+  };
 
   let lastY = window.scrollY;
   window.addEventListener('scroll', () => {
@@ -1012,28 +906,6 @@
     else nav.classList.remove('nav-hidden');
     lastY = y;
   }, { passive: true });
-
-  // ── Filters (visual demo: filtering by category) ──
-  const filters = document.querySelectorAll('.filter');
-  const folders = document.querySelectorAll('.folder[data-cat]');
-  const countEl = document.getElementById('resultsCount');
-
-  filters.forEach(btn => {
-    if (btn.disabled) return;
-    btn.addEventListener('click', () => {
-      filters.forEach(b => { b.classList.remove('is-active'); b.setAttribute('aria-selected', 'false'); });
-      btn.classList.add('is-active');
-      btn.setAttribute('aria-selected', 'true');
-      const cat = btn.dataset.cat;
-      let visible = 0;
-      folders.forEach(f => {
-        const match = cat === 'todos' || f.dataset.cat === cat;
-        f.style.display = match ? '' : 'none';
-        if (match) visible++;
-      });
-      countEl.textContent = `${visible} ${visible === 1 ? 'carpeta' : 'carpetas'} en el archivo`;
-    });
-  });
 </script>
 
 </body>
