@@ -868,74 +868,6 @@
       .nav-links { display: none; }
       .nav-burger { display: flex; }
     }
-
-    /* ── RESUMIR BUTTON & PANEL ── */
-    .post-actions-row { display: flex; align-items: center; gap: 0.65rem; flex-wrap: wrap; }
-    .summarize-btn {
-      display: inline-flex; align-items: center; gap: 7px;
-      height: 40px; padding: 0 1.1rem 0 0.85rem;
-      border-radius: 100px;
-      background: rgba(255,255,255,0.22);
-      backdrop-filter: blur(22px) saturate(200%);
-      -webkit-backdrop-filter: blur(22px) saturate(200%);
-      border: 1px solid rgba(255,255,255,0.45);
-      box-shadow: 0 1px 0 rgba(255,255,255,0.9) inset, 0 6px 16px -8px rgba(19,16,21,0.10);
-      cursor: pointer; font-family: var(--font-sans); font-size: 0.82rem; font-weight: 500; color: var(--onyx);
-      transition: transform .2s, background .2s;
-    }
-    .summarize-btn:hover { background: rgba(255,255,255,0.42); transform: translateY(-1px); }
-    .summarize-btn:active { transform: translateY(0); }
-    .sum-icon { font-size: 0.72rem; color: var(--wisteria); transition: opacity .15s; }
-    .sum-label { transition: opacity .15s; }
-    .sum-dots { display: none; align-items: center; gap: 4px; }
-    .sum-dots span {
-      display: block; width: 4px; height: 4px; border-radius: 50%;
-      background: var(--wisteria); animation: sumBlink 1.2s ease-in-out infinite;
-    }
-    .sum-dots span:nth-child(2) { animation-delay: 0.2s; }
-    .sum-dots span:nth-child(3) { animation-delay: 0.4s; }
-    @keyframes sumBlink {
-      0%, 80%, 100% { opacity: 0.25; transform: scale(0.75); }
-      40% { opacity: 1; transform: scale(1); }
-    }
-    .summarize-btn.loading .sum-icon,
-    .summarize-btn.loading .sum-label { opacity: 0; width: 0; overflow: hidden; padding: 0; margin: 0; }
-    .summarize-btn.loading .sum-dots { display: flex; }
-    .summarize-btn.done .sum-icon { color: #65a86a; }
-    .summary-panel {
-      max-height: 0; overflow: hidden; opacity: 0; margin-top: 0;
-      transition: max-height .55s cubic-bezier(0.4,0,0.2,1), opacity .4s ease, margin-top .4s ease;
-    }
-    .summary-panel.open { max-height: 500px; opacity: 1; margin-top: 1.25rem; }
-    .summary-card {
-      padding: 1.35rem 1.6rem 1.5rem; border-radius: 20px;
-      background: rgba(255,255,255,0.28);
-      backdrop-filter: blur(28px) saturate(200%);
-      -webkit-backdrop-filter: blur(28px) saturate(200%);
-      border: 1px solid rgba(255,255,255,0.65);
-      box-shadow: 0 1px 0 rgba(255,255,255,0.95) inset, 0 14px 38px -18px rgba(19,16,21,0.18);
-    }
-    .summary-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.1rem; }
-    .summary-head-label {
-      display: flex; align-items: center; gap: 6px;
-      font-family: var(--font-mono); font-size: 0.67rem; letter-spacing: 0.14em;
-      text-transform: uppercase; color: var(--wisteria); font-weight: 500;
-    }
-    .summary-close {
-      width: 28px; height: 28px; border-radius: 50%;
-      background: rgba(19,16,21,0.06); border: 1px solid rgba(19,16,21,0.08);
-      cursor: pointer; display: flex; align-items: center; justify-content: center;
-      color: var(--fg-soft); transition: background .15s, transform .15s; flex-shrink: 0;
-    }
-    .summary-close:hover { background: rgba(19,16,21,0.12); transform: scale(1.08); }
-    .summary-points { list-style: none; display: flex; flex-direction: column; gap: 0.7rem; padding: 0; margin: 0; }
-    .summary-point {
-      display: flex; align-items: flex-start; gap: 9px;
-      font-size: 0.88rem; line-height: 1.55; color: var(--fg);
-      opacity: 0; transform: translateY(6px); transition: opacity .4s ease, transform .4s ease;
-    }
-    .summary-point.visible { opacity: 1; transform: none; }
-    .summary-point::before { content: '✦'; color: var(--wisteria); font-size: 0.65rem; flex-shrink: 0; margin-top: 0.3rem; }
   </style>
 </head>
 <body>
@@ -998,14 +930,14 @@
         <!-- Author chip -->
         <div class="author-wrap" id="authorWrap">
           <a href="/#sobre" class="author-chip" id="authorChip" tabindex="0">
-            <img src="../gaby-gomez-seo-opt.jpg" alt="Gaby Gómez Almeida" />
+            <img src="../gaby-gomez-seo-opt.jpg" alt="Gaby Gómez Almeida" width="300" height="400" loading="lazy" />
             <span class="author-name">Por Gaby <em>Gómez</em></span>
           </a>
 
           <div class="author-card" role="tooltip">
             <div class="author-card-top">
               <div class="author-card-photo">
-                <img src="../gaby-gomez-seo-opt.jpg" alt="Gaby Gómez Almeida" />
+                <img src="../gaby-gomez-seo-opt.jpg" alt="Gaby Gómez Almeida" width="300" height="400" loading="lazy" />
               </div>
               <div class="author-card-head">
                 <div class="author-card-name">Gaby <em>Gómez Almeida</em></div>
@@ -1041,49 +973,25 @@
         </span>
       </div>
 
-      <!-- Share + Resumir -->
-      <div class="post-actions-row">
-        <div class="share-group" id="shareGroup">
-          <span class="share-label">Compartir</span>
-          <a class="share-btn" id="shareX" href="#" target="_blank" rel="noopener" aria-label="Compartir en X">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-          </a>
-          <a class="share-btn" id="shareLI" href="#" target="_blank" rel="noopener" aria-label="Compartir en LinkedIn">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.95v5.66H9.36V9h3.41v1.56h.05c.47-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"/></svg>
-          </a>
-          <button class="share-btn" id="shareLink" aria-label="Copiar enlace">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
-              <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/>
-              <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>
-            </svg>
-            <span class="copied-toast">¡Copiado!</span>
-          </button>
-        </div>
-        <button class="summarize-btn" id="summarizeBtn" type="button" aria-label="Resumir artículo">
-          <span class="sum-icon">✦</span>
-          <span class="sum-label">Resumir</span>
-          <span class="sum-dots" aria-hidden="true"><span></span><span></span><span></span></span>
+      <!-- Share -->
+      <div class="share-group" id="shareGroup">
+        <span class="share-label">Compartir</span>
+        <a class="share-btn" id="shareX" href="#" target="_blank" rel="noopener" aria-label="Compartir en X">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+        </a>
+        <a class="share-btn" id="shareLI" href="#" target="_blank" rel="noopener" aria-label="Compartir en LinkedIn">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.95v5.66H9.36V9h3.41v1.56h.05c.47-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"/></svg>
+        </a>
+        <button class="share-btn" id="shareLink" aria-label="Copiar enlace">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+            <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/>
+            <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>
+          </svg>
+          <span class="copied-toast">¡Copiado!</span>
         </button>
       </div>
 
     </div>
-
-    <!-- Summary panel -->
-    <div class="summary-panel" id="summaryPanel" aria-hidden="true">
-      <div class="summary-card">
-        <div class="summary-head">
-          <span class="summary-head-label">
-            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><polyline points="22 12 16 12 14 15 10 15 8 12 2 12"/><path d="M5.45 5.11L2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"/></svg>
-            Resumen
-          </span>
-          <button class="summary-close" id="summaryClose" aria-label="Cerrar resumen">
-            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-          </button>
-        </div>
-        <ul class="summary-points" id="summaryPoints"></ul>
-      </div>
-    </div>
-
   </div>
 </header>
 
@@ -1126,6 +1034,13 @@
     <article class="article-body">
 
       <!-- TL;DR -->
+      <div class="tldr-card">
+        <div class="tldr-head">
+          <span class="tldr-icon">tl</span>
+          <span>Resumen rápido</span>
+        </div>
+        <p>El SEO en Argentina funciona distinto porque el usuario y la economía son distintos. En 2026 necesitas contenido propio, SEO local sólido y que los crawlers de IA puedan indexar tu sitio. Las agencias serias arrancan en <em>USD 800/mes</em>; un buen consultor independiente puede darte más ROI si tu proyecto es mediano o pequeño.</p>
+      </div>
 
       <h2 id="seo-argentina-2026">El SEO en <em>Argentina</em> en 2026</h2>
 
@@ -1251,7 +1166,7 @@
       <!-- AUTHOR FOOTER -->
       <div class="post-author-foot">
         <div class="post-author-foot-photo">
-          <img src="../gaby-gomez-seo-opt.jpg" alt="Gaby Gómez Almeida" />
+          <img src="../gaby-gomez-seo-opt.jpg" alt="Gaby Gómez Almeida" width="300" height="400" loading="lazy" />
         </div>
         <div class="post-author-foot-text">
           <div class="post-author-foot-name">Gaby <em>Gómez Almeida</em></div>
@@ -1391,39 +1306,6 @@
   }
   window.addEventListener('scroll', updateActive, { passive: true });
   updateActive();
-
-  // ── RESUMIR ──
-  (function() {
-    var POINTS = [
-      "El SEO en Argentina funciona diferente: el usuario busca cuotas, envío gratis y tiempos de entrega antes de comprar.",
-      "Las agencias serias arrancan en USD 800/mes; un consultor independiente puede ser más rentable para proyectos medianos.",
-      "Google AI Overviews aparecen en 3 de cada 10 búsquedas en español: ser citada como fuente importa más que el ranking.",
-      "GEO e indexación por IA no son trucos nuevos: son SEO técnico bien hecho — schema correcto, datos accesibles, indexación limpia."
-    ];
-    var btn = document.getElementById('summarizeBtn');
-    var panel = document.getElementById('summaryPanel');
-    var list = document.getElementById('summaryPoints');
-    var closeBtn = document.getElementById('summaryClose');
-    btn.addEventListener('click', function() {
-      if (panel.classList.contains('open')) return;
-      btn.classList.add('loading');
-      setTimeout(function() {
-        list.innerHTML = POINTS.map(function(p) { return '<li class="summary-point">' + p + '</li>'; }).join('');
-        panel.classList.add('open');
-        panel.setAttribute('aria-hidden', 'false');
-        list.querySelectorAll('.summary-point').forEach(function(el, i) {
-          setTimeout(function() { el.classList.add('visible'); }, 120 + i * 200);
-        });
-        btn.classList.remove('loading');
-        btn.classList.add('done');
-      }, 1600);
-    });
-    closeBtn.addEventListener('click', function() {
-      panel.classList.remove('open');
-      panel.setAttribute('aria-hidden', 'true');
-      setTimeout(function() { btn.classList.remove('done'); }, 400);
-    });
-  })();
 </script>
 
 </body>
