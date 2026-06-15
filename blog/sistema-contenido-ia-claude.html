@@ -88,6 +88,14 @@
           "@type": "Answer",
           "text": "Las mismas métricas de siempre: impresiones, clics y posición promedio en Google Search Console, más tiempo en página. Lo que cambia con IA no es la medición sino el volumen de piezas que se pueden producir y monitorear. Un contenido bien estructurado desde el brief posiciona por las mismas razones que cualquier otro: responde una intención de búsqueda con claridad, tiene linking interno coherente y demuestra conocimiento sobre el tema."
         }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Puedo usar estos skills tal cual o tengo que construir los míos?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "La lógica de cada skill es transferible, pero el valor real aparece cuando los adaptas a tu contexto. Un brief generator sin el contexto de marca de tu cliente produce briefs genéricos; con él, produce briefs que respetan el tono, las palabras prohibidas y los links internos reales de ese cliente. Lo mismo con el clustering o el refresher: el skill define el proceso, tus datos definen el resultado. Recomiendo empezar copiando la estructura de uno solo, el brief generator, y construir el resto encima una vez que veas cómo se comporta con tus propios clientes."
+        }
       }
     ]
   }
@@ -1047,7 +1055,7 @@
             <circle cx="12" cy="12" r="9"/>
             <path d="M12 7v5l3 2"/>
           </svg>
-          <strong>5 min</strong> de lectura
+          <strong>9 min</strong> de lectura
         </span>
       </div>
 
@@ -1092,6 +1100,7 @@
           <div>
             <ul class="toc-list" id="tocList">
               <li><a href="#que-es-un-skill">Qué es un skill de IA</a></li>
+              <li><a href="#que-hace-cada-skill">Qué hace cada skill por dentro</a></li>
               <li><a href="#pipeline-5-pasos">El pipeline de 5 pasos</a></li>
               <li><a href="#brief-primero">Por qué el brief va primero</a></li>
               <li><a href="#humanizar-ultimo-paso">Por qué humanizar es lo último</a></li>
@@ -1157,6 +1166,44 @@
       </div>
 
       <p>Cada cliente tiene su contexto de marca guardado. Cuando el skill corre, lee ese contexto primero. El resultado: el mismo brief generator produce un documento completamente distinto para una empresa de tecnología B2B que para una consultora de recursos humanos.</p>
+
+      <h2 id="que-hace-cada-skill">Qué hace cada skill por dentro</h2>
+
+      <p>La tabla de arriba dice qué hace cada skill en una línea. Pero lo que de verdad cambia la calidad del output es lo que pasa adentro: qué recibe el skill, qué decisiones toma sin que tengas que pedírselas, y qué entrega. Esto es lo que separa un skill de un prompt suelto que repites de memoria.</p>
+
+      <h3>Brief generator</h3>
+      <p><strong>Recibe:</strong> la keyword objetivo, el contexto de marca del cliente y, si los tienes, archivos de competencia o de keywords (un export de Ahrefs, por ejemplo).</p>
+      <p><strong>Qué hace por dentro:</strong> antes de escribir una línea, lee el contexto del cliente (tono, palabras prohibidas, marcas de competencia que no debe mencionar, convenciones de CTA). Después analiza la SERP para derivar el tipo de artículo y la intención de búsqueda, en lugar de que se lo dictes tú. Busca las preguntas reales del bloque "la gente también pregunta" en Google para construir las FAQ, en vez de inventarlas. Y escanea el tracker de contenido del cliente para sugerir links internos: solo propone URLs que existen y están confirmadas, nunca construye ni adivina una URL.</p>
+      <p><strong>Entrega:</strong> un brief estructurado con meta, análisis de SERP con desglose por tipo de contenido, foco y objetivo, subsecciones numeradas con encabezados estilo SEO, links internos reales, CTAs e indicaciones de imagen. Todo lo que un redactor (humano o IA) necesita para ejecutar sin volver a preguntar.</p>
+      <p>La regla más importante de este skill es la que más tiempo ahorra: nunca inventa URLs ni datos. Si no puede verificar un link interno en el tracker o el sitemap, no lo incluye. Eso evita el error más caro del contenido con IA, que es publicar enlaces a páginas que no existen.</p>
+
+      <h3>Article generator</h3>
+      <p><strong>Recibe:</strong> el brief del paso anterior, el contexto de marca y los links internos a integrar.</p>
+      <p><strong>Qué hace por dentro:</strong> sigue la estructura editorial del brief al pie de la letra. Si por alguna razón no hay estructura, cae a un esqueleto estándar pensado para ser citado por buscadores y por LLMs: definición clara del concepto, explicación técnica, listas estructuradas, tabla comparativa cuando aporta, una sección analítica adaptada al tema y FAQ. Integra al menos tres links internos dentro de los párrafos, con anchor text descriptivo, nunca pegados al final como apéndice. Y mantiene el tono de marca que viene en el contexto, evitando lenguaje de marketing exagerado.</p>
+      <p><strong>Entrega:</strong> un borrador completo, optimizado tanto para SEO tradicional como para ser extraído por modelos generativos. La optimización para LLM no es un agregado: la estructura misma (definiciones limpias, listas, tablas) es lo que hace el texto fácil de citar.</p>
+
+      <h3>Article editor</h3>
+      <p><strong>Recibe:</strong> el borrador generado y el contexto de marca.</p>
+      <p><strong>Qué hace por dentro:</strong> no reescribe el artículo entero, eso sería desperdiciar el trabajo del paso anterior. Revisa flujo lógico entre secciones, claridad conceptual, redundancias, transiciones abruptas y explicaciones vagas. Corrige encabezados que no son descriptivos. Verifica que la jerarquía de H1, H2 y H3 tenga sentido y que el contenido sea escaneable. Hace una primera pasada de limpieza de frases con olor a IA, pero sin entrar todavía en la humanización profunda, ese es el paso siguiente.</p>
+      <p><strong>Entrega:</strong> el mismo artículo, más afilado: mejor estructurado, sin redundancias, con encabezados que de verdad describen lo que viene abajo.</p>
+
+      <h3>Humanizer</h3>
+      <p><strong>Recibe:</strong> el artículo ya editado.</p>
+      <p><strong>Qué hace por dentro:</strong> está construido sobre la <a href="https://en.wikipedia.org/wiki/Wikipedia:Signs_of_AI_writing" target="_blank" rel="noopener">guía de Wikipedia sobre señales de escritura IA</a>, así que no improvisa qué corregir. Detecta patrones concretos: simbolismo inflado, lenguaje promocional, análisis superficiales con gerundios, atribuciones vagas ("los expertos dicen"), exceso de guiones largos, la regla de tres en cada frase, vocabulario delator y paralelismos negativos del tipo "no es X, es Y".</p>
+      <p>Pero hace algo más que borrar tics, y esto es lo que lo separa de un humanizer genérico: agrega voz. Limpiar el texto es solo la mitad del trabajo, porque un texto sin tics pero también sin personalidad sigue sonando a máquina. Así que varía el ritmo de las frases, deja entrar opiniones y matices, usa la primera persona cuando corresponde y permite algo de imperfección. La pasada final es literalmente preguntarse "¿qué hace que esto siga sonando a IA?", responderlo, y corregir lo que quede.</p>
+      <p><strong>Entrega:</strong> el texto listo para publicar. Que suene a que lo escribió una persona, porque ahora sí tiene a alguien detrás.</p>
+
+      <h3>Keyword clustering</h3>
+      <p><strong>Recibe:</strong> un CSV exportado de Ahrefs (Site Explorer → Organic Keywords), con columnas de keyword, volumen, dificultad, potencial de tráfico y URL.</p>
+      <p><strong>Qué hace por dentro:</strong> primero mapea las columnas aunque vengan en otro idioma o con nombres distintos, y confirma cuántas keywords hay, el rango de volumen y si hay duplicados. Después clasifica cada keyword en una de cuatro intenciones: informacional (qué es, cómo, guía), comercial (mejor, top, vs, opiniones), transaccional (precio, comprar, contratar) o navegacional (marca + término).</p>
+      <p><strong>Entrega:</strong> un CSV descargable con cada keyword etiquetada por intención, listo para planificar qué tipo de contenido necesita cada grupo.</p>
+
+      <h3>Content refresher</h3>
+      <p><strong>Recibe:</strong> un export de GSC con 12 meses de datos (URL, impresiones, clics, CTR, posición promedio), y opcionalmente fechas de publicación y actualización.</p>
+      <p><strong>Qué hace por dentro:</strong> detecta decay comparando los primeros tres meses contra los últimos tres: caídas de CTR, pérdida de clics mes a mes, deriva de posición y pérdida de impresiones. Después le asigna a cada post un score de prioridad de refresh de 0 a 100, calculado con tres variables: cuánto tráfico se podría recuperar si el CTR vuelve a su mejor momento, cuánto esfuerzo costaría actualizarlo, y qué tan alineado está con keywords estratégicas o de marca.</p>
+      <p><strong>Entrega:</strong> un CSV con cada URL, sus clics actuales contra los históricos, el uplift recuperable, el patrón de decay, el score de prioridad y la acción recomendada. Ordenado por impacto, no por antigüedad. El objetivo es saber qué refrescar primero, no refrescar todo.</p>
+
+      <p>El hilo que conecta a los seis: cada skill convierte datos en una decisión o un entregable concreto. No te devuelven un análisis para que tú decidas qué hacer; te devuelven el siguiente paso ya tomado. El brief decide la estructura, el clustering decide el tipo de contenido por grupo, el refresher decide qué tocar primero. Ese es el criterio que uso para saber si un skill vale la pena: si solo describe el problema, no está terminado; si te entrega la acción, sí.</p>
 
       <h2 id="pipeline-5-pasos">El pipeline de 5 pasos: de la keyword al texto publicable</h2>
 
@@ -1290,6 +1337,20 @@
             <div class="faq-body-inner">
               <div class="faq-answer">
                 <p>Las mismas métricas de siempre: impresiones, clics y posición promedio en Google Search Console, más tiempo en página. Lo que cambia con IA no es la medición sino el volumen de piezas que se pueden producir y monitorear. Un contenido bien estructurado desde el brief posiciona por las mismas razones que cualquier otro: responde una intención de búsqueda con claridad, tiene linking interno coherente y demuestra conocimiento sobre el tema.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-trigger" aria-expanded="false">
+            ¿Puedo usar estos skills tal cual o tengo que construir los míos?
+            <span class="faq-trigger-icon" aria-hidden="true">+</span>
+          </button>
+          <div class="faq-body">
+            <div class="faq-body-inner">
+              <div class="faq-answer">
+                <p>La lógica de cada skill es transferible, pero el valor real aparece cuando los adaptas a tu contexto. Un brief generator sin el contexto de marca de tu cliente produce briefs genéricos; con él, produce briefs que respetan el tono, las palabras prohibidas y los links internos reales de ese cliente. Lo mismo con el clustering o el refresher: el skill define el proceso, tus datos definen el resultado. Recomiendo empezar copiando la estructura de uno solo, el brief generator, y construir el resto encima una vez que veas cómo se comporta con tus propios clientes.</p>
               </div>
             </div>
           </div>
