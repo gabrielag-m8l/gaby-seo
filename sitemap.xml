@@ -12,7 +12,7 @@
   <!-- Blog index -->
   <url>
     <loc>https://gabyseo.com/blog/</loc>
-    <lastmod>2026-05-31</lastmod>
+    <lastmod>2026-06-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
@@ -51,6 +51,12 @@
   <url>
     <loc>https://gabyseo.com/blog/sistema-contenido-ia-claude</loc>
     <lastmod>2026-06-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://gabyseo.com/blog/google-updates-2026</loc>
+    <lastmod>2026-06-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
