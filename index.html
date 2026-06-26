@@ -17,13 +17,13 @@
     }, {once: true});
   </script>
   <title>Consultor SEO en Argentina · Buenos Aires | Gaby Gómez</title>
-  <meta name="description" content="¿Buscas un consultor SEO en Argentina? Soy Gaby Gómez, consultora SEO en Buenos Aires. Ayudo a marcas a crecer en Google y en la búsqueda con IA. +5 años, clientes en LATAM y España." />
+  <meta name="description" content="Consultora SEO en Buenos Aires. Ayudo a marcas a crecer en Google, ChatGPT y Gemini. +5 años, clientes en LATAM y España." />
   <meta name="google-site-verification" content="8qBQTS8NHLKzjnscyPm2ZDqHA8pzEaHPy9we2whxjf0" />
   <link rel="canonical" href="https://gabyseo.com/" />
   <meta property="og:type"        content="website" />
   <meta property="og:url"         content="https://gabyseo.com/" />
   <meta property="og:title"       content="Consultor SEO en Argentina · Buenos Aires | Gaby Gómez" />
-  <meta property="og:description" content="¿Buscas un consultor SEO en Argentina? Soy Gaby Gómez, consultora SEO en Buenos Aires. Ayudo a marcas a crecer en Google y en la búsqueda con IA. +5 años, clientes en LATAM y España." />
+  <meta property="og:description" content="Consultora SEO en Buenos Aires. Ayudo a marcas a crecer en Google, ChatGPT y Gemini. +5 años, clientes en LATAM y España." />
   <meta property="og:image"       content="https://gabyseo.com/og-image.png" />
   <meta name="twitter:card"       content="summary_large_image" />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -890,13 +890,79 @@
     /*  MÁS ALLÁ                                        */
     /* ─────────────────────────────────────────────── */
     .masalla { background: transparent; }
-    .masalla-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
+    .masalla-inner { max-width: 680px; }
     .masalla p {
       font-size: 1.05rem; color: rgba(19,16,21,0.7);
       line-height: 1.75; margin-bottom: 1rem;
       max-width: 50ch;
     }
-    .platforms-wrap { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+
+    /* AI Overview mock */
+    .aio-card {
+      padding: 1.75rem 1.85rem 1.5rem;
+      border-radius: var(--radius-lg);
+      background: rgba(255,255,255,0.28);
+      backdrop-filter: blur(28px) saturate(200%);
+      -webkit-backdrop-filter: blur(28px) saturate(200%);
+      border: 1px solid rgba(255,255,255,0.55);
+      box-shadow:
+        0 1px 0 rgba(255,255,255,0.95) inset,
+        0 -1px 0 rgba(19,16,21,0.04) inset,
+        0 -14px 30px -20px rgba(255,255,255,0.55) inset,
+        0 16px 50px -28px rgba(19,16,21,0.15);
+    }
+    .aio-header {
+      display: flex; align-items: center; gap: 0.5rem;
+      margin-bottom: 1.1rem;
+    }
+    .aio-label {
+      font-family: var(--font-sans);
+      font-size: 0.82rem; font-weight: 500;
+      color: var(--fg-soft);
+    }
+    .aio-text {
+      font-size: 0.95rem; line-height: 1.7;
+      color: rgba(19,16,21,0.72);
+      margin-bottom: 0.75rem;
+    }
+    .aio-text strong { color: var(--onyx); font-weight: 600; }
+    .aio-source {
+      display: flex; align-items: center; gap: 0.65rem;
+      padding: 0.75rem 0.85rem;
+      margin-top: 0.5rem;
+      border-radius: 12px;
+      background: rgba(255,255,255,0.35);
+      border: 1px solid rgba(19,16,21,0.06);
+    }
+    .aio-favicon {
+      width: 26px; height: 26px; border-radius: 50%;
+      background: var(--wisteria);
+      color: #fff;
+      font-family: var(--font-serif);
+      font-size: 0.82rem; font-weight: 500;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .aio-source-name {
+      display: block;
+      font-size: 0.82rem; font-weight: 600;
+      color: var(--onyx);
+    }
+    .aio-source-url {
+      display: block;
+      font-size: 0.72rem;
+      color: var(--fg-faint);
+    }
+    .aio-footer {
+      margin-top: 1rem;
+      padding-top: 0.85rem;
+      border-top: 1px solid rgba(19,16,21,0.06);
+      font-family: var(--font-mono);
+      font-size: 0.62rem;
+      letter-spacing: 0.08em;
+      color: var(--fg-faint);
+    }
+
     .platform-pill {
       background: rgba(255,255,255,0.22);
       backdrop-filter: blur(24px) saturate(200%);
@@ -1718,18 +1784,6 @@
         <h2 class="section-title">Presencia donde <em>importa.</em></h2>
         <p>Tu cliente ideal puede estar en YouTube, TikTok, Reddit, Quora o Discord. Y cada vez más, le pregunta directamente a ChatGPT o Perplexity.</p>
         <p>Se construye tu presencia en todos esos espacios. Desde la auditoría inicial hasta la estrategia multicanal, para que cuando alguien tenga el problema que tú resuelves, te encuentre.</p>
-      </div>
-      <div class="platforms-wrap fade-up delay-2">
-        <div class="platform-pill">Google</div>
-        <div class="platform-pill">YouTube</div>
-        <div class="platform-pill">TikTok</div>
-        <div class="platform-pill">ChatGPT</div>
-        <div class="platform-pill">Perplexity</div>
-        <div class="platform-pill">Reddit</div>
-        <div class="platform-pill">Quora</div>
-        <div class="platform-pill">Discord</div>
-        <div class="platform-pill">Gemini</div>
-        <div class="platform-pill">Google AI Overviews</div>
       </div>
     </div>
   </div>
