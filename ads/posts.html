@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <!-- Google Ads (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-431672230"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag("js", new Date());
+    gtag("config", "AW-431672230");
+  </script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GabySEO — Posts Feed 1:1</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --onyx:   #131015;
+      --cream:  #F6F1EA;
+      --peach:  #F4A07A;
+      --wisteria:#C278D4;
+      --lilac:  #D4C0ED;
+      --jordy:  #9CC0EE;
+      --lime:   #DDFF33;
+      --rose:   #F0A8C0;
+      --sage:   #EBF3E8;
+      --green:  #6abf7b;
+      --fs:     'Instrument Serif', serif;
+      --f:      'Geist', system-ui, sans-serif;
+      --fm:     'JetBrains Mono', monospace;
+    }
+
+    body {
+      font-family: var(--f);
+      background: #e8e4df;
+      padding: 48px 32px 80px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .page-header {
+      text-align: center;
+      margin-bottom: 52px;
+    }
+    .page-header h1 {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: #b0a89e;
+      font-family: var(--fm);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, 500px);
+      gap: 56px;
+      justify-content: center;
+    }
+
+    .wrap { display: flex; flex-direction: column; gap: 14px; }
+    .lbl {
+      font-family: var(--fm);
+      font-size: 10px;
+      color: #b0a89e;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+
+    /* ─── BASE CARD ──────────────────────────── */
+    .ad {
+      width: 500px;
+      height: 500px;
+      border-radius: 22px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* ─── BLOBS ──────────────────────────────── */
+    .blob {
+      position: absolute;
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .b1 { animation: drift1 10s ease-in-out infinite; }
+    .b2 { animation: drift2 13s ease-in-out infinite; }
+    .b3 { animation: drift1 15s ease-in-out infinite reverse; }
+
+    @keyframes drift1 {
+      0%,100% { transform: translate(0,0) scale(1); }
+      30%     { transform: translate(25px,-20px) scale(1.1); }
+      70%     { transform: translate(-15px,18px) scale(0.93); }
+    }
+    @keyframes drift2 {
+      0%,100% { transform: translate(0,0) scale(1); }
+      40%     { transform: translate(-22px,16px) scale(1.08); }
+      75%     { transform: translate(18px,-12px) scale(0.96); }
+    }
+
+    /* ─── GLASS ──────────────────────────────── */
+    .g-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      background: rgba(255,255,255,0.55);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1.5px solid rgba(255,255,255,0.85);
+      border-radius: 60px;
+      padding: 12px 26px;
+      font-size: 30px;
+      font-family: var(--fs);
+      color: var(--onyx);
+      line-height: 1;
+      white-space: nowrap;
+    }
+    .g-pill.dark {
+      background: rgba(19,16,21,0.72);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-color: rgba(255,255,255,0.15);
+      color: var(--cream);
+    }
+    .g-card {
+      background: rgba(255,255,255,0.42);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border: 1.5px solid rgba(255,255,255,0.7);
+      border-radius: 18px;
+    }
+
+    /* ─── ANIMATIONS ─────────────────────────── */
+    @keyframes rise {
+      from { opacity:0; transform:translateY(18px); }
+      to   { opacity:1; transform:translateY(0); }
+    }
+    @keyframes slide-l {
+      from { opacity:0; transform:translateX(-18px); }
+      to   { opacity:1; transform:translateX(0); }
+    }
+    @keyframes pop {
+      0%   { opacity:0; transform:scale(0.82); }
+      65%  { opacity:1; transform:scale(1.03); }
+      100% { transform:scale(1); }
+    }
+    @keyframes float {
+      0%,100% { transform:translateY(0); }
+      50%     { transform:translateY(-7px); }
+    }
+    @keyframes float-sm {
+      0%,100% { transform:translateY(0); }
+      50%     { transform:translateY(-4px); }
+    }
+    @keyframes toggle-in {
+      from { opacity:0; transform:translateX(10px); }
+      to   { opacity:1; transform:translateX(0); }
+    }
+    @keyframes check-pop {
+      0%   { opacity:0; transform:scale(0) rotate(-30deg); }
+      70%  { transform:scale(1.2) rotate(5deg); }
+      100% { opacity:1; transform:scale(1) rotate(0); }
+    }
+    @keyframes tag-pop {
+      0%   { opacity:0; transform:scale(0.7) translateY(8px); }
+      70%  { transform:scale(1.05) translateY(-2px); }
+      100% { opacity:1; transform:scale(1) translateY(0); }
+    }
+
+    .a1 { animation-delay:.10s }
+    .a2 { animation-delay:.25s }
+    .a3 { animation-delay:.40s }
+    .a4 { animation-delay:.55s }
+    .a5 { animation-delay:.70s }
+    .a6 { animation-delay:.85s }
+    .a7 { animation-delay:1.0s }
+
+    /* ─── CONTENT WRAPPER ────────────────────── */
+    .cnt {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 40px 40px 32px;
+    }
+
+    /* ─── URL CREDIT ─────────────────────────── */
+    .credit {
+      font-family: var(--fm);
+      font-size: 10px;
+      letter-spacing: .08em;
+      opacity: .38;
+      color: var(--onyx);
+    }
+    .credit.light { color: var(--cream); }
+
+    /* ─────────────────────────────────────────────
+       POST 01 — PILLS
+    ───────────────────────────────────────────── */
+    .ad-01 { background: #F2EBE4; }
+    .ad-01 .b1 { width:360px; height:360px; top:-80px; left:-80px;
+      background: radial-gradient(circle, rgba(244,160,122,.45) 0%, transparent 70%); }
+    .ad-01 .b2 { width:280px; height:280px; bottom:-60px; right:-40px;
+      background: radial-gradient(circle, rgba(240,168,192,.40) 0%, transparent 70%); }
+    .ad-01 .pills { display:flex; flex-direction:column; gap:11px; }
+    .ad-01 .pill-row { display:flex; align-items:center; gap:10px; }
+    .ad-01 .p-emoji {
+      display:inline-flex; align-items:center; justify-content:center;
+      background:rgba(232,221,245,0.6); backdrop-filter:blur(10px);
+      -webkit-backdrop-filter:blur(10px);
+      border:1.5px solid rgba(255,255,255,0.8);
+      border-radius:60px; padding:12px 16px; font-size:20px; gap:4px;
+    }
+    .ad-01 .bottom { display:flex; justify-content:flex-end; }
+    .ad-01 .float-group { animation: float 5s ease-in-out infinite; }
+
+    /* ─────────────────────────────────────────────
+       POST 02 — TOGGLES
+    ───────────────────────────────────────────── */
+    .ad-02 { background: #E8E0F5; }
+    .ad-02 .b1 { width:380px; height:380px; top:-90px; right:-70px;
+      background: radial-gradient(circle, rgba(194,120,212,.45) 0%, transparent 68%); }
+    .ad-02 .b2 { width:260px; height:260px; bottom:-50px; left:-30px;
+      background: radial-gradient(circle, rgba(212,192,237,.55) 0%, transparent 68%); }
+    .ad-02 .pills-top { display:flex; flex-direction:column; gap:10px; }
+    .ad-02 .pill-row  { display:flex; align-items:center; gap:9px; }
+    .ad-02 .p-02      { background:rgba(240,232,250,0.65); border-color:rgba(200,180,230,0.7); }
+    .ad-02 .p-emoji   {
+      display:inline-flex; align-items:center; justify-content:center;
+      background:rgba(228,213,245,0.65); backdrop-filter:blur(10px);
+      -webkit-backdrop-filter:blur(10px);
+      border:1.5px solid rgba(200,180,230,0.6);
+      border-radius:60px; padding:11px 15px; font-size:19px;
+    }
+    .ad-02 .mid       { flex:1; display:flex; flex-direction:column; justify-content:center; padding:16px 0; }
+    .ad-02 .bottom    { display:flex; justify-content:flex-end; }
+    .toggle-row {
+      display:flex; align-items:center;
+      padding:10px 18px; gap:12px;
+      border-bottom:1px solid rgba(19,16,21,.07);
+    }
+    .toggle-row:last-child { border-bottom:none; }
+    .t-ico { font-size:16px; width:22px; text-align:center; flex-shrink:0; }
+    .t-lbl { flex:1; font-size:13.5px; font-weight:500; color:var(--onyx); }
+    .tgl {
+      width:38px; height:22px; border-radius:11px;
+      flex-shrink:0; position:relative;
+    }
+    .tgl::after {
+      content:''; position:absolute;
+      width:16px; height:16px; border-radius:50%;
+      background:#fff; top:3px;
+    }
+    .tgl.on  { background:var(--green); }
+    .tgl.on::after  { right:3px; }
+    .tgl.off { background:#c8c0d0; }
+    .tgl.off::after { left:3px; }
+
+    /* ─────────────────────────────────────────────
+       POST 03 — SEARCH
+    ───────────────────────────────────────────── */
+    .ad-03 { background: #F5E8DC; }
+    .ad-03 .b1 { width:320px; height:320px; top:-60px; right:-60px;
+      background: radial-gradient(circle, rgba(244,160,122,.55) 0%, transparent 68%); }
+    .ad-03 .b2 { width:220px; height:220px; bottom:-30px; left:-30px;
+      background: radial-gradient(circle, rgba(240,168,192,.35) 0%, transparent 68%); }
+    .ad-03 .cnt { gap:10px; justify-content:center; }
+    .s-lbl { font-size:42px; font-weight:800; color:var(--onyx); line-height:1; }
+    .s-bar {
+      display:flex; align-items:center; gap:10px;
+      background:rgba(255,255,255,0.65); backdrop-filter:blur(12px);
+      -webkit-backdrop-filter:blur(12px);
+      border:1.5px solid rgba(255,255,255,0.88);
+      border-radius:12px; padding:14px 18px; min-height:52px;
+    }
+    .s-ico { font-size:15px; color:rgba(19,16,21,.3); flex-shrink:0; }
+    .search-animated {
+      font-size:16px; color:rgba(19,16,21,.75);
+      transition:opacity .35s ease, transform .35s ease;
+      display:inline-block;
+    }
+    .s-ans {
+      background:rgba(19,16,21,0.82); backdrop-filter:blur(12px);
+      -webkit-backdrop-filter:blur(12px);
+      border:1px solid rgba(255,255,255,0.1);
+      border-radius:14px; padding:18px 22px;
+      display:flex; align-items:center; justify-content:space-between;
+    }
+    .s-ans-name {
+      font-size:26px; font-weight:700; color:var(--cream);
+      font-family:var(--fs); font-style:italic;
+    }
+    .s-ans-sub { font-size:10px; color:rgba(246,241,234,.38); font-family:var(--fm); margin-top:2px; }
+    .s-ans-chk { font-size:24px; animation: check-pop .5s ease both; animation-delay:1.3s; }
+    .ad-03 .bottom { display:flex; justify-content:flex-end; margin-top:10px; }
+
+    /* ─────────────────────────────────────────────
+       POST 04 — CHECKLIST
+    ───────────────────────────────────────────── */
+    .ad-04 { background: #E8F7A8; }
+    .ad-04 .b1 { width:340px; height:340px; top:-70px; right:-70px;
+      background: radial-gradient(circle, rgba(221,255,51,.65) 0%, transparent 65%); }
+    .ad-04 .b2 { width:240px; height:240px; bottom:-50px; left:-30px;
+      background: radial-gradient(circle, rgba(120,210,80,.4) 0%, transparent 65%); }
+    .ad-04 .hdl { font-size:34px; font-weight:800; line-height:1.12; color:var(--onyx); }
+    .ad-04 .mid { flex:1; display:flex; flex-direction:column; justify-content:center; gap:2px; }
+    .chk-row {
+      display:flex; align-items:center; gap:13px;
+      padding:10px 0; border-bottom:1px solid rgba(19,16,21,.1);
+    }
+    .chk-row:last-child { border-bottom:none; }
+    .chk-ico {
+      width:26px; height:26px; border-radius:50%;
+      background:var(--onyx); color:var(--lime);
+      font-size:13px; display:flex; align-items:center; justify-content:center;
+      flex-shrink:0;
+    }
+    .chk-txt { font-size:14.5px; font-weight:500; color:var(--onyx); }
+    .ad-04 .bottom { display:flex; align-items:center; justify-content:space-between; }
+    .ad-04 .price-tag {
+      font-family:var(--fm); font-size:11px; letter-spacing:.08em;
+      background:rgba(19,16,21,.85); color:var(--lime);
+      padding:7px 16px; border-radius:40px;
+      backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px);
+    }
+
+    /* ─────────────────────────────────────────────
+       POST 05 — ANTES / DESPUÉS
+    ───────────────────────────────────────────── */
+    .ad-05 { background: #D8EEFF; }
+    .ad-05 .b1 { width:380px; height:380px; top:-80px; left:-60px;
+      background: radial-gradient(circle, rgba(156,192,238,.55) 0%, transparent 68%); }
+    .ad-05 .b2 { width:240px; height:240px; bottom:-40px; right:-30px;
+      background: radial-gradient(circle, rgba(212,192,237,.35) 0%, transparent 68%); }
+    .ad-05 .hdl { font-size:36px; font-weight:800; line-height:1.12; color:var(--onyx); }
+    .ad-05 .cards { display:grid; grid-template-columns:1fr 1fr; gap:10px; flex:1; align-items:center; }
+    .sp-card { border-radius:14px; padding:16px; }
+    .sp-card.before { background:rgba(255,255,255,0.45); backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px); border:1.5px solid rgba(255,255,255,.7); }
+    .sp-card.after  { background:rgba(19,16,21,0.78); backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px); border:1px solid rgba(255,255,255,.12); }
+    .sp-lbl { font-size:9px; font-weight:700; letter-spacing:.13em; text-transform:uppercase; font-family:var(--fm); margin-bottom:10px; }
+    .sp-card.before .sp-lbl { color:#b04040; }
+    .sp-card.after  .sp-lbl { color:var(--green); }
+    .sp-item { display:flex; align-items:flex-start; gap:8px; margin-bottom:8px; font-size:12.5px; line-height:1.4; }
+    .sp-item:last-child { margin-bottom:0; }
+    .sp-card.before .sp-item { color:rgba(19,16,21,.7); }
+    .sp-card.after  .sp-item { color:rgba(246,241,234,.78); }
+    .dot { width:5px; height:5px; border-radius:50%; flex-shrink:0; margin-top:4px; }
+    .sp-card.before .dot { background:#e08080; }
+    .sp-card.after  .dot { background:var(--green); }
+    .ad-05 .bottom { display:flex; justify-content:flex-end; }
+
+    /* ─────────────────────────────────────────────
+       POST 07 — WELLNESS
+    ───────────────────────────────────────────── */
+    .ad-07 { background: #E2EFE0; }
+    .ad-07 .b1 { width:340px; height:340px; top:-70px; right:-50px;
+      background: radial-gradient(circle, rgba(106,191,123,.45) 0%, transparent 65%); }
+    .ad-07 .b2 { width:260px; height:260px; bottom:-60px; left:-40px;
+      background: radial-gradient(circle, rgba(194,120,212,.3) 0%, transparent 65%); }
+    .ad-07 .hdl { font-size:36px; font-weight:800; line-height:1.12; color:var(--onyx); }
+    .ad-07 .hdl em { font-family:var(--fs); font-style:italic; font-weight:400; }
+    .ad-07 .mid { display:flex; flex-direction:column; gap:14px; flex:1; justify-content:center; }
+    .tags { display:flex; flex-wrap:wrap; gap:7px; }
+    .tag {
+      font-size:12px; font-weight:500;
+      padding:7px 15px; border-radius:40px;
+      background:rgba(255,255,255,0.55);
+      backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px);
+      border:1.5px solid rgba(255,255,255,0.75);
+      color:var(--onyx);
+    }
+    .tag.hi {
+      background:rgba(19,16,21,0.78);
+      border-color:rgba(255,255,255,.08);
+      color:var(--sage);
+    }
+    .ad-07 .sub { font-size:13px; color:rgba(19,16,21,.5); line-height:1.55; }
+    .ad-07 .bottom { display:flex; align-items:center; justify-content:space-between; }
+    .ad-07 .audit-tag {
+      font-family:var(--fm); font-size:10px; letter-spacing:.07em;
+      background:rgba(61,110,51,0.85); color:var(--sage);
+      padding:7px 16px; border-radius:40px; backdrop-filter:blur(8px);
+    }
+
+    /* ─── COPY BLOCK ─────────────────────────── */
+    .copy-block {
+      background:#fff; border-radius:12px;
+      padding:16px 18px; font-size:12.5px;
+      line-height:1.6; color:#555;
+    }
+    .copy-block strong {
+      display:block; font-size:9px; text-transform:uppercase;
+      letter-spacing:.14em; color:#ccc; margin-bottom:7px;
+      font-family:var(--fm);
+    }
+    .copy-h  { font-weight:700; color:#111; margin-bottom:4px; }
+    .copy-cta{ color:#aaa; font-size:11px; margin-top:6px; }
+
+    .footer {
+      text-align:center; font-family:var(--fm);
+      font-size:10px; color:#c0b8b0;
+      margin-top:64px; letter-spacing:.1em;
+    }
+  </style>
+</head>
+<body>
+
+<div class="page-header">
+  <h1>GabySEO — Posts Feed 1:1 · 6 variantes</h1>
+</div>
+
+<div class="grid">
+
+  <!-- ══ POST 01 ── PILLS ══════════════════════════════════════ -->
+  <div class="wrap">
+    <span class="lbl">01 — Pills</span>
+    <div class="ad ad-01">
+      <div class="blob b1"></div>
+      <div class="blob b2"></div>
+      <div class="cnt">
+        <div class="float-group pills">
+          <div class="pill-row" style="animation:slide-l .55s ease both .10s">
+            <span class="g-pill">¿Estás perdiendo</span>
+          </div>
+          <div class="pill-row" style="animation:slide-l .55s ease both .25s; margin-top:11px">
+            <span class="g-pill">clientes porque</span>
+            <span class="p-emoji">🔍💻</span>
+          </div>
+          <div class="pill-row" style="animation:slide-l .55s ease both .40s; margin-top:11px">
+            <span class="g-pill">no te encuentran</span>
+          </div>
+          <div class="pill-row" style="animation:slide-l .55s ease both .55s; margin-top:11px">
+            <span class="g-pill">en Google?</span>
+          </div>
+        </div>
+        <div class="bottom" style="animation:rise .5s ease both .7s">
+          <span class="credit">gabyseo.com</span>
+        </div>
+      </div>
+    </div>
+    <div class="copy-block">
+      <strong>Copy · pie de post</strong>
+      <p class="copy-h">¿Estás perdiendo clientes porque no te encuentran en Google?</p>
+      <p>Si tu web no aparece en las primeras posiciones, tu competencia se lleva esos clics. Tiene solución. Consultoría SEO personalizada para marcas en LATAM.</p>
+      <p class="copy-cta">Cuéntame tu caso en gabyseo.com</p>
+    </div>
+  </div>
+
+  <!-- ══ POST 02 ── TOGGLES ════════════════════════════════════ -->
+  <div class="wrap">
+    <span class="lbl">02 — Toggles</span>
+    <div class="ad ad-02">
+      <div class="blob b1"></div>
+      <div class="blob b2"></div>
+      <div class="cnt">
+        <div class="pills-top">
+          <div class="pill-row" style="animation:rise .5s ease both .10s">
+            <span class="g-pill p-02">lo haces</span>
+          </div>
+          <div class="pill-row" style="animation:rise .5s ease both .25s; margin-top:10px">
+            <span class="g-pill p-02">todo sol@?</span>
+            <span class="p-emoji">💻</span>
+          </div>
+        </div>
+        <div class="mid">
+          <div class="g-card" style="animation:rise .55s ease both .40s">
+            <div class="toggle-row" style="animation:toggle-in .45s ease both .55s">
+              <span class="t-ico">🔍</span><span class="t-lbl">Auditoría SEO</span><span class="tgl on"></span>
+            </div>
+            <div class="toggle-row" style="animation:toggle-in .45s ease both .65s">
+              <span class="t-ico">📝</span><span class="t-lbl">Estrategia de keywords</span><span class="tgl on"></span>
+            </div>
+            <div class="toggle-row" style="animation:toggle-in .45s ease both .75s">
+              <span class="t-ico">🤖</span><span class="t-lbl">Búsquedas con IA</span><span class="tgl on"></span>
+            </div>
+            <div class="toggle-row" style="animation:toggle-in .45s ease both .85s">
+              <span class="t-ico">😩</span><span class="t-lbl">Perder tiempo sola</span><span class="tgl off"></span>
+            </div>
+            <div class="toggle-row" style="animation:toggle-in .45s ease both .95s">
+              <span class="t-ico">📈</span><span class="t-lbl">Resultados reales</span><span class="tgl on"></span>
+            </div>
+          </div>
+        </div>
+        <div class="bottom" style="animation:rise .5s ease both 1.1s">
+          <span class="credit">gabyseo.com</span>
+        </div>
+      </div>
+    </div>
+    <div class="copy-block">
+      <strong>Copy · pie de post</strong>
+      <p class="copy-h">¿Lo haces todo sola?</p>
+      <p>Auditoría SEO, keywords, optimización técnica y visibilidad en búsquedas con IA — en un plan personalizado. Apaga el "¿por qué no rankeo?" y prende el tráfico orgánico.</p>
+      <p class="copy-cta">Mira los planes en gabyseo.com</p>
+    </div>
+  </div>
+
+  <!-- ══ POST 03 ── SEARCH ═════════════════════════════════════ -->
+  <div class="wrap">
+    <span class="lbl">03 — Search animado</span>
+    <div class="ad ad-03">
+      <div class="blob b1"></div>
+      <div class="blob b2"></div>
+      <div class="cnt" style="gap:12px; justify-content:center">
+        <p class="s-lbl a1" style="animation:rise .5s ease both .10s">la búsqueda:</p>
+        <div class="s-bar" style="animation:rise .5s ease both .30s">
+          <span class="s-ico">🔍</span>
+          <span class="search-animated">estudio de pilares</span>
+        </div>
+        <p class="s-lbl" style="animation:rise .5s ease both .60s">la solución:</p>
+        <div class="s-ans" style="animation:rise .55s ease both .85s">
+          <div>
+            <p class="s-ans-name">tu negocio</p>
+            <p class="s-ans-sub">gabyseo.com · SEO</p>
+          </div>
+          <span class="s-ans-chk">✓</span>
+        </div>
+        <div class="bottom" style="animation:rise .5s ease both 1.2s; margin-top:4px">
+          <span class="credit">gabyseo.com</span>
+        </div>
+      </div>
+    </div>
+    <div class="copy-block">
+      <strong>Copy · pie de post</strong>
+      <p class="copy-h">Alguien está buscando lo que tú haces. ¿Te encuentra?</p>
+      <p>Pilates, skin care, proteína vegetal… Hay personas buscando exactamente eso en Google ahora mismo. El SEO hace que encuentren tu negocio, no el de otra.</p>
+      <p class="copy-cta">Cuéntame tu proyecto en gabyseo.com</p>
+    </div>
+  </div>
+
+  <!-- ══ POST 04 ── CHECKLIST ══════════════════════════════════ -->
+  <div class="wrap">
+    <span class="lbl">04 — Checklist</span>
+    <div class="ad ad-04">
+      <div class="blob b1"></div>
+      <div class="blob b2"></div>
+      <div class="cnt">
+        <p class="hdl" style="animation:rise .5s ease both .10s">Esto incluye<br>tu consultoría<br>SEO:</p>
+        <div class="mid">
+          <div class="g-card" style="padding:4px 0; animation:rise .5s ease both .35s">
+            <div class="chk-row" style="animation:slide-l .45s ease both .45s">
+              <span class="chk-ico">✓</span><span class="chk-txt">Auditoría SEO completa</span>
+            </div>
+            <div class="chk-row" style="animation:slide-l .45s ease both .55s">
+              <span class="chk-ico">✓</span><span class="chk-txt">Investigación de keywords</span>
+            </div>
+            <div class="chk-row" style="animation:slide-l .45s ease both .65s">
+              <span class="chk-ico">✓</span><span class="chk-txt">Optimización on-page y técnica</span>
+            </div>
+            <div class="chk-row" style="animation:slide-l .45s ease both .75s">
+              <span class="chk-ico">✓</span><span class="chk-txt">Visibilidad en búsquedas con IA</span>
+            </div>
+            <div class="chk-row" style="animation:slide-l .45s ease both .85s">
+              <span class="chk-ico">✓</span><span class="chk-txt">Reportes mensuales de resultados</span>
+            </div>
+          </div>
+        </div>
+        <div class="bottom" style="animation:rise .5s ease both 1.0s">
+          <span class="price-tag">desde $100 USD</span>
+          <span class="credit">gabyseo.com</span>
+        </div>
+      </div>
+    </div>
+    <div class="copy-block">
+      <strong>Copy · pie de post</strong>
+      <p class="copy-h">Esto incluye tu consultoría SEO</p>
+      <p>Sin letra chica ni paquetes inflados. Cada plan incluye auditoría, keywords, optimización y reportes. Y se arma según lo que TU marca necesita.</p>
+      <p class="copy-cta">Planes desde $100 USD · gabyseo.com</p>
+    </div>
+  </div>
+
+  <!-- ══ POST 05 ── ANTES/DESPUÉS ══════════════════════════════ -->
+  <div class="wrap">
+    <span class="lbl">05 — Antes / Después</span>
+    <div class="ad ad-05">
+      <div class="blob b1"></div>
+      <div class="blob b2"></div>
+      <div class="cnt">
+        <p class="hdl" style="animation:rise .5s ease both .10s">Tu web,<br>antes y después.</p>
+        <div class="cards" style="margin:auto 0">
+          <div class="sp-card before" style="animation:slide-l .55s ease both .35s">
+            <p class="sp-lbl">Antes</p>
+            <div class="sp-item"><span class="dot"></span><span>Página 4 de Google</span></div>
+            <div class="sp-item"><span class="dot"></span><span>Sin tráfico orgánico</span></div>
+            <div class="sp-item"><span class="dot"></span><span>Keywords sin definir</span></div>
+            <div class="sp-item"><span class="dot"></span><span>IA no te menciona</span></div>
+          </div>
+          <div class="sp-card after" style="animation:rise .55s ease both .55s">
+            <p class="sp-lbl">Después</p>
+            <div class="sp-item"><span class="dot"></span><span>Top 3 en búsquedas clave</span></div>
+            <div class="sp-item"><span class="dot"></span><span>Tráfico orgánico creciendo</span></div>
+            <div class="sp-item"><span class="dot"></span><span>Estrategia SEO clara</span></div>
+            <div class="sp-item"><span class="dot"></span><span>Visible en Google e IA</span></div>
+          </div>
+        </div>
+        <div class="bottom" style="animation:rise .5s ease both .9s">
+          <span class="credit">gabyseo.com</span>
+        </div>
+      </div>
+    </div>
+    <div class="copy-block">
+      <strong>Copy · pie de post</strong>
+      <p class="copy-h">La diferencia entre antes y después del SEO</p>
+      <p>No es magia, es metodología. Con la estrategia correcta, tu web puede pasar de invisible a primera página — y aparecer en las búsquedas con IA. ¿En qué parte del proceso estás hoy?</p>
+      <p class="copy-cta">Hablemos en gabyseo.com</p>
+    </div>
+  </div>
+
+  <!-- ══ POST 07 ── WELLNESS ════════════════════════════════════ -->
+  <div class="wrap">
+    <span class="lbl">07 — Wellness / Conscious Brands</span>
+    <div class="ad ad-07">
+      <div class="blob b1"></div>
+      <div class="blob b2"></div>
+      <div class="cnt">
+        <p class="hdl" style="animation:rise .55s ease both .10s">¿Tu marca <em>consciente</em><br>aparece donde<br>la buscan?</p>
+        <div class="mid">
+          <div class="tags">
+            <span class="tag hi" style="animation:tag-pop .45s ease both .35s">wellness</span>
+            <span class="tag"    style="animation:tag-pop .45s ease both .42s">beauty</span>
+            <span class="tag hi" style="animation:tag-pop .45s ease both .49s">skincare</span>
+            <span class="tag"    style="animation:tag-pop .45s ease both .56s">eco-friendly</span>
+            <span class="tag"    style="animation:tag-pop .45s ease both .63s">vegana</span>
+            <span class="tag hi" style="animation:tag-pop .45s ease both .70s">cruelty free</span>
+            <span class="tag"    style="animation:tag-pop .45s ease both .77s">hecha por mujeres 🌿</span>
+          </div>
+          <p class="sub" style="animation:rise .5s ease both .90s">
+            Hay miles de personas buscando exactamente lo que haces.<br>El SEO las lleva a ti — no a tu competencia.
+          </p>
+        </div>
+        <div class="bottom" style="animation:rise .5s ease both 1.0s">
+          <span class="audit-tag">auditoría gratis</span>
+          <span class="credit">gabyseo.com</span>
+        </div>
+      </div>
+    </div>
+    <div class="copy-block">
+      <strong>Copy · pie de post</strong>
+      <p class="copy-h">¿Tu marca de wellness, beauty o skincare aparece en Google?</p>
+      <p>Las personas buscan productos veganos, cruelty free y eco-friendly todos los días. Si tu marca no aparece, estás perdiendo clientas que ya están listas para comprarte. Ofrezco auditoría SEO gratis para marcas conscientes y marcas hechas por mujeres. 🌿</p>
+      <p class="copy-cta">Pide tu auditoría gratis en gabyseo.com</p>
+    </div>
+  </div>
+
+</div>
+
+<p class="footer">gabyseo.com · Posts Feed 1:1 · 1080×1080px · 2025</p>
+
+<script>
+  const terms = ["estudio de pilares", "skin care", "proteína vegetal"];
+  let i = 0;
+  const els = document.querySelectorAll('.search-animated');
+  setInterval(() => {
+    els.forEach(el => { el.style.opacity='0'; el.style.transform='translateY(-6px)'; });
+    setTimeout(() => {
+      i = (i+1) % terms.length;
+      els.forEach(el => { el.textContent=terms[i]; el.style.opacity='1'; el.style.transform='translateY(0)'; });
+    }, 380);
+  }, 2200);
+</script>
+</body>
+</html>

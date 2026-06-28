@@ -1,0 +1,910 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <!-- Google Ads (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-431672230"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag("js", new Date());
+    gtag("config", "AW-431672230");
+  </script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ads GabySEO — Serie Instagram</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --onyx:     #131015;
+      --cream:    #F6F1EA;
+      --paper:    #FAF6F0;
+      --peach:    #F4A07A;
+      --wisteria: #C278D4;
+      --lilac:    #D4C0ED;
+      --jordy:    #9CC0EE;
+      --lime:     #DDFF33;
+      --rose:     #F0A8C0;
+      --green-toggle: #6abf7b;
+    }
+
+    body {
+      font-family: 'Geist', system-ui, sans-serif;
+      background: #f0ece8;
+      padding: 48px 32px 80px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .page-header {
+      text-align: center;
+      margin-bottom: 52px;
+    }
+
+    .page-header h1 {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: #b0a89e;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .ads-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, 500px);
+      gap: 52px;
+      justify-content: center;
+    }
+
+    .ad-wrap {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .ad-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      color: #b0a89e;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+
+    /* BASE CARD */
+    .ad {
+      width: 500px;
+      height: 500px;
+      border-radius: 24px;
+      overflow: hidden;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ══════════════════════════════════════
+       AD 01 · PILLS / PREGUNTA
+       fondo: crema suave
+    ══════════════════════════════════════ */
+    .ad-01 {
+      background: #F5F0EB;
+      padding: 48px 44px;
+      justify-content: space-between;
+    }
+
+    .ad-01 .pills-block {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 12px;
+    }
+
+    .pill-text {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: #fff;
+      border: 2px solid #d6cfc7;
+      border-radius: 60px;
+      padding: 14px 28px;
+      font-size: 32px;
+      font-weight: 500;
+      color: var(--onyx);
+      font-family: 'Instrument Serif', serif;
+      line-height: 1;
+    }
+
+    .pill-emoji {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: #e8ddf5;
+      border: 2px solid #d6cfc7;
+      border-radius: 60px;
+      padding: 14px 20px;
+      font-size: 24px;
+      gap: 6px;
+    }
+
+    .pill-arrow {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      border: 2px solid #d6cfc7;
+      background: #fff;
+      font-size: 24px;
+      color: var(--onyx);
+    }
+
+    .ad-01 .row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .ad-01 .bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .ad-01 .sub {
+      font-size: 13px;
+      color: rgba(19,16,21,.4);
+      font-family: 'JetBrains Mono', monospace;
+      letter-spacing: .05em;
+    }
+
+    .cta-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border-radius: 60px;
+      padding: 12px 24px;
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: .01em;
+      white-space: nowrap;
+    }
+
+    .cta-dark { background: var(--onyx); color: var(--cream); }
+    .cta-peach { background: var(--peach); color: var(--onyx); }
+    .cta-lime  { background: var(--lime);  color: var(--onyx); }
+    .cta-wisteria { background: var(--wisteria); color: #fff; }
+    .cta-rose  { background: var(--rose);  color: #1a0f14; }
+
+    /* ══════════════════════════════════════
+       AD 02 · TOGGLES
+       fondo: lila suave
+    ══════════════════════════════════════ */
+    .ad-02 {
+      background: #EDE6F5;
+      padding: 40px 44px 36px;
+      gap: 18px;
+      justify-content: flex-start;
+    }
+
+    .ad-02 .pill-02 {
+      background: #f0e8fa;
+      border-color: #cebfe6;
+    }
+
+    .ad-02 .pills-top {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .toggle-card {
+      background: #fff;
+      border-radius: 20px;
+      padding: 4px 0;
+    }
+
+    .toggle-row {
+      display: flex;
+      align-items: center;
+      padding: 10px 22px;
+      gap: 14px;
+      border-bottom: 1px solid rgba(19,16,21,.06);
+    }
+
+    .toggle-row:last-child { border-bottom: none; }
+
+    .toggle-emoji { font-size: 20px; width: 28px; text-align: center; flex-shrink: 0; }
+
+    .toggle-label {
+      flex: 1;
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--onyx);
+    }
+
+    .toggle {
+      width: 44px;
+      height: 26px;
+      border-radius: 13px;
+      flex-shrink: 0;
+      position: relative;
+    }
+
+    .toggle::after {
+      content: '';
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: #fff;
+      top: 3px;
+    }
+
+    .toggle.on  { background: var(--green-toggle); }
+    .toggle.on::after  { right: 3px; }
+    .toggle.off { background: #d4cfc9; }
+    .toggle.off::after { left: 3px; }
+
+    .ad-02 .bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: auto;
+    }
+
+    .ad-02 .brand {
+      font-size: 14px;
+      font-weight: 700;
+      color: rgba(19,16,21,.3);
+      letter-spacing: .04em;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    /* ══════════════════════════════════════
+       AD 03 · SEARCH BAR
+       fondo: peach suave
+    ══════════════════════════════════════ */
+    .ad-03 {
+      background: #FBE9DF;
+      padding: 52px 44px;
+      justify-content: space-between;
+    }
+
+    .ad-03 .section-label {
+      font-size: 42px;
+      font-weight: 800;
+      color: var(--onyx);
+      line-height: 1;
+    }
+
+    .search-bar {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      background: #fff;
+      border: 2px solid rgba(19,16,21,.12);
+      border-radius: 14px;
+      padding: 16px 20px;
+    }
+
+    .search-icon {
+      font-size: 18px;
+      color: rgba(19,16,21,.35);
+      flex-shrink: 0;
+    }
+
+    .search-text {
+      font-size: 17px;
+      color: rgba(19,16,21,.7);
+      font-weight: 400;
+    }
+
+    .answer-box {
+      background: var(--onyx);
+      border-radius: 18px;
+      padding: 24px 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .answer-box .name {
+      font-size: 26px;
+      font-weight: 700;
+      color: var(--cream);
+      font-family: 'Instrument Serif', serif;
+      font-style: italic;
+    }
+
+    .answer-box .url {
+      font-size: 13px;
+      color: rgba(246,241,234,.4);
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .answer-box .check {
+      font-size: 28px;
+    }
+
+    .ad-03 .bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .ad-03 .brand {
+      font-size: 13px;
+      font-family: 'JetBrains Mono', monospace;
+      color: rgba(19,16,21,.3);
+      letter-spacing: .05em;
+    }
+
+    /* ══════════════════════════════════════
+       AD 04 · CHECKLIST
+       fondo: verde lima suave
+    ══════════════════════════════════════ */
+    .ad-04 {
+      background: #EDFABE;
+      padding: 48px 44px;
+      justify-content: space-between;
+    }
+
+    .ad-04 .headline {
+      font-size: 38px;
+      font-weight: 800;
+      line-height: 1.12;
+      color: var(--onyx);
+    }
+
+    .check-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .check-item {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 14px 0;
+      border-bottom: 1px solid rgba(19,16,21,.1);
+    }
+
+    .check-item:last-child { border-bottom: none; }
+
+    .check-icon {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: var(--onyx);
+      color: var(--lime);
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .check-text {
+      font-size: 16px;
+      font-weight: 500;
+      color: var(--onyx);
+    }
+
+    .ad-04 .bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .ad-04 .brand {
+      font-size: 13px;
+      font-family: 'JetBrains Mono', monospace;
+      color: rgba(19,16,21,.35);
+      letter-spacing: .05em;
+    }
+
+    /* ══════════════════════════════════════
+       AD 05 · ANTES / DESPUÉS
+       fondo: jordy blue suave
+    ══════════════════════════════════════ */
+    .ad-05 {
+      background: #DFF0FF;
+      padding: 48px 44px;
+      justify-content: space-between;
+    }
+
+    .ad-05 .headline {
+      font-size: 40px;
+      font-weight: 800;
+      line-height: 1.12;
+      color: var(--onyx);
+    }
+
+    .split-cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .split-card {
+      background: #fff;
+      border-radius: 16px;
+      padding: 20px 18px;
+    }
+
+    .split-card .split-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      font-family: 'JetBrains Mono', monospace;
+      margin-bottom: 14px;
+    }
+
+    .split-card.before .split-label { color: #b04040; }
+    .split-card.after  .split-label { color: #3a8f50; }
+
+    .split-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      margin-bottom: 10px;
+      font-size: 13px;
+      line-height: 1.4;
+      color: rgba(19,16,21,.75);
+    }
+
+    .split-item:last-child { margin-bottom: 0; }
+
+    .split-item .dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      flex-shrink: 0;
+      margin-top: 5px;
+    }
+
+    .split-card.before .dot { background: #e88080; }
+    .split-card.after  .dot { background: var(--green-toggle); }
+
+    .ad-05 .bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .ad-05 .brand {
+      font-size: 13px;
+      font-family: 'JetBrains Mono', monospace;
+      color: rgba(19,16,21,.3);
+      letter-spacing: .05em;
+    }
+
+    /* ══════════════════════════════════════
+       AD 06 · STAT / NÚMERO GRANDE
+       fondo: rose suave
+    ══════════════════════════════════════ */
+    .ad-06 {
+      background: #FAE2EC;
+      padding: 52px 44px;
+      justify-content: space-between;
+    }
+
+    .big-stat {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .stat-number {
+      font-size: 110px;
+      font-weight: 900;
+      line-height: 1;
+      color: var(--onyx);
+      letter-spacing: -.03em;
+    }
+
+    .stat-label {
+      font-size: 18px;
+      font-weight: 400;
+      color: rgba(19,16,21,.55);
+      line-height: 1.5;
+      max-width: 320px;
+    }
+
+    .stat-label strong {
+      font-weight: 700;
+      color: var(--onyx);
+    }
+
+    .ad-06 .sub-text {
+      font-size: 14px;
+      color: rgba(19,16,21,.45);
+      max-width: 280px;
+      line-height: 1.55;
+    }
+
+    .ad-06 .bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .ad-06 .brand {
+      font-size: 13px;
+      font-family: 'JetBrains Mono', monospace;
+      color: rgba(19,16,21,.3);
+      letter-spacing: .05em;
+    }
+
+    /* ══════════════════════════════════════
+       AD 07 · WELLNESS / CONSCIOUS BRANDS
+       fondo: sage verde suave
+    ══════════════════════════════════════ */
+    .ad-07 {
+      background: #EBF3E8;
+      padding: 44px 44px 40px;
+      justify-content: space-between;
+    }
+
+    .ad-07 .eyebrow {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: #5a8a50;
+    }
+
+    .brand-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .brand-tag-chip {
+      font-size: 13px;
+      font-weight: 500;
+      padding: 8px 16px;
+      border-radius: 40px;
+      border: 1.5px solid rgba(19,16,21,.12);
+      background: rgba(255,255,255,.7);
+      color: var(--onyx);
+    }
+
+    .brand-tag-chip.highlight {
+      background: var(--onyx);
+      color: #EBF3E8;
+      border-color: var(--onyx);
+    }
+
+    .ad-07 .headline {
+      font-size: 34px;
+      font-weight: 800;
+      line-height: 1.15;
+      color: var(--onyx);
+    }
+
+    .ad-07 .headline em {
+      font-family: 'Instrument Serif', serif;
+      font-style: italic;
+      font-weight: 400;
+    }
+
+    .ad-07 .sub {
+      font-size: 14px;
+      color: rgba(19,16,21,.5);
+      line-height: 1.55;
+    }
+
+    .ad-07 .bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .ad-07 .brand {
+      font-size: 13px;
+      font-family: 'JetBrains Mono', monospace;
+      color: rgba(19,16,21,.3);
+      letter-spacing: .05em;
+    }
+
+    .cta-sage { background: #3d6e33; color: #EBF3E8; }
+
+    /* ─── copy block ─── */
+    .copy-block {
+      background: #fff;
+      border-radius: 14px;
+      padding: 20px 22px;
+      font-size: 13px;
+      line-height: 1.6;
+      color: #555;
+    }
+
+    .copy-block strong {
+      display: block;
+      font-size: 9px;
+      text-transform: uppercase;
+      letter-spacing: .14em;
+      color: #bbb;
+      margin-bottom: 10px;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .copy-block .copy-h { font-weight: 700; color: #111; margin-bottom: 5px; }
+    .copy-block .copy-cta { color: #999; font-size: 12px; margin-top: 8px; }
+
+    .page-footer {
+      text-align: center;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      color: #c0b8b0;
+      margin-top: 64px;
+      letter-spacing: .1em;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="page-header">
+    <h1>GabySEO — Serie de Ads · Instagram &amp; Facebook · 6 variantes</h1>
+  </div>
+
+  <div class="ads-grid">
+
+    <!-- AD 01 · PILLS -->
+    <div class="ad-wrap">
+      <span class="ad-label">01 — Pills / Pregunta</span>
+      <div class="ad ad-01">
+        <div class="pills-block">
+          <div class="row">
+            <span class="pill-text">¿Estás perdiendo</span>
+          </div>
+          <div class="row">
+            <span class="pill-text">clientes porque</span>
+            <span class="pill-emoji">🔍💻</span>
+          </div>
+          <div class="row">
+            <span class="pill-text">no te encuentran?</span>
+          </div>
+          <div class="row" style="margin-top:4px">
+            <span class="pill-arrow">→</span>
+          </div>
+        </div>
+        <div class="bottom">
+          <span class="cta-pill cta-dark">Hablemos →</span>
+          <span class="sub">gabyseo.com</span>
+        </div>
+      </div>
+      <div class="copy-block">
+        <strong>Copy · pie de post</strong>
+        <p class="copy-h">¿Estás perdiendo clientes porque no te encuentran?</p>
+        <p>Si tu web no aparece en Google, tu competencia se lleva esos clics. La buena noticia: tiene solución. Consultoría SEO personalizada para marcas en Argentina y LATAM.</p>
+        <p class="copy-cta">→ Contame tu caso en gabyseo.com · Sin costo</p>
+      </div>
+    </div>
+
+    <!-- AD 02 · TOGGLES -->
+    <div class="ad-wrap">
+      <span class="ad-label">02 — Toggles / Servicios</span>
+      <div class="ad ad-02">
+        <div class="pills-top">
+          <div class="row">
+            <span class="pill-text pill-02">¿Lo hacés</span>
+          </div>
+          <div class="row" style="gap:10px">
+            <span class="pill-text pill-02">sol@?</span>
+            <span class="pill-emoji" style="background:#e4d5f5;border-color:#cebfe6">💻</span>
+          </div>
+        </div>
+        <div class="toggle-card">
+          <div class="toggle-row">
+            <span class="toggle-emoji">🔍</span>
+            <span class="toggle-label">Auditoría SEO del sitio</span>
+            <span class="toggle on"></span>
+          </div>
+          <div class="toggle-row">
+            <span class="toggle-emoji">📝</span>
+            <span class="toggle-label">Estrategia de keywords</span>
+            <span class="toggle on"></span>
+          </div>
+          <div class="toggle-row">
+            <span class="toggle-emoji">⚙️</span>
+            <span class="toggle-label">Optimización técnica</span>
+            <span class="toggle on"></span>
+          </div>
+          <div class="toggle-row">
+            <span class="toggle-emoji">😩</span>
+            <span class="toggle-label">Perder tiempo solo</span>
+            <span class="toggle off"></span>
+          </div>
+          <div class="toggle-row">
+            <span class="toggle-emoji">📈</span>
+            <span class="toggle-label">Resultados reales</span>
+            <span class="toggle on"></span>
+          </div>
+        </div>
+        <div class="bottom">
+          <span class="cta-pill cta-wisteria">ver planes →</span>
+          <span class="brand">gabyseo.com</span>
+        </div>
+      </div>
+      <div class="copy-block">
+        <strong>Copy · pie de post</strong>
+        <p class="copy-h">Tu SEO, activado.</p>
+        <p>Auditoría, keywords, optimización técnica y seguimiento de resultados — todo en un solo plan personalizado. Apagá el "¿por qué no rankeo?" y prendé el tráfico orgánico.</p>
+        <p class="copy-cta">→ Mirá los planes en gabyseo.com</p>
+      </div>
+    </div>
+
+    <!-- AD 03 · SEARCH BAR -->
+    <div class="ad-wrap">
+      <span class="ad-label">03 — Search / Solución</span>
+      <div class="ad ad-03">
+        <p class="section-label">la búsqueda:</p>
+        <div class="search-bar">
+          <span class="search-icon">🔍</span>
+          <span class="search-text">consultor seo argentina</span>
+        </div>
+        <p class="section-label">la solución:</p>
+        <div class="answer-box">
+          <div>
+            <p class="name">Gaby Gómez</p>
+            <p class="url">gabyseo.com</p>
+          </div>
+          <span class="check">✓</span>
+        </div>
+        <div class="bottom">
+          <span class="cta-pill cta-peach">contactar →</span>
+          <span class="brand">gabyseo.com</span>
+        </div>
+      </div>
+      <div class="copy-block">
+        <strong>Copy · pie de post</strong>
+        <p class="copy-h">¿Buscás un consultor SEO en Argentina?</p>
+        <p>Hola, soy Gaby 👋 Trabajo con marcas que quieren aparecer en Google (y también en ChatGPT, Perplexity y los nuevos buscadores con IA). Si estás buscando alguien que te ayude a rankear, acá estoy.</p>
+        <p class="copy-cta">→ gabyseo.com · Consulta sin costo</p>
+      </div>
+    </div>
+
+    <!-- AD 04 · CHECKLIST -->
+    <div class="ad-wrap">
+      <span class="ad-label">04 — Checklist / Incluye</span>
+      <div class="ad ad-04">
+        <p class="headline">Esto incluye<br>tu consultoría:</p>
+        <div class="check-list">
+          <div class="check-item">
+            <span class="check-icon">✓</span>
+            <span class="check-text">Auditoría SEO completa del sitio</span>
+          </div>
+          <div class="check-item">
+            <span class="check-icon">✓</span>
+            <span class="check-text">Investigación de palabras clave</span>
+          </div>
+          <div class="check-item">
+            <span class="check-icon">✓</span>
+            <span class="check-text">Optimización on-page y técnica</span>
+          </div>
+          <div class="check-item">
+            <span class="check-icon">✓</span>
+            <span class="check-text">Estrategia de contenido</span>
+          </div>
+          <div class="check-item">
+            <span class="check-icon">✓</span>
+            <span class="check-text">Reportes mensuales de resultados</span>
+          </div>
+        </div>
+        <div class="bottom">
+          <span class="cta-pill cta-lime">desde $100 USD →</span>
+          <span class="brand">gabyseo.com</span>
+        </div>
+      </div>
+      <div class="copy-block">
+        <strong>Copy · pie de post</strong>
+        <p class="copy-h">Esto incluye tu consultoría SEO</p>
+        <p>Sin letra chica ni paquetes inflados. Cada plan incluye auditoría, keywords, optimización, contenido y reportes. Y se arma según lo que TU marca necesita.</p>
+        <p class="copy-cta">→ Planes desde $100 USD · gabyseo.com</p>
+      </div>
+    </div>
+
+    <!-- AD 05 · ANTES / DESPUÉS -->
+    <div class="ad-wrap">
+      <span class="ad-label">05 — Antes / Después</span>
+      <div class="ad ad-05">
+        <p class="headline">Tu web,<br>antes y después.</p>
+        <div class="split-cards">
+          <div class="split-card before">
+            <p class="split-label">Antes</p>
+            <div class="split-item"><span class="dot"></span><span>Página 4 de Google</span></div>
+            <div class="split-item"><span class="dot"></span><span>Sin tráfico orgánico</span></div>
+            <div class="split-item"><span class="dot"></span><span>Keywords sin definir</span></div>
+            <div class="split-item"><span class="dot"></span><span>Errores técnicos sin resolver</span></div>
+          </div>
+          <div class="split-card after">
+            <p class="split-label">Después</p>
+            <div class="split-item"><span class="dot"></span><span>Top 3 en búsquedas clave</span></div>
+            <div class="split-item"><span class="dot"></span><span>Tráfico orgánico creciendo</span></div>
+            <div class="split-item"><span class="dot"></span><span>Estrategia clara</span></div>
+            <div class="split-item"><span class="dot"></span><span>Sitio técnicamente sólido</span></div>
+          </div>
+        </div>
+        <div class="bottom">
+          <span class="cta-pill cta-dark">quiero el después →</span>
+          <span class="brand">gabyseo.com</span>
+        </div>
+      </div>
+      <div class="copy-block">
+        <strong>Copy · pie de post</strong>
+        <p class="copy-h">La diferencia entre antes y después del SEO</p>
+        <p>No es magia, es metodología. Con la estrategia correcta, tu web puede pasar de invisible a primera página. ¿En qué parte del proceso estás hoy?</p>
+        <p class="copy-cta">→ Hablemos en gabyseo.com</p>
+      </div>
+    </div>
+
+    <!-- AD 06 · STAT -->
+    <div class="ad-wrap">
+      <span class="ad-label">06 — Stat / Número grande</span>
+      <div class="ad ad-06">
+        <div class="big-stat">
+          <span class="stat-number">75%</span>
+          <p class="stat-label">de los usuarios <strong>nunca pasa</strong> de la primera página de Google.</p>
+        </div>
+        <p class="sub-text">Si tu marca no está ahí, prácticamente no existe para tu audiencia. Eso es lo que trabajo para cambiar.</p>
+        <div class="bottom">
+          <span class="cta-pill cta-rose">hablemos →</span>
+          <span class="brand">gabyseo.com</span>
+        </div>
+      </div>
+      <div class="copy-block">
+        <strong>Copy · pie de post</strong>
+        <p class="copy-h">El 75% de las personas nunca pasa de la primera página de Google</p>
+        <p>Si tu web está en la página 2, 3 o más, básicamente es invisible para tu audiencia. El SEO no es un lujo — es la diferencia entre que te encuentren o no. ¿Cuándo fue la última vez que revisaste dónde rankea tu marca?</p>
+        <p class="copy-cta">→ Auditamos tu sitio · gabyseo.com</p>
+      </div>
+    </div>
+
+    <!-- AD 07 -->
+    <div class="ad-wrap">
+      <span class="ad-label">07 — Wellness / Conscious Brands</span>
+      <div class="ad ad-07">
+        <div>
+          <p class="eyebrow">Auditoría SEO · Edición especial</p>
+        </div>
+        <div class="brand-tags">
+          <span class="brand-tag-chip highlight">wellness</span>
+          <span class="brand-tag-chip">beauty</span>
+          <span class="brand-tag-chip highlight">skincare</span>
+          <span class="brand-tag-chip">eco-friendly</span>
+          <span class="brand-tag-chip">vegana</span>
+          <span class="brand-tag-chip highlight">cruelty free</span>
+          <span class="brand-tag-chip">hecha por mujeres 🌿</span>
+        </div>
+        <div>
+          <p class="headline">¿Tu marca <em>consciente</em><br>aparece donde<br>la buscan?</p>
+        </div>
+        <p class="sub">Hay miles de personas buscando exactamente lo que hacés.<br>El SEO las lleva a vos — no a tu competencia.</p>
+        <div class="bottom">
+          <span class="cta-pill cta-sage">quiero mi auditoría →</span>
+          <span class="brand">gabyseo.com</span>
+        </div>
+      </div>
+      <div class="copy-block">
+        <strong>Copy · pie de post</strong>
+        <p class="copy-h">¿Tu marca de wellness, beauty o skincare aparece en Google?</p>
+        <p>Las personas buscan productos veganos, cruelty free y eco-friendly todos los días. Si tu marca no aparece en esas búsquedas, estás perdiendo clientes que ya están listos para comprarte. Ofrezco auditoría SEO especializada para marcas conscientes, de beauty, wellness y marcas hechas por mujeres. 🌿</p>
+        <p class="copy-cta">→ Pedí tu auditoría en gabyseo.com</p>
+      </div>
+    </div>
+
+  </div>
+
+  <p class="page-footer">gabyseo.com · Serie Instagram / Facebook · 1080×1080px · 2025</p>
+
+</body>
+</html>

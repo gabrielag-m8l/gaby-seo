@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <!-- Google Ads (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-431672230"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag("js", new Date());
+    gtag("config", "AW-431672230");
+  </script>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>GabySEO — LinkedIn · Sistema de contenido con IA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" />
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --onyx:   #131015;
+    --cream:  #F6F1EA;
+    --peach:  #F4A07A;
+    --wisteria:#C278D4;
+    --lilac:  #D4C0ED;
+    --jordy:  #9CC0EE;
+    --lime:   #DDFF33;
+    --rose:   #F0A8C0;
+    --fs:     'Instrument Serif', serif;
+    --f:      'Geist', system-ui, sans-serif;
+    --fm:     'JetBrains Mono', monospace;
+  }
+
+  html, body { width: 1080px; height: 1080px; overflow: hidden; }
+  body { font-family: var(--f); background: #F2EBE4; -webkit-font-smoothing: antialiased; }
+
+  .ad {
+    width: 1080px; height: 1080px;
+    position: relative; overflow: hidden;
+    background: #F2EBE4; display: flex;
+  }
+
+  .blob { position: absolute; border-radius: 50%; pointer-events: none; z-index: 0; }
+  .b1 { width: 680px; height: 680px; top: -180px; left: -160px;
+        background: radial-gradient(circle, rgba(244,160,122,.50) 0%, transparent 70%); }
+  .b2 { width: 560px; height: 560px; bottom: -150px; right: -110px;
+        background: radial-gradient(circle, rgba(194,120,212,.42) 0%, transparent 70%); }
+  .b3 { width: 440px; height: 440px; bottom: 100px; left: -150px;
+        background: radial-gradient(circle, rgba(156,192,238,.32) 0%, transparent 70%); }
+
+  .cnt {
+    position: relative; z-index: 1; flex: 1;
+    padding: 76px 80px 80px;
+    display: flex; flex-direction: column;
+  }
+
+  /* top row */
+  .top-row { display: flex; align-items: center; justify-content: space-between; }
+  .g-pill {
+    display: inline-flex; align-items: center; gap: 11px;
+    background: rgba(255,255,255,0.55);
+    backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+    border: 1.5px solid rgba(255,255,255,0.85);
+    border-radius: 60px; padding: 13px 26px;
+    font-size: 19px; font-weight: 600; color: var(--onyx); line-height: 1;
+    font-family: var(--fm); letter-spacing: .04em; text-transform: uppercase;
+  }
+  .g-pill .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--onyx); }
+  .brand { font-family: var(--fm); font-size: 17px; letter-spacing: .14em;
+           text-transform: uppercase; color: rgba(19,16,21,.45); }
+
+  /* headline */
+  .head { margin-top: 28px; }
+  .head h1 {
+    font-size: 56px; font-weight: 800; line-height: 1.05;
+    letter-spacing: -0.02em; color: var(--onyx); max-width: 860px;
+  }
+  .head h1 em { font-family: var(--fs); font-style: italic; font-weight: 400; letter-spacing: 0; }
+
+  /* console */
+  .console {
+    margin-top: 26px; flex: 1;
+    background: rgba(19,16,21,0.92);
+    border: 1.5px solid rgba(255,255,255,0.10);
+    border-radius: 26px;
+    padding: 24px 30px 26px;
+    display: flex; flex-direction: column;
+    box-shadow: 0 30px 70px -30px rgba(19,16,21,0.55);
+  }
+  .console-bar { display: flex; align-items: center; gap: 9px; margin-bottom: 16px; }
+  .console-bar .d { width: 13px; height: 13px; border-radius: 50%; }
+  .console-bar .d1 { background: #ff5f57; } .console-bar .d2 { background: #febc2e; } .console-bar .d3 { background: #28c840; }
+  .console-bar .ct {
+    margin-left: 12px; font-family: var(--fm); font-size: 16px;
+    letter-spacing: .04em; color: rgba(246,241,234,0.5);
+  }
+
+  .input-line {
+    font-family: var(--fm); font-size: 19px; color: rgba(246,241,234,0.62);
+    margin-bottom: 16px; padding-bottom: 16px;
+    border-bottom: 1px solid rgba(255,255,255,0.10);
+  }
+  .input-line .lbl { color: var(--lime); }
+  .input-line .kw { color: var(--cream); }
+
+  .cmds { display: flex; flex-direction: column; gap: 13px; flex: 1; justify-content: center; }
+  .cmd {
+    display: flex; align-items: flex-start; gap: 18px;
+    padding: 15px 18px; border-radius: 16px;
+    background: rgba(255,255,255,0.045);
+    border: 1.5px solid rgba(255,255,255,0.07);
+    transition: opacity .45s ease, transform .45s ease, background .45s ease, border-color .45s ease;
+  }
+  .cmd.hidden  { opacity: 0; transform: translateY(16px); }
+  .cmd.active  { opacity: 1; transform: none; background: rgba(221,255,51,0.10); border-color: rgba(221,255,51,0.45); }
+  .cmd.done    { opacity: 1; transform: none; }
+
+  .cmd .badge {
+    width: 36px; height: 36px; border-radius: 50%; flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--fm); font-size: 17px; font-weight: 600;
+    background: rgba(255,255,255,0.10); color: rgba(246,241,234,0.7);
+    transition: background .4s ease, color .4s ease;
+  }
+  .cmd.active .badge { background: var(--lime); color: var(--onyx); }
+  .cmd.done   .badge { background: #28c840; color: var(--onyx); }
+  .cmd.done   .badge::after { content: "✓"; }
+  .cmd.done   .badge .n { display: none; }
+
+  .cmd .body { display: flex; flex-direction: column; gap: 5px; flex: 1; }
+  .cmd .slash {
+    font-family: var(--fm); font-size: 25px; font-weight: 600; color: var(--cream);
+    display: flex; align-items: center; gap: 10px;
+  }
+  .cmd .slash .sl { color: var(--lime); }
+  .cmd .what { font-size: 18px; line-height: 1.4; color: rgba(246,241,234,0.6); }
+
+  .cursor {
+    display: none; width: 11px; height: 24px; background: var(--lime);
+    border-radius: 2px; animation: blink 1s steps(2) infinite; margin-left: 2px;
+  }
+  .cmd.active .cursor { display: inline-block; }
+  @keyframes blink { 0%,100% { opacity: 1; } 50% { opacity: 0; } }
+  html.no-anim .cursor { animation: none; }
+
+  /* footer */
+  .foot { margin-top: 22px; display: flex; align-items: center; justify-content: flex-start; }
+  .foot .read {
+    display: inline-flex; align-items: center; gap: 13px;
+    background: var(--onyx); color: var(--cream);
+    border-radius: 60px; padding: 19px 32px;
+    font-size: 21px; font-weight: 600;
+  }
+  .foot .read .lime { color: var(--lime); font-size: 24px; }
+</style>
+</head>
+<body>
+  <div class="ad">
+    <div class="blob b1"></div>
+    <div class="blob b2"></div>
+    <div class="blob b3"></div>
+
+    <div class="cnt">
+      <div class="top-row">
+        <span class="g-pill"><span class="dot"></span>Contenido SEO + IA</span>
+        <span class="brand">GabySEO · Blog</span>
+      </div>
+
+      <div class="head">
+        <h1>El sistema de <em>skills con Claude</em> que uso para producir contenido SEO</h1>
+      </div>
+
+      <div class="console">
+        <div class="console-bar">
+          <span class="d d1"></span><span class="d d2"></span><span class="d d3"></span>
+          <span class="ct">claude · pipeline de contenido SEO</span>
+        </div>
+
+        <div class="input-line">
+          <span class="lbl">›</span> keyword: <span class="kw">«tu intención de búsqueda»</span>
+        </div>
+
+        <div class="cmds">
+          <div class="cmd hidden">
+            <div class="badge"><span class="n">1</span></div>
+            <div class="body">
+              <div class="slash"><span class="sl">/</span>brief-generator<span class="cursor"></span></div>
+              <div class="what">Brief con intención, secciones, links internos y objetivo de cada bloque</div>
+            </div>
+          </div>
+          <div class="cmd hidden">
+            <div class="badge"><span class="n">2</span></div>
+            <div class="body">
+              <div class="slash"><span class="sl">/</span>article-generator<span class="cursor"></span></div>
+              <div class="what">Borrador completo optimizado para SEO y para ser citado por IA</div>
+            </div>
+          </div>
+          <div class="cmd hidden">
+            <div class="badge"><span class="n">3</span></div>
+            <div class="body">
+              <div class="slash"><span class="sl">/</span>article-editor<span class="cursor"></span></div>
+              <div class="what">Revisión de claridad, coherencia, estructura y linking</div>
+            </div>
+          </div>
+          <div class="cmd hidden">
+            <div class="badge"><span class="n">4</span></div>
+            <div class="body">
+              <div class="slash"><span class="sl">/</span>humanizer<span class="cursor"></span></div>
+              <div class="what">Texto listo para publicar, sin los tics de escritura IA</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="foot">
+        <span class="read">Leer el artículo completo <span class="lime">→</span></span>
+      </div>
+    </div>
+  </div>
+
+<script>
+  const skills = Array.from(document.querySelectorAll('.cmd'));
+  function setState(reveal){
+    skills.forEach((el,i)=>{
+      const idx = i + 1;
+      el.classList.remove('hidden','active','done');
+      if (reveal > skills.length)        el.classList.add('done');
+      else if (idx < reveal)             el.classList.add('done');
+      else if (idx === reveal)           el.classList.add('active');
+      else                               el.classList.add('hidden');
+    });
+  }
+  const params = new URLSearchParams(location.search);
+  if (params.has('reveal')) {
+    document.documentElement.classList.add('no-anim');
+    setState(parseInt(params.get('reveal'), 10));
+  } else {
+    let r = 1;
+    const max = skills.length + 1; // final state = all done
+    setState(r);
+    setInterval(() => { r = (r >= max) ? 1 : r + 1; setState(r); }, 1100);
+  }
+</script>
+</body>
+</html>

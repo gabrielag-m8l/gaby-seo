@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <!-- Google Ads (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-431672230"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag("js", new Date());
+    gtag("config", "AW-431672230");
+  </script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Reporte SEO — Clientes</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0f0f13;
+      --surface: #18181f;
+      --surface2: #22222c;
+      --border: #2a2a38;
+      --accent: #7c6ef7;
+      --accent2: #5eead4;
+      --accent3: #f97316;
+      --red: #f43f5e;
+      --green: #22c55e;
+      --text: #e8e8f0;
+      --muted: #6b6b80;
+      --label: #a0a0b8;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      min-height: 100vh;
+    }
+
+    /* TOP BAR */
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 32px;
+      height: 56px;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    .topbar-brand {
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: .04em;
+      color: var(--muted);
+      text-transform: uppercase;
+    }
+    .topbar-brand span { color: var(--accent); }
+    .topbar-date {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    /* CLIENT TABS */
+    .client-tabs {
+      display: flex;
+      gap: 4px;
+      padding: 20px 32px 0;
+    }
+    .tab {
+      padding: 8px 20px;
+      border-radius: 8px 8px 0 0;
+      font-size: 13px;
+      font-weight: 500;
+      cursor: pointer;
+      border: 1px solid transparent;
+      border-bottom: none;
+      background: var(--surface2);
+      color: var(--muted);
+      transition: all .15s;
+    }
+    .tab.active {
+      background: var(--surface);
+      color: var(--text);
+      border-color: var(--border);
+    }
+    .tab:not(.active):hover { color: var(--label); }
+
+    /* MAIN */
+    .main {
+      padding: 0 32px 48px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 0 12px 12px 12px;
+      margin: 0 32px;
+    }
+
+    /* CLIENT PANEL */
+    .panel { display: none; padding-top: 28px; }
+    .panel.active { display: block; }
+
+    /* CLIENT HEADER */
+    .client-header {
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+      margin-bottom: 28px;
+    }
+    .client-name {
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--text);
+    }
+    .client-url {
+      font-size: 13px;
+      color: var(--muted);
+      font-family: monospace;
+    }
+    .badge {
+      font-size: 11px;
+      font-weight: 600;
+      padding: 3px 10px;
+      border-radius: 20px;
+      background: rgba(124,110,247,.15);
+      color: var(--accent);
+      border: 1px solid rgba(124,110,247,.3);
+      letter-spacing: .03em;
+    }
+
+    /* STAT CARDS */
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      margin-bottom: 28px;
+    }
+    .card {
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 18px 20px;
+    }
+    .card-label {
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      color: var(--muted);
+      margin-bottom: 10px;
+    }
+    .card-value {
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+    .card-sub {
+      font-size: 12px;
+      color: var(--muted);
+    }
+    .card-delta {
+      font-size: 12px;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 3px;
+    }
+    .card-delta.up { color: var(--green); }
+    .card-delta.down { color: var(--red); }
+    .card-delta.neutral { color: var(--muted); }
+
+    /* GRID 2 COL */
+    .grid2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+    .grid-full { margin-bottom: 16px; }
+
+    /* SECTION BOX */
+    .box {
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 20px;
+    }
+    .box-title {
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      color: var(--muted);
+      margin-bottom: 18px;
+    }
+
+    /* CHART WRAPPER */
+    .chart-wrap { height: 220px; position: relative; }
+
+    /* TABLE */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+    }
+    thead th {
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      color: var(--muted);
+      padding: 0 12px 10px;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+    }
+    thead th.right { text-align: right; }
+    tbody tr { border-bottom: 1px solid rgba(42,42,56,.6); }
+    tbody tr:last-child { border-bottom: none; }
+    tbody tr:hover { background: rgba(255,255,255,.025); }
+    tbody td {
+      padding: 10px 12px;
+      color: var(--text);
+      white-space: nowrap;
+    }
+    tbody td.right { text-align: right; font-variant-numeric: tabular-nums; }
+    tbody td.muted { color: var(--muted); }
+    .rank {
+      font-size: 11px;
+      color: var(--muted);
+      font-variant-numeric: tabular-nums;
+    }
+
+    /* PILL */
+    .pill {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 20px;
+      font-size: 11px;
+      font-weight: 600;
+    }
+    .pill-green { background: rgba(34,197,94,.12); color: #22c55e; }
+    .pill-red   { background: rgba(244,63,94,.12);  color: #f43f5e; }
+    .pill-gray  { background: rgba(107,107,128,.12); color: #6b6b80; }
+    .pill-warn  { background: rgba(249,115,22,.12); color: #f97316; }
+
+    /* OPPORTUNITY ROW */
+    .opp-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(42,42,56,.5);
+    }
+    .opp-row:last-child { border-bottom: none; }
+    .opp-kw { font-size: 13px; font-weight: 500; }
+    .opp-note { font-size: 12px; color: var(--muted); margin-top: 2px; }
+    .opp-stat { font-size: 12px; color: var(--label); text-align: right; }
+
+    /* PLACEHOLDER */
+    .placeholder {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 220px;
+      color: var(--muted);
+      font-size: 13px;
+      gap: 8px;
+    }
+    .placeholder-icon { font-size: 32px; opacity: .3; }
+  </style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-brand">Reporte <span>SEO</span></div>
+  <div class="topbar-date" id="topbar-date"></div>
+</div>
+
+<div class="client-tabs">
+  <div class="tab active" onclick="switchTab('flixlatino')">FlixLatino</div>
+  <div class="tab" onclick="switchTab('placeholder')">Cliente Placeholder</div>
+</div>
+
+<div class="main">
+
+  <!-- ─── FLIXLATINO ─────────────────────────────────────── -->
+  <div class="panel active" id="panel-flixlatino">
+
+    <div class="client-header">
+      <div class="client-name">FlixLatino</div>
+      <div class="client-url">flixlatino.com</div>
+      <div class="badge">Activo</div>
+    </div>
+
+    <!-- STAT CARDS -->
+    <div class="cards">
+      <div class="card">
+        <div class="card-label" id="label-clicks">Clicks</div>
+        <div class="card-value" data-val="clicks"></div>
+        <div class="card-delta" data-delta="clicks"></div>
+      </div>
+      <div class="card">
+        <div class="card-label" id="label-impr">Impresiones</div>
+        <div class="card-value" data-val="impr"></div>
+        <div class="card-delta" data-delta="impr"></div>
+      </div>
+      <div class="card">
+        <div class="card-label" id="label-ctr">CTR</div>
+        <div class="card-value" data-val="ctr"></div>
+        <div class="card-delta neutral" data-delta="ctr"></div>
+      </div>
+      <div class="card">
+        <div class="card-label" id="label-pos">Posicion prom.</div>
+        <div class="card-value" data-val="posicion"></div>
+        <div class="card-delta" data-delta="posicion"></div>
+      </div>
+    </div>
+
+    <!-- ACUMULADO 90d -->
+    <div class="cards" style="margin-bottom:16px">
+      <div class="card">
+        <div class="card-label">Clicks — 90 dias</div>
+        <div class="card-value" data-val="acc-clicks"></div>
+      </div>
+      <div class="card">
+        <div class="card-label">Impresiones — 90 dias</div>
+        <div class="card-value" data-val="acc-impr"></div>
+      </div>
+      <div class="card">
+        <div class="card-label">CTR — 90 dias</div>
+        <div class="card-value" data-val="acc-ctr"></div>
+      </div>
+      <div class="card">
+        <div class="card-label">Posicion — 90 dias</div>
+        <div class="card-value" data-val="acc-pos"></div>
+      </div>
+    </div>
+
+    <!-- CHARTS ROW -->
+    <div class="grid2">
+      <div class="box">
+        <div class="box-title">Clicks mensuales</div>
+        <div class="chart-wrap">
+          <canvas id="chartClicks"></canvas>
+        </div>
+      </div>
+      <div class="box">
+        <div class="box-title">Impresiones mensuales</div>
+        <div class="chart-wrap">
+          <canvas id="chartImpr"></canvas>
+        </div>
+      </div>
+    </div>
+
+    <!-- MoM TABLE + OPORTUNIDADES -->
+    <div class="grid2">
+      <div class="box">
+        <div class="box-title">Crecimiento mes a mes</div>
+        <table>
+          <thead>
+            <tr>
+              <th>Mes</th>
+              <th class="right">Clicks</th>
+              <th class="right">Var.</th>
+              <th class="right">Posicion</th>
+            </tr>
+          </thead>
+          <tbody id="mom-body"></tbody>
+        </table>
+      </div>
+      <div class="box">
+        <div class="box-title">Oportunidades</div>
+        <div id="opp-list"></div>
+      </div>
+    </div>
+
+    <!-- KEYWORDS TABLE -->
+    <div class="grid-full">
+      <div class="box">
+        <div class="box-title">Top 10 keywords — ultimos 30 dias</div>
+        <table>
+          <thead>
+            <tr>
+              <th style="width:32px">#</th>
+              <th>Keyword</th>
+              <th class="right">Clicks</th>
+              <th class="right">Impresiones</th>
+              <th class="right">CTR</th>
+              <th class="right">Posicion</th>
+            </tr>
+          </thead>
+          <tbody id="kw-body">
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- ARTICULOS -->
+    <div class="grid-full">
+      <div class="box">
+        <div class="box-title">Articulos entregados</div>
+        <table>
+          <thead>
+            <tr>
+              <th>Mes</th>
+              <th class="right">Entregados</th>
+              <th class="right">Acumulado</th>
+            </tr>
+          </thead>
+          <tbody id="art-body"></tbody>
+        </table>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ─── PLACEHOLDER ────────────────────────────────────── -->
+  <div class="panel" id="panel-placeholder">
+    <div class="client-header">
+      <div class="client-name">Cliente Placeholder</div>
+      <div class="client-url">dominio.com</div>
+      <div class="badge" style="background:rgba(107,107,128,.15);color:var(--muted);border-color:rgba(107,107,128,.3)">Sin datos</div>
+    </div>
+    <div class="cards">
+      <div class="card"><div class="card-label">Clicks</div><div class="card-value" style="color:var(--muted)">—</div></div>
+      <div class="card"><div class="card-label">Impresiones</div><div class="card-value" style="color:var(--muted)">—</div></div>
+      <div class="card"><div class="card-label">CTR</div><div class="card-value" style="color:var(--muted)">—</div></div>
+      <div class="card"><div class="card-label">Posicion prom.</div><div class="card-value" style="color:var(--muted)">—</div></div>
+    </div>
+    <div class="box">
+      <div class="placeholder">
+        <div class="placeholder-icon">📊</div>
+        <div>Sin datos todavia. Conectar GSC para ver el reporte.</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  // ╔══════════════════════════════════════════════════════╗
+  // ║  DATOS — actualizar cada mes con: "actualiza el     ║
+  // ║  reporte de FlixLatino" (Claude jala GSC y edita    ║
+  // ║  solo este bloque, el diseño no cambia)             ║
+  // ╚══════════════════════════════════════════════════════╝
+  const DATA = {
+    flixlatino: {
+      updatedAt: '17 mayo 2026',
+      url: 'flixlatino.com',
+
+      // Tarjetas resumen (mes más reciente completo)
+      summary: {
+        mes:          'Abril 2026',
+        clicks:       42992,
+        clicksDelta:  '+2.1% vs marzo',
+        clicksUp:     true,
+        impresiones:  1523190,
+        imprDelta:    '+0.9% vs marzo',
+        imprUp:       true,
+        ctr:          '2.82%',
+        ctrDelta:     'sin cambio',
+        ctrUp:        null,
+        posicion:     '7.3',
+        posDelta:     'mejoró 0.4 pts vs feb',
+        posUp:        true,
+      },
+
+      // Acumulado 90 días
+      acumulado90: {
+        clicks:      124317,
+        impresiones: 4444761,
+        ctr:         '2.80%',
+        posicion:    '7.3',
+      },
+
+      // Evolución mensual — agregar fila al final cada mes
+      mensual: [
+        { mes: 'Ene 2026',  clicks: 43461, impresiones: 1769545, ctr: '2.46%', posicion: 7.9, parcial: false },
+        { mes: 'Feb 2026',  clicks: 40079, impresiones: 1436272, ctr: '2.79%', posicion: 7.7, parcial: false },
+        { mes: 'Mar 2026',  clicks: 42103, impresiones: 1508965, ctr: '2.79%', posicion: 6.9, parcial: false },
+        { mes: 'Abr 2026',  clicks: 42992, impresiones: 1523190, ctr: '2.82%', posicion: 7.3, parcial: false },
+        { mes: 'May 2026',  clicks: 22988, impresiones:  812860, ctr: '2.83%', posicion: 8.1, parcial: true  },
+      ],
+
+      // Artículos entregados — completar con el equipo de contenido
+      articulos: [
+        { mes: 'Enero 2026',   entregados: null },
+        { mes: 'Febrero 2026', entregados: null },
+        { mes: 'Marzo 2026',   entregados: null },
+        { mes: 'Abril 2026',   entregados: null },
+        { mes: 'Mayo 2026',    entregados: null },
+      ],
+
+      // Top keywords (últimos 30 días)
+      keywords: [
+        { kw: 'flixlatam',                  clicks: 1162, impresiones: 14490, ctr: '8.02%',  posicion: 3.2 },
+        { kw: 'flixlatino',                 clicks: 1029, impresiones:  1760, ctr: '58.47%', posicion: 1.6 },
+        { kw: 'flixlat',                    clicks:  715, impresiones:  1850, ctr: '38.65%', posicion: 1.4 },
+        { kw: 'flix latino',                clicks:  488, impresiones:  1013, ctr: '48.17%', posicion: 1.6 },
+        { kw: 'hudson and rex',             clicks:  365, impresiones: 55268, ctr: '0.66%',  posicion: 1.0 },
+        { kw: 'tres metros sobre el cielo', clicks:  336, impresiones: 11579, ctr: '2.90%',  posicion: 1.0 },
+        { kw: '3 metros sobre el cielo',    clicks:  268, impresiones:  8559, ctr: '3.13%',  posicion: 1.0 },
+        { kw: 'flix',                       clicks:  156, impresiones:  1833, ctr: '8.51%',  posicion: 7.6 },
+        { kw: 'series espanolas 2026',      clicks:  120, impresiones:  4407, ctr: '2.72%',  posicion: 8.3 },
+        { kw: 'tengo ganas de ti',          clicks:  119, impresiones:  8136, ctr: '1.46%',  posicion: 1.5 },
+      ],
+
+      // Oportunidades detectadas
+      oportunidades: [
+        { kw: 'hudson and rex', impresiones: 55268, ctr: '0.66%', posicion: 1.0, nota: 'Posicion 1 — CTR muy bajo, optimizar titulo y meta' },
+      ],
+    }
+  };
+  // ══════════════════════════════════════════════════════
+
+  // ── TAB SWITCHER ──
+  function switchTab(id) {
+    document.querySelectorAll('.tab').forEach((t, i) => {
+      t.classList.toggle('active', ['flixlatino','placeholder'][i] === id);
+    });
+    document.querySelectorAll('.panel').forEach(p => {
+      p.classList.toggle('active', p.id === 'panel-' + id);
+    });
+  }
+
+  // ── RENDER FLIXLATINO ──
+  const d = DATA.flixlatino;
+
+  // Topbar
+  document.getElementById('topbar-date').textContent = `Actualizado: ${d.updatedAt} · Google Search Console`;
+
+  // Labels con mes
+  document.getElementById('label-clicks').textContent = `Clicks — ${d.summary.mes}`;
+  document.getElementById('label-impr').textContent   = `Impresiones — ${d.summary.mes}`;
+  document.getElementById('label-ctr').textContent    = `CTR — ${d.summary.mes}`;
+  document.getElementById('label-pos').textContent    = `Posicion prom. — ${d.summary.mes}`;
+
+  // Acumulado 90d cards
+  document.querySelector('[data-val="acc-clicks"]').textContent = d.acumulado90.clicks.toLocaleString();
+  document.querySelector('[data-val="acc-impr"]').textContent   = (d.acumulado90.impresiones / 1e6).toFixed(2) + 'M';
+  document.querySelector('[data-val="acc-ctr"]').textContent    = d.acumulado90.ctr;
+  document.querySelector('[data-val="acc-pos"]').textContent    = d.acumulado90.posicion;
+
+  // Tarjetas
+  document.querySelector('[data-val="clicks"]').textContent    = d.summary.clicks.toLocaleString();
+  document.querySelector('[data-val="impr"]').textContent      = (d.summary.impresiones / 1e6).toFixed(2) + 'M';
+  document.querySelector('[data-val="ctr"]').textContent       = d.summary.ctr;
+  document.querySelector('[data-val="posicion"]').textContent  = d.summary.posicion;
+  document.querySelector('[data-delta="clicks"]').textContent  = (d.summary.clicksUp ? '▲ ' : '▼ ') + d.summary.clicksDelta;
+  document.querySelector('[data-delta="clicks"]').className    = 'card-delta ' + (d.summary.clicksUp ? 'up' : 'down');
+  document.querySelector('[data-delta="impr"]').textContent    = (d.summary.imprUp ? '▲ ' : '▼ ') + d.summary.imprDelta;
+  document.querySelector('[data-delta="impr"]').className      = 'card-delta ' + (d.summary.imprUp ? 'up' : 'down');
+  document.querySelector('[data-delta="ctr"]').textContent     = d.summary.ctrDelta;
+  document.querySelector('[data-delta="posicion"]').textContent = '▲ ' + d.summary.posDelta;
+
+  // Acumulado 90d
+  document.querySelector('[data-val="acc-clicks"]').textContent = d.acumulado90.clicks.toLocaleString();
+  document.querySelector('[data-val="acc-impr"]').textContent   = (d.acumulado90.impresiones / 1e6).toFixed(2) + 'M';
+  document.querySelector('[data-val="acc-ctr"]').textContent    = d.acumulado90.ctr;
+  document.querySelector('[data-val="acc-pos"]').textContent    = d.acumulado90.posicion;
+
+  // Keywords
+  const keywords = d.keywords;
+  const tbody = document.getElementById('kw-body');
+  keywords.forEach(({ kw, clicks, impresiones, ctr, posicion }, i) => {
+    const ctrNum = parseFloat(ctr);
+    const ctrClass = ctrNum >= 10 ? 'pill-green' : ctrNum >= 3 ? 'pill-gray' : 'pill-warn';
+    tbody.innerHTML += `
+      <tr>
+        <td class="rank">${i + 1}</td>
+        <td>${kw}</td>
+        <td class="right">${clicks.toLocaleString()}</td>
+        <td class="right">${impresiones.toLocaleString()}</td>
+        <td class="right"><span class="pill ${ctrClass}">${ctr}</span></td>
+        <td class="right">${posicion}</td>
+      </tr>`;
+  });
+
+  // Oportunidades
+  const oppContainer = document.getElementById('opp-list');
+  d.oportunidades.forEach(o => {
+    oppContainer.innerHTML += `
+      <div class="opp-row">
+        <div>
+          <div class="opp-kw">${o.kw}</div>
+          <div class="opp-note">${o.nota}</div>
+        </div>
+        <div class="opp-stat">
+          ${o.impresiones.toLocaleString()} imp<br>
+          <span class="pill pill-warn" style="margin-top:4px;display:inline-block">${o.ctr} CTR</span>
+        </div>
+      </div>`;
+  });
+
+  // MoM table
+  const momBody = document.getElementById('mom-body');
+  d.mensual.forEach((row, i) => {
+    const prev = d.mensual[i - 1];
+    let varEl = '<span class="pill pill-gray">—</span>';
+    if (prev) {
+      const pct = ((row.clicks - prev.clicks) / prev.clicks * 100).toFixed(1);
+      varEl = `<span class="pill ${pct >= 0 ? 'pill-green' : 'pill-red'}">${pct >= 0 ? '+' : ''}${pct}%</span>`;
+    }
+    const isCurrent = !row.parcial && i === d.mensual.filter(r => !r.parcial).length - 1;
+    momBody.innerHTML += `
+      <tr>
+        <td>${row.mes}${row.parcial ? ' <span class="muted" style="font-size:11px">parcial</span>' : ''}</td>
+        <td class="right">${isCurrent ? '<strong>' : ''}${row.clicks.toLocaleString()}${isCurrent ? '</strong>' : ''}</td>
+        <td class="right">${varEl}</td>
+        <td class="right">${isCurrent ? '<strong>' : ''}${row.posicion}${isCurrent ? '</strong>' : ''}</td>
+      </tr>`;
+  });
+
+  // Articulos
+  const artBody = document.getElementById('art-body');
+  let acum = 0;
+  d.articulos.forEach(a => {
+    if (a.entregados) acum += a.entregados;
+    artBody.innerHTML += `
+      <tr>
+        <td>${a.mes}</td>
+        <td class="right ${!a.entregados ? 'muted' : ''}">${a.entregados ?? '—'}</td>
+        <td class="right ${!a.entregados ? 'muted' : ''}">${a.entregados ? acum : '—'}</td>
+      </tr>`;
+  });
+
+  // ── CHARTS ──
+  const months = d.mensual.map(r => r.mes.replace(' 2026','') + (r.parcial ? '*' : ''));
+  const clicks  = d.mensual.map(r => r.clicks);
+  const impr    = d.mensual.map(r => r.impresiones);
+
+  const baseOpts = {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: { legend: { display: false } },
+    scales: {
+      x: {
+        grid: { color: 'rgba(42,42,56,.8)' },
+        ticks: { color: '#6b6b80', font: { size: 11 } }
+      },
+      y: {
+        grid: { color: 'rgba(42,42,56,.8)' },
+        ticks: { color: '#6b6b80', font: { size: 11 } }
+      }
+    }
+  };
+
+  new Chart(document.getElementById('chartClicks'), {
+    type: 'bar',
+    data: {
+      labels: months,
+      datasets: [{
+        data: clicks,
+        backgroundColor: months.map((_, i) => i === 3
+          ? 'rgba(124,110,247,.9)'
+          : i === 4 ? 'rgba(124,110,247,.3)' : 'rgba(124,110,247,.55)'),
+        borderRadius: 6,
+        borderSkipped: false,
+      }]
+    },
+    options: {
+      ...baseOpts,
+      scales: {
+        ...baseOpts.scales,
+        y: {
+          ...baseOpts.scales.y,
+          ticks: {
+            ...baseOpts.scales.y.ticks,
+            callback: v => (v / 1000).toFixed(0) + 'k'
+          }
+        }
+      }
+    }
+  });
+
+  new Chart(document.getElementById('chartImpr'), {
+    type: 'line',
+    data: {
+      labels: months,
+      datasets: [{
+        data: impr,
+        borderColor: '#5eead4',
+        backgroundColor: 'rgba(94,234,212,.08)',
+        borderWidth: 2,
+        pointBackgroundColor: '#5eead4',
+        pointRadius: 4,
+        fill: true,
+        tension: 0.35,
+      }]
+    },
+    options: {
+      ...baseOpts,
+      scales: {
+        ...baseOpts.scales,
+        y: {
+          ...baseOpts.scales.y,
+          ticks: {
+            ...baseOpts.scales.y.ticks,
+            callback: v => (v / 1000000).toFixed(1) + 'M'
+          }
+        }
+      }
+    }
+  });
+</script>
+
+</body>
+</html>
