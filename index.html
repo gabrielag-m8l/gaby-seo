@@ -139,7 +139,6 @@
       background: var(--cream); border-radius: var(--radius); padding: 26px 30px;
       display: grid; grid-template-columns: 46px 1fr 400px; gap: 24px; align-items: baseline;
     }
-    .servicio-row.tone-peach { background: var(--peach); }
     .servicio-num { font-family: var(--font-body); font-size: 12px; letter-spacing: 0.12em; color: var(--fg-faint); }
     .servicio-row h3 { margin: 0; font-size: 28px; font-weight: 500; letter-spacing: -0.02em; line-height: 1.1; }
     .servicio-row h3 em.serif { font-size: 31px; color: var(--onyx); }
@@ -154,12 +153,10 @@
     .about-body { display: flex; flex-direction: column; gap: 22px; }
     .about-body h2 { margin: 0; font-size: 34px; line-height: 1.14; letter-spacing: -0.025em; font-weight: 500; max-width: 620px; }
     .about-body p.lead { margin: 0; max-width: 620px; font-family: var(--font-body); font-size: 16.5px; line-height: 1.6; color: var(--fg-soft); }
-    .about-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 6px; }
+    .about-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 6px; }
     .about-stats > div { background: var(--chip); border-radius: var(--radius); padding: 18px 18px 16px; display: flex; flex-direction: column; gap: 6px; }
     .about-stats .num { font-size: 30px; font-weight: 600; letter-spacing: -0.02em; }
     .about-stats .label { font-family: var(--font-body); font-size: 12.5px; line-height: 1.35; color: rgba(51,48,58,0.62); }
-    .brands-list { margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; font-family: var(--font-body); font-size: 13px; }
-    .brands-list li { border: 1px solid rgba(51,48,58,0.18); border-radius: var(--radius-pill); padding: 7px 14px; }
 
     /* ── CASO ── */
     .caso-grid { display: grid; grid-template-columns: 1.15fr 1fr; gap: 16px; align-items: start; }
@@ -285,7 +282,7 @@
       .servicio-row p { grid-column: 1 / -1; }
       .about-card { grid-template-columns: 1fr; }
       .about-photo-frame img { height: 260px; }
-      .about-stats { grid-template-columns: repeat(2, 1fr); }
+      .about-stats { grid-template-columns: repeat(3, 1fr); }
       .caso-grid { grid-template-columns: 1fr; }
       .caso-stats { grid-template-columns: 1fr; }
       .visibilidad-grid { grid-template-columns: 1fr; }
@@ -452,7 +449,6 @@
       </div>
       <div class="hero-tags">
         <span>5+ años en SEO</span>
-        <span>1M+ impresiones orgánicas</span>
         <span>Argentina · México · España · Venezuela</span>
         <span>Clases de SEO en Coderhouse</span>
       </div>
@@ -468,7 +464,7 @@
         <h3>SEO técnico</h3>
         <p>Indexación, velocidad, Core Web Vitals y arquitectura. Que Google entienda tu sitio antes de pedirle que lo recomiende.</p>
       </div>
-      <div class="servicio-row tone-peach">
+      <div class="servicio-row">
         <span class="servicio-num">02</span>
         <h3>Estrategia de contenido</h3>
         <p>Del keyword research al plan editorial: pilares temáticos, money keywords, intención de búsqueda y optimización on-page.</p>
@@ -502,15 +498,9 @@
         <p class="lead">Estoy en Buenos Aires y trabajo con marcas de LATAM y España en estrategias de contenido SEO, AEO y GEO. También doy clases de SEO en Coderhouse, porque me gusta que más personas entiendan cómo funciona todo esto.</p>
         <div class="about-stats">
           <div><span class="num">5+</span><span class="label">años de experiencia</span></div>
-          <div><span class="num">1M+</span><span class="label">impresiones orgánicas</span></div>
           <div><span class="num">50+</span><span class="label">artículos optimizados por mes</span></div>
           <div><span class="num">10+</span><span class="label">marcas en LATAM y España</span></div>
         </div>
-        <p class="eyebrow" style="margin:12px 0 0">Marcas donde hice experiencia</p>
-        <ul class="brands-list">
-          <li>Platzi</li><li>IPSY</li><li>Conekta</li><li>Guidde</li><li>Dentalia</li>
-          <li>Nutriwhite</li><li>Sanarai</li><li>Sofía</li><li>Síclo</li><li>Luuna</li><li>Capilea</li>
-        </ul>
       </div>
     </div>
   </section>
@@ -602,11 +592,11 @@
       <div>
         <p class="eyebrow" style="color:rgba(51,48,58,0.55)">Visión multicanal</p>
         <h2>Presencia donde <em class="serif">importa.</em></h2>
-        <p style="margin-top:16px">Tu cliente ideal puede estar en YouTube, TikTok, Reddit, Quora o Discord. Y cada vez más, le pregunta directamente a ChatGPT o Perplexity. Construimos tu presencia en todos esos espacios.</p>
+        <p style="margin-top:16px">Tu cliente ideal puede estar en YouTube, TikTok, Reddit o Quora. Y cada vez más, le pregunta directamente a ChatGPT o Perplexity. Construimos tu presencia en todos esos espacios.</p>
       </div>
       <ul class="presencia-list">
         <li>Google</li><li>YouTube</li><li>TikTok</li><li>ChatGPT</li><li>Perplexity</li>
-        <li>Gemini</li><li>AI Overviews</li><li>Reddit</li><li>Quora</li><li>Discord</li>
+        <li>Gemini</li><li>AI Overviews</li><li>Reddit</li><li>Quora</li>
       </ul>
     </div>
   </section>
@@ -709,7 +699,7 @@
         <span class="badge">Punto de entrada</span>
         <h3>Auditoría SEO</h3>
         <p>Diagnóstico profundo de tu sitio, tu competencia y las oportunidades. Entregable: reporte y roadmap accionable.</p>
-        <p class="precio-amount"><span class="num">$100</span><span class="cur">USD</span></p>
+        <p class="precio-amount"><span class="num">$50</span><span class="cur">USD</span></p>
       </div>
       <div class="precio-card tone-peach">
         <span class="badge">A medida</span>
@@ -747,7 +737,7 @@
         <p>Completa el formulario y te respondo en menos de 48 horas. Si no soy la persona indicada para tu proyecto, también te lo digo.</p>
         <p class="hand-note">o escríbeme por LinkedIn, ahí contesto rápido</p>
         <div class="contacto-links">
-          <a href="mailto:gabygomezalmeida@gmail.com">gabygomezalmeida@gmail.com</a>
+          <a href="mailto:gabygomezalmeida@gmail.com">Email</a>
           <a href="https://www.linkedin.com/in/gabrielagomezalmeida/" target="_blank" rel="noopener">LinkedIn</a>
           <a href="https://gabymodoseo.substack.com/" target="_blank" rel="noopener">Substack · Modo SEO</a>
         </div>

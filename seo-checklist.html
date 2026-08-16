@@ -214,11 +214,11 @@
       margin-bottom: 2rem;
       display: inline-flex; align-items: center; gap: 0.6rem;
       padding: 0.5rem 0.9rem;
-      background: rgba(255,255,255,0.55);
+      background: var(--cream);
       border: 1px solid rgba(255,255,255,0.8);
       border-radius: 100px;
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
+
+
     }
     .hero-eyebrow .dot {
       width: 7px; height: 7px; border-radius: 50%;
@@ -262,9 +262,7 @@
     .progress-wrap {
       display: inline-flex; align-items: center; gap: 1rem;
       padding: 0.85rem 1.35rem;
-      background: rgba(255,255,255,0.5);
-      backdrop-filter: blur(20px) saturate(180%);
-      -webkit-backdrop-filter: blur(20px) saturate(180%);
+      background: var(--cream);
       border: 1px solid rgba(255,255,255,0.85);
       box-shadow: 0 1px 0 rgba(255,255,255,0.95) inset, 0 10px 30px -16px rgba(51,48,58,0.2);
       border-radius: 100px;
@@ -299,9 +297,7 @@
       font-size: 0.72rem; letter-spacing: 0.06em;
       text-decoration: none; color: var(--fg-soft);
       padding: 0.45rem 0.85rem; border-radius: 100px;
-      background: rgba(255,255,255,0.45);
-      backdrop-filter: blur(14px) saturate(180%);
-      -webkit-backdrop-filter: blur(14px) saturate(180%);
+      background: var(--cream);
       border: 1px solid rgba(255,255,255,0.85);
       box-shadow: 0 1px 0 rgba(255,255,255,0.95) inset;
       transition: background .2s, color .2s, transform .2s;
@@ -321,11 +317,9 @@
 
     .cl-section {
       position: relative;
-      border-radius: var(--radius-lg);
+      border-radius: 4px;
       overflow: hidden;
-      background: rgba(255,255,255,0.55);
-      backdrop-filter: blur(22px) saturate(180%);
-      -webkit-backdrop-filter: blur(22px) saturate(180%);
+      background: var(--cream);
       border: 1px solid rgba(255,255,255,0.85);
       box-shadow:
         0 1px 0 rgba(255,255,255,0.95) inset,
@@ -372,7 +366,7 @@
     .cl-section.open .cl-section-header {
       border-bottom: 1px solid rgba(51,48,58,0.06);
     }
-    .cl-section-header:hover { background: rgba(255,255,255,0.18); }
+    .cl-section-header:hover { background: var(--cream); }
 
     .cl-num {
       font-family: var(--font-mono);
@@ -397,7 +391,7 @@
       color: var(--fg-soft); letter-spacing: 0.06em;
       white-space: nowrap;
       padding: 4px 10px; border-radius: 100px;
-      background: rgba(255,255,255,0.55);
+      background: var(--cream);
       border: 1px solid rgba(255,255,255,0.8);
     }
     .cl-section.complete .cl-count {
@@ -433,10 +427,8 @@
     .cl-box {
       width: 22px; height: 22px; flex-shrink: 0; margin-top: 1px;
       border: 1.5px solid rgba(51,48,58,0.22);
-      border-radius: 8px;
-      background: rgba(255,255,255,0.7);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
+      border-radius: 4px;
+      background: var(--cream);
       box-shadow: 0 1px 0 rgba(255,255,255,0.9) inset, 0 2px 6px -2px rgba(51,48,58,0.1);
       transition: all 0.25s cubic-bezier(.34,1.56,.64,1);
       display: flex; align-items: center; justify-content: center;
@@ -513,8 +505,8 @@
       font-family: var(--font-mono);
       font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase;
       padding: 0.45rem 0.85rem; border-radius: 100px;
-      background: rgba(255,255,255,0.55);
-      backdrop-filter: blur(14px);
+      background: var(--cream);
+
       border: 1px solid rgba(255,255,255,0.9);
       color: var(--fg);
     }
@@ -554,8 +546,7 @@
 
     .btn-glass {
       display: inline-flex; align-items: center; gap: 10px;
-      background: rgba(255,255,255,0.5);
-      backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+      background: var(--cream);
       color: var(--onyx);
       border: 1px solid rgba(255,255,255,0.85);
       padding: 0.95rem 1.5rem;
@@ -566,7 +557,7 @@
       transition: background .2s, transform .2s;
       box-shadow: 0 1px 0 rgba(255,255,255,0.6) inset, 0 8px 24px -10px rgba(51,48,58,0.18);
     }
-    .btn-glass:hover { background: rgba(255,255,255,0.78); transform: translateY(-2px); }
+    .btn-glass:hover { background: var(--cream); transform: translateY(-2px); }
 
     /* Reset all */
     .reset-row {
@@ -582,7 +573,7 @@
       cursor: pointer;
       transition: border-color .2s, color .2s, background .2s;
     }
-    .btn-reset:hover { color: var(--onyx); border-color: var(--onyx); background: rgba(255,255,255,0.5); }
+    .btn-reset:hover { color: var(--onyx); border-color: var(--onyx); background: var(--cream); }
 
     /* ── FOOTER ── */
     footer {
