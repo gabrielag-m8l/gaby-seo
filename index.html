@@ -23,1444 +23,301 @@
   <meta property="og:image"       content="https://gabyseo.com/og-image.png" />
   <meta name="twitter:card"       content="summary_large_image" />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="alternate icon" href="/favicon.ico" />
+  <link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <link rel="manifest" href="/site.webmanifest" />
 
-  <!-- Fonts: Instrument Serif (display) + Geist (UI) + JetBrains Mono (labels) -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" media="print" onload="this.media='all'" />
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" /></noscript>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600&family=Instrument+Serif:ital@0;1&family=Karla:ital,wght@0,400;0,600;1,400&family=Outfit:wght@300..700&display=swap" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600&family=Instrument+Serif:ital@0;1&family=Karla:ital,wght@0,400;0,600;1,400&family=Outfit:wght@300..700&display=swap" media="print" onload="this.media='all'" />
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600&family=Instrument+Serif:ital@0;1&family=Karla:ital,wght@0,400;0,600;1,400&family=Outfit:wght@300..700&display=swap" /></noscript>
 
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      /* core palette — preserved from brand, used as blooms */
-      --onyx:     #131015;
-      --ink:      #1a1620;
-      --cream:    #F6F1EA;
-      --paper:    #FAF6F0;
+      --bg:        #D9E4EA;
+      --cream:     #FFFCF7;
+      --input-bg:  #FBF8F3;
+      --chip:      #E7EEF2;
+      --peach:     #F6DCC9;
+      --rose:      #F3D3DE;
+      --accent:    #C4527E;
+      --onyx:      #33303A;
 
-      --peach:    #F4A07A;
-      --wisteria: #C278D4;
-      --lilac:    #D4C0ED;
-      --jordy:    #9CC0EE;
-      --lime:     #DDFF33;
-      --rose:     #F0A8C0;
-      --sage:     #C7DBC1;
-
-      /* Semantic */
       --fg:        var(--onyx);
-      --fg-soft:   rgba(19,16,21,0.62);
-      --fg-faint:  rgba(19,16,21,0.42);
-      --line:      rgba(19,16,21,0.10);
+      --fg-soft:   rgba(51,48,58,0.72);
+      --fg-faint:  rgba(51,48,58,0.5);
+      --line:      rgba(51,48,58,0.14);
 
-      --font-serif: 'Instrument Serif', 'Times New Roman', serif;
-      --font-sans:  'Geist', system-ui, -apple-system, sans-serif;
-      --font-mono:  'JetBrains Mono', 'IBM Plex Mono', monospace;
+      --font-sans:   'Outfit', system-ui, -apple-system, sans-serif;
+      --font-body:   'Karla', sans-serif;
+      --font-serif:  'Instrument Serif', 'Times New Roman', serif;
+      --font-hand:   'Caveat', cursive;
 
-      --radius-sm: 10px;
-      --radius:    18px;
-      --radius-lg: 28px;
-      --radius-xl: 36px;
+      --radius: 4px;
+      --radius-pill: 100px;
+      --radius-input: 10px;
     }
 
     html { scroll-behavior: smooth; }
 
     body {
-      font-family: var(--font-sans);
+      background: var(--bg);
       color: var(--fg);
-      background: var(--paper);
-      line-height: 1.55;
+      font-family: var(--font-sans);
+      line-height: 1.5;
       overflow-x: hidden;
-      font-feature-settings: "ss01", "cv01", "cv11";
       -webkit-font-smoothing: antialiased;
+      padding-bottom: 54px;
     }
 
-    /* ─────────────────────────────────────────────── */
-    /*  GRAIN — applied via ::before on body            */
-    /* ─────────────────────────────────────────────── */
-    body::before {
-      content: '';
-      position: fixed; inset: 0;
-      pointer-events: none;
-      z-index: 9000;
-      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.55 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
-      background-size: 240px 240px;
-      opacity: 0.22;
-      mix-blend-mode: multiply;
-    }
+    a { color: inherit; text-decoration: none; }
+    ul, ol { list-style: none; }
+    img { max-width: 100%; display: block; }
 
-    /* Sparkle helper (used in inline SVG) */
-    .sparkle { display: inline-block; vertical-align: middle; }
+    .wrap { max-width: 1180px; margin: 0 auto; padding: 0 30px; }
 
-    /* ─────────────────────────────────────────────── */
-    /*  TYPOGRAPHY                                      */
-    /* ─────────────────────────────────────────────── */
-    .display {
-      font-family: var(--font-serif);
-      font-weight: 400;
-      letter-spacing: -0.015em;
-      line-height: 0.98;
-      text-wrap: balance;
+    /* ── HEADER ── */
+    header {
+      position: sticky; top: 0; z-index: 60;
+      background: rgba(217,228,234,0.93);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
     }
-    .display em { font-style: italic; }
-
-    .label {
-      font-family: var(--font-mono);
-      font-size: 0.72rem;
-      font-weight: 500;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--fg-soft);
-      display: inline-flex; align-items: center; gap: 0.6rem;
+    .header-inner {
+      max-width: 1180px; margin: 0 auto; padding: 15px 30px;
+      display: flex; align-items: center; justify-content: space-between; gap: 16px;
     }
-    .label::before {
-      content: ''; width: 6px; height: 6px; border-radius: 50%;
-      background: var(--wisteria);
-      box-shadow: 0 0 0 3px rgba(194,120,212,0.18);
+    .logo { display: flex; align-items: baseline; gap: 9px; }
+    .logo-name { font-size: 17px; font-weight: 600; letter-spacing: -0.01em; }
+    .logo-tag { font-family: var(--font-body); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--fg-faint); }
+    nav.main-nav {
+      display: flex; align-items: center; gap: 20px;
+      font-family: var(--font-body); font-size: 12.5px; letter-spacing: 0.1em; text-transform: uppercase;
     }
-
-    .eyebrow-mono {
-      font-family: var(--font-mono);
-      font-size: 0.7rem; font-weight: 500;
-      letter-spacing: 0.18em; text-transform: uppercase;
-      color: var(--fg-soft);
-    }
-
-    /* ─────────────────────────────────────────────── */
-    /*  NAV — floating glass pill                       */
-    /* ─────────────────────────────────────────────── */
-    nav#mainNav {
-      position: fixed; top: 18px; left: 50%; transform: translateX(-50%);
-      z-index: 100;
-      display: flex; align-items: center; gap: 0.4rem;
-      white-space: nowrap;
-      flex-wrap: nowrap;
-      width: max-content;
-      background: rgba(255,255,255,0.22);
-      backdrop-filter: blur(28px) saturate(200%);
-      -webkit-backdrop-filter: blur(28px) saturate(200%);
-      border: 1px solid rgba(255,255,255,0.45);
-      box-shadow:
-        0 1px 0 rgba(255,255,255,0.85) inset,
-        0 -1px 0 rgba(19,16,21,0.06) inset,
-        0 -10px 24px -16px rgba(255,255,255,0.4) inset,
-        0 12px 40px -12px rgba(19,16,21,0.18);
-      border-radius: 100px;
-      padding: 6px 6px 6px 18px;
-      max-width: calc(100% - 24px);
-      transition: transform .3s ease, opacity .3s ease;
-    }
-    nav#mainNav.nav-hidden { transform: translateX(-50%) translateY(-130%); opacity: 0; }
-
-    .nav-logo {
-      font-family: var(--font-serif);
-      font-size: 1.15rem; font-weight: 400;
-      color: var(--onyx); text-decoration: none;
-      letter-spacing: -0.01em;
-      padding-right: 0.5rem;
-      display: inline-flex; align-items: center; gap: 6px;
-    }
-    .nav-logo em { font-style: italic; color: var(--wisteria); }
-    .nav-logo::before {
-      content: '✦';
-      font-size: 0.85em;
-      color: var(--wisteria);
-      transform: translateY(-2px);
-    }
-
-    .nav-links { display: flex; gap: 0.15rem; align-items: center; }
-    .nav-links a {
-      text-decoration: none;
-      color: var(--fg-soft);
-      font-size: 0.82rem; font-weight: 500;
-      padding: 0.5rem 0.85rem; border-radius: 100px;
-      transition: color .15s, background .15s;
-      white-space: nowrap;
-    }
-    .nav-links a:hover { color: var(--fg); background: rgba(19,16,21,0.04); }
-    .nav-cta {
-      background: var(--wisteria) !important; color: #FFFFFF !important;
-      padding: 0.6rem 1.15rem !important; border-radius: 100px;
-      font-weight: 500 !important;
-      transition: background .2s !important;
-      white-space: nowrap;
-    }
-    .nav-cta:hover { background: var(--peach) !important; }
-
+    .nav-cta { background: var(--onyx); color: var(--cream); padding: 10px 17px; border-radius: var(--radius-pill); }
     .nav-burger {
-      display: none; flex-direction: column; justify-content: center;
-      gap: 4px; width: 36px; height: 36px; cursor: pointer;
-      background: none; border: none; padding: 0; margin-left: 4px;
+      display: none; flex-direction: column; justify-content: center; gap: 5px;
+      width: 34px; height: 34px; background: none; border: none; cursor: pointer;
     }
-    .nav-burger span {
-      display: block; height: 1.5px; width: 18px; margin: 0 auto;
-      background: var(--onyx);
-      border-radius: 2px; transition: all .25s;
-    }
-    .nav-burger.open span:nth-child(1) { transform: translateY(5.5px) rotate(45deg); }
-    .nav-burger.open span:nth-child(2) { opacity: 0; }
-    .nav-burger.open span:nth-child(3) { transform: translateY(-5.5px) rotate(-45deg); }
+    .nav-burger span { display: block; width: 100%; height: 2px; background: var(--onyx); border-radius: 2px; }
+    .nav-mobile { display: none; }
 
-    .nav-mobile {
-      display: none; position: fixed; top: 78px; left: 12px; right: 12px;
-      background: rgba(255,255,255,0.35);
-      backdrop-filter: blur(28px) saturate(200%); -webkit-backdrop-filter: blur(28px) saturate(200%);
-      border: 1px solid rgba(255,255,255,0.5);
-      box-shadow:
-        0 1px 0 rgba(255,255,255,0.9) inset,
-        0 -10px 24px -16px rgba(255,255,255,0.4) inset,
-        0 20px 50px -20px rgba(19,16,21,0.22);
-      border-radius: 24px;
-      padding: 1.25rem; flex-direction: column; gap: 0.5rem; z-index: 99;
-    }
-    .nav-mobile.open { display: flex; }
-    .nav-mobile a {
-      text-decoration: none; color: var(--fg);
-      font-size: 0.95rem; font-weight: 500;
-      padding: 0.6rem 0.85rem; border-radius: 12px;
-    }
-    .nav-mobile .nav-cta {
-      display: inline-block; text-align: center;
-    }
+    /* ── shared card ── */
+    .section { max-width: 1180px; margin: 0 auto; padding: 54px 30px 0; }
+    .section-title { margin: 0 0 22px; font-size: 34px; font-weight: 500; letter-spacing: -0.02em; }
+    .section-sub { margin: 0 0 22px; max-width: 560px; font-family: var(--font-body); font-size: 16px; line-height: 1.55; color: var(--fg-faint); }
+    em.serif { font-family: var(--font-serif); font-style: italic; font-weight: 400; }
 
-    /* ─────────────────────────────────────────────── */
-    /*  GRADIENT-BLOOM BACKDROP (used in many sections) */
-    /* ─────────────────────────────────────────────── */
-    .bloom-bg {
-      position: absolute; inset: 0;
-      overflow: hidden;
-      pointer-events: none;
-      z-index: 0;
-    }
-    .bloom {
-      position: absolute;
-      border-radius: 50%;
-      filter: blur(80px);
-      opacity: 0.85;
-    }
-    .bloom.lg { width: 720px; height: 720px; filter: blur(120px); }
-    .bloom.md { width: 460px; height: 460px; filter: blur(90px); }
-    .bloom.sm { width: 280px; height: 280px; filter: blur(70px); }
-
-    /* ─────────────────────────────────────────────── */
-    /*  HERO                                            */
-    /* ─────────────────────────────────────────────── */
-    .hero {
-      position: relative;
-      padding: 130px 6% 110px;
-      min-height: 100vh;
-      display: flex; flex-direction: column; justify-content: center;
-      overflow: hidden;
-      isolation: isolate;
-      background:
-        radial-gradient(120% 80% at 20% 0%, rgba(248,217,194,0.7) 0%, transparent 60%),
-        radial-gradient(100% 80% at 90% 30%, rgba(229,199,240,0.6) 0%, transparent 55%),
-        radial-gradient(120% 80% at 30% 100%, rgba(201,220,242,0.4) 0%, transparent 55%),
-        radial-gradient(80% 60% at 80% 100%, rgba(244,212,228,0.3) 0%, transparent 60%),
-        transparent;
-    }
-    .hero-bloom-1 { top: -10%; left: -8%; background: #F4A07A; opacity: 0.45; }
-    .hero-bloom-2 { top: 10%; right: -12%; background: #C278D4; opacity: 0.35; }
-    .hero-bloom-3 { bottom: -15%; left: 30%; background: #9CC0EE; opacity: 0.45; }
-
-    .hero-inner { position: relative; z-index: 1; max-width: 1200px; margin: 0 auto; width: 100%; }
-
-    .hero-eyebrow {
-      font-family: var(--font-mono);
-      font-size: 0.74rem; font-weight: 500;
-      letter-spacing: 0.18em; text-transform: uppercase;
-      color: var(--fg-soft);
-      margin-bottom: 2.5rem;
-      display: inline-flex; align-items: center; gap: 0.6rem;
-      padding: 0.5rem 0.9rem;
-      background: rgba(255,255,255,0.22);
-      border: 1px solid rgba(255,255,255,0.45);
-      border-radius: 100px;
-      backdrop-filter: blur(22px) saturate(200%);
-      -webkit-backdrop-filter: blur(22px) saturate(200%);
-      box-shadow:
-        0 1px 0 rgba(255,255,255,0.9) inset,
-        0 -8px 18px -12px rgba(255,255,255,0.5) inset;
-    }
-    .hero-eyebrow .dot {
-      width: 7px; height: 7px; border-radius: 50%;
-      background: #5DD17C;
-      box-shadow: 0 0 0 3px rgba(93,209,124,0.22);
-    }
-
-    .hero h1 {
-      font-family: var(--font-serif);
-      font-weight: 400;
-      font-size: clamp(3.2rem, 8.5vw, 8rem);
-      line-height: 0.94;
-      letter-spacing: -0.02em;
-      color: var(--onyx);
-      margin-bottom: 2.25rem;
-      max-width: 14ch;
-    }
-    .hero h1 em {
-      font-style: italic;
-      color: var(--onyx);
-      position: relative;
-      display: inline-block;
-      transition: opacity .35s ease;
-    }
-    .hero h1 em.fade-out { opacity: 0; }
-    .hero h1 em::after {
-      content: '';
-      position: absolute; left: -2px; right: -2px; bottom: 0.05em; height: 0.18em;
-      background: linear-gradient(90deg, rgba(194,120,212,0.55), rgba(244,160,122,0.55));
-      z-index: -1;
-      border-radius: 4px;
-    }
-
-    .hero-sub {
-      font-size: 1.18rem;
-      color: rgba(19,16,21,0.72);
-      line-height: 1.65;
-      max-width: 540px;
-      margin-bottom: 2.75rem;
-      font-weight: 400;
-    }
-    .hero-btns { display: flex; gap: 0.75rem; flex-wrap: wrap; align-items: center; }
-
-    /* Buttons */
-    .btn-primary {
-      display: inline-flex; align-items: center; gap: 10px;
-      background: var(--wisteria);
-      color: #FFFFFF;
-      padding: 1rem 1.65rem;
-      border-radius: 100px;
-      font-family: var(--font-sans);
-      font-weight: 500; font-size: 0.95rem;
-      text-decoration: none;
-      transition: transform .2s, background .2s, box-shadow .2s;
-      box-shadow: 0 10px 24px -10px rgba(194,120,212,0.45);
-    }
-    .btn-primary:hover { background: var(--peach); transform: translateY(-2px); box-shadow: 0 14px 30px -10px rgba(244,160,122,0.5); }
-    .btn-primary .arrow { transition: transform .2s; }
-    .btn-primary:hover .arrow { transform: translateX(3px); }
-
-    .btn-glass {
-      display: inline-flex; align-items: center; gap: 10px;
-      background: rgba(255,255,255,0.22);
-      backdrop-filter: blur(24px) saturate(200%); -webkit-backdrop-filter: blur(24px) saturate(200%);
-      color: var(--onyx);
-      border: 1px solid rgba(255,255,255,0.45);
-      padding: 1rem 1.65rem;
-      border-radius: 100px;
-      font-family: var(--font-sans);
-      font-weight: 500; font-size: 0.95rem;
-      text-decoration: none;
-      transition: background .2s, transform .2s, box-shadow .25s;
-      box-shadow:
-        0 1px 0 rgba(255,255,255,0.9) inset,
-        0 -1px 0 rgba(19,16,21,0.05) inset,
-        0 -10px 22px -14px rgba(255,255,255,0.55) inset,
-        0 8px 24px -10px rgba(19,16,21,0.18);
-    }
-    .btn-glass:hover {
-      background: rgba(255,255,255,0.32);
-      transform: translateY(-2px);
-      box-shadow:
-        0 1px 0 rgba(255,255,255,1) inset,
-        0 -1px 0 rgba(19,16,21,0.06) inset,
-        0 -12px 24px -14px rgba(255,255,255,0.7) inset,
-        0 14px 30px -10px rgba(19,16,21,0.22);
-    }
-
-    .btn-outline {
-      display: inline-flex; align-items: center; gap: 10px;
-      background: transparent; color: var(--onyx);
-      border: 1px solid rgba(19,16,21,0.18);
-      padding: 0.95rem 1.5rem; border-radius: 100px;
-      font-weight: 500; font-size: 0.9rem; text-decoration: none;
-      transition: border-color .15s, background .15s;
-    }
-    .btn-outline:hover { border-color: var(--onyx); background: rgba(19,16,21,0.04); }
-
-    /* Sparkle ornament near headline */
-    .hero-sparkles {
-      position: absolute;
-      top: 14%; right: 12%;
-      color: rgba(19,16,21,0.65);
-      display: flex; gap: 8px; align-items: flex-start;
-      animation: float 6s ease-in-out infinite;
-    }
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50%      { transform: translateY(-8px); }
-    }
-
-    /* Hero stat strip (below buttons) */
-    .hero-meta {
-      display: flex; flex-wrap: wrap; gap: 1.5rem 2.5rem;
-      margin-top: 3.5rem;
-      font-family: var(--font-mono);
-      font-size: 0.75rem;
-      color: var(--fg-soft);
-      letter-spacing: 0.04em;
-    }
-    .hero-meta span strong { color: var(--onyx); font-weight: 500; }
-
-    /* ─────────────────────────────────────────────── */
-    /*  MARQUEE                                         */
-    /* ─────────────────────────────────────────────── */
-    .marquee-wrap {
-      background: transparent;
-      color: var(--fg-faint);
-      padding: 18px 0; overflow: hidden; white-space: nowrap;
-      position: relative;
-    }
-    .marquee-track {
-      display: inline-flex; animation: marquee 38s linear infinite;
-      align-items: center;
-    }
-    .marquee-track span {
-      font-family: var(--font-mono);
-      font-size: 0.78rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase;
-      padding: 0 1.5rem;
-      color: var(--fg-soft);
-    }
-    .marquee-track span.sep {
-      color: var(--wisteria);
-      padding: 0; font-size: 0.9rem;
-    }
-    @keyframes marquee {
-      from { transform: translateX(0); }
-      to   { transform: translateX(-50%); }
-    }
-
-    /* ─────────────────────────────────────────────── */
-    /*  SECTION SHELL                                   */
-    /* ─────────────────────────────────────────────── */
-    section { padding: 110px 6%; position: relative; overflow: hidden; }
-    .section-inner { max-width: 1180px; margin: 0 auto; position: relative; z-index: 1; }
-
-    h2.section-title {
-      font-family: var(--font-serif);
-      font-weight: 400;
-      font-size: clamp(2.2rem, 5vw, 4.4rem);
-      line-height: 0.98;
-      letter-spacing: -0.015em;
-      margin-bottom: 1.25rem;
-      color: var(--onyx);
-      max-width: 22ch;
-    }
-    h2.section-title em { font-style: italic; color: var(--wisteria); }
-
-    .section-sub {
-      font-size: 1.05rem; color: var(--fg-soft);
-      max-width: 560px; line-height: 1.7; margin-bottom: 4rem;
-    }
-
-    .label { margin-bottom: 1.1rem; }
-
-    /* Scroll fade-up */
-    .fade-up {
-      opacity: 0; transform: translateY(18px);
-      transition: opacity .7s ease, transform .7s ease;
-    }
-    .fade-up.visible { opacity: 1; transform: translateY(0); }
-    .fade-up.delay-1 { transition-delay: 0.08s; }
-    .fade-up.delay-2 { transition-delay: 0.16s; }
-    .fade-up.delay-3 { transition-delay: 0.24s; }
-
-    /* CTA Band — SEO Checklist */
-    .cta-band {
-      position: relative;
-      padding: 90px 6%;
-      overflow: hidden;
-      background: transparent;
-    }
-    .cta-band-inner {
-      position: relative; z-index: 1;
-      max-width: 1180px; margin: 0 auto;
-      display: grid; grid-template-columns: 1.4fr 1fr; gap: 3rem; align-items: center;
-    }
-    .cta-band-eyebrow {
-      font-family: var(--font-mono);
-      font-size: 0.72rem; letter-spacing: 0.16em; text-transform: uppercase;
-      color: var(--fg-soft); display: inline-flex; align-items: center; gap: 0.5rem;
-      margin-bottom: 1.1rem;
-    }
-    .cta-band-eyebrow::before {
-      content: '❦'; color: var(--wisteria); font-size: 0.9rem;
-    }
-    .cta-band h2 {
-      font-family: var(--font-serif);
-      font-size: clamp(2rem, 4.2vw, 3.5rem);
-      font-weight: 400; line-height: 1; letter-spacing: -0.02em;
-      color: var(--onyx); text-wrap: balance; margin-bottom: 1rem;
-    }
-    .cta-band h2 em { font-style: italic; color: var(--wisteria); }
-    .cta-band p {
-      font-size: 1.02rem; color: var(--fg-soft);
-      line-height: 1.6; max-width: 50ch; margin-bottom: 1.5rem;
-    }
-    .cta-band-side {
-      display: flex; flex-direction: column; gap: 0.75rem;
-      align-items: flex-start;
-    }
-    .cta-band-side ul {
-      list-style: none;
-      display: flex; flex-direction: column; gap: 0.55rem;
-      margin-bottom: 1.5rem;
-    }
-    .cta-band-side li {
-      font-family: var(--font-mono);
-      font-size: 0.8rem; color: var(--fg);
-      display: flex; align-items: center; gap: 0.6rem;
-    }
-    .cta-band-side li::before {
-      content: '✓';
-      width: 22px; height: 22px; flex-shrink: 0;
-      border-radius: 50%;
-      background: rgba(255,255,255,0.28);
-      backdrop-filter: blur(18px) saturate(200%);
-      -webkit-backdrop-filter: blur(18px) saturate(200%);
-      border: 1px solid rgba(255,255,255,0.55);
-      box-shadow:
-        0 1px 0 rgba(255,255,255,0.95) inset,
-        0 -4px 10px -6px rgba(255,255,255,0.5) inset;
-      display: inline-flex; align-items: center; justify-content: center;
-      color: var(--wisteria); font-weight: 700; font-size: 0.75rem;
-    }
-
-    @media (max-width: 1000px) {
-      .cta-band-inner { grid-template-columns: 1fr; gap: 2rem; }
-    }
-    .glass {
-      background: rgba(255,255,255,0.18);
-      backdrop-filter: blur(32px) saturate(200%);
-      -webkit-backdrop-filter: blur(32px) saturate(200%);
-      border: 1px solid rgba(255,255,255,0.45);
-      box-shadow:
-        0 1px 0 rgba(255,255,255,1) inset,
-        0 -1px 0 rgba(19,16,21,0.05) inset,
-        0 -14px 36px -22px rgba(255,255,255,0.6) inset,
-        14px 0 30px -22px rgba(255,255,255,0.35) inset,
-        -14px 0 30px -22px rgba(255,255,255,0.35) inset,
-        0 20px 60px -22px rgba(19,16,21,0.22),
-        0 4px 14px -6px rgba(19,16,21,0.08);
-      border-radius: var(--radius-lg);
-    }
-
-    /* Jelly hover — subtle squish-and-glow */
-    .jelly { transition: transform .4s cubic-bezier(.34,1.56,.64,1), box-shadow .35s ease, border-color .25s; }
-    .jelly:hover {
-      transform: translateY(-6px) scale(1.015);
-      border-color: rgba(255,255,255,0.7);
-      box-shadow:
-        0 1px 0 rgba(255,255,255,1) inset,
-        0 -16px 38px -22px rgba(255,255,255,0.75) inset,
-        18px 0 32px -22px rgba(255,255,255,0.5) inset,
-        -18px 0 32px -22px rgba(255,255,255,0.5) inset,
-        0 30px 70px -24px rgba(194,120,212,0.32),
-        0 10px 22px -8px rgba(19,16,21,0.14);
-    }
-
-    /* Cursor-reactive glow (used on hero + cta-final) */
-    .cursor-glow {
-      position: absolute;
-      width: 520px; height: 520px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(255,255,255,0.55) 0%, rgba(244,200,232,0.25) 35%, transparent 70%);
-      filter: blur(40px);
-      pointer-events: none;
-      transform: translate(-50%, -50%);
-      opacity: 0;
-      transition: opacity .4s ease;
-      z-index: 1;
-      mix-blend-mode: screen;
-    }
-    .cursor-host:hover .cursor-glow { opacity: 1; }
-
-    /* ─────────────────────────────────────────────── */
-    /*  SOBRE MÍ                                        */
-    /* ─────────────────────────────────────────────── */
-    .sobre {
-      background: transparent;
-    }
-    .sobre-bloom-1 { top: 5%; right: -10%; background: var(--lilac); opacity: 0.5; }
-    .sobre-bloom-2 { bottom: -15%; left: -10%; background: var(--peach); opacity: 0.35; }
-
-    .sobre-layout { display: grid; grid-template-columns: 1.05fr 1fr; gap: 5rem; align-items: start; }
-
-    .sobre-intro {
-      display: flex;
-      align-items: flex-start;
-      gap: 2rem;
-      margin-bottom: 0.5rem;
-    }
-    .sobre-foto {
-      width: 120px; height: 150px;
-      object-fit: cover; object-position: center top;
-      border-radius: var(--radius); display: block;
-      filter: grayscale(1);
-      transition: filter .3s;
-      box-shadow: 0 12px 36px -14px rgba(19,16,21,0.2);
-      flex-shrink: 0;
-    }
-    .sobre-foto:hover { filter: grayscale(0); }
-    .sobre-intro .label { margin-bottom: 0.8rem; }
-    .sobre-intro .section-title { margin-bottom: 0; }
-
-    .sobre-left p {
-      font-size: 1rem; color: rgba(19,16,21,0.72);
-      line-height: 1.8; margin-bottom: 1.05rem;
-      max-width: 50ch;
-    }
-    .sobre-links { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-top: 2.25rem; }
-
-    .stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.85rem; margin-bottom: 2rem; }
-    .stat-tile {
-      position: relative;
-      padding: 1.5rem 1.4rem;
-      border-radius: var(--radius);
-      background: rgba(255,255,255,0.16);
-      backdrop-filter: blur(28px) saturate(200%);
-      -webkit-backdrop-filter: blur(28px) saturate(200%);
-      border: 1px solid rgba(255,255,255,0.5);
-      box-shadow:
-        0 1px 0 rgba(255,255,255,1) inset,
-        0 -1px 0 rgba(19,16,21,0.05) inset,
-        0 -12px 28px -18px rgba(255,255,255,0.65) inset,
-        14px 0 24px -20px rgba(255,255,255,0.4) inset,
-        -14px 0 24px -20px rgba(255,255,255,0.4) inset,
-        0 14px 36px -18px rgba(19,16,21,0.15);
-      overflow: hidden;
-      transition: transform .35s cubic-bezier(.34,1.56,.64,1), box-shadow .3s;
-    }
-    .stat-tile:hover {
-      transform: translateY(-5px) scale(1.025);
-      box-shadow:
-        0 1px 0 rgba(255,255,255,1) inset,
-        0 -14px 32px -18px rgba(255,255,255,0.75) inset,
-        16px 0 28px -20px rgba(255,255,255,0.55) inset,
-        -16px 0 28px -20px rgba(255,255,255,0.55) inset,
-        0 24px 56px -20px rgba(19,16,21,0.22);
-    }
-    .stat-tile::before {
-      content: ''; position: absolute; inset: -40%;
-      background: radial-gradient(40% 40% at 0% 100%, var(--bloom-color, var(--peach)) 0%, transparent 70%);
-      opacity: 0.55;
-      z-index: 0;
-    }
-    .stat-tile > * { position: relative; z-index: 1; }
-    .stat-tile:nth-child(1) { --bloom-color: var(--peach); }
-    .stat-tile:nth-child(2) { --bloom-color: var(--wisteria); }
-    .stat-tile:nth-child(3) { --bloom-color: var(--jordy); }
-    .stat-tile:nth-child(4) { --bloom-color: var(--lime); }
-
-    .stat-tile strong {
-      font-family: var(--font-serif);
-      font-size: 2.6rem; font-weight: 400;
-      color: var(--onyx);
-      letter-spacing: -0.02em; line-height: 1;
-      display: block;
-    }
-    .stat-tile span {
-      font-family: var(--font-mono);
-      font-size: 0.7rem; color: var(--fg-soft);
-      font-weight: 500; text-transform: uppercase; letter-spacing: 0.1em;
-      margin-top: 8px; display: block;
-    }
-
-    .clientes-label {
-      font-family: var(--font-mono);
-      font-size: 0.7rem; font-weight: 500; color: var(--fg-soft);
-      text-transform: uppercase; letter-spacing: 0.12em;
-      margin-bottom: 0.9rem;
-    }
-    .clientes-list { display: flex; flex-wrap: wrap; gap: 0.4rem; }
-    .cliente-tag {
-      background: rgba(255,255,255,0.2);
-      backdrop-filter: blur(20px) saturate(200%);
-      -webkit-backdrop-filter: blur(20px) saturate(200%);
-      border: 1px solid rgba(255,255,255,0.5);
-      box-shadow:
-        0 1px 0 rgba(255,255,255,0.95) inset,
-        0 -6px 14px -10px rgba(255,255,255,0.55) inset,
-        0 4px 10px -6px rgba(19,16,21,0.1);
-      color: var(--fg);
-      padding: 6px 12px; border-radius: 100px;
-      font-size: 0.78rem; font-weight: 500;
-      transition: background .2s, color .2s, transform .25s cubic-bezier(.34,1.56,.64,1), border-color .2s;
-    }
-    .cliente-tag:hover { background: var(--wisteria); color: #fff; border-color: var(--wisteria); transform: translateY(-2px); }
-
-    /* ─────────────────────────────────────────────── */
-    /*  BLOG HOME                                       */
-    /* ─────────────────────────────────────────────── */
-    .blog-home { background: transparent; }
-    .blog-bloom-1 { top: -10%; right: -10%; background: #F4A07A; opacity: 0.35; }
-    .blog-bloom-2 { bottom: -15%; left: -5%; background: #9CC0EE; opacity: 0.3; }
-
-    .blog-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1rem;
-    }
-    .blog-card {
-      position: relative;
-      padding: 2rem 1.85rem 1.75rem;
-      border-radius: var(--radius-lg);
-      background: rgba(255,255,255,0.2);
-      backdrop-filter: blur(28px) saturate(200%);
-      -webkit-backdrop-filter: blur(28px) saturate(200%);
-      border: 1px solid rgba(255,255,255,0.5);
-      box-shadow:
-        0 1px 0 rgba(255,255,255,0.95) inset,
-        0 -1px 0 rgba(19,16,21,0.05) inset,
-        0 -14px 30px -20px rgba(255,255,255,0.55) inset,
-        14px 0 28px -22px rgba(255,255,255,0.35) inset,
-        -14px 0 28px -22px rgba(255,255,255,0.35) inset,
-        0 16px 50px -28px rgba(19,16,21,0.15);
-      text-decoration: none;
-      color: var(--onyx);
-      overflow: hidden;
-      transition: transform .25s cubic-bezier(.34,1.56,.64,1), box-shadow .3s;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-    .blog-card::before {
-      content: ''; position: absolute; inset: auto -30% -30% auto;
-      width: 280px; height: 280px;
-      background: radial-gradient(circle, var(--card-bloom, var(--lilac)) 0%, transparent 70%);
-      filter: blur(20px);
-      opacity: 0.45;
-      z-index: 0;
-    }
-    .blog-card > * { position: relative; z-index: 1; }
-    .blog-card:hover {
-      transform: translateY(-4px);
-      box-shadow:
-        0 1px 0 rgba(255,255,255,0.95) inset,
-        0 -14px 30px -20px rgba(255,255,255,0.65) inset,
-        0 24px 56px -20px rgba(19,16,21,0.22);
-    }
-    .blog-card h3 {
-      font-family: var(--font-serif);
-      font-size: 1.35rem; font-weight: 400; line-height: 1.15;
-      letter-spacing: -0.01em;
-      margin-bottom: 0.5rem;
-    }
-    .blog-card p {
-      font-size: 0.92rem; color: var(--fg-soft);
-      line-height: 1.6; margin-bottom: 0.75rem;
-    }
-    .blog-card-meta {
-      font-family: var(--font-mono);
-      font-size: 0.68rem; font-weight: 500;
-      letter-spacing: 0.12em; text-transform: uppercase;
-      color: var(--fg-faint);
-    }
-    .blog-card-tag {
-      display: inline-block;
-      font-family: var(--font-mono);
-      font-size: 0.62rem; font-weight: 600;
-      letter-spacing: 0.14em; text-transform: uppercase;
-      background: var(--wisteria); color: #fff;
-      padding: 3px 10px; border-radius: 100px;
-      margin-bottom: 1rem;
-    }
-    .blog-card-lg {
-      grid-column: 1 / -1;
-      padding: 2.5rem 2.25rem 2rem;
-    }
-    .blog-card-lg h3 {
-      font-size: clamp(1.5rem, 3vw, 2.2rem);
-      max-width: 28ch;
-    }
-    .blog-card-lg p {
-      max-width: 60ch;
-    }
-
-    /* ─────────────────────────────────────────────── */
-    /*  LOGROS                                          */
-    /* ─────────────────────────────────────────────── */
-    .logros { background: transparent; }
-    .logros-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
-    .logro-card {
-      position: relative;
-      padding: 2.25rem 1.85rem 2rem;
-      border-radius: var(--radius-lg);
-      background: rgba(255,255,255,0.2);
-      backdrop-filter: blur(28px) saturate(200%);
-      -webkit-backdrop-filter: blur(28px) saturate(200%);
-      border: 1px solid rgba(255,255,255,0.5);
-      box-shadow:
-        0 1px 0 rgba(255,255,255,0.95) inset,
-        0 -1px 0 rgba(19,16,21,0.05) inset,
-        0 -14px 30px -20px rgba(255,255,255,0.55) inset,
-        14px 0 28px -22px rgba(255,255,255,0.35) inset,
-        -14px 0 28px -22px rgba(255,255,255,0.35) inset,
-        0 16px 50px -28px rgba(19,16,21,0.15);
-      transition: transform .25s cubic-bezier(.34,1.56,.64,1), box-shadow .3s;
-      overflow: hidden;
-    }
-    .logro-card::before {
-      content: ''; position: absolute; inset: auto -30% -30% auto;
-      width: 280px; height: 280px;
-      background: radial-gradient(circle, var(--bloom-color) 0%, transparent 70%);
-      filter: blur(20px);
-      opacity: 0.45;
-      z-index: 0;
-    }
-    .logro-card > * { position: relative; z-index: 1; }
-    .logro-card:nth-child(1) { --bloom-color: var(--peach); }
-    .logro-card:nth-child(2) { --bloom-color: var(--lilac); }
-    .logro-card:nth-child(3) { --bloom-color: var(--jordy); }
-    .logro-card:hover { transform: translateY(-4px); }
-    .logro-num {
-      font-family: var(--font-mono);
-      font-size: 0.74rem; font-weight: 500;
-      color: var(--fg-soft); margin-bottom: 1.5rem;
-      letter-spacing: 0.1em;
-    }
-    .logro-card h3 {
-      font-family: var(--font-serif);
-      font-size: 1.5rem; font-weight: 400; line-height: 1.1;
-      color: var(--onyx); margin-bottom: 0.75rem;
-      letter-spacing: -0.01em;
-    }
-    .logro-card p {
-      font-size: 0.95rem; color: var(--fg-soft);
-      line-height: 1.65;
-    }
-
-    /* ─────────────────────────────────────────────── */
-    /*  TESTIMONIOS                                     */
-    /* ─────────────────────────────────────────────── */
-    .testimonios { background: transparent; }
-    .testimonios-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1rem; }
-    .testimonio-card {
-      background: rgba(255,255,255,0.2);
-      backdrop-filter: blur(28px) saturate(200%);
-      -webkit-backdrop-filter: blur(28px) saturate(200%);
-      border: 1px solid rgba(255,255,255,0.5);
-      box-shadow:
-        0 1px 0 rgba(255,255,255,0.95) inset,
-        0 -1px 0 rgba(19,16,21,0.05) inset,
-        0 -14px 30px -20px rgba(255,255,255,0.55) inset,
-        14px 0 28px -22px rgba(255,255,255,0.35) inset,
-        -14px 0 28px -22px rgba(255,255,255,0.35) inset,
-        0 16px 50px -28px rgba(19,16,21,0.18);
-      border-radius: var(--radius-lg);
-      padding: 1.85rem 1.75rem;
-      display: flex; flex-direction: column; gap: 1.25rem;
-      transition: transform .25s cubic-bezier(.34,1.56,.64,1), box-shadow .3s;
-    }
-    .testimonio-card:hover { transform: translateY(-4px); }
-    .testimonio-texto {
-      font-family: var(--font-serif);
-      font-size: 1.08rem; line-height: 1.45;
-      color: var(--onyx); flex: 1;
-      font-style: italic;
-    }
-    .testimonio-texto::before {
-      content: '\201C'; color: var(--wisteria); font-size: 2.4rem;
-      line-height: 0; vertical-align: -0.55em; margin-right: 4px;
-      font-family: var(--font-serif); font-style: italic;
-    }
-    .testimonio-nombre {
-      font-family: var(--font-sans);
-      font-size: 0.92rem; font-weight: 600; color: var(--onyx);
-    }
-    .testimonio-cargo {
-      font-family: var(--font-mono);
-      font-size: 0.72rem; color: var(--fg-soft); line-height: 1.45;
-      margin-top: 4px;
-    }
-    .testimonio-rel {
-      font-family: var(--font-mono);
-      font-size: 0.68rem; color: var(--fg-faint);
-      margin-top: 8px; letter-spacing: 0.04em;
-    }
-
-    /* ─────────────────────────────────────────────── */
-    /*  MÁS ALLÁ                                        */
-    /* ─────────────────────────────────────────────── */
-    .masalla { background: transparent; }
-    .masalla-inner { max-width: 680px; }
-    .masalla p {
-      font-size: 1.05rem; color: rgba(19,16,21,0.7);
-      line-height: 1.75; margin-bottom: 1rem;
-      max-width: 50ch;
-    }
-
-    /* AI Overview mock */
-    .aio-card {
-      padding: 1.75rem 1.85rem 1.5rem;
-      border-radius: var(--radius-lg);
-      background: rgba(255,255,255,0.28);
-      backdrop-filter: blur(28px) saturate(200%);
-      -webkit-backdrop-filter: blur(28px) saturate(200%);
-      border: 1px solid rgba(255,255,255,0.55);
-      box-shadow:
-        0 1px 0 rgba(255,255,255,0.95) inset,
-        0 -1px 0 rgba(19,16,21,0.04) inset,
-        0 -14px 30px -20px rgba(255,255,255,0.55) inset,
-        0 16px 50px -28px rgba(19,16,21,0.15);
-    }
-    .aio-header {
-      display: flex; align-items: center; gap: 0.5rem;
-      margin-bottom: 1.1rem;
-    }
-    .aio-label {
-      font-family: var(--font-sans);
-      font-size: 0.82rem; font-weight: 500;
-      color: var(--fg-soft);
-    }
-    .aio-text {
-      font-size: 0.95rem; line-height: 1.7;
-      color: rgba(19,16,21,0.72);
-      margin-bottom: 0.75rem;
-    }
-    .aio-text strong { color: var(--onyx); font-weight: 600; }
-    .aio-source {
-      display: flex; align-items: center; gap: 0.65rem;
-      padding: 0.75rem 0.85rem;
-      margin-top: 0.5rem;
-      border-radius: 12px;
-      background: rgba(255,255,255,0.35);
-      border: 1px solid rgba(19,16,21,0.06);
-    }
-    .aio-favicon {
-      width: 26px; height: 26px; border-radius: 50%;
-      background: var(--wisteria);
-      color: #fff;
-      font-family: var(--font-serif);
-      font-size: 0.82rem; font-weight: 500;
-      display: flex; align-items: center; justify-content: center;
-      flex-shrink: 0;
-    }
-    .aio-source-name {
-      display: block;
-      font-size: 0.82rem; font-weight: 600;
-      color: var(--onyx);
-    }
-    .aio-source-url {
-      display: block;
-      font-size: 0.72rem;
-      color: var(--fg-faint);
-    }
-    .aio-footer {
-      margin-top: 1rem;
-      padding-top: 0.85rem;
-      border-top: 1px solid rgba(19,16,21,0.06);
-      font-family: var(--font-mono);
-      font-size: 0.62rem;
-      letter-spacing: 0.08em;
-      color: var(--fg-faint);
-    }
-
-    .platform-pill {
-      background: rgba(255,255,255,0.22);
-      backdrop-filter: blur(24px) saturate(200%);
-      -webkit-backdrop-filter: blur(24px) saturate(200%);
-      border: 1px solid rgba(255,255,255,0.5);
-      box-shadow:
-        0 1px 0 rgba(255,255,255,0.95) inset,
-        0 -8px 18px -12px rgba(255,255,255,0.55) inset,
-        0 6px 14px -8px rgba(19,16,21,0.12);
-      color: var(--onyx);
-      padding: 0.65rem 1.15rem; border-radius: 100px;
-      font-size: 0.85rem; font-weight: 500;
-      transition: background .2s, color .2s, transform .3s cubic-bezier(.34,1.56,.64,1), border-color .2s, box-shadow .25s;
-    }
-    .platform-pill:hover { background: var(--wisteria); color: #fff; border-color: var(--wisteria); transform: translateY(-3px) scale(1.04); }
-
-    /* ─────────────────────────────────────────────── */
-    /*  EEAT                                            */
-    /* ─────────────────────────────────────────────── */
-    .eeat { background: transparent; }
-    .eeat-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
-    .eeat-card {
-      position: relative;
-      border-radius: var(--radius-lg);
-      overflow: hidden;
-      background: rgba(255,255,255,0.2);
-      backdrop-filter: blur(28px) saturate(200%);
-      -webkit-backdrop-filter: blur(28px) saturate(200%);
-      border: 1px solid rgba(255,255,255,0.5);
-      box-shadow:
-        0 1px 0 rgba(255,255,255,0.95) inset,
-        0 -1px 0 rgba(19,16,21,0.05) inset,
-        0 -14px 30px -20px rgba(255,255,255,0.55) inset,
-        14px 0 28px -22px rgba(255,255,255,0.35) inset,
-        -14px 0 28px -22px rgba(255,255,255,0.35) inset,
-        0 16px 50px -28px rgba(19,16,21,0.18);
-      transition: transform .3s cubic-bezier(.34,1.56,.64,1), box-shadow .3s;
-    }
-    .eeat-card:hover { transform: translateY(-5px); }
-    .eeat-card::before {
-      content: ''; position: absolute;
-      top: -40%; right: -30%;
-      width: 320px; height: 320px;
-      background: radial-gradient(circle, var(--bloom-color) 0%, transparent 65%);
-      filter: blur(10px);
-      opacity: 0.55;
-      z-index: 0;
-    }
-    .eeat-card > * { position: relative; z-index: 1; }
-    .eeat-card:nth-child(1) { --bloom-color: var(--peach); }
-    .eeat-card:nth-child(2) { --bloom-color: var(--wisteria); }
-    .eeat-card:nth-child(3) { --bloom-color: var(--jordy); }
-    .eeat-card:nth-child(4) { --bloom-color: var(--lime); }
-
-    .eeat-top { padding: 1.75rem 1.6rem 1.25rem; }
-    .eeat-letter {
-      font-family: var(--font-serif);
-      font-size: 5rem; font-weight: 400; font-style: italic;
-      color: var(--onyx); line-height: 0.85; margin-bottom: 0.4rem;
-      letter-spacing: -0.04em;
-    }
-    .eeat-top h3 {
-      font-family: var(--font-sans);
-      font-size: 0.9rem; font-weight: 600; color: var(--onyx);
-    }
-    .eeat-top > span {
-      font-family: var(--font-mono);
-      font-size: 0.7rem; color: var(--fg-soft);
-      font-weight: 500; text-transform: uppercase; letter-spacing: 0.08em;
-      margin-top: 2px; display: block;
-    }
-    .eeat-body { padding: 0 1.6rem 1.85rem; }
-    .eeat-body p { font-size: 0.88rem; color: var(--fg-soft); line-height: 1.7; margin-bottom: 0.65rem; }
-    .eeat-body p:last-child { margin-bottom: 0; }
-    .eeat-body strong { color: var(--onyx); font-weight: 600; }
-
-    /* ─────────────────────────────────────────────── */
-    /*  PRECIOS                                         */
-    /* ─────────────────────────────────────────────── */
-    .precios { background: transparent; }
-    .precios-grid {
-      display: grid; grid-template-columns: repeat(3, 1fr);
-      gap: 1rem; max-width: 980px;
-    }
-    .precio-card {
-      position: relative;
-      background: rgba(255,255,255,0.2);
-      backdrop-filter: blur(28px) saturate(200%);
-      -webkit-backdrop-filter: blur(28px) saturate(200%);
-      border: 1px solid rgba(255,255,255,0.5);
-      box-shadow:
-        0 1px 0 rgba(255,255,255,0.95) inset,
-        0 -1px 0 rgba(19,16,21,0.05) inset,
-        0 -14px 30px -20px rgba(255,255,255,0.55) inset,
-        14px 0 28px -22px rgba(255,255,255,0.35) inset,
-        -14px 0 28px -22px rgba(255,255,255,0.35) inset,
-        0 16px 50px -28px rgba(19,16,21,0.15);
-      border-radius: var(--radius-lg);
-      padding: 2rem 1.85rem;
-      transition: transform .25s cubic-bezier(.34,1.56,.64,1), box-shadow .3s;
-      overflow: hidden;
-    }
-    .precio-card:hover { transform: translateY(-4px); }
-    .precio-card.destacado {
-      background:
-        radial-gradient(80% 80% at 100% 0%, rgba(194,120,212,0.45) 0%, transparent 65%),
-        radial-gradient(80% 80% at 0% 100%, rgba(244,160,122,0.35) 0%, transparent 65%),
-        rgba(255,255,255,0.25);
-      color: var(--onyx);
-      border-color: rgba(194,120,212,0.25);
-    }
-    .precio-badge {
-      display: inline-block;
-      font-family: var(--font-mono);
-      background: rgba(19,16,21,0.07); color: var(--onyx);
-      font-size: 0.65rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase;
-      padding: 5px 12px; border-radius: 100px; margin-bottom: 1.25rem;
-    }
-    .precio-card.destacado .precio-badge { background: rgba(194,120,212,0.15); color: var(--wisteria); }
-    .precio-card h3 {
-      font-family: var(--font-serif);
-      font-size: 1.5rem; font-weight: 400; line-height: 1.1;
-      letter-spacing: -0.01em;
-      margin-bottom: 0.5rem;
-    }
-    .precio-card.destacado h3 { color: var(--onyx); }
-    .precio-card p {
-      font-size: 0.9rem; line-height: 1.65;
-      margin-bottom: 1.5rem;
-      color: var(--fg-soft);
-    }
-    .precio-card.destacado p { color: var(--fg-soft); }
-    .precio-amount {
-      font-family: var(--font-serif);
-      font-size: 2.4rem; font-weight: 400;
-      letter-spacing: -0.02em;
-      color: var(--onyx);
-    }
-    .precio-card.destacado .precio-amount { color: var(--onyx); }
-    .precio-amount span {
-      font-family: var(--font-mono);
-      font-size: 0.75rem; font-weight: 500;
-      letter-spacing: 0.08em;
-      color: var(--fg-faint); margin-left: 4px;
-    }
-    .precio-card.destacado .precio-amount span { color: var(--fg-faint); }
-
-    /* ─────────────────────────────────────────────── */
-    /*  CÓMO EMPEZAMOS + FORM                           */
-    /* ─────────────────────────────────────────────── */
-    .como { background: transparent; }
-    .como-grid {
-      display: grid; grid-template-columns: repeat(3, 1fr);
-      gap: 1rem; margin-bottom: 5rem;
-    }
-    .como-card {
-      position: relative;
-      padding: 2.25rem 1.85rem;
-      border-radius: var(--radius-lg);
-      background: rgba(255,255,255,0.2);
-      backdrop-filter: blur(28px) saturate(200%);
-      -webkit-backdrop-filter: blur(28px) saturate(200%);
-      border: 1px solid rgba(255,255,255,0.5);
-      box-shadow:
-        0 1px 0 rgba(255,255,255,0.95) inset,
-        0 -1px 0 rgba(19,16,21,0.05) inset,
-        0 -14px 30px -20px rgba(255,255,255,0.55) inset,
-        14px 0 28px -22px rgba(255,255,255,0.35) inset,
-        -14px 0 28px -22px rgba(255,255,255,0.35) inset,
-        0 16px 50px -28px rgba(19,16,21,0.12);
-      transition: transform .25s cubic-bezier(.34,1.56,.64,1), box-shadow .3s;
-      overflow: hidden;
-    }
-    .como-card::before {
-      content: ''; position: absolute;
-      top: -50%; left: -20%;
-      width: 280px; height: 280px;
-      background: radial-gradient(circle, var(--bloom-color, var(--lilac)) 0%, transparent 65%);
-      filter: blur(15px);
-      opacity: 0.5;
-      z-index: 0;
-    }
-    .como-card > * { position: relative; z-index: 1; }
-    .como-card:nth-child(1) { --bloom-color: var(--peach); }
-    .como-card:nth-child(2) { --bloom-color: var(--lilac); }
-    .como-card:nth-child(3) { --bloom-color: var(--jordy); }
-    .como-card:hover { transform: translateY(-4px); }
-    .como-num {
-      font-family: var(--font-mono);
-      font-size: 0.78rem; font-weight: 500;
-      color: var(--fg-soft); letter-spacing: 0.12em;
-      margin-bottom: 1.25rem;
-    }
-    .como-card h3 {
-      font-family: var(--font-serif);
-      font-size: 1.5rem; font-weight: 400; line-height: 1.1;
-      letter-spacing: -0.01em;
-      color: var(--onyx); margin-bottom: 0.5rem;
-    }
-    .como-card p { font-size: 0.95rem; color: var(--fg-soft); line-height: 1.7; }
-
-    /* Form */
-    .form-wrapper {
-      position: relative;
-      max-width: 720px; margin: 0 auto;
-      padding: 2.75rem 2.5rem;
-      border-radius: var(--radius-xl);
-      background: rgba(255,255,255,0.2);
-      backdrop-filter: blur(32px) saturate(200%);
-      -webkit-backdrop-filter: blur(32px) saturate(200%);
-      border: 1px solid rgba(255,255,255,0.5);
-      box-shadow:
-        0 1px 0 rgba(255,255,255,0.95) inset,
-        0 -1px 0 rgba(19,16,21,0.05) inset,
-        0 -16px 36px -22px rgba(255,255,255,0.6) inset,
-        16px 0 32px -22px rgba(255,255,255,0.4) inset,
-        -16px 0 32px -22px rgba(255,255,255,0.4) inset,
-        0 24px 60px -30px rgba(19,16,21,0.25);
-      overflow: hidden;
-    }
-    .form-wrapper::before {
-      content: ''; position: absolute;
-      inset: auto -10% -40% -10%;
-      height: 380px;
-      background:
-        radial-gradient(60% 60% at 20% 100%, rgba(244,160,122,0.7), transparent 60%),
-        radial-gradient(60% 60% at 80% 100%, rgba(194,120,212,0.6), transparent 60%);
-      filter: blur(40px);
-      z-index: 0;
-    }
-    .form-wrapper > * { position: relative; z-index: 1; }
-
-    .form-wrapper h3 {
-      font-family: var(--font-serif);
-      font-size: 2rem; font-weight: 400; color: var(--onyx);
-      letter-spacing: -0.015em; margin-bottom: 0.4rem;
-    }
-    .form-wrapper > p {
-      font-size: 0.95rem; color: var(--fg-soft);
-      margin-bottom: 2rem;
-    }
-    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0.85rem; }
-    .form-group { display: flex; flex-direction: column; gap: 6px; margin-bottom: 0.85rem; }
-    .form-group label {
-      font-family: var(--font-mono);
-      font-size: 0.7rem; font-weight: 500; color: var(--fg-soft);
-      letter-spacing: 0.08em; text-transform: uppercase;
-    }
-    .form-group input,
-    .form-group select,
-    .form-group textarea {
-      font-family: var(--font-sans);
-      border: 1px solid rgba(255,255,255,0.4); border-radius: 12px;
-      padding: 0.85rem 1rem;
-      font-size: 0.94rem; color: var(--onyx);
-      background: rgba(255,255,255,0.22);
-      backdrop-filter: blur(20px) saturate(180%);
-      -webkit-backdrop-filter: blur(20px) saturate(180%);
-      box-shadow:
-        0 1px 0 rgba(255,255,255,0.85) inset,
-        0 -1px 0 rgba(19,16,21,0.04) inset;
-      outline: none; transition: border-color .15s, background .15s, box-shadow .15s;
-    }
-    .form-group input::placeholder,
-    .form-group textarea::placeholder { color: var(--fg-faint); }
-    .form-group input:focus,
-    .form-group select:focus,
-    .form-group textarea:focus {
-      border-color: var(--wisteria); background: rgba(255,255,255,0.9);
-      box-shadow: 0 0 0 3px rgba(194,120,212,0.20);
-    }
-    .form-group textarea { resize: vertical; min-height: 110px; }
-    .btn-form {
-      width: 100%; padding: 1rem; background: var(--wisteria); color: #fff;
-      border: none; border-radius: 100px;
-      font-family: var(--font-sans);
-      font-size: 0.94rem; font-weight: 500;
-      cursor: pointer; transition: background .2s, transform .2s;
-      margin-top: 0.5rem;
-      box-shadow: 0 8px 24px -10px rgba(19,16,21,0.4);
-    }
-    .btn-form:hover { background: var(--wisteria); transform: translateY(-2px); }
-
-    /* ─────────────────────────────────────────────── */
-    /*  FAQs                                            */
-    /* ─────────────────────────────────────────────── */
-    .faqs { background: transparent; }
-    .faq-list { max-width: 760px; }
-    .faq-item {
-      background: rgba(255,255,255,0.18);
-      backdrop-filter: blur(24px) saturate(200%);
-      -webkit-backdrop-filter: blur(24px) saturate(200%);
-      border: 1px solid rgba(255,255,255,0.45);
-      box-shadow:
-        0 1px 0 rgba(255,255,255,0.9) inset,
-        0 -10px 22px -16px rgba(255,255,255,0.5) inset;
-      border-radius: 16px;
-      margin-bottom: 0.6rem; overflow: hidden;
-      transition: border-color .2s, background .2s, box-shadow .25s;
-    }
-    .faq-item:hover { border-color: rgba(194,120,212,0.5); }
-    .faq-item.open {
-      background: rgba(255,255,255,0.32);
-      box-shadow:
-        0 1px 0 rgba(255,255,255,1) inset,
-        0 -12px 26px -16px rgba(255,255,255,0.65) inset;
-    }
-    .faq-q {
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 1.3rem 1.6rem; cursor: pointer; user-select: none;
-    }
-    .faq-q span {
-      font-size: 1rem; font-weight: 500; color: var(--onyx);
-      line-height: 1.4; padding-right: 1rem;
-    }
-    .faq-icon {
-      width: 32px; height: 32px; flex-shrink: 0;
-      background: rgba(19,16,21,0.06);
-      border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      font-family: var(--font-serif);
-      font-size: 1.2rem; font-weight: 400; color: var(--onyx);
-      transition: transform .25s, background .15s, color .15s;
-    }
-    .faq-item.open .faq-icon { transform: rotate(45deg); background: var(--wisteria); color: #fff; }
-    .faq-a {
-      max-height: 0; overflow: hidden;
-      transition: max-height .35s ease;
-    }
-    .faq-a-inner {
-      padding: 0 1.6rem 1.4rem;
-      font-size: 0.95rem; color: var(--fg-soft); line-height: 1.75;
-    }
-    .faq-item.open .faq-a { max-height: 500px; }
-
-    /* ─────────────────────────────────────────────── */
-    /*  CTA FINAL                                       */
-    /* ─────────────────────────────────────────────── */
-    .cta-final {
-      position: relative;
-      text-align: center; padding: 140px 6%;
-      overflow: hidden;
-      background:
-        radial-gradient(60% 60% at 20% 30%, rgba(244,160,122,0.35) 0%, transparent 60%),
-        radial-gradient(60% 60% at 80% 70%, rgba(194,120,212,0.30) 0%, transparent 60%),
-        radial-gradient(60% 60% at 50% 100%, rgba(156,192,238,0.25) 0%, transparent 60%),
-        transparent;
-    }
-    .cta-final::after {
-      content: '';
-      position: absolute; inset: 0;
-      background:
-        radial-gradient(60% 60% at 90% 10%, rgba(221,255,51,0.25) 0%, transparent 50%);
-      pointer-events: none;
-    }
-    .cta-final-inner { position: relative; z-index: 1; max-width: 760px; margin: 0 auto; }
-    .cta-final h2 {
-      font-family: var(--font-serif);
-      font-size: clamp(2.6rem, 6.5vw, 5.5rem);
-      font-weight: 400; color: var(--onyx); line-height: 0.96;
-      letter-spacing: -0.02em; margin-bottom: 1.5rem;
-      text-wrap: balance;
-    }
-    .cta-final h2 em { font-style: italic; color: var(--onyx); }
-    .cta-final p {
-      font-size: 1.1rem; color: rgba(19,16,21,0.7);
-      max-width: 480px; margin: 0 auto 2.75rem; line-height: 1.65;
-    }
-    .cta-sparkle {
-      display: block; margin: 0 auto 1.5rem;
-      color: var(--wisteria);
-    }
-
-    /* ─────────────────────────────────────────────── */
-    /*  FOOTER                                          */
-    /* ─────────────────────────────────────────────── */
-    footer {
-      background: rgba(255,255,255,0.15);
-      backdrop-filter: blur(20px) saturate(180%);
-      -webkit-backdrop-filter: blur(20px) saturate(180%);
-      color: var(--fg-soft);
-      padding: 3.5rem 6%;
-      display: flex; align-items: center; justify-content: space-between;
-      flex-wrap: wrap; gap: 1.5rem;
-      position: relative; overflow: hidden;
-    }
-    footer::before {
-      content: ''; position: absolute; inset: 0;
-      background: radial-gradient(60% 50% at 50% 100%, rgba(194,120,212,0.12) 0%, transparent 70%);
-      pointer-events: none;
-    }
-    footer > * { position: relative; z-index: 1; }
-    .footer-logo {
-      font-family: var(--font-serif); font-size: 1.15rem; font-weight: 400;
-      color: var(--onyx) !important; text-decoration: none;
-      letter-spacing: -0.01em;
+    .btn {
       display: inline-flex; align-items: center; gap: 8px;
+      font-family: var(--font-body); font-weight: 500;
+      border-radius: var(--radius-pill); border: none; cursor: pointer;
     }
-    .footer-logo em { font-style: italic; color: var(--wisteria); }
-    .footer-logo::before { content: '✦'; color: var(--wisteria); font-size: 0.85em; }
-    footer a {
-      color: var(--fg-soft); text-decoration: none;
-      transition: color .2s; font-size: 0.88rem;
-    }
-    footer a:hover { color: var(--onyx); }
-    .footer-center {
-      font-family: var(--font-mono);
-      font-size: 0.74rem; letter-spacing: 0.04em;
-      color: var(--fg-faint);
-    }
-    .footer-links { display: flex; gap: 1.5rem; align-items: center; position: relative; flex-wrap: wrap; }
+    .btn-primary { background: var(--onyx); color: var(--cream); padding: 15px 28px; font-size: 16px; }
+    .btn-primary.sm { padding: 13px 24px; font-size: 15px; }
+    .btn-text { border-bottom: 1.5px solid var(--onyx); padding-bottom: 3px; font-family: var(--font-body); font-size: 16px; font-weight: 500; }
 
-    .footer-privacy-toggle {
-      cursor: pointer; color: var(--fg-soft);
-      font-size: 0.85rem;
-      text-decoration: underline; text-underline-offset: 3px;
-    }
-    .footer-privacy-text {
-      display: none; position: absolute; bottom: 100%; right: 0;
-      background: rgba(255,255,255,0.85);
-      backdrop-filter: blur(20px);
-      border: 1px solid rgba(19,16,21,0.1);
-      border-radius: 14px; padding: 1.5rem;
-      max-width: 420px; font-size: 0.8rem;
-      color: var(--fg-soft); line-height: 1.65;
-      margin-bottom: 1rem;
-    }
+    /* ── HERO ── */
+    #top { padding-top: 26px; position: relative; }
+    .hero-squiggle { position: absolute; right: 18px; top: 30px; width: 100px; height: 52px; z-index: 3; pointer-events: none; }
+    .hero-card { background: var(--cream); border-radius: var(--radius); padding: 54px 56px 46px; box-shadow: 0 18px 40px -32px rgba(51,48,58,0.5); }
+    .eyebrow { margin: 0 0 22px; font-family: var(--font-body); font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--fg-faint); }
+    .hero-card h1 { margin: 0; max-width: 800px; font-size: 48px; line-height: 1.08; letter-spacing: -0.025em; font-weight: 500; }
+    .hero-card h1 em.serif { font-size: 51px; }
+    .hero-sub { margin: 28px 0 0; max-width: 580px; font-family: var(--font-body); font-size: 17px; line-height: 1.55; color: var(--fg-soft); }
+    .hero-btns { display: flex; align-items: center; gap: 22px; margin-top: 32px; flex-wrap: wrap; }
+    .hero-tags { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 38px; font-family: var(--font-body); font-size: 13px; letter-spacing: 0.04em; }
+    .hero-tags span { background: var(--chip); border-radius: var(--radius-pill); padding: 9px 16px; }
 
-    /* ─────────────────────────────────────────────── */
-    /*  RESPONSIVE                                      */
-    /* ─────────────────────────────────────────────── */
-    @media (max-width: 1000px) {
-      .sobre-layout { grid-template-columns: 1fr; gap: 3rem; }
-      .masalla-inner { grid-template-columns: 1fr; gap: 3rem; }
-      .eeat-grid { grid-template-columns: 1fr 1fr; }
-      .logros-grid { grid-template-columns: 1fr; }
-      .testimonios-grid { grid-template-columns: 1fr; }
-      .como-grid { grid-template-columns: 1fr; }
-      .blog-grid { grid-template-columns: 1fr; }
-      .blog-card-lg { grid-column: auto; }
-      .hero-sparkles { display: none; }
+    /* ── SERVICIOS ── */
+    .servicios-list { display: flex; flex-direction: column; gap: 14px; }
+    .servicio-row {
+      background: var(--cream); border-radius: var(--radius); padding: 26px 30px;
+      display: grid; grid-template-columns: 46px 1fr 400px; gap: 24px; align-items: baseline;
     }
-    @media (max-width: 640px) {
-      nav#mainNav { top: 12px; padding: 5px 5px 5px 16px; }
-      .nav-links { display: none; }
-      .nav-burger { display: flex; }
-      section { padding: 80px 5%; }
-      .hero { padding: 120px 5% 80px; min-height: auto; }
-      .form-row { grid-template-columns: 1fr; }
-      .eeat-grid { grid-template-columns: 1fr; }
+    .servicio-row.tone-peach { background: var(--peach); }
+    .servicio-num { font-family: var(--font-body); font-size: 12px; letter-spacing: 0.12em; color: var(--fg-faint); }
+    .servicio-row h3 { margin: 0; font-size: 28px; font-weight: 500; letter-spacing: -0.02em; line-height: 1.1; }
+    .servicio-row h3 em.serif { font-size: 31px; color: var(--onyx); }
+    .servicio-row p { margin: 0; font-family: var(--font-body); font-size: 15.5px; line-height: 1.5; color: var(--fg-soft); }
+
+    /* ── SOBRE MÍ ── */
+    .about-card { background: var(--cream); border-radius: var(--radius); padding: 46px 56px 50px; display: grid; grid-template-columns: 280px 1fr; gap: 54px; align-items: start; }
+    .about-photo-wrap { display: flex; flex-direction: column; gap: 16px; }
+    .about-photo-frame { background: #fff; padding: 10px 10px 12px; border-radius: 2px; box-shadow: 0 14px 30px -26px rgba(51,48,58,0.6); transform: rotate(-1.6deg); }
+    .about-photo-frame img { width: 100%; height: 320px; object-fit: cover; }
+    .about-photo-caption { margin: 0; font-family: var(--font-body); font-size: 12.5px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(51,48,58,0.55); }
+    .about-body { display: flex; flex-direction: column; gap: 22px; }
+    .about-body h2 { margin: 0; font-size: 34px; line-height: 1.14; letter-spacing: -0.025em; font-weight: 500; max-width: 620px; }
+    .about-body p.lead { margin: 0; max-width: 620px; font-family: var(--font-body); font-size: 16.5px; line-height: 1.6; color: var(--fg-soft); }
+    .about-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 6px; }
+    .about-stats > div { background: var(--chip); border-radius: var(--radius); padding: 18px 18px 16px; display: flex; flex-direction: column; gap: 6px; }
+    .about-stats .num { font-size: 30px; font-weight: 600; letter-spacing: -0.02em; }
+    .about-stats .label { font-family: var(--font-body); font-size: 12.5px; line-height: 1.35; color: rgba(51,48,58,0.62); }
+    .brands-list { margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; font-family: var(--font-body); font-size: 13px; }
+    .brands-list li { border: 1px solid rgba(51,48,58,0.18); border-radius: var(--radius-pill); padding: 7px 14px; }
+
+    /* ── CASO ── */
+    .caso-grid { display: grid; grid-template-columns: 1.15fr 1fr; gap: 16px; align-items: start; }
+    .caso-chart-card, .caso-text-card { background: var(--cream); border-radius: var(--radius); }
+    .caso-chart-card { padding: 30px 32px 26px; }
+    .caso-chart-head { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 20px; gap: 10px; flex-wrap: wrap; }
+    .caso-chart-head .lbl { font-family: var(--font-body); font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--fg-faint); }
+    .caso-chart-head .pct { font-family: var(--font-body); font-size: 14px; font-weight: 600; color: var(--accent); }
+    .caso-chart-card svg { width: 100%; height: 190px; display: block; }
+    .caso-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 22px; }
+    .caso-stats > div { background: var(--chip); border-radius: var(--radius); padding: 16px 16px 14px; display: flex; flex-direction: column; gap: 5px; }
+    .caso-stats > div.tone-rose { background: var(--rose); }
+    .caso-stats .big { font-size: 24px; font-weight: 600; letter-spacing: -0.02em; }
+    .caso-stats .mid { font-family: var(--font-body); font-size: 12.5px; color: var(--fg-soft); }
+    .caso-stats .small { font-family: var(--font-body); font-size: 11.5px; color: var(--fg-faint); }
+    .caso-text-card { padding: 30px 32px; display: flex; flex-direction: column; gap: 18px; }
+    .caso-text-card h3 { margin: 0; font-size: 24px; font-weight: 500; letter-spacing: -0.02em; line-height: 1.2; }
+    .caso-text-card p { margin: 0; font-family: var(--font-body); font-size: 16px; line-height: 1.6; color: var(--fg-soft); }
+    .hand-note { margin: 0; font-family: var(--font-hand); font-size: 21px; color: var(--accent); }
+
+    /* ── VISIBILIDAD (3 cols) ── */
+    .visibilidad-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .visibilidad-grid > div { background: var(--cream); border-radius: var(--radius); padding: 28px 28px 30px; display: flex; flex-direction: column; gap: 12px; }
+    .visibilidad-grid .lbl { font-family: var(--font-body); font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--fg-faint); }
+    .visibilidad-grid h3 { margin: 0; font-size: 22px; font-weight: 500; letter-spacing: -0.02em; line-height: 1.2; }
+    .visibilidad-grid p { margin: 0; font-family: var(--font-body); font-size: 15px; line-height: 1.55; color: var(--fg-soft); }
+
+    /* ── PRESENCIA (peach) ── */
+    .presencia-card { background: var(--peach); border-radius: var(--radius); padding: 44px 48px; display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
+    .presencia-card h2 { margin: 0; font-size: 34px; font-weight: 500; letter-spacing: -0.025em; line-height: 1.1; }
+    .presencia-card p { margin: 0; font-family: var(--font-body); font-size: 16px; line-height: 1.6; color: var(--fg-soft); }
+    .presencia-list { margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 9px; font-family: var(--font-body); font-size: 14px; }
+    .presencia-list li { background: var(--cream); border-radius: var(--radius-pill); padding: 10px 18px; }
+
+    /* ── EEAT ── */
+    .eeat-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+    .eeat-card { background: var(--cream); border-radius: var(--radius); padding: 26px 24px 28px; display: flex; flex-direction: column; gap: 14px; }
+    .eeat-letter { font-family: var(--font-serif); font-style: italic; font-size: 52px; line-height: 0.8; color: var(--accent); }
+    .eeat-card h3 { margin: 0 0 2px; font-size: 19px; font-weight: 600; letter-spacing: -0.01em; }
+    .eeat-card .sub { margin: 0; font-family: var(--font-body); font-size: 12.5px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--fg-faint); }
+    .eeat-card p { margin: 0; font-family: var(--font-body); font-size: 14.5px; line-height: 1.55; color: var(--fg-soft); }
+
+    /* ── TESTIMONIOS ── */
+    .testi-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .testi-card { background: var(--cream); border-radius: var(--radius); padding: 28px 28px 26px; display: flex; flex-direction: column; gap: 18px; justify-content: space-between; }
+    .testi-card blockquote { margin: 0; font-family: var(--font-body); font-size: 15.5px; line-height: 1.6; color: rgba(51,48,58,0.8); }
+    .testi-card figcaption { display: flex; flex-direction: column; gap: 3px; }
+    .testi-card .name { font-size: 16px; font-weight: 600; }
+    .testi-card .role { font-family: var(--font-body); font-size: 13px; color: rgba(51,48,58,0.6); }
+
+    /* ── RECURSOS ── */
+    .recursos-grid { display: grid; grid-template-columns: 1.1fr 1fr; gap: 16px; align-items: start; }
+    .recurso-highlight { background: var(--rose); border-radius: var(--radius); padding: 34px 36px; display: flex; flex-direction: column; gap: 18px; position: relative; }
+    .recurso-highlight .hand-note { position: absolute; right: 30px; top: 26px; transform: rotate(-5deg); }
+    .recurso-highlight h3 { margin: 0; font-size: 30px; font-weight: 500; letter-spacing: -0.02em; }
+    .recurso-highlight p { margin: 0; max-width: 420px; font-family: var(--font-body); font-size: 15.5px; line-height: 1.55; color: var(--fg-soft); }
+    .recurso-list { background: var(--cream); border-radius: var(--radius); padding: 12px 26px 8px; }
+    .recurso-list a { display: flex; flex-direction: column; gap: 7px; padding: 20px 0; border-bottom: 1px solid var(--line); }
+    .recurso-list a:last-child { display: flex; flex-direction: row; align-items: center; justify-content: space-between; padding: 18px 0; border-bottom: none; font-family: var(--font-body); font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; }
+    .recurso-list .lbl { font-family: var(--font-body); font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--fg-faint); }
+    .recurso-list h3 { margin: 0; font-size: 21px; font-weight: 500; letter-spacing: -0.015em; line-height: 1.2; }
+
+    /* ── PRECIOS ── */
+    .precios-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .precio-card { background: var(--cream); border-radius: var(--radius); padding: 32px 34px; display: flex; flex-direction: column; gap: 14px; }
+    .precio-card.tone-peach { background: var(--peach); }
+    .precio-card .badge { align-self: flex-start; background: var(--chip); border-radius: var(--radius-pill); padding: 7px 14px; font-family: var(--font-body); font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; }
+    .precio-card.tone-peach .badge { background: var(--cream); }
+    .precio-card h3 { margin: 0; font-size: 26px; font-weight: 500; letter-spacing: -0.02em; }
+    .precio-card p { margin: 0; font-family: var(--font-body); font-size: 15.5px; line-height: 1.55; color: var(--fg-soft); }
+    .precio-amount { margin: 6px 0 0; display: flex; align-items: baseline; gap: 7px; }
+    .precio-amount .num { font-size: 38px; font-weight: 600; letter-spacing: -0.025em; }
+    .precio-amount .cur { font-family: var(--font-body); font-size: 14px; letter-spacing: 0.1em; color: rgba(51,48,58,0.55); }
+
+    /* ── CONTACTO ── */
+    .contacto-steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 16px; }
+    .contacto-steps > div { background: var(--cream); border-radius: var(--radius); padding: 26px 28px 28px; display: flex; flex-direction: column; gap: 10px; }
+    .contacto-steps .lbl { font-family: var(--font-body); font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--fg-faint); }
+    .contacto-steps h3 { margin: 0; font-size: 21px; font-weight: 500; letter-spacing: -0.02em; }
+    .contacto-steps p { margin: 0; font-family: var(--font-body); font-size: 15px; line-height: 1.55; color: var(--fg-soft); }
+    .contacto-main { background: var(--cream); border-radius: var(--radius); padding: 44px 48px; display: grid; grid-template-columns: 1fr 440px; gap: 54px; align-items: start; }
+    .contacto-copy { display: flex; flex-direction: column; gap: 18px; }
+    .contacto-copy h3 { margin: 0; font-size: 32px; line-height: 1.12; letter-spacing: -0.025em; font-weight: 500; max-width: 420px; }
+    .contacto-copy > p { margin: 0; max-width: 400px; font-family: var(--font-body); font-size: 16.5px; line-height: 1.6; color: var(--fg-soft); }
+    .contacto-links { display: flex; flex-direction: column; gap: 10px; font-family: var(--font-body); font-size: 14px; }
+    .contacto-links a { border-bottom: 1px solid rgba(51,48,58,0.25); align-self: flex-start; padding-bottom: 4px; }
+    form.contact-form { display: flex; flex-direction: column; gap: 12px; font-family: var(--font-body); }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .contact-form input, .contact-form select, .contact-form textarea {
+      border: 1px solid rgba(51,48,58,0.2); background: var(--input-bg); border-radius: var(--radius-input);
+      padding: 13px 15px; font-family: var(--font-body); font-size: 15px; color: var(--onyx); width: 100%;
+    }
+    .contact-form textarea { resize: vertical; }
+    .contact-form button { border: none; }
+
+    /* ── FAQS ── */
+    .faq-list { display: flex; flex-direction: column; gap: 10px; }
+    .faq-list details { background: var(--cream); border-radius: var(--radius); padding: 22px 28px; }
+    .faq-list summary { display: flex; align-items: center; justify-content: space-between; gap: 20px; cursor: pointer; list-style: none; font-size: 20px; font-weight: 500; letter-spacing: -0.015em; }
+    .faq-list summary::-webkit-details-marker { display: none; }
+    .faq-plus { font-family: var(--font-body); font-size: 22px; color: var(--accent); transition: transform 0.25s; flex-shrink: 0; }
+    .faq-list details[open] .faq-plus { transform: rotate(45deg); }
+    .faq-list p { margin: 14px 0 0; max-width: 760px; font-family: var(--font-body); font-size: 16px; line-height: 1.6; color: var(--fg-soft); }
+
+    /* ── CTA FINAL ── */
+    .cta-final { background: var(--rose); border-radius: var(--radius); padding: 74px 48px; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 20px; }
+    .cta-final h2 { margin: 0; font-size: 42px; line-height: 1.08; letter-spacing: -0.03em; font-weight: 500; max-width: 640px; }
+    .cta-final p { margin: 0; max-width: 500px; font-family: var(--font-body); font-size: 16.5px; line-height: 1.6; color: var(--fg-soft); }
+
+    /* ── FOOTER ── */
+    footer {
+      max-width: 1180px; margin: 26px auto 0; padding: 0 30px;
+      display: flex; align-items: baseline; justify-content: space-between; gap: 24px; flex-wrap: wrap;
+      font-family: var(--font-body); font-size: 12.5px; letter-spacing: 0.08em; color: rgba(51,48,58,0.6);
+    }
+    footer .foot-links { display: flex; gap: 18px; flex-wrap: wrap; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .hero-card h1 { font-size: 38px; }
+      .hero-card h1 em.serif { font-size: 40px; }
+      .servicio-row { grid-template-columns: 40px 1fr; }
+      .servicio-row p { grid-column: 1 / -1; }
+      .about-card { grid-template-columns: 1fr; }
+      .about-photo-frame img { height: 260px; }
+      .about-stats { grid-template-columns: repeat(2, 1fr); }
+      .caso-grid { grid-template-columns: 1fr; }
+      .caso-stats { grid-template-columns: 1fr; }
+      .visibilidad-grid { grid-template-columns: 1fr; }
+      .presencia-card { grid-template-columns: 1fr; }
+      .eeat-grid { grid-template-columns: repeat(2, 1fr); }
+      .testi-grid { grid-template-columns: 1fr; }
+      .recursos-grid { grid-template-columns: 1fr; }
       .precios-grid { grid-template-columns: 1fr; }
-      .form-wrapper { padding: 2rem 1.5rem; }
-      footer { flex-direction: column; align-items: flex-start; gap: 1.25rem; }
+      .contacto-steps { grid-template-columns: 1fr; }
+      .contacto-main { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+      .cta-final h2 { font-size: 32px; }
     }
-
-    /* Hero entrance */
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(20px); }
-      to   { opacity: 1; transform: translateY(0); }
+    @media (max-width: 720px) {
+      nav.main-nav { display: none; }
+      .nav-burger { display: flex; }
+      .nav-mobile.open {
+        display: flex; flex-direction: column; gap: 4px; padding: 10px 30px 20px;
+        font-family: var(--font-body); font-size: 14px; letter-spacing: 0.08em; text-transform: uppercase;
+      }
+      .nav-mobile a { padding: 12px 0; border-bottom: 1px solid var(--line); }
+      .nav-mobile .nav-cta { border: none; margin-top: 10px; text-align: center; }
+      .hero-card { padding: 40px 26px 34px; }
+      .hero-card h1 { font-size: 32px; }
+      .hero-card h1 em.serif { font-size: 34px; }
+      .hero-squiggle { display: none; }
+      .about-card, .hero-card, .caso-chart-card, .caso-text-card, .presencia-card, .recurso-highlight, .recurso-list, .contacto-main { padding-left: 24px; padding-right: 24px; }
+      .section { padding-left: 20px; padding-right: 20px; }
+      .header-inner { padding: 15px 20px; }
+      .eeat-grid { grid-template-columns: 1fr; }
+      .cta-final { padding: 50px 24px; }
     }
-    .hero-eyebrow { animation: fadeUp .6s ease both; }
-    .hero h1      { animation: fadeUp .6s .08s ease both; }
-    .hero-sub     { animation: fadeUp .6s .2s ease both; }
-    .hero-btns    { animation: fadeUp .6s .3s ease both; }
-    .hero-meta    { animation: fadeUp .6s .42s ease both; }
-
-    /* ─────────────────────────────────────────────── */
-    /*  MÉTODO — proceso de trabajo (light)             */
-    /* ─────────────────────────────────────────────── */
-    .metodo { background: transparent; }
-    .metodo-steps {
-      display: grid; grid-template-columns: repeat(2, 1fr);
-      gap: 1rem; margin-top: 3rem;
-    }
-    .metodo-step {
-      position: relative;
-      padding: 1.85rem 1.75rem;
-      border-radius: var(--radius-lg);
-      background: rgba(255,255,255,0.2);
-      backdrop-filter: blur(28px) saturate(200%);
-      -webkit-backdrop-filter: blur(28px) saturate(200%);
-      border: 1px solid rgba(255,255,255,0.5);
-      box-shadow:
-        0 1px 0 rgba(255,255,255,0.95) inset,
-        0 -1px 0 rgba(19,16,21,0.05) inset,
-        0 16px 50px -28px rgba(19,16,21,0.15);
-      transition: transform .25s cubic-bezier(.34,1.56,.64,1);
-    }
-    .metodo-step:hover { transform: translateY(-4px); }
-    .metodo-num {
-      font-family: var(--font-mono);
-      font-size: 0.72rem; font-weight: 500;
-      letter-spacing: 0.1em; color: var(--fg-soft);
-      margin-bottom: 0.9rem;
-    }
-    .metodo-step h3 {
-      font-family: var(--font-serif);
-      font-size: 1.35rem; font-weight: 400; line-height: 1.15;
-      color: var(--onyx); margin-bottom: 0.6rem; letter-spacing: -0.01em;
-    }
-    .metodo-step p { font-size: 0.95rem; color: var(--fg-soft); line-height: 1.7; }
-    @media (max-width: 760px) { .metodo-steps { grid-template-columns: 1fr; } }
   </style>
 
   <!-- JSON-LD schemas preserved -->
@@ -1533,11 +390,11 @@
     "@context": "https://schema.org",
     "@type": "FAQPage",
     "mainEntity": [
-      { "@type": "Question", "name": "¿Qué hace un consultor SEO?", "acceptedAnswer": { "@type": "Answer", "text": "Un consultor SEO investiga las palabras clave que usa tu audiencia, optimiza el contenido de tu sitio, mejora la estructura técnica y construye autoridad de dominio mediante linkbuilding." } },
-      { "@type": "Question", "name": "¿Qué incluye una consultoría SEO?", "acceptedAnswer": { "@type": "Answer", "text": "Auditoría SEO del sitio, investigación de palabras clave, estrategia de contenido, optimización on-page y revisión técnica." } },
-      { "@type": "Question", "name": "¿Por qué invertir en posicionamiento SEO?", "acceptedAnswer": { "@type": "Answer", "text": "El SEO genera tráfico orgánico sostenible. Los resultados se acumulan con el tiempo." } },
-      { "@type": "Question", "name": "¿Ofreces consultoría SEO en Argentina?", "acceptedAnswer": { "@type": "Answer", "text": "Sí. Trabajo con marcas argentinas y de toda LATAM desde Buenos Aires." } },
-      { "@type": "Question", "name": "¿En cuánto tiempo se ven resultados?", "acceptedAnswer": { "@type": "Answer", "text": "El posicionamiento orgánico es una estrategia de mediano plazo. Los primeros movimientos en las posiciones suelen notarse entre el segundo y el cuarto mes, según la competencia del sector y el estado inicial del sitio. El crecimiento se acumula y no se apaga cuando dejas de invertir." } },
+      { "@type": "Question", "name": "¿Qué hace una consultora SEO?", "acceptedAnswer": { "@type": "Answer", "text": "Investiga las palabras clave que usa tu audiencia, optimiza el contenido de tu sitio, mejora la estructura técnica y construye autoridad de dominio mediante link building. El objetivo: que tu marca aparezca en los primeros resultados de Google y de los buscadores con IA cuando alguien busca lo que ofreces." } },
+      { "@type": "Question", "name": "¿Qué incluye una consultoría SEO?", "acceptedAnswer": { "@type": "Answer", "text": "Auditoría del sitio, investigación de palabras clave, estrategia de contenido, optimización on-page (títulos, metas, headings), revisión técnica (velocidad, indexación, Core Web Vitals) y reportes de resultados. Cada plan se arma según lo que la marca necesita." } },
+      { "@type": "Question", "name": "¿Por qué invertir en posicionamiento SEO?", "acceptedAnswer": { "@type": "Answer", "text": "El SEO genera tráfico orgánico sostenible. A diferencia de la publicidad pagada, los resultados se acumulan con el tiempo y el costo por visita baja progresivamente. Una marca bien posicionada recibe visitas constantes sin pagar por cada clic." } },
+      { "@type": "Question", "name": "¿Ofreces consultoría SEO en Argentina?", "acceptedAnswer": { "@type": "Answer", "text": "Sí. Estoy radicada en Buenos Aires y trabajo con marcas argentinas y de toda LATAM. Entiendo el contexto local del mercado digital argentino y también puedo ayudarte a posicionarte en mercados internacionales de habla hispana." } },
+      { "@type": "Question", "name": "¿En cuánto tiempo se ven resultados?", "acceptedAnswer": { "@type": "Answer", "text": "El posicionamiento orgánico es una estrategia de mediano plazo. Los primeros movimientos en las posiciones suelen notarse entre el segundo y el cuarto mes, según la competencia del sector y el estado inicial del sitio." } },
       { "@type": "Question", "name": "¿Qué diferencia hay entre SEO, AEO y GEO?", "acceptedAnswer": { "@type": "Answer", "text": "El SEO posiciona tu sitio en buscadores como Google. El AEO (Answer Engine Optimization) prepara el contenido para aparecer en featured snippets y respuestas destacadas. El GEO (Generative Engine Optimization) trabaja para que ChatGPT, Perplexity y Gemini citen tu marca." } }
     ]
   }
@@ -1545,668 +402,444 @@
 </head>
 <body>
 
-<!-- NAV -->
-<nav id="mainNav">
-  <a href="/" class="nav-logo">Gaby<em>SEO</em></a>
-  <div class="nav-links">
-    <a href="#sobre">Sobre mí</a>
-    <a href="/blog">Blog</a>
-    <a href="#metodo">Cómo trabajo</a>
-    <a href="#precios">Precios</a>
-    <a href="/seo-checklist">Checklist</a>
-    <a href="#contacto" class="nav-cta">Cuéntame tu proyecto</a>
+<header>
+  <div class="header-inner">
+    <a href="#top" class="logo">
+      <span class="logo-name">Gaby Gómez Almeida</span>
+      <span class="logo-tag">SEO Specialist</span>
+    </a>
+    <nav class="main-nav">
+      <a href="#servicios">Servicios</a>
+      <a href="#sobre-mi">Sobre mí</a>
+      <a href="#caso">Caso</a>
+      <a href="#eeat">EEAT</a>
+      <a href="#precios">Precios</a>
+      <a href="#recursos">Recursos</a>
+      <a href="#contacto" class="nav-cta">Escríbeme</a>
+    </nav>
+    <button class="nav-burger" id="burger" aria-label="Menú" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
   </div>
-  <button class="nav-burger" id="burger" aria-label="Menú">
-    <span></span><span></span><span></span>
-  </button>
-</nav>
-
-<!-- MOBILE MENU -->
-<div class="nav-mobile" id="mobileMenu">
-  <a href="#sobre"         onclick="closeMenu()">Sobre mí</a>
-  <a href="/blog"          onclick="closeMenu()">Blog</a>
-  <a href="#metodo"        onclick="closeMenu()">Cómo trabajo</a>
-  <a href="#eeat"          onclick="closeMenu()">EEAT</a>
-  <a href="#precios"       onclick="closeMenu()">Precios</a>
-  <a href="/seo-checklist" onclick="closeMenu()">SEO Checklist</a>
-  <a href="#contacto" class="nav-cta" onclick="closeMenu()">Cuéntame tu proyecto</a>
-</div>
+  <div class="nav-mobile" id="mobileMenu">
+    <a href="#servicios" onclick="closeMenu()">Servicios</a>
+    <a href="#sobre-mi" onclick="closeMenu()">Sobre mí</a>
+    <a href="#caso" onclick="closeMenu()">Caso</a>
+    <a href="#eeat" onclick="closeMenu()">EEAT</a>
+    <a href="#precios" onclick="closeMenu()">Precios</a>
+    <a href="#recursos" onclick="closeMenu()">Recursos</a>
+    <a href="/blog" onclick="closeMenu()">Blog</a>
+    <a href="/seo-checklist" onclick="closeMenu()">Checklist SEO</a>
+    <a href="#contacto" class="nav-cta" onclick="closeMenu()">Escríbeme</a>
+  </div>
+</header>
 
 <main>
 
-<!-- HERO -->
-<section class="hero cursor-host" id="hero">
-  <div class="bloom-bg">
-    <div class="bloom lg hero-bloom-1"></div>
-    <div class="bloom lg hero-bloom-2"></div>
-    <div class="bloom lg hero-bloom-3"></div>
-  </div>
-  <div class="cursor-glow" id="heroGlow"></div>
-
-  <!-- decorative sparkles -->
-  <div class="hero-sparkles" aria-hidden="true">
-    <svg width="44" height="44" viewBox="0 0 24 24" fill="none">
-      <path d="M12 2v8M12 14v8M2 12h8M14 12h8" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
-      <circle cx="12" cy="12" r="1.5" fill="currentColor"/>
+  <!-- HERO -->
+  <section id="top" class="wrap">
+    <svg class="hero-squiggle" viewBox="0 0 120 60" fill="none" stroke="#C4527E" stroke-width="2" stroke-linecap="round" stroke-opacity="0.8">
+      <path d="M6 44c14-26 30-30 40-16s2 28 14 26 18-18 12-30"></path>
+      <path d="M96 18l4 8 8 3-8 4-3 8-4-8-8-3 8-4z"></path>
     </svg>
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" style="margin-top: 24px">
-      <path d="M12 3v6M12 15v6M3 12h6M15 12h6" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
-    </svg>
-    <svg width="14" height="14" viewBox="0 0 12 12" fill="currentColor" style="margin-top: 60px">
-      <rect x="5" y="0" width="2" height="2"/>
-      <rect x="5" y="10" width="2" height="2"/>
-      <rect x="0" y="5" width="2" height="2"/>
-      <rect x="10" y="5" width="2" height="2"/>
-      <rect x="5" y="5" width="2" height="2"/>
-    </svg>
-  </div>
-
-  <div class="hero-inner">
-    <div class="hero-eyebrow">
-      <span class="dot"></span>
-      SEO · AEO · GEO
+    <div class="hero-card">
+      <p class="eyebrow">SEO · AEO · GEO · visibilidad en LLMs</p>
+      <h1>Hago <em class="serif">SEO / GEO / AEO</em> para tu negocio.</h1>
+      <p class="hero-sub">Ayudo a marcas a aparecer en Google, YouTube, TikTok y en los buscadores con IA. Estrategia de contenido y visibilidad donde realmente importa.</p>
+      <div class="hero-btns">
+        <a href="#contacto" class="btn btn-primary">Cuéntame tu proyecto</a>
+        <a href="#sobre-mi" class="btn-text">Cómo trabajo</a>
+      </div>
+      <div class="hero-tags">
+        <span>5+ años en SEO</span>
+        <span>1M+ impresiones orgánicas</span>
+        <span>Argentina · México · España · Venezuela</span>
+        <span>Clases de SEO en Coderhouse</span>
+      </div>
     </div>
+  </section>
 
-    <h1>Consultora SEO para <em>tu marca.</em></h1>
-
-    <p class="hero-sub">
-      Ayudo a marcas a aparecer en Google, ChatGPT y Gemini. Estrategia de contenido y visibilidad donde realmente importa.
-    </p>
-
-    <div class="hero-btns">
-      <a href="#contacto" class="btn-primary">
-        Cuéntame tu proyecto
-        <span class="arrow">→</span>
-      </a>
-      <a href="#sobre" class="btn-glass">Cómo trabajo</a>
+  <!-- SERVICIOS -->
+  <section id="servicios" class="section">
+    <h2 class="section-title">Servicios de SEO, AEO y GEO</h2>
+    <div class="servicios-list">
+      <div class="servicio-row">
+        <span class="servicio-num">01</span>
+        <h3>SEO técnico</h3>
+        <p>Indexación, velocidad, Core Web Vitals y arquitectura. Que Google entienda tu sitio antes de pedirle que lo recomiende.</p>
+      </div>
+      <div class="servicio-row tone-peach">
+        <span class="servicio-num">02</span>
+        <h3>Estrategia de contenido</h3>
+        <p>Del keyword research al plan editorial: pilares temáticos, money keywords, intención de búsqueda y optimización on-page.</p>
+      </div>
+      <div class="servicio-row">
+        <span class="servicio-num">03</span>
+        <h3><em class="serif">AEO y GEO</em></h3>
+        <p>Optimización para buscadores con IA: ser la fuente que ChatGPT, Perplexity, Gemini y las AI Overviews citan cuando responden.</p>
+      </div>
+      <div class="servicio-row">
+        <span class="servicio-num">04</span>
+        <h3>Autoridad y EEAT</h3>
+        <p>Link building con criterio, menciones en medios y presencia en comunidades. Lo que sostiene todo lo anterior en el tiempo.</p>
+      </div>
     </div>
+  </section>
 
-    <div class="hero-meta">
-      <span><strong>5+</strong> años de experiencia</span>
-      <span><strong>LATAM</strong> · Argentina · México · España · Venezuela</span>
+  <!-- SOBRE MÍ -->
+  <section id="sobre-mi" class="section">
+    <div class="about-card">
+      <div class="about-photo-wrap">
+        <div class="about-photo-frame">
+          <img src="/gaby-gomez-seo-opt.jpg" alt="Gaby Gómez Almeida, consultora SEO" loading="lazy" width="300" height="320" />
+        </div>
+        <p class="about-photo-caption">Gaby Gómez Almeida — SEO Specialist</p>
+      </div>
+      <div class="about-body">
+        <p class="eyebrow" style="margin-bottom:0">Sobre mí</p>
+        <h2>Especialista en SEO con foco en negocios que hacen algo bueno y que nadie encuentra todavía.</h2>
+        <p class="lead">Trabajo 1:1 con fundadoras, equipos de marketing y agencias. Sin plantillas, sin auditorías de 80 páginas que nadie lee: empezamos por lo que mueve la aguja.</p>
+        <p class="lead">Estoy en Buenos Aires y trabajo con marcas de LATAM y España en estrategias de contenido SEO, AEO y GEO. También doy clases de SEO en Coderhouse, porque me gusta que más personas entiendan cómo funciona todo esto.</p>
+        <div class="about-stats">
+          <div><span class="num">5+</span><span class="label">años de experiencia</span></div>
+          <div><span class="num">1M+</span><span class="label">impresiones orgánicas</span></div>
+          <div><span class="num">50+</span><span class="label">artículos optimizados por mes</span></div>
+          <div><span class="num">10+</span><span class="label">marcas en LATAM y España</span></div>
+        </div>
+        <p class="eyebrow" style="margin:12px 0 0">Marcas donde hice experiencia</p>
+        <ul class="brands-list">
+          <li>Platzi</li><li>IPSY</li><li>Conekta</li><li>Guidde</li><li>Dentalia</li>
+          <li>Nutriwhite</li><li>Sanarai</li><li>Sofía</li><li>Síclo</li><li>Luuna</li><li>Capilea</li>
+        </ul>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- MARQUEE -->
-<div class="marquee-wrap" aria-hidden="true">
-  <div class="marquee-track">
-    <span>SEO</span><span class="sep">✦</span>
-    <span>AEO</span><span class="sep">✦</span>
-    <span>GEO</span><span class="sep">✦</span>
-    <span>Visibilidad en LLMs</span><span class="sep">✦</span>
-    <span>Estrategia de contenido</span><span class="sep">✦</span>
-    <span>SEO Técnico</span><span class="sep">✦</span>
-    <span>Wellness &amp; Beauty</span><span class="sep">✦</span>
-    <span>Consultoría mensual</span><span class="sep">✦</span>
-    <span>ChatGPT</span><span class="sep">✦</span>
-    <span>Google AI Overviews</span><span class="sep">✦</span>
-    <span>EEAT</span><span class="sep">✦</span>
-    <span>Linkbuilding</span><span class="sep">✦</span>
-    <span>SEO</span><span class="sep">✦</span>
-    <span>AEO</span><span class="sep">✦</span>
-    <span>GEO</span><span class="sep">✦</span>
-    <span>Visibilidad en LLMs</span><span class="sep">✦</span>
-    <span>Estrategia de contenido</span><span class="sep">✦</span>
-    <span>SEO Técnico</span><span class="sep">✦</span>
-    <span>Wellness &amp; Beauty</span><span class="sep">✦</span>
-    <span>Consultoría mensual</span><span class="sep">✦</span>
-    <span>ChatGPT</span><span class="sep">✦</span>
-    <span>Google AI Overviews</span><span class="sep">✦</span>
-    <span>EEAT</span><span class="sep">✦</span>
-    <span>Linkbuilding</span><span class="sep">✦</span>
-  </div>
-</div>
-
-<!-- SOBRE MÍ -->
-<section class="sobre" id="sobre">
-  <div class="bloom-bg">
-    <div class="bloom md sobre-bloom-1"></div>
-    <div class="bloom md sobre-bloom-2"></div>
-  </div>
-
-  <div class="section-inner">
-    <div class="sobre-layout">
-      <div class="sobre-left fade-up">
-        <div class="sobre-intro">
-          <img src="gaby-gomez-seo-opt.jpg" alt="Gaby Gómez Almeida - Consultora SEO" class="sobre-foto" width="300" height="400" loading="lazy" />
+  <!-- CASO -->
+  <section id="caso" class="section">
+    <h2 class="section-title">Caso: de 15K a 61K impresiones en dos meses</h2>
+    <div class="caso-grid">
+      <div class="caso-chart-card">
+        <div class="caso-chart-head">
+          <span class="lbl">Search Console · impresiones orgánicas</span>
+          <span class="pct">+297%</span>
+        </div>
+        <svg viewBox="0 0 400 170" role="img" aria-label="Gráfico de impresiones orgánicas creciendo de 15K a 61.7K en tres meses">
+          <g stroke="rgba(51,48,58,0.12)" stroke-width="1">
+            <line x1="40" y1="26" x2="392" y2="26"></line>
+            <line x1="40" y1="76" x2="392" y2="76"></line>
+            <line x1="40" y1="126" x2="392" y2="126"></line>
+          </g>
+          <g font-family="Karla" font-size="9" fill="rgba(51,48,58,0.45)">
+            <text x="4" y="29">60K</text>
+            <text x="4" y="79">35K</text>
+            <text x="4" y="129">15K</text>
+            <text x="46" y="150">M1</text>
+            <text x="150" y="150">M2</text>
+            <text x="250" y="150">M3</text>
+            <text x="360" y="150">HOY</text>
+          </g>
+          <path d="M52,130 C90,127 118,123 148,114 C186,104 214,90 248,66 C286,46 330,30 372,20 L372,136 L52,136 Z" fill="#F3D3DE" opacity="0.6"></path>
+          <path d="M52,130 C90,127 118,123 148,114 C186,104 214,90 248,66 C286,46 330,30 372,20" fill="none" stroke="#C4527E" stroke-width="2.4" stroke-linecap="round"></path>
+          <circle cx="52" cy="130" r="3.4" fill="#C4527E"></circle>
+          <circle cx="148" cy="114" r="3.4" fill="#C4527E"></circle>
+          <circle cx="248" cy="66" r="3.4" fill="#C4527E"></circle>
+          <circle cx="372" cy="20" r="4.6" fill="#C4527E"></circle>
+        </svg>
+        <div class="caso-stats">
           <div>
-            <span class="label">Sobre mí</span>
-            <h2 class="section-title">Soy Gaby Gómez Almeida.<br><em>Especialista en SEO.</em></h2>
+            <span class="big">+297%</span>
+            <span class="mid">impresiones</span>
+            <span class="small">de 15.5K a 61.7K en 3 meses</span>
+          </div>
+          <div class="tone-rose">
+            <span class="big">+319%</span>
+            <span class="mid">clicks orgánicos</span>
+            <span class="small">de 103 a 432 en el mismo período</span>
+          </div>
+          <div>
+            <span class="big">6.1</span>
+            <span class="mid">posición promedio</span>
+            <span class="small">desde 8.1, mejora de 2 posiciones</span>
           </div>
         </div>
-        <p>Venezolana en Buenos Aires, apasionada por el SEO y convencida de que cualquier marca puede ser encontrada si construimos bien sus bases.</p>
-        <p>Trabajo con startups, marcas de salud y bienestar, ecommerce y empresas argentinas que quieren crecer en búsqueda orgánica. Diseño estrategias de posicionamiento en Google, en los buscadores de IA y en todos los espacios donde tu audiencia busca respuestas.</p>
-        <p>Si buscas un consultor SEO en Argentina que combine estrategia técnica con contenido real, acá estoy. También doy clases de SEO en Coderhouse, porque me encanta que más personas entiendan cómo funciona todo esto.</p>
-        <div class="sobre-links">
-          <a href="#contacto" class="btn-primary">Trabajemos juntxs <span class="arrow">→</span></a>
-          <a href="https://www.linkedin.com/in/gabrielagomezalmeida/" target="_blank" rel="noopener" class="btn-outline">LinkedIn ↗</a>
-        </div>
       </div>
-
-      <div class="sobre-right fade-up delay-2">
-        <div class="stats-grid">
-          <div class="stat-tile"><strong>5+</strong><span>años de experiencia</span></div>
-          <div class="stat-tile"><strong>50+</strong><span>artículos optimizados / mes</span></div>
-          <div class="stat-tile"><strong>20+</strong><span>marcas en LATAM &amp; España</span></div>
-        </div>
-
-        <p class="clientes-label">Algunas marcas donde hice experiencia</p>
-        <div class="clientes-list">
-          <span class="cliente-tag">Platzi</span>
-          <span class="cliente-tag">IPSY</span>
-          <span class="cliente-tag">Conekta</span>
-          <span class="cliente-tag">Guidde</span>
-          <span class="cliente-tag">Dentalia</span>
-          <span class="cliente-tag">Nutriwhite</span>
-          <span class="cliente-tag">Sanarai</span>
-          <span class="cliente-tag">Sofía</span>
-          <span class="cliente-tag">Síclo</span>
-          <span class="cliente-tag">Luuna</span>
-          <span class="cliente-tag">Capilea</span>
-        </div>
+      <div class="caso-text-card">
+        <h3>Skincare infantil en Shopify</h3>
+        <p>El blog ya existía, pero las publicaciones no estaban apuntadas a las búsquedas que generan negocio.</p>
+        <p>En dos meses identificamos los pilares temáticos por ingrediente y tipo de piel, mapeamos las money keywords de la categoría y publicamos más de 10 artículos nuevos con optimización on-page e interlinking. Los números los muestra Google Search Console.</p>
+        <p class="hand-note">sin pagar un peso de ads</p>
+        <a href="#contacto" class="btn btn-primary sm" style="align-self:flex-start">Quiero resultados así</a>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- LOGROS -->
-<section class="logros" id="logros">
-  <div class="section-inner">
-    <span class="label">Lo que logramos juntas</span>
-    <h2 class="section-title fade-up">Visibilidad más allá de <em>tu nombre.</em></h2>
-    <p class="section-sub fade-up delay-1">Que te encuentren por el problema que resuelves. Antes de que sepan que existes.</p>
-    <div class="logros-grid">
-      <div class="logro-card fade-up delay-1">
-        <div class="logro-num">01 · Alcance</div>
+  <!-- VISIBILIDAD -->
+  <section class="section">
+    <h2 class="section-title">Visibilidad más allá de tu nombre</h2>
+    <div class="visibilidad-grid">
+      <div>
+        <span class="lbl">01 · Alcance</span>
         <h3>Llegar a personas que todavía no te conocían</h3>
-        <p>Se identifican las palabras clave que busca tu audiencia y se posiciona el sitio en búsquedas informacionales, comparativas y de descubrimiento. Nuevo tráfico, nuevas personas.</p>
+        <p>Identificamos las palabras clave que busca tu audiencia y posicionamos el sitio en búsquedas informacionales, comparativas y de descubrimiento.</p>
       </div>
-      <div class="logro-card fade-up delay-2">
-        <div class="logro-num">02 · IA</div>
+      <div>
+        <span class="lbl">02 · IA</span>
         <h3>Que los LLMs reconozcan y recomienden tu marca</h3>
-        <p>ChatGPT, Perplexity, Gemini. Se trabaja para que tu marca sea citada y recomendada por la IA cuando alguien pregunta sobre tu industria.</p>
+        <p>ChatGPT, Perplexity, Gemini. Trabajamos para que tu marca sea citada cuando alguien pregunta sobre tu industria.</p>
       </div>
-      <div class="logro-card fade-up delay-3">
-        <div class="logro-num">03 · Omnipresencia</div>
+      <div>
+        <span class="lbl">03 · Omnipresencia</span>
         <h3>Ocupar todos los espacios que tu marca puede ocupar</h3>
-        <p>Posición cero, PAAs, Google Discover, imágenes, videos, foros. Que estés en todos lados cuando alguien busca lo que tú ofreces.</p>
+        <p>Posición cero, PAAs, Google Discover, imágenes, videos y foros. Que estés cuando alguien busca lo que ofreces.</p>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- TESTIMONIOS -->
-<section class="testimonios">
-  <div class="section-inner">
-    <span class="label">Lo que dicen de mí</span>
-    <h2 class="section-title fade-up">Quienes trabajaron <em>conmigo.</em></h2>
-    <p class="section-sub fade-up delay-1">Reseñas reales de LinkedIn de colegas y supervisoras.</p>
-    <div class="testimonios-grid">
-      <div class="testimonio-card fade-up delay-1">
-        <p class="testimonio-texto">Gaby es una profesional con un dominio profundo del SEO, que entiende el ecosistema de contenidos de principio a fin. Lo que más destaco de ella es su curiosidad, su empatía y su espíritu colaborativo.</p>
-        <div>
-          <p class="testimonio-nombre">Sonia Zamora</p>
-          <p class="testimonio-cargo">SEO Manager · Organic Growth Strategist · GEO &amp; AI Search</p>
-          <p class="testimonio-rel">Trabajaron en equipos distintos · Meaningful</p>
-        </div>
+  <!-- PRESENCIA MULTICANAL -->
+  <section class="section">
+    <div class="presencia-card">
+      <div>
+        <p class="eyebrow" style="color:rgba(51,48,58,0.55)">Visión multicanal</p>
+        <h2>Presencia donde <em class="serif">importa.</em></h2>
+        <p style="margin-top:16px">Tu cliente ideal puede estar en YouTube, TikTok, Reddit, Quora o Discord. Y cada vez más, le pregunta directamente a ChatGPT o Perplexity. Construimos tu presencia en todos esos espacios.</p>
       </div>
-      <div class="testimonio-card fade-up delay-2">
-        <p class="testimonio-texto">Gabriela se destaca por su iniciativa, creatividad y la capacidad de llevar adelante sus ideas con enfoque y serenidad. Combina muy bien el pensamiento innovador con una actitud positiva y colaborativa.</p>
-        <div>
-          <p class="testimonio-nombre">Itxara Gámez</p>
-          <p class="testimonio-cargo">SEO Specialist · On-Page · SEO Copywriter</p>
-          <p class="testimonio-rel">Mismo equipo · 2025</p>
-        </div>
-      </div>
-      <div class="testimonio-card fade-up delay-3">
-        <p class="testimonio-texto">Gabriela es una excelente compañera de trabajo, siempre dispuesta a dar más y ayudar a los que estén a su alrededor. Recibe nuevos retos con la mejor actitud. No podría recomendarla más.</p>
-        <div>
-          <p class="testimonio-nombre">Mariana Karina García Palmero</p>
-          <p class="testimonio-cargo">Senior Learning &amp; Development Specialist</p>
-          <p class="testimonio-rel">Mismo equipo · proyecto exigente</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- MÁS ALLÁ DE GOOGLE -->
-<section class="masalla">
-  <div class="section-inner">
-    <div class="masalla-inner">
-      <div class="fade-up">
-        <span class="label">Visión multicanal</span>
-        <h2 class="section-title">Presencia donde <em>importa.</em></h2>
-        <p>Tu cliente ideal puede estar en YouTube, TikTok, Reddit, Quora o Discord. Y cada vez más, le pregunta directamente a ChatGPT o Perplexity.</p>
-        <p>Se construye tu presencia en todos esos espacios. Desde la auditoría inicial hasta la estrategia multicanal, para que cuando alguien tenga el problema que tú resuelves, te encuentre.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- EEAT -->
-<section class="eeat" id="eeat">
-  <div class="section-inner">
-    <span class="label">Framework de trabajo</span>
-    <h2 class="section-title fade-up">Las bases que Google valora. <em>Y los LLMs también.</em></h2>
-    <p class="section-sub fade-up delay-1">Todo lo que hacemos está diseñado alrededor del framework EEAT. Cada letra tiene un impacto concreto en tu visibilidad.</p>
-    <div class="eeat-grid">
-      <div class="eeat-card fade-up delay-1">
-        <div class="eeat-top">
-          <div class="eeat-letter">E</div>
-          <h3>Experience</h3><span>Experiencia</span>
-        </div>
-        <div class="eeat-body">
-          <p><strong>Qué es:</strong> Google valora que quien crea el contenido haya vivido la experiencia de primera mano.</p>
-          <p><strong>Qué se hace:</strong> Contenido que refleja tu experiencia real: casos, aprendizajes, perspectiva propia.</p>
-        </div>
-      </div>
-      <div class="eeat-card fade-up delay-2">
-        <div class="eeat-top">
-          <div class="eeat-letter">E</div>
-          <h3>Expertise</h3><span>Conocimiento</span>
-        </div>
-        <div class="eeat-body">
-          <p><strong>Qué es:</strong> El nivel de dominio del tema que demuestras en tu contenido.</p>
-          <p><strong>Qué se hace:</strong> Se desarrollan pilares temáticos y contenido profundo que demuestre que sabes de lo que hablas.</p>
-        </div>
-      </div>
-      <div class="eeat-card fade-up delay-2">
-        <div class="eeat-top">
-          <div class="eeat-letter">A</div>
-          <h3>Authoritativeness</h3><span>Autoridad</span>
-        </div>
-        <div class="eeat-body">
-          <p><strong>Qué es:</strong> La percepción de autoridad que tienen otras fuentes sobre ti.</p>
-          <p><strong>Qué se hace:</strong> Se trabaja link building, menciones en medios y presencia en comunidades.</p>
-        </div>
-      </div>
-      <div class="eeat-card fade-up delay-3">
-        <div class="eeat-top">
-          <div class="eeat-letter">T</div>
-          <h3>Trustworthiness</h3><span>Confianza</span>
-        </div>
-        <div class="eeat-body">
-          <p><strong>Qué es:</strong> Qué tan confiable parece tu sitio para Google y para las personas.
-          <p><strong>Qué se hace:</strong> Se optimiza estructura, datos de contacto, reviews y todo lo que genera confianza.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- BLOG -->
-<section class="blog-home" id="blog">
-  <div class="bloom-bg">
-    <div class="bloom lg blog-bloom-1"></div>
-    <div class="bloom lg blog-bloom-2"></div>
-  </div>
-
-  <div class="section-inner">
-    <span class="label">Blog</span>
-    <h2 class="section-title fade-up">Apuntes de SEO, AEO <em>&amp; GEO.</em></h2>
-    <p class="section-sub fade-up delay-1">Frameworks, guías y lo que voy aprendiendo en el camino. Sin trucos. Con criterio.</p>
-
-    <div class="blog-grid fade-up delay-2">
-
-      <a href="/blog/google-updates-2026" class="blog-card blog-card-lg" style="--card-bloom: var(--peach);">
-        <span class="blog-card-tag">Nuevo</span>
-        <h3>Google Updates 2026: qué son, cómo impactan y cómo recuperarse</h3>
-        <p>Timeline, tipos de updates, framework de recuperación y qué hacer antes, durante y después.</p>
-        <span class="blog-card-meta">10 min · Guía</span>
-      </a>
-
-      <a href="/blog/sistema-contenido-ia-claude" class="blog-card" style="--card-bloom: var(--lilac);">
-        <h3>El sistema de skills con Claude para contenido SEO</h3>
-        <span class="blog-card-meta">5 min · Sistema</span>
-      </a>
-
-      <a href="/blog/contenido-con-ia" class="blog-card" style="--card-bloom: var(--jordy);">
-        <h3>Cómo redactar contenido de calidad con IA</h3>
-        <span class="blog-card-meta">6 min · Guía</span>
-      </a>
-
-      <a href="/blog/que-es-seo-guia" class="blog-card" style="--card-bloom: var(--rose);">
-        <h3>¿Qué es SEO? Guía completa 2026</h3>
-        <span class="blog-card-meta">12 min · Guía</span>
-      </a>
-
-      <a href="/blog/herramientas-seo-gratuitas" class="blog-card" style="--card-bloom: var(--sage);">
-        <h3>Herramientas SEO gratuitas 2026</h3>
-        <span class="blog-card-meta">10 min · Guía</span>
-      </a>
-
-    </div>
-
-    <div style="text-align:center; margin-top:2.5rem;" class="fade-up delay-3">
-      <a href="/blog/" class="btn-primary">Ver todos los artículos <span class="arrow">→</span></a>
-    </div>
-  </div>
-</section>
-
-<!-- MÉTODO DE TRABAJO -->
-<section class="metodo" id="metodo">
-  <div class="section-inner">
-    <span class="label">Cómo trabajo</span>
-    <h2 class="section-title fade-up">Del análisis a los <em>resultados.</em></h2>
-    <p class="section-sub fade-up delay-1">Un proceso claro y ordenado, pensado para que entiendas qué hago y por qué. Sin humo, sin promesas vacías y con métricas reales.</p>
-    <div class="metodo-steps">
-      <div class="metodo-step fade-up delay-1">
-        <div class="metodo-num">01 · Investigación</div>
-        <h3>Entender qué busca tu audiencia</h3>
-        <p>Analizo la intención de búsqueda detrás de cada consulta: qué pregunta tu cliente, con qué palabras y en qué momento. Reviso el volumen de búsqueda y a tu competencia. De ahí salen los temas que de verdad valen la pena.</p>
-      </div>
-      <div class="metodo-step fade-up delay-2">
-        <div class="metodo-num">02 · Contenido y arquitectura</div>
-        <h3>Organizar el sitio en pilares claros</h3>
-        <p>Agrupo tus páginas en pilares temáticos y las conecto con enlaces internos. Cada página responde a una intención concreta. Así Google entiende de qué trata tu marca y tu audiencia encuentra rápido lo que necesita.</p>
-      </div>
-      <div class="metodo-step fade-up delay-1">
-        <div class="metodo-num">03 · Optimización técnica</div>
-        <h3>Cuidar las bases que rankean</h3>
-        <p>Trabajo títulos, encabezados, metadescripciones y datos estructurados. Reviso la velocidad de carga, la indexación y los Core Web Vitals. Son los detalles técnicos que separan una página que aparece de una que se queda atrás.</p>
-      </div>
-      <div class="metodo-step fade-up delay-2">
-        <div class="metodo-num">04 · Autoridad y medición</div>
-        <h3>Ganar confianza y medir el avance</h3>
-        <p>Construyo reputación con menciones y enlaces de calidad. Después mido todo en Google Search Console y Analytics: impresiones, clics, posiciones y conversiones. Lo que funciona se potencia; lo que no, se ajusta.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- CTA BAND — SEO CHECKLIST -->
-<section class="cta-band">
-  <div class="cta-band-inner">
-    <div class="fade-up">
-      <span class="cta-band-eyebrow">Recurso gratis</span>
-      <h2>Empieza por una base sólida con la <em>SEO Checklist.</em></h2>
-      <p>Una guía práctica y accionable para revisar el posicionamiento orgánico de tu sitio antes de invertir en estrategia. Lo que importa, ordenado por prioridad.</p>
-      <a href="/seo-checklist" class="btn-primary">Ver la SEO Checklist <span class="arrow">→</span></a>
-    </div>
-    <div class="cta-band-side fade-up delay-2">
-      <ul>
-        <li>Estructura técnica e indexación</li>
-        <li>On-page y arquitectura de contenido</li>
-        <li>EEAT y autoridad</li>
-        <li>Preparación para LLMs</li>
+      <ul class="presencia-list">
+        <li>Google</li><li>YouTube</li><li>TikTok</li><li>ChatGPT</li><li>Perplexity</li>
+        <li>Gemini</li><li>AI Overviews</li><li>Reddit</li><li>Quora</li><li>Discord</li>
       </ul>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- PRECIOS -->
-<section class="precios" id="precios">
-  <div class="section-inner">
-    <span class="label">Servicios y precios</span>
-    <h2 class="section-title fade-up">A tu medida. <em>Desde $100.</em></h2>
-    <p class="section-sub fade-up delay-1">Trabajo con marcas en Argentina y LATAM que buscan crecer en búsqueda orgánica. El plan se arma según lo que tu marca necesita.</p>
+  <!-- EEAT -->
+  <section id="eeat" class="section">
+    <h2 class="section-title" style="margin-bottom:8px">El framework EEAT: las bases que Google valora</h2>
+    <p class="section-sub">Cada letra tiene un impacto concreto en tu visibilidad, en Google y en los buscadores con IA.</p>
+    <div class="eeat-grid">
+      <div class="eeat-card">
+        <span class="eeat-letter">E</span>
+        <div><h3>Experience</h3><p class="sub">Experiencia</p></div>
+        <p><strong>Qué es:</strong> Google valora que quien crea el contenido haya vivido la experiencia de primera mano.</p>
+        <p><strong>Qué se hace:</strong> contenido que refleja tu experiencia real: casos, aprendizajes, perspectiva propia.</p>
+      </div>
+      <div class="eeat-card">
+        <span class="eeat-letter">E</span>
+        <div><h3>Expertise</h3><p class="sub">Conocimiento</p></div>
+        <p><strong>Qué es:</strong> el nivel de dominio del tema que demuestras en tu contenido.</p>
+        <p><strong>Qué se hace:</strong> pilares temáticos y contenido profundo que demuestre que sabes de lo que hablas.</p>
+      </div>
+      <div class="eeat-card">
+        <span class="eeat-letter">A</span>
+        <div><h3>Authoritativeness</h3><p class="sub">Autoridad</p></div>
+        <p><strong>Qué es:</strong> la percepción de autoridad que tienen otras fuentes sobre ti.</p>
+        <p><strong>Qué se hace:</strong> link building, menciones en medios y presencia en comunidades.</p>
+      </div>
+      <div class="eeat-card">
+        <span class="eeat-letter">T</span>
+        <div><h3>Trustworthiness</h3><p class="sub">Confianza</p></div>
+        <p><strong>Qué es:</strong> qué tan confiable parece tu sitio para Google y para las personas.</p>
+        <p><strong>Qué se hace:</strong> estructura, datos de contacto, reviews y todo lo que genera confianza.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIOS -->
+  <section class="section">
+    <h2 class="section-title">Lo que dicen quienes trabajaron conmigo</h2>
+    <div class="testi-grid">
+      <figure class="testi-card">
+        <blockquote>Gaby es una profesional con un dominio profundo del SEO, que entiende el ecosistema de contenidos de principio a fin. Lo que más destaco de ella es su curiosidad, su empatía y su espíritu colaborativo.</blockquote>
+        <figcaption>
+          <span class="name">Sonia Zamora</span>
+          <span class="role">SEO Manager · Organic Growth · GEO &amp; AI Search</span>
+        </figcaption>
+      </figure>
+      <figure class="testi-card">
+        <blockquote>Gabriela se destaca por su iniciativa, creatividad y la capacidad de llevar adelante sus ideas con enfoque y serenidad. Combina el pensamiento innovador con una actitud positiva y colaborativa.</blockquote>
+        <figcaption>
+          <span class="name">Itxara Gámez</span>
+          <span class="role">SEO Specialist · supervisora directa, 2025</span>
+        </figcaption>
+      </figure>
+      <figure class="testi-card">
+        <blockquote>Gabriela es una excelente compañera de trabajo, siempre dispuesta a dar más y ayudar a los que estén a su alrededor. Recibe nuevos retos con la mejor actitud. No podría recomendarla más.</blockquote>
+        <figcaption>
+          <span class="name">Mariana Karina García Palmero</span>
+          <span class="role">Senior Learning &amp; Development Specialist</span>
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- RECURSOS -->
+  <section id="recursos" class="section">
+    <h2 class="section-title">Recursos de SEO gratuitos</h2>
+    <div class="recursos-grid">
+      <div class="recurso-highlight">
+        <span class="hand-note">ordenada por prioridad</span>
+        <p class="eyebrow" style="color:rgba(51,48,58,0.55)">Recurso gratis</p>
+        <h3>Checklist SEO</h3>
+        <p>Una guía práctica para revisar el SEO de tu sitio antes de invertir en estrategia: estructura técnica e indexación, on-page y arquitectura de contenido, EEAT y autoridad, preparación para LLMs.</p>
+        <a href="/seo-checklist" class="btn btn-primary sm" style="align-self:flex-start">Ver la Checklist SEO</a>
+      </div>
+      <div class="recurso-list">
+        <a href="/blog">
+          <span class="lbl">GEO</span>
+          <h3>Cómo hacer que ChatGPT cite tu marca</h3>
+        </a>
+        <a href="/blog">
+          <span class="lbl">Contenido</span>
+          <h3>Money keywords: cuáles valen tu tiempo</h3>
+        </a>
+        <a href="https://gabymodoseo.substack.com/" target="_blank" rel="noopener">
+          <span class="lbl">Newsletter</span>
+          <h3>Modo SEO, en Substack</h3>
+        </a>
+        <a href="/blog"><span>Ir al blog →</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRECIOS -->
+  <section id="precios" class="section">
+    <h2 class="section-title" style="margin-bottom:8px">Servicios y precios de consultoría SEO</h2>
+    <p class="section-sub">El plan se arma según lo que tu marca necesita. Empezamos con lo que tiene más impacto.</p>
     <div class="precios-grid">
-      <div class="precio-card fade-up delay-1">
-        <span class="precio-badge">Punto de entrada</span>
+      <div class="precio-card">
+        <span class="badge">Punto de entrada</span>
         <h3>Auditoría SEO</h3>
-        <p>Diagnóstico profundo de tu sitio, competencia y oportunidades. Entregable: reporte y roadmap accionable.</p>
-        <div class="precio-amount">desde $100<span>USD</span></div>
+        <p>Diagnóstico profundo de tu sitio, tu competencia y las oportunidades. Entregable: reporte y roadmap accionable.</p>
+        <p class="precio-amount"><span class="num">$100</span><span class="cur">USD</span></p>
       </div>
-      <div class="precio-card destacado fade-up delay-2">
-        <span class="precio-badge">Consultoría mensual</span>
-        <h3>Consultor SEO</h3>
-        <p>Estrategia, optimización y reporte mensual. Para marcas que quieren crecer de forma sostenida en Google y los LLMs.</p>
-        <div class="precio-amount">desde $500<span>USD/mes</span></div>
-      </div>
-      <div class="precio-card fade-up delay-3">
-        <span class="precio-badge">Proyectos</span>
-        <h3>Algo específico en mente?</h3>
-        <p>Migraciones, lanzamientos, GEO, estrategia de contenido. Cuéntame y armamos un plan.</p>
-        <a href="#contacto" class="btn-primary" style="margin-top:0.75rem;">Escribirme <span class="arrow">→</span></a>
+      <div class="precio-card tone-peach">
+        <span class="badge">A medida</span>
+        <h3>¿Tienes algo específico?</h3>
+        <p>Cuéntame tu situación y armamos un plan que tenga sentido para tu marca y tu presupuesto.</p>
+        <a href="#contacto" class="btn btn-primary sm" style="align-self:flex-start;margin-top:6px">Escribirme</a>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- CÓMO EMPEZAMOS -->
-<section class="como" id="contacto">
-  <div class="section-inner">
-    <span class="label">El primer paso</span>
-    <h2 class="section-title fade-up">¿Cómo <em>empezamos?</em></h2>
-    <p class="section-sub fade-up delay-1">Elige la forma que mejor se adapte a tu momento.</p>
-    <div class="como-grid">
-      <div class="como-card fade-up delay-1">
-        <div class="como-num">01 · Diagnóstico</div>
+  <!-- CONTACTO -->
+  <section id="contacto" class="section">
+    <h2 class="section-title">¿Cómo empezamos?</h2>
+    <div class="contacto-steps">
+      <div>
+        <span class="lbl">01 · Diagnóstico</span>
         <h3>Formulario</h3>
-        <p>Cuéntame sobre tu negocio y te armo una propuesta personalizada. El punto de partida más completo.</p>
+        <p>Cuéntame sobre tu negocio y te armo una propuesta personalizada.</p>
       </div>
-      <div class="como-card fade-up delay-2">
-        <div class="como-num">02 · Auditoría</div>
+      <div>
+        <span class="lbl">02 · Auditoría</span>
         <h3>SEO inicial</h3>
-        <p>Si ya tienes un sitio, puedo hacer un diagnóstico de dónde estás y qué oportunidades hay.</p>
+        <p>Si ya tienes un sitio, hago un diagnóstico de dónde estás y qué oportunidades hay.</p>
       </div>
-      <div class="como-card fade-up delay-3">
-        <div class="como-num">03 · Llamada</div>
-        <h3>30 minutos · sin compromiso</h3>
-        <p>Para proyectos más grandes o si prefieres hablar primero. Una llamada de discovery.</p>
+      <div>
+        <span class="lbl">03 · Llamada</span>
+        <h3>30 minutos, sin compromiso</h3>
+        <p>Para proyectos más grandes o si prefieres hablar primero.</p>
       </div>
     </div>
 
-    <div class="form-wrapper fade-up">
-      <h3>Cuéntame tu proyecto</h3>
-      <p>Completa el formulario y te respondo en menos de 48 horas.</p>
-      <form action="https://formspree.io/f/maqankbq" method="POST">
-        <div class="form-row">
-          <div class="form-group"><label for="nombre">Tu nombre</label><input type="text" name="nombre" id="nombre" placeholder="Tu nombre" required /></div>
-          <div class="form-group"><label for="email">Email</label><input type="email" name="email" id="email" placeholder="tu@email.com" required /></div>
+    <div class="contacto-main">
+      <div class="contacto-copy">
+        <h3>Cuéntame tu proyecto y te digo qué haría primero.</h3>
+        <p>Completa el formulario y te respondo en menos de 48 horas. Si no soy la persona indicada para tu proyecto, también te lo digo.</p>
+        <p class="hand-note">o escríbeme por LinkedIn, ahí contesto rápido</p>
+        <div class="contacto-links">
+          <a href="mailto:gabygomezalmeida@gmail.com">gabygomezalmeida@gmail.com</a>
+          <a href="https://www.linkedin.com/in/gabrielagomezalmeida/" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="https://gabymodoseo.substack.com/" target="_blank" rel="noopener">Substack · Modo SEO</a>
         </div>
-        <div class="form-group"><label for="marca">Marca o proyecto</label><input type="text" name="marca" id="marca" placeholder="¿Cómo se llama tu negocio?" /></div>
-        <div class="form-group"><label for="rubro">Rubro / industria</label><input type="text" name="rubro" id="rubro" placeholder="Ej: wellness, beauty, nutrición, salud..." /></div>
-        <div class="form-group"><label for="desafio">¿Cuál es tu mayor desafío de visibilidad hoy?</label><textarea name="desafio" id="desafio" placeholder="Cuéntame qué está pasando con tu sitio o qué quieres lograr..."></textarea></div>
+      </div>
+
+      <form class="contact-form" action="https://formspree.io/f/maqankbq" method="POST">
         <div class="form-row">
-          <div class="form-group">
-            <label for="presupuesto">Presupuesto (USD/mes)</label>
-            <select name="presupuesto" id="presupuesto">
-              <option value="">Selecciona un rango</option>
-              <option>Menos de $300</option><option>$300 a $600</option>
-              <option>$600 a $1200</option><option>Más de $1200</option>
-              <option>Todavía no lo sé</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label for="cuando">¿Cuándo arrancar?</label>
-            <select name="cuando" id="cuando">
-              <option value="">Selecciona</option>
-              <option>Lo antes posible</option><option>En el próximo mes</option>
-              <option>En 2 o 3 meses</option><option>Todavía explorando</option>
-            </select>
-          </div>
+          <input type="text" name="nombre" placeholder="Tu nombre" required />
+          <input type="email" name="email" placeholder="tu@email.com" required />
         </div>
-        <button type="submit" class="btn-form">Enviar y recibir propuesta personalizada →</button>
+        <input type="text" name="marca" placeholder="Marca o proyecto" />
+        <input type="text" name="rubro" placeholder="Rubro o industria" />
+        <textarea name="desafio" rows="4" placeholder="¿Cuál es tu mayor desafío de visibilidad hoy?"></textarea>
+        <div class="form-row">
+          <select name="presupuesto">
+            <option value="">Presupuesto (USD/mes)</option>
+            <option>Menos de $300</option>
+            <option>$300 a $600</option>
+            <option>$600 a $1200</option>
+            <option>Más de $1200</option>
+            <option>Todavía no lo sé</option>
+          </select>
+          <select name="cuando">
+            <option value="">¿Cuándo arrancar?</option>
+            <option>Lo antes posible</option>
+            <option>En el próximo mes</option>
+            <option>En 2 o 3 meses</option>
+            <option>Todavía explorando</option>
+          </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Enviar y recibir propuesta</button>
       </form>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- FAQs -->
-<section class="faqs" id="faqs">
-  <div class="section-inner">
-    <span class="label">Preguntas frecuentes</span>
-    <h2 class="section-title fade-up">Preguntas <em>frecuentes.</em></h2>
-    <div class="faq-list" style="margin-top: 2.5rem;">
-
-      <div class="faq-item fade-up delay-1">
-        <div class="faq-q" onclick="toggleFaq(this)">
-          <span>¿Qué hace un consultor SEO?</span>
-          <div class="faq-icon">+</div>
-        </div>
-        <div class="faq-a">
-          <div class="faq-a-inner">
-            Una consultora SEO investiga las palabras clave que usa tu audiencia, optimiza el contenido de tu sitio, mejora la estructura técnica y construye autoridad de dominio mediante linkbuilding. El objetivo: que tu marca aparezca en los primeros resultados de Google y de los buscadores de IA cuando alguien busca lo que tú ofreces.
-          </div>
-        </div>
-      </div>
-
-      <div class="faq-item fade-up delay-2">
-        <div class="faq-q" onclick="toggleFaq(this)">
-          <span>¿Qué incluye una consultoría SEO?</span>
-          <div class="faq-icon">+</div>
-        </div>
-        <div class="faq-a">
-          <div class="faq-a-inner">
-            Depende del servicio, pero generalmente incluye: auditoría del sitio, investigación de palabras clave, estrategia de contenido, optimización on-page (títulos, metas, headings), revisión técnica (velocidad, indexación, Core Web Vitals) y reportes periódicos de resultados. Cada plan se arma según lo que la marca necesita.
-          </div>
-        </div>
-      </div>
-
-      <div class="faq-item fade-up delay-2">
-        <div class="faq-q" onclick="toggleFaq(this)">
-          <span>¿Por qué invertir en posicionamiento SEO?</span>
-          <div class="faq-icon">+</div>
-        </div>
-        <div class="faq-a">
-          <div class="faq-a-inner">
-            El SEO genera tráfico orgánico sostenible. A diferencia de la publicidad pagada, los resultados se acumulan con el tiempo y el costo por visita disminuye progresivamente. Una marca bien posicionada en Google recibe visitas constantes sin pagar por cada clic.
-          </div>
-        </div>
-      </div>
-
-      <div class="faq-item fade-up delay-3">
-        <div class="faq-q" onclick="toggleFaq(this)">
-          <span>¿Ofreces consultoría SEO en Argentina?</span>
-          <div class="faq-icon">+</div>
-        </div>
-        <div class="faq-a">
-          <div class="faq-a-inner">
-            Sí. Estoy radicada en Buenos Aires y trabajo con marcas argentinas y de toda LATAM. Entiendo el contexto local del mercado digital en Argentina y puedo ayudarte a posicionarte tanto en búsquedas locales como en mercados internacionales de habla hispana.
-          </div>
-        </div>
-      </div>
-
-      <div class="faq-item fade-up delay-3">
-        <div class="faq-q" onclick="toggleFaq(this)">
-          <span>¿En cuánto tiempo se ven resultados?</span>
-          <div class="faq-icon">+</div>
-        </div>
-        <div class="faq-a">
-          <div class="faq-a-inner">
-            El posicionamiento orgánico es una estrategia de mediano plazo. Los primeros movimientos en las posiciones suelen notarse entre el segundo y el cuarto mes, según la competencia de tu sector y el estado inicial del sitio. Es un crecimiento que se acumula: a diferencia de la publicidad pagada, el tráfico no se apaga cuando dejas de invertir.
-          </div>
-        </div>
-      </div>
-
-      <div class="faq-item fade-up delay-3">
-        <div class="faq-q" onclick="toggleFaq(this)">
-          <span>¿Qué diferencia hay entre SEO, AEO y GEO?</span>
-          <div class="faq-icon">+</div>
-        </div>
-        <div class="faq-a">
-          <div class="faq-a-inner">
-            El SEO posiciona tu sitio en buscadores como Google. El AEO (Answer Engine Optimization) prepara tu contenido para responder preguntas directas y aparecer en los featured snippets y las respuestas destacadas. El GEO (Generative Engine Optimization) trabaja para que ChatGPT, Perplexity y Gemini citen tu marca cuando alguien pregunta sobre tu industria. Los tres se complementan y los trabajo en conjunto.
-          </div>
-        </div>
-      </div>
-
+  <!-- FAQS -->
+  <section id="faqs" class="section">
+    <h2 class="section-title">Preguntas frecuentes sobre SEO</h2>
+    <div class="faq-list">
+      <details>
+        <summary><span>¿Qué hace una consultora SEO?</span><span class="faq-plus">+</span></summary>
+        <p>Investiga las palabras clave que usa tu audiencia, optimiza el contenido de tu sitio, mejora la estructura técnica y construye autoridad de dominio mediante link building. El objetivo: que tu marca aparezca en los primeros resultados de Google y de los buscadores con IA cuando alguien busca lo que ofreces.</p>
+      </details>
+      <details>
+        <summary><span>¿Qué incluye una consultoría SEO?</span><span class="faq-plus">+</span></summary>
+        <p>Auditoría del sitio, investigación de palabras clave, estrategia de contenido, optimización on-page (títulos, metas, headings), revisión técnica (velocidad, indexación, Core Web Vitals) y reportes de resultados. Cada plan se arma según lo que la marca necesita.</p>
+      </details>
+      <details>
+        <summary><span>¿Por qué invertir en posicionamiento SEO?</span><span class="faq-plus">+</span></summary>
+        <p>El SEO genera tráfico orgánico sostenible. A diferencia de la publicidad pagada, los resultados se acumulan con el tiempo y el costo por visita baja progresivamente. Una marca bien posicionada recibe visitas constantes sin pagar por cada clic.</p>
+      </details>
+      <details>
+        <summary><span>¿Ofreces consultoría SEO en Argentina?</span><span class="faq-plus">+</span></summary>
+        <p>Sí. Estoy radicada en Buenos Aires y trabajo con marcas argentinas y de toda LATAM. Entiendo el contexto local del mercado digital argentino y también puedo ayudarte a posicionarte en mercados internacionales de habla hispana.</p>
+      </details>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- CTA FINAL -->
-<section class="cta-final cursor-host" id="ctaFinal">
-  <div class="cursor-glow" id="ctaGlow"></div>
-  <div class="cta-final-inner">
-    <svg class="cta-sparkle" width="42" height="42" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-      <path d="M12 2v8M12 14v8M2 12h8M14 12h8" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
-      <circle cx="12" cy="12" r="1.8" fill="currentColor"/>
-    </svg>
-    <h2>Tu marca merece <em>ser encontrada.</em></h2>
-    <p>¿Buscas un consultor SEO en Argentina? Cuéntame tu proyecto y armamos un plan para aumentar tu visibilidad en Google, los LLMs y más allá.</p>
-    <a href="#contacto" class="btn-primary">Cuéntame tu proyecto <span class="arrow">→</span></a>
-  </div>
-</section>
+  <!-- CTA FINAL -->
+  <section class="section">
+    <div class="cta-final">
+      <h2>Tu marca merece <em class="serif">ser encontrada.</em></h2>
+      <p>Cuéntame tu proyecto y armamos un plan para aumentar tu visibilidad en Google, en los buscadores con IA y más allá.</p>
+      <a href="#contacto" class="btn btn-primary">Cuéntame tu proyecto</a>
+    </div>
+  </section>
 
 </main>
 
-<!-- FOOTER -->
 <footer>
-  <a href="/" class="footer-logo">Gaby<em>SEO</em></a>
-  <span class="footer-center">2026 · Gabriela Gómez Almeida · gabyseo.com · Buenos Aires, AR</span>
-  <div class="footer-links">
+  <span>2026 · Gabriela Gómez Almeida · Buenos Aires, AR</span>
+  <div class="foot-links">
     <a href="/blog">Blog</a>
-    <a href="https://www.linkedin.com/in/gabrielagomezalmeida/" target="_blank" rel="noopener">LinkedIn ↗</a>
+    <a href="/seo-checklist">Checklist SEO</a>
+    <a href="https://www.linkedin.com/in/gabrielagomezalmeida/" target="_blank" rel="noopener">LinkedIn</a>
+    <a href="https://gabymodoseo.substack.com/" target="_blank" rel="noopener">Substack</a>
     <a href="mailto:gabygomezalmeida@gmail.com">Email</a>
-    <a href="https://gabymodoseo.substack.com/" target="_blank" rel="noopener">Substack ↗</a>
-    <span class="footer-privacy-toggle" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='block'?'none':'block'">Privacidad</span>
-    <div class="footer-privacy-text">
-      <strong style="color:#fff;display:block;margin-bottom:0.5rem;">Política de privacidad</strong>
-      Responsable: Gabriela Gómez Almeida · gabyseo.com · Buenos Aires, Argentina. Los datos del formulario (nombre, email, proyecto) se usan exclusivamente para responder tu consulta y se procesan vía Formspree. No se ceden a terceros ni se usan para marketing sin consentimiento. Puedes ejercer tus derechos de acceso, rectificación y supresión escribiendo a <a href="mailto:gabygomezalmeida@gmail.com" style="color:var(--wisteria);">gabygomezalmeida@gmail.com</a>. Ley 25.326 · DNPDP · Actualizado mayo 2026.
-    </div>
   </div>
 </footer>
 
 <script>
-  // ── HAMBURGER MENU ──
   const burger = document.getElementById('burger');
   const mobileMenu = document.getElementById('mobileMenu');
-  burger.addEventListener('click', () => {
-    burger.classList.toggle('open');
-    mobileMenu.classList.toggle('open');
-  });
   function closeMenu() {
-    burger.classList.remove('open');
     mobileMenu.classList.remove('open');
+    burger.setAttribute('aria-expanded', 'false');
   }
-
-  // ── NAVBAR HIDE ON SCROLL ──
-  let lastY = 0;
-  window.addEventListener('scroll', () => {
-    const nav = document.getElementById('mainNav');
-    const y = window.scrollY;
-    if (y > lastY && y > 80) nav.classList.add('nav-hidden');
-    else nav.classList.remove('nav-hidden');
-    lastY = y;
-  }, { passive: true });
-
-  // ── SCROLL FADE-UP ──
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
-  }, { threshold: 0.12 });
-  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
-
-  // ── FAQ ACCORDION ──
-  function toggleFaq(btn) {
-    const item = btn.closest('.faq-item');
-    const isOpen = item.classList.contains('open');
-    document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
-    if (!isOpen) item.classList.add('open');
-  }
-
-  // ── HERO HEADLINE ROTATOR ──
-  const rotatingWords = ['tu marca.', 'tu visibilidad.', 'tu contenido.', 'tu autoridad.'];
-  let wordIdx = 0;
-  const rotator = document.querySelector('.hero h1 em');
-  if (rotator) {
-    setInterval(() => {
-      rotator.classList.add('fade-out');
-      setTimeout(() => {
-        wordIdx = (wordIdx + 1) % rotatingWords.length;
-        rotator.textContent = rotatingWords[wordIdx];
-        rotator.classList.remove('fade-out');
-      }, 380);
-    }, 3600);
-  }
-
-  // ── CURSOR-REACTIVE GLOW (hero + cta-final) ──
-  function bindCursorGlow(hostSelector, glowId) {
-    const host = document.querySelector(hostSelector);
-    const glow = document.getElementById(glowId);
-    if (!host || !glow) return;
-    host.addEventListener('mousemove', (e) => {
-      const rect = host.getBoundingClientRect();
-      glow.style.left = (e.clientX - rect.left) + 'px';
-      glow.style.top  = (e.clientY - rect.top) + 'px';
-    });
-  }
-  bindCursorGlow('.hero.cursor-host', 'heroGlow');
-  bindCursorGlow('.cta-final.cursor-host', 'ctaGlow');
-
+  burger.addEventListener('click', () => {
+    const open = mobileMenu.classList.toggle('open');
+    burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
 </script>
+
 </body>
 </html>
