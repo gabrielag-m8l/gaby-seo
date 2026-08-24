@@ -202,10 +202,7 @@
       z-index: 2;
       padding: 150px 6% 60px;
       background:
-        radial-gradient(120% 80% at 20% 0%, #F6DCC9 0%, transparent 60%),
-        radial-gradient(100% 80% at 90% 30%, #F3D3DE 0%, transparent 55%),
-        radial-gradient(120% 80% at 30% 100%, #E7EEF2 0%, transparent 55%),
-        linear-gradient(180deg, #FFFCF7 0%, #F3D3DE 50%, #E7EEF2 100%);
+  var(--paper);
     }
     .post-header .bloom { width: 600px; height: 600px; }
     .ph-b1 { top: -10%; left: -8%; background: #F6DCC9; opacity: 0.4; }
@@ -225,11 +222,9 @@
       color: var(--fg-soft); margin-bottom: 2rem;
       padding: 0.4rem 0.85rem;
       background: var(--cream);
-      border: 1px solid rgba(255,255,255,0.45);
+      border: none;
       border-radius: 100px;
-      box-shadow:
-        0 1px 0 rgba(255,255,255,0.9) inset,
-        0 -8px 18px -12px rgba(255,255,255,0.5) inset;
+      box-shadow: none;
     }
     .breadcrumb a { color: var(--fg-soft); text-decoration: none; }
     .breadcrumb a:hover { color: var(--onyx); }
@@ -287,22 +282,16 @@
       display: inline-flex; align-items: center; gap: 0.6rem;
       padding: 0.4rem 0.85rem 0.4rem 0.4rem;
       background: var(--cream);
-      border: 1px solid rgba(255,255,255,0.5);
+      border: none;
       border-radius: 100px;
       text-decoration: none;
       color: var(--onyx);
-      box-shadow:
-        0 1px 0 rgba(255,255,255,0.9) inset,
-        0 -8px 18px -12px rgba(255,255,255,0.5) inset,
-        0 6px 16px -8px rgba(51,48,58,0.12);
+      box-shadow: none;
       transition: transform .25s cubic-bezier(.34,1.56,.64,1), box-shadow .25s;
     }
     .author-chip:hover {
       transform: translateY(-2px);
-      box-shadow:
-        0 1px 0 rgba(255,255,255,1) inset,
-        0 -10px 22px -12px rgba(255,255,255,0.65) inset,
-        0 12px 26px -10px rgba(51,48,58,0.16);
+      box-shadow: none;
     }
     .author-chip img {
       width: 28px; height: 28px; border-radius: 50%;
@@ -326,14 +315,9 @@
       width: 320px;
       padding: 1.1rem 1.1rem 1rem;
       background: var(--cream);
-      border: 1px solid rgba(255,255,255,0.55);
+      border: none;
       border-radius: 4px;
-      box-shadow:
-        0 1px 0 rgba(255,255,255,1) inset,
-        0 -14px 30px -20px rgba(255,255,255,0.6) inset,
-        14px 0 28px -22px rgba(255,255,255,0.4) inset,
-        -14px 0 28px -22px rgba(255,255,255,0.4) inset,
-        0 24px 60px -24px rgba(51,48,58,0.25);
+      box-shadow: none;
       opacity: 0; visibility: hidden;
       transform: translateY(-6px) scale(0.96);
       transform-origin: top left;
@@ -397,12 +381,9 @@
       display: inline-flex; align-items: center; gap: 0.4rem;
       padding: 4px;
       background: var(--cream);
-      border: 1px solid rgba(255,255,255,0.45);
+      border: none;
       border-radius: 100px;
-      box-shadow:
-        0 1px 0 rgba(255,255,255,0.9) inset,
-        0 -8px 18px -12px rgba(255,255,255,0.5) inset,
-        0 6px 16px -8px rgba(51,48,58,0.10);
+      box-shadow: none;
     }
     .share-group .share-label {
       font-family: var(--font-mono);
@@ -423,7 +404,7 @@
     }
     .share-btn:hover {
       background: var(--cream);
-      border-color: rgba(255,255,255,0.7);
+      border-color: transparent;
       transform: translateY(-2px) scale(1.05);
     }
     .share-btn svg { width: 14px; height: 14px; }
@@ -448,9 +429,7 @@
       z-index: 1;
       padding: 60px 6% 110px;
       background:
-        radial-gradient(60% 50% at 100% 0%, rgba(230,222,238,0.18) 0%, transparent 60%),
-        radial-gradient(60% 50% at 0% 100%, rgba(246,220,201,0.15) 0%, transparent 60%),
-        var(--paper);
+  var(--paper);
     }
     .article-layout {
       max-width: 1180px; margin: 0 auto;
@@ -465,15 +444,9 @@
     .toc-card {
       padding: 1.4rem 1.25rem 1.25rem;
       background: var(--cream);
-      border: 1px solid rgba(255,255,255,0.45);
+      border: none;
       border-radius: 4px;
-      box-shadow:
-        0 1px 0 rgba(255,255,255,0.95) inset,
-        0 -1px 0 rgba(51,48,58,0.05) inset,
-        0 -14px 30px -20px rgba(255,255,255,0.55) inset,
-        14px 0 28px -22px rgba(255,255,255,0.35) inset,
-        -14px 0 28px -22px rgba(255,255,255,0.35) inset,
-        0 16px 50px -28px rgba(51,48,58,0.18);
+      box-shadow: none;
     }
     .toc-head {
       width: 100%;
@@ -617,11 +590,9 @@
       padding: 1.5rem 1.75rem;
       border-radius: 4px;
       background: var(--cream);
-      border: 1px solid rgba(255,255,255,0.45);
+      border: none;
       border-left: 3px solid var(--wisteria);
-      box-shadow:
-        0 1px 0 rgba(255,255,255,0.9) inset,
-        0 -10px 24px -16px rgba(255,255,255,0.5) inset;
+      box-shadow: none;
       font-family: var(--font-serif);
       font-style: italic;
       font-size: 1.2rem; line-height: 1.5;
@@ -634,7 +605,7 @@
       border-radius: 4px;
       overflow: hidden;
       background: var(--cream);
-      border: 1px solid rgba(255,255,255,0.45);
+      border: none;
       margin: 1rem 0 2rem;
       overflow-x: auto;
     }
@@ -672,12 +643,10 @@
     .faq-item {
       border-radius: 4px;
       background: var(--cream);
-      border: 1px solid rgba(255,255,255,0.45);
+      border: none;
       margin-bottom: 0.65rem;
       overflow: hidden;
-      box-shadow:
-        0 1px 0 rgba(255,255,255,0.9) inset,
-        0 6px 20px -12px rgba(51,48,58,0.12);
+      box-shadow: none;
     }
     .faq-trigger {
       width: 100%; display: flex; align-items: center;
@@ -723,17 +692,11 @@
       padding: 2.25rem 2rem;
       border-radius: 4px;
       background:
-        radial-gradient(80% 80% at 100% 0%, rgba(196,82,126,0.35) 0%, transparent 65%),
-        radial-gradient(80% 80% at 0% 100%, rgba(246,220,201,0.35) 0%, transparent 65%),
-        rgba(255,255,255,0.22);
+  var(--rose);
 
 
-      border: 1px solid rgba(255,255,255,0.55);
-      box-shadow:
-        0 1px 0 rgba(255,255,255,0.95) inset,
-        0 -1px 0 rgba(51,48,58,0.04) inset,
-        0 -14px 30px -20px rgba(255,255,255,0.55) inset,
-        0 16px 50px -28px rgba(51,48,58,0.14);
+      border: none;
+      box-shadow: none;
       display: flex; align-items: center; justify-content: space-between;
       gap: 1.5rem; flex-wrap: wrap;
       overflow: hidden; position: relative;
@@ -768,13 +731,8 @@
       padding: 1.85rem;
       border-radius: 4px;
       background: var(--cream);
-      border: 1px solid rgba(255,255,255,0.5);
-      box-shadow:
-        0 1px 0 rgba(255,255,255,0.95) inset,
-        0 -14px 30px -20px rgba(255,255,255,0.55) inset,
-        14px 0 28px -22px rgba(255,255,255,0.35) inset,
-        -14px 0 28px -22px rgba(255,255,255,0.35) inset,
-        0 16px 50px -28px rgba(51,48,58,0.18);
+      border: none;
+      box-shadow: none;
       display: grid;
       grid-template-columns: auto 1fr;
       gap: 1.25rem; align-items: center;
@@ -877,8 +835,8 @@
       height: 40px; padding: 0 1.1rem 0 0.85rem;
       border-radius: 100px;
       background: var(--cream);
-      border: 1px solid rgba(255,255,255,0.45);
-      box-shadow: 0 1px 0 rgba(255,255,255,0.9) inset, 0 6px 16px -8px rgba(51,48,58,0.10);
+      border: none;
+      box-shadow: none;
       cursor: pointer; font-family: var(--font-sans); font-size: 0.82rem; font-weight: 500; color: var(--onyx);
       transition: transform .2s, background .2s;
     }
@@ -909,8 +867,8 @@
     .summary-card {
       padding: 1.35rem 1.6rem 1.5rem; border-radius: 4px;
       background: var(--cream);
-      border: 1px solid rgba(255,255,255,0.65);
-      box-shadow: 0 1px 0 rgba(255,255,255,0.95) inset, 0 14px 38px -18px rgba(51,48,58,0.18);
+      border: none;
+      box-shadow: none;
     }
     .summary-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.1rem; }
     .summary-head-label {
@@ -971,11 +929,6 @@
 
 <!-- POST HEADER -->
 <header class="post-header">
-  <div class="bloom-bg">
-    <div class="bloom ph-b1"></div>
-    <div class="bloom ph-b2"></div>
-    <div class="bloom ph-b3"></div>
-  </div>
 
   <div class="post-header-inner">
 

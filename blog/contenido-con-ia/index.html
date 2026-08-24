@@ -193,10 +193,7 @@
       z-index: 2;
       padding: 150px 6% 60px;
       background:
-        radial-gradient(120% 80% at 20% 0%, #F3D3DE 0%, transparent 60%),
-        radial-gradient(100% 80% at 90% 30%, #F6DCC9 0%, transparent 55%),
-        radial-gradient(120% 80% at 30% 100%, #E6DEEE 0%, transparent 55%),
-        linear-gradient(180deg, #EFE0F5 0%, #F5E8F0 50%, #FFFCF7 100%);
+  var(--paper);
     }
     .post-header .bloom { width: 600px; height: 600px; }
     .ph-b1 { top: -10%; left: -8%; background: #C4527E; opacity: 0.35; }
@@ -216,11 +213,9 @@
       color: var(--fg-soft); margin-bottom: 2rem;
       padding: 0.4rem 0.85rem;
       background: var(--cream);
-      border: 1px solid rgba(255,255,255,0.45);
+      border: none;
       border-radius: 100px;
-      box-shadow:
-        0 1px 0 rgba(255,255,255,0.9) inset,
-        0 -8px 18px -12px rgba(255,255,255,0.5) inset;
+      box-shadow: none;
     }
     .breadcrumb a { color: var(--fg-soft); text-decoration: none; }
     .breadcrumb a:hover { color: var(--onyx); }
@@ -275,7 +270,7 @@
       padding: 5px 12px 5px 5px;
       border-radius: 100px;
       background: var(--cream);
-      border: 1px solid rgba(255,255,255,0.5);
+      border: none;
 
       text-decoration: none;
       transition: background .15s;
@@ -298,12 +293,10 @@
       position: absolute; top: calc(100% + 10px); left: 0;
       width: 280px;
       background: var(--cream);
-      border: 1px solid rgba(255,255,255,0.55);
+      border: none;
       border-radius: 4px;
       padding: 1.25rem;
-      box-shadow:
-        0 1px 0 rgba(255,255,255,0.9) inset,
-        0 20px 50px -20px rgba(51,48,58,0.28);
+      box-shadow: none;
       z-index: 50;
       opacity: 0; pointer-events: none;
       transform: translateY(6px);
@@ -357,7 +350,7 @@
       display: inline-flex; align-items: center; justify-content: center;
       border-radius: 50%;
       background: var(--cream);
-      border: 1px solid rgba(255,255,255,0.45);
+      border: none;
       color: var(--fg-soft);
       text-decoration: none; cursor: pointer;
       transition: background .15s, color .15s, transform .15s;
@@ -381,9 +374,7 @@
       padding: 60px 6% 100px;
       position: relative;
       background:
-        radial-gradient(110% 50% at 95% 10%, rgba(230,222,238,0.28) 0%, transparent 60%),
-        radial-gradient(80% 40% at 5% 80%,  rgba(246,220,201,0.18) 0%, transparent 55%),
-        var(--paper);
+  var(--paper);
     }
     .article-layout {
       max-width: 1180px; margin: 0 auto;
@@ -398,15 +389,9 @@
     .toc-card {
       padding: 1.4rem 1.25rem 1.25rem;
       background: var(--cream);
-      border: 1px solid rgba(255,255,255,0.45);
+      border: none;
       border-radius: 4px;
-      box-shadow:
-        0 1px 0 rgba(255,255,255,0.95) inset,
-        0 -1px 0 rgba(51,48,58,0.05) inset,
-        0 -14px 30px -20px rgba(255,255,255,0.55) inset,
-        14px 0 28px -22px rgba(255,255,255,0.35) inset,
-        -14px 0 28px -22px rgba(255,255,255,0.35) inset,
-        0 16px 50px -28px rgba(51,48,58,0.18);
+      box-shadow: none;
     }
     .toc-head {
       width: 100%;
@@ -549,11 +534,9 @@
       padding: 1.5rem 1.75rem;
       border-radius: 4px;
       background: var(--cream);
-      border: 1px solid rgba(255,255,255,0.45);
+      border: none;
       border-left: 3px solid var(--wisteria);
-      box-shadow:
-        0 1px 0 rgba(255,255,255,0.9) inset,
-        0 -10px 24px -16px rgba(255,255,255,0.5) inset;
+      box-shadow: none;
       font-family: var(--font-serif);
       font-style: italic;
       font-size: 1.2rem; line-height: 1.5;
@@ -566,8 +549,8 @@
       margin: 1.25rem 0;
       border-radius: 4px;
       overflow: hidden;
-      border: 1px solid rgba(255,255,255,0.45);
-      box-shadow: 0 1px 0 rgba(255,255,255,0.9) inset, 0 6px 20px -12px rgba(51,48,58,0.10);
+      border: none;
+      box-shadow: none;
     }
     .prompt-box-label {
       display: flex; align-items: center; gap: 0.5rem;
@@ -596,7 +579,7 @@
       border-radius: 4px;
       overflow: hidden;
       background: var(--cream);
-      border: 1px solid rgba(255,255,255,0.45);
+      border: none;
       margin: 1rem 0 2rem;
       overflow-x: auto;
     }
@@ -634,12 +617,10 @@
     .faq-item {
       border-radius: 4px;
       background: var(--cream);
-      border: 1px solid rgba(255,255,255,0.45);
+      border: none;
       margin-bottom: 0.65rem;
       overflow: hidden;
-      box-shadow:
-        0 1px 0 rgba(255,255,255,0.9) inset,
-        0 6px 20px -12px rgba(51,48,58,0.12);
+      box-shadow: none;
     }
     .faq-trigger {
       width: 100%; display: flex; align-items: center;
@@ -685,17 +666,11 @@
       padding: 2.25rem 2rem;
       border-radius: 4px;
       background:
-        radial-gradient(80% 80% at 100% 0%, rgba(196,82,126,0.35) 0%, transparent 65%),
-        radial-gradient(80% 80% at 0% 100%, rgba(246,220,201,0.35) 0%, transparent 65%),
-        rgba(255,255,255,0.22);
+  var(--rose);
 
 
-      border: 1px solid rgba(255,255,255,0.55);
-      box-shadow:
-        0 1px 0 rgba(255,255,255,0.95) inset,
-        0 -1px 0 rgba(51,48,58,0.04) inset,
-        0 -14px 30px -20px rgba(255,255,255,0.55) inset,
-        0 16px 50px -28px rgba(51,48,58,0.14);
+      border: none;
+      box-shadow: none;
       display: flex; align-items: center; justify-content: space-between;
       gap: 1.5rem; flex-wrap: wrap;
       overflow: hidden; position: relative;
@@ -730,13 +705,8 @@
       padding: 1.85rem;
       border-radius: 4px;
       background: var(--cream);
-      border: 1px solid rgba(255,255,255,0.5);
-      box-shadow:
-        0 1px 0 rgba(255,255,255,0.95) inset,
-        0 -14px 30px -20px rgba(255,255,255,0.55) inset,
-        14px 0 28px -22px rgba(255,255,255,0.35) inset,
-        -14px 0 28px -22px rgba(255,255,255,0.35) inset,
-        0 16px 50px -28px rgba(51,48,58,0.18);
+      border: none;
+      box-shadow: none;
       display: grid;
       grid-template-columns: auto 1fr;
       gap: 1.25rem; align-items: center;
@@ -870,11 +840,6 @@
 
 <!-- POST HEADER -->
 <header class="post-header">
-  <div class="bloom-bg">
-    <div class="bloom ph-b1"></div>
-    <div class="bloom ph-b2"></div>
-    <div class="bloom ph-b3"></div>
-  </div>
 
   <div class="post-header-inner">
 
