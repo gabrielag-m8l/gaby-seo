@@ -1,3 +1,7 @@
 {
-  "cleanUrls": true
+  "cleanUrls": true,
+  "redirects": [
+    { "source": "/consultor-seo-argentina", "destination": "/", "permanent": true },
+    { "source": "/consultor-seo-argentina/", "destination": "/", "permanent": true }
+  ]
 }
