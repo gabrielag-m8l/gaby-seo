@@ -135,21 +135,6 @@
       opacity: 0.55;
     }
 
-    .cursor-glow {
-      position: absolute;
-      width: 520px; height: 520px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(255,255,255,0.55) 0%, rgba(244,200,232,0.25) 35%, transparent 70%);
-      filter: blur(40px);
-      pointer-events: none;
-      transform: translate(-50%, -50%);
-      opacity: 0;
-      transition: opacity .4s ease;
-      z-index: 1;
-      mix-blend-mode: screen;
-    }
-    .cursor-host:hover .cursor-glow { opacity: 1; }
-
     /* ── NAV (floating pill, matching index) ── */
     /* ── HEADER (shared) ── */
     header {
@@ -195,11 +180,7 @@
       padding: 140px 6% 60px;
       overflow: hidden;
       isolation: isolate;
-      background:
-        radial-gradient(120% 80% at 20% 0%, #F6DCC9 0%, transparent 60%),
-        radial-gradient(100% 80% at 90% 30%, #F3D3DE 0%, transparent 55%),
-        radial-gradient(120% 80% at 30% 100%, #E7EEF2 0%, transparent 55%),
-        linear-gradient(180deg, #FFFCF7 0%, #F3D3DE 100%);
+      background: var(--paper);
     }
     .hero-bloom-1 { top: -10%; left: -8%; background: var(--peach); width: 600px; height: 600px; opacity: 0.45; }
     .hero-bloom-2 { top: 10%; right: -12%; background: var(--wisteria); width: 520px; height: 520px; opacity: 0.35; }
@@ -215,7 +196,6 @@
       display: inline-flex; align-items: center; gap: 0.6rem;
       padding: 0.5rem 0.9rem;
       background: var(--cream);
-      border: 1px solid rgba(255,255,255,0.8);
       border-radius: 100px;
 
 
@@ -263,8 +243,6 @@
       display: inline-flex; align-items: center; gap: 1rem;
       padding: 0.85rem 1.35rem;
       background: var(--cream);
-      border: 1px solid rgba(255,255,255,0.85);
-      box-shadow: 0 1px 0 rgba(255,255,255,0.95) inset, 0 10px 30px -16px rgba(51,48,58,0.2);
       border-radius: 100px;
       min-width: 320px;
     }
@@ -298,8 +276,6 @@
       text-decoration: none; color: var(--fg-soft);
       padding: 0.45rem 0.85rem; border-radius: 100px;
       background: var(--cream);
-      border: 1px solid rgba(255,255,255,0.85);
-      box-shadow: 0 1px 0 rgba(255,255,255,0.95) inset;
       transition: background .2s, color .2s, transform .2s;
     }
     .quick-nav a:hover {
@@ -320,42 +296,7 @@
       border-radius: 4px;
       overflow: hidden;
       background: var(--cream);
-      border: 1px solid rgba(255,255,255,0.85);
-      box-shadow:
-        0 1px 0 rgba(255,255,255,0.95) inset,
-        0 -10px 30px -20px rgba(255,255,255,0.55) inset,
-        0 18px 50px -22px rgba(51,48,58,0.18);
-      transition: transform .35s cubic-bezier(.34,1.56,.64,1), box-shadow .35s, border-color .25s;
     }
-    .cl-section::before {
-      content: ''; position: absolute;
-      top: -30%; right: -10%;
-      width: 320px; height: 320px;
-      background: radial-gradient(circle, var(--bloom-color, var(--lilac)) 0%, transparent 65%);
-      filter: blur(20px);
-      opacity: 0.45;
-      z-index: 0;
-      pointer-events: none;
-      transition: opacity .3s;
-    }
-    .cl-section:hover {
-      transform: translateY(-3px);
-      border-color: rgba(255,255,255,1);
-      box-shadow:
-        0 1px 0 rgba(255,255,255,1) inset,
-        0 -12px 36px -22px rgba(255,255,255,0.6) inset,
-        0 28px 70px -24px rgba(196,82,126,0.28);
-    }
-    .cl-section:hover::before { opacity: 0.6; }
-    .cl-section > * { position: relative; z-index: 1; }
-
-    .cl-section:nth-child(1) { --bloom-color: var(--peach); }
-    .cl-section:nth-child(2) { --bloom-color: var(--lilac); }
-    .cl-section:nth-child(3) { --bloom-color: var(--jordy); }
-    .cl-section:nth-child(4) { --bloom-color: var(--lime); }
-    .cl-section:nth-child(5) { --bloom-color: var(--rose); }
-    .cl-section:nth-child(6) { --bloom-color: var(--peach); }
-    .cl-section:nth-child(7) { --bloom-color: var(--wisteria); }
 
     .cl-section-header {
       display: flex; align-items: center; gap: 1rem;
@@ -392,7 +333,6 @@
       white-space: nowrap;
       padding: 4px 10px; border-radius: 100px;
       background: var(--cream);
-      border: 1px solid rgba(255,255,255,0.8);
     }
     .cl-section.complete .cl-count {
       background: var(--onyx); color: var(--cream); border-color: var(--onyx);
@@ -429,7 +369,6 @@
       border: 1.5px solid rgba(51,48,58,0.22);
       border-radius: 4px;
       background: var(--cream);
-      box-shadow: 0 1px 0 rgba(255,255,255,0.9) inset, 0 2px 6px -2px rgba(51,48,58,0.1);
       transition: all 0.25s cubic-bezier(.34,1.56,.64,1);
       display: flex; align-items: center; justify-content: center;
       position: relative;
@@ -469,11 +408,7 @@
       padding: 110px 6% 130px;
       overflow: hidden;
       isolation: isolate;
-      background:
-        radial-gradient(60% 60% at 20% 30%, rgba(246,220,201,0.55) 0%, transparent 60%),
-        radial-gradient(60% 60% at 80% 70%, rgba(196,82,126,0.50) 0%, transparent 60%),
-        radial-gradient(60% 60% at 50% 100%, rgba(156,192,238,0.50) 0%, transparent 60%),
-        linear-gradient(135deg, #F9DDC4 0%, #E8CFF0 50%, #D2DEF4 100%);
+      background: var(--rose);
     }
     .checklist-cta-inner {
       position: relative; z-index: 1;
@@ -506,8 +441,6 @@
       font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase;
       padding: 0.45rem 0.85rem; border-radius: 100px;
       background: var(--cream);
-
-      border: 1px solid rgba(255,255,255,0.9);
       color: var(--fg);
     }
     .checklist-cta-side .price-big {
@@ -538,7 +471,6 @@
       font-weight: 500; font-size: 0.95rem;
       text-decoration: none;
       transition: transform .2s, background .2s;
-      box-shadow: 0 1px 0 rgba(255,255,255,0.15) inset, 0 8px 24px -8px rgba(51,48,58,0.4);
     }
     .btn-primary:hover { background: var(--wisteria); transform: translateY(-2px); }
     .btn-primary .arrow { transition: transform .2s; }
@@ -548,14 +480,12 @@
       display: inline-flex; align-items: center; gap: 10px;
       background: var(--cream);
       color: var(--onyx);
-      border: 1px solid rgba(255,255,255,0.85);
       padding: 0.95rem 1.5rem;
       border-radius: 100px;
       font-family: var(--font-sans);
       font-weight: 500; font-size: 0.92rem;
       text-decoration: none;
       transition: background .2s, transform .2s;
-      box-shadow: 0 1px 0 rgba(255,255,255,0.6) inset, 0 8px 24px -10px rgba(51,48,58,0.18);
     }
     .btn-glass:hover { background: var(--cream); transform: translateY(-2px); }
 
@@ -659,13 +589,7 @@
 <main>
 
 <!-- HERO -->
-<section class="hero cursor-host" id="hero">
-  <div class="bloom-bg">
-    <div class="bloom hero-bloom-1"></div>
-    <div class="bloom hero-bloom-2"></div>
-  </div>
-  <div class="cursor-glow" id="heroGlow"></div>
-
+<section class="hero" id="hero">
   <div class="hero-inner">
     <div class="hero-eyebrow">
       <span class="dot"></span>
@@ -823,8 +747,7 @@
 </div>
 
 <!-- CTA SECTION -->
-<section class="checklist-cta-section cursor-host">
-  <div class="cursor-glow" id="ctaGlow"></div>
+<section class="checklist-cta-section">
   <div class="checklist-cta-inner">
     <div>
       <svg class="cta-sparkle" width="38" height="38" viewBox="0 0 24 24" fill="none" aria-hidden="true">
@@ -832,12 +755,12 @@
         <circle cx="12" cy="12" r="1.8" fill="currentColor"/>
       </svg>
       <h2>¿Necesitas que la haga <em>por ti?</em></h2>
-      <p>Auditoría SEO profesional con diagnóstico completo, identificación de oportunidades y roadmap accionable. Empezamos desde $100 USD.</p>
+      <p>Auditoría SEO profesional con diagnóstico completo, identificación de oportunidades y roadmap accionable. Empezamos desde $50 USD.</p>
       <a href="index.html#contacto" class="btn-primary">Cuéntame tu proyecto <span class="arrow">→</span></a>
     </div>
     <div class="checklist-cta-side">
       <span class="price-pill">Desde</span>
-      <div class="price-big"><sup>$</sup>100</div>
+      <div class="price-big"><sup>$</sup>50</div>
       <span class="price-note">USD · Auditoría puntual</span>
     </div>
   </div>
@@ -924,20 +847,6 @@
     try { localStorage.removeItem(STORAGE_KEY); } catch (e) {}
     updateProgress();
   });
-
-  // ── CURSOR-REACTIVE GLOW ──
-  function bindCursorGlow(hostSelector, glowId) {
-    const host = document.querySelector(hostSelector);
-    const glow = document.getElementById(glowId);
-    if (!host || !glow) return;
-    host.addEventListener('mousemove', (e) => {
-      const rect = host.getBoundingClientRect();
-      glow.style.left = (e.clientX - rect.left) + 'px';
-      glow.style.top  = (e.clientY - rect.top) + 'px';
-    });
-  }
-  bindCursorGlow('.hero.cursor-host', 'heroGlow');
-  bindCursorGlow('.checklist-cta-section.cursor-host', 'ctaGlow');
 
   // ── INIT ──
   loadState();
